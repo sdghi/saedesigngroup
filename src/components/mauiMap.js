@@ -144,13 +144,14 @@ const MauiSVG = styled(animated.svg)`
 }
 `;
 
-const MauiMap = () => {
+const MauiMap = ({showOahuMap}) => {
   const fade = useSpring({
-    to: {opacity: 1},
-    from: {opacity: 0},
+    to: {opacity: 1, pointerEvents: 'all'},
+    from: {opacity: 0, pointerEvents: 'none'},
     config: {
-      duration: 200,
-      mass: 5
+      duration: 500,
+      mass: 2,
+      velocity: 200
     }
   })
 
@@ -160,7 +161,7 @@ const MauiMap = () => {
       x="0px"
       y="0px"
       viewBox="0 0 5294 4162"
-      style={fade}
+      style={!showOahuMap && fade}
       id="maui"
     >
       <g>

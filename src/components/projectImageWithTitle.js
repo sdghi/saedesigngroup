@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import Img from "gatsby-image/withIEPolyfill"
+import styled from 'styled-components'
 
 const ProjectImageWithTitle = ({project}) => {
     const slug = project.node.uid;
@@ -8,7 +9,7 @@ const ProjectImageWithTitle = ({project}) => {
     const imageSrc = project.node.data.featured_image.localFile.childImageSharp.fixed;
 
     return (
-        <div key={project.uid}>
+        <ProjetContainer key={project.uid} right="10">
             <Img
             fixed={imageSrc}
             objectFit="cover"
@@ -16,8 +17,17 @@ const ProjectImageWithTitle = ({project}) => {
             alt=""
             />
             <Link to={`/${slug}`}>{projectName}</Link>
-      </div>
+      </ProjetContainer>
     )
 }
 
 export default ProjectImageWithTitle;
+
+const ProjetContainer = styled.div`
+    position: relative;
+    width: fit-content;
+    margin: 0 auto 0 auto;
+    top: ${props => `${props.top}em`};
+    left: ${props => `${props.left}em`};
+    right: ${props => `${props.right}em`};
+`;

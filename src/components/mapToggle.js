@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
 import {white, black, pink} from '../variables'
 
-const MapToggle = ({ setShowOahuMap, showOahuMap, setFilter }) => {
+const MapToggle = ({ setShowOahuMap, showOahuMap, showMapToggle, setShowMapToggle }) => {
 
     const fadeMaui = useSpring({
         opacity: !showOahuMap ? 1 : 0
@@ -13,22 +13,17 @@ const MapToggle = ({ setShowOahuMap, showOahuMap, setFilter }) => {
         opacity: showOahuMap ? 1 : 0
     })
 
-    // const fadeSelect = useSpring({
-    //     opacity: setFilter ? 1 : 0,
-    //     config: {
-    //         duration: 300,
-    //         mass: 2,
-    //     }
-    // })
-
-
-
-    console.log('set show oahu map', setShowOahuMap)
-
+    const setMapToggle = useSpring({
+        opacity: showMapToggle ? 1 : 0,
+        config: {
+            duration: 300,
+            mass: 2,
+        }
+    })
 
     return (
-        <MapToggleContainer  className="select_container" >
-            <button onClick={() => setFilter(false)}>close</button>
+        <MapToggleContainer  className="select_container" style={setMapToggle}>
+            <button onClick={() => setShowMapToggle(false)}>close</button>
 
             <h5>Choose Location</h5>
             <div id="map_select">

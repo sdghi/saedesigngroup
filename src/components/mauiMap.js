@@ -1,5 +1,148 @@
 import React from "react"
 import {useSpring, animated} from 'react-spring'
+import styled from 'styled-components';
+
+const MauiSVG = styled(animated.svg)`
+#maui {
+  position: relative;
+  top: -100vh;
+  left: -100vw;
+  height: 300vh;
+  width: 300vw;
+}
+
+@media (min-width: 768px) {
+  #maui {
+    top: -75vh;
+    left: -50vw;
+    height: 200vh;
+    width: 200vw;
+  }
+}
+
+.st1 {
+  display: inline;
+  opacity: 0.8;
+}
+
+.st0 {
+  display: none;
+  opacity: 0.8;
+}
+
+.st2 {
+  display: inline;
+}
+
+.st3 {
+  clip-path: url(#SVGID_2_);
+}
+
+.st4 {
+  fill: #84c8b6;
+}
+
+.st5 {
+  fill: #eed46e;
+}
+
+.st6 {
+  fill: #11363d;
+}
+
+.st7 {
+  fill: none;
+  stroke: #30918e;
+  stroke-width: 2.9986;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+
+.st8 {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.9986;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+
+.st9 {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3.7029;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+
+.st10 {
+  fill: #ffffff;
+}
+
+.st11 {
+  fill: #ca6a28;
+}
+
+.st12 {
+  display: none;
+}
+
+.st13 {
+  fill: none;
+  stroke: #e93157;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+
+.st14 {
+  fill: none;
+  stroke: #e93157;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+
+.st15 {
+  fill: #ea3357;
+}
+
+.st16 {
+  fill: none;
+  stroke: #ea3357;
+  stroke-width: 0.952;
+  stroke-miterlimit: 10;
+}
+
+.st17 {
+  fill: #eabc4e;
+}
+
+.st18 {
+  fill: #12363d;
+}
+
+.st19 {
+  fill: none;
+  stroke: #ca6a28;
+  stroke-width: 1.25;
+  stroke-miterlimit: 10;
+}
+
+.st20 {
+  fill: none;
+  stroke: #ea3357;
+  stroke-width: 1.25;
+  stroke-miterlimit: 10;
+}
+
+.st21 {
+  fill: none;
+  stroke: #ea3357;
+  stroke-width: 1.2497;
+  stroke-miterlimit: 10;
+}
+`;
 
 const MauiMap = () => {
   const fade = useSpring({
@@ -12,7 +155,7 @@ const MauiMap = () => {
   })
 
   return (
-    <animated.svg
+    <MauiSVG
       version="1.1"
       x="0px"
       y="0px"
@@ -8155,7 +8298,7 @@ const MauiMap = () => {
           </g>
         </g>
       </g>
-    </animated.svg>
+    </MauiSVG>
   )
 }
 

@@ -1,12 +1,12 @@
 import React, { useState } from "react"
-import Link from 'gatsby-plugin-transition-link'
+import Link from "gatsby-plugin-transition-link"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { useSpring } from 'react-spring'
-import { black, pink, yellow } from '../variables';
+import { useSpring } from "react-spring"
+import { black, pink, yellow } from "../variables"
 // Components
-import SiteBranding from './siteBranding'
-import Navigation from './navigation'
+import SiteBranding from "./siteBranding"
+import Navigation from "./navigation"
 
 const Header = () => {
   const [isNavOpen, setNav] = useState(false)
@@ -21,7 +21,9 @@ const Header = () => {
 
   return (
     <SiteHeader>
-      <Link to="/" className={`site-branding`}><SiteBranding /></Link>
+      <Link to="/" className={`site-branding`}>
+        <SiteBranding />
+      </Link>
       <Navigation isNavOpen={isNavOpen} toggle={toggle} />
       <ToggleBtn
         onClick={() => {
@@ -47,21 +49,20 @@ const SiteHeader = styled.header`
   padding: 0 20px;
   justify-content: space-between;
 
-  .site-branding{
+  .site-branding {
     height: 60%;
     width: fit-content;
 
-    svg{
+    svg {
       height: 100%;
       fill: ${pink};
 
-      &:hover{
+      &:hover {
         fill: ${yellow};
       }
     }
   }
-  
-`;
+`
 
 const ToggleBtn = styled.div`
   font-size: 1.2rem;
@@ -79,17 +80,14 @@ const ToggleBtn = styled.div`
         transition: all 0.01s ease-out;
       }
     }
-  
-  
-      h2{
-        -webkit-text-stroke-width: 0.75px;
-        -webkit-text-stroke-color: ${pink};
-        color: transparent;
-      }
-    
+
+    h2 {
+      -webkit-text-stroke-width: 0.75px;
+      -webkit-text-stroke-color: ${pink};
+      color: transparent;
+    }
   }
 `
-
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

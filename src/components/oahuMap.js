@@ -20,7 +20,7 @@ const OahuSVG = styled(animated.svg)`
   fill: #eed36c;
 }
 
-.st0 {
+.st0 { 
   fill: #83c8b6;
 }
 

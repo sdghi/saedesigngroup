@@ -20,7 +20,7 @@ const MauiSVG = styled(animated.svg)`
   display: inline;
   opacity: 0.8;
 }
-
+ 
 .st0 {
   display: none;
   opacity: 0.8;

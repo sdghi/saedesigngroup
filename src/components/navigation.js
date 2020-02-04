@@ -1,15 +1,13 @@
 import React from "react"
 import Link from "gatsby-plugin-transition-link"
 import { animated, useTrail, config } from "react-spring"
-import styled from 'styled-components';
-import { pink, yellow, black } from '../variables';
+import styled from "styled-components"
+import { pink, yellow, black } from "../variables"
 
 const items = ["", "services", "about", "contact"]
 
 const Navigation = ({ isNavOpen, toggle }) => {
-
   // This has to be converted to a useChain in react spring
-
 
   const trails = useTrail(items.length, {
     opacity: isNavOpen ? 1 : 0,
@@ -19,20 +17,16 @@ const Navigation = ({ isNavOpen, toggle }) => {
     <Nav style={toggle}>
       <ul>
         {trails.map((animation, index) => (
-          <animated.li key={items[index]} style={animation} >
+          <animated.li key={items[index]} style={animation}>
             <Link to={`/${items[index]}`}>
-              {
-                items[index] === "" ? "work" : items[index]
-              }
+              {items[index] === "" ? "work" : items[index]}
             </Link>
           </animated.li>
-        )
-        )}
+        ))}
       </ul>
     </Nav>
   )
 }
-
 
 const Nav = styled(animated.nav)`
   position: absolute;
@@ -73,8 +67,7 @@ const Nav = styled(animated.nav)`
     }
   }
 
-
-@media (min-width: 768px) {
+  @media (min-width: 768px) {
     ul {
       a {
         width: fit-content;
@@ -95,15 +88,13 @@ const Nav = styled(animated.nav)`
     }
 
     ul li:hover:nth-of-type(odd):hover {
-    transform: scale(1.05) rotate(-4deg);
-  }
+      transform: scale(1.05) rotate(-4deg);
+    }
 
-   ul li:nth-of-type(even):hover {
-    transform: scale(1.05) rotate(4deg);
+    ul li:nth-of-type(even):hover {
+      transform: scale(1.05) rotate(4deg);
+    }
   }
-}
 `
-
-
 
 export default Navigation

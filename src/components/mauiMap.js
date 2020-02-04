@@ -3,21 +3,20 @@ import {useSpring, animated} from 'react-spring'
 import styled from 'styled-components';
 
 const MauiSVG = styled(animated.svg)`
-#maui {
   position: relative;
   top: -100vh;
   left: -100vw;
   height: 300vh;
   width: 300vw;
-}
+
 
 @media (min-width: 768px) {
-  #maui {
+  
     top: -75vh;
     left: -50vw;
     height: 200vh;
     width: 200vw;
-  }
+  
 }
 
 .st1 {

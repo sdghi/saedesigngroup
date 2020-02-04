@@ -8,12 +8,13 @@ import MapToggle from '../components/mapToggle'
 
 const ContactPage = () => {
     const [showOahuMap, setShowOahuMap] = useState(true);
+    const [showMapToggle, setShowMapToggle] = useState(true);
 
     return (
         <Layout>
             <SEO title="Contact" />
             <MapContainer>
-            <MapToggle setShowOahuMap={setShowOahuMap} showOahuMap={showOahuMap}/>
+            <MapToggle setShowOahuMap={setShowOahuMap} showOahuMap={showOahuMap} showMapToggle={showMapToggle} setShowMapToggle={setShowMapToggle}/>
                 {showOahuMap ? 
                 <OahuMap showOahuMap={showOahuMap}/>
                 :

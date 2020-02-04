@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Link from 'gatsby-plugin-transition-link'
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 

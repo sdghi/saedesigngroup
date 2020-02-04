@@ -5,10 +5,20 @@ import SEO from "../components/seo"
 import MauiMap from "../components/mauiMap"
 import OahuMap from "../components/oahuMap"
 import MapToggle from "../components/mapToggle"
+import { useSpring, animated, interpolate } from "react-spring"
+import { useDrag } from "react-use-gesture"
 
 const ContactPage = () => {
   const [showOahuMap, setShowOahuMap] = useState(true)
   const [showMapToggle, setShowMapToggle] = useState(true)
+  const [centerMap, setCenterMap] = useState(false)
+
+  const [{ x, y }, set] = useSpring(() => ({ x: 0, y: 0 }))
+
+  const bind = useDrag(({ down, movement: [mx, my] }) => {
+    // Turn 0 into mx or my to not center the map on drag
+    set({ x: down ? mx : 0, y: down ? my : 0 })
+  })
 
   return (
     <Layout>
@@ -20,11 +30,21 @@ const ContactPage = () => {
           showMapToggle={showMapToggle}
           setShowMapToggle={setShowMapToggle}
         />
-        {showOahuMap ? (
-          <OahuMap showOahuMap={showOahuMap} />
-        ) : (
-          <MauiMap showOahuMap={showOahuMap} />
-        )}
+        <animated.div
+          {...bind()}
+          style={{
+            transform: interpolate(
+              [x, y],
+              (x, y) => `translate3d(${x}px,${y}px,0px)`
+            ),
+          }}
+        >
+          {showOahuMap ? (
+            <OahuMap showOahuMap={showOahuMap} />
+          ) : (
+            <MauiMap showOahuMap={showOahuMap} />
+          )}
+        </animated.div>
       </MapContainer>
     </Layout>
   )
@@ -32,7 +52,7 @@ const ContactPage = () => {
 
 export default ContactPage
 
-const MapContainer = styled.div`
+const MapContainer = styled(animated.div)`
   height: calc(100vh - 7vh);
   width: 100%;
   overflow: hidden;

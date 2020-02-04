@@ -1,106 +1,106 @@
 import React from "react"
-import {useSpring, animated} from 'react-spring'
-import styled from 'styled-components'
+import { useSpring, animated } from "react-spring"
+import styled from "styled-components"
 
 const OahuSVG = styled(animated.svg)`
   position: relative;
   top: -100vh;
-  left: -75vw;
+  left: -70vw;
   height: 300vh;
   width: 300vw;
 
-@media (min-width: 768px) {
-    top:  -50vh;
-    left: -40vw;
+  @media (min-width: 768px) {
+    top: -50vh;
+    left: -42vw;
     height: 200vh;
     width: 200vw;
-}
+  }
 
-.st1 {
-  fill: #eed36c;
-}
+  .st1 {
+    fill: #eed36c;
+  }
 
-.st0 { 
-  fill: #83c8b6;
-}
+  .st0 {
+    fill: #83c8b6;
+  }
 
-.st2 {
-  fill: #11363d;
-  stroke: #ffffff;
-  stroke-miterlimit: 10;
-}
+  .st2 {
+    fill: #11363d;
+    stroke: #ffffff;
+    stroke-miterlimit: 10;
+  }
 
-.st3 {
-  fill: none;
-  stroke: #ffffff;
-  stroke-miterlimit: 10;
-}
+  .st3 {
+    fill: none;
+    stroke: #ffffff;
+    stroke-miterlimit: 10;
+  }
 
-.st4 {
-  fill: #11363d;
-}
+  .st4 {
+    fill: #11363d;
+  }
 
-.st5 {
-  fill: none;
-  stroke: #11363d;
-  stroke-width: 1.25;
-  stroke-miterlimit: 10;
-}
+  .st5 {
+    fill: none;
+    stroke: #11363d;
+    stroke-width: 1.25;
+    stroke-miterlimit: 10;
+  }
 
-.st6 {
-  fill: #c96828;
-}
+  .st6 {
+    fill: #c96828;
+  }
 
-.st7 {
-  fill: none;
-  stroke: #ca6928;
-  stroke-width: 1.25;
-  stroke-miterlimit: 10;
-}
+  .st7 {
+    fill: none;
+    stroke: #ca6928;
+    stroke-width: 1.25;
+    stroke-miterlimit: 10;
+  }
 
-.st8 {
-  fill: #ca6928;
-}
+  .st8 {
+    fill: #ca6928;
+  }
 
-.st9 {
-  fill: #e14263;
-}
+  .st9 {
+    fill: #e14263;
+  }
 
-.st10 {
-  fill: none;
-  stroke: #ea3056;
-  stroke-width: 0.952;
-  stroke-miterlimit: 10;
-}
+  .st10 {
+    fill: none;
+    stroke: #ea3056;
+    stroke-width: 0.952;
+    stroke-miterlimit: 10;
+  }
 
-.st11 {
-  fill: #eabc4e;
-}
+  .st11 {
+    fill: #eabc4e;
+  }
 
-.st12 {
-  fill: none;
-  stroke: #e93056;
-  stroke-width: 1.25;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-}
+  .st12 {
+    fill: none;
+    stroke: #e93056;
+    stroke-width: 1.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+  }
 
-.st13 {
-  fill: #e93056;
-}
-`;
+  .st13 {
+    fill: #e93056;
+  }
+`
 
-const OahuMap = ({showOahuMap}) => {
-        const fade = useSpring({
-        to: {opacity: 1, pointerEvents: 'all'},
-        from: {opacity: 0, pointerEvents: 'none'},
-        config: {
-            duration: 500,
-            mass: 2,
-            velocity: 200
-        }
-    })
+const OahuMap = ({ showOahuMap }) => {
+  const fade = useSpring({
+    to: { opacity: 1, pointerEvents: "all" },
+    from: { opacity: 0, pointerEvents: "none" },
+    config: {
+      duration: 500,
+      mass: 2,
+      velocity: 200,
+    },
+  })
 
   return (
     <OahuSVG

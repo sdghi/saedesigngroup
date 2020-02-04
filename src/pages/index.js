@@ -1,21 +1,53 @@
 import React from "react"
-import { Link } from "gatsby"
-
+import { Link, graphql} from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import ProjectImageWithTitle from '../components/projectImageWithTitle'
 
-const IndexPage = () => (
+export const query = graphql`
+{
+  allPrismicProjectTemplate {
+    edges {
+      node {
+        uid
+        data {
+          project_name {
+            text
+          }
+          featured_image {
+            alt
+            url
+            localFile {
+              childImageSharp {
+                fluid{
+                  srcSet
+                }
+                fixed{
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
+const IndexPage = ({data}) => {
+  const projects = data.allPrismicProjectTemplate.edges; 
+ 
+  return(
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
+    <section>
+      {projects.map(project => (
+        <ProjectImageWithTitle key={project.node.uid} project={project}/>
+      ))}
+    </section>
     <Link to="/page-2/">Go to page 2</Link>
   </Layout>
-)
+)}
 
 export default IndexPage

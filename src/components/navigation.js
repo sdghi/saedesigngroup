@@ -1,6 +1,6 @@
 import React from "react"
 import Link from "gatsby-plugin-transition-link"
-import { useSpring, animated, useTrail, config } from "react-spring"
+import { animated, useTrail, config } from "react-spring"
 import styled from 'styled-components';
 import { pink, yellow, black } from '../variables';
 

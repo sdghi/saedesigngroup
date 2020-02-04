@@ -12,8 +12,8 @@ const ContactPage = () => {
     return (
         <Layout>
             <SEO title="Contact" />
-            <MapContainer setShowOahuMap={setShowOahuMap} showOahuMap={showOahuMap}>
-            <MapToggle/>
+            <MapContainer>
+            <MapToggle setShowOahuMap={setShowOahuMap} showOahuMap={showOahuMap}/>
                 {showOahuMap ? 
                 <OahuMap showOahuMap={showOahuMap}/>
                 :

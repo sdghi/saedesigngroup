@@ -9,14 +9,11 @@ const MauiSVG = styled(animated.svg)`
   height: 300vh;
   width: 300vw;
 
-
-@media (min-width: 768px) {
-  
-    top: -75vh;
+@media (min-width: 768px) {  
+    top: -50vh;
     left: -50vw;
     height: 200vh;
     width: 200vw;
-  
 }
 
 .st1 {

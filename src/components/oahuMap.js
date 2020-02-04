@@ -3,21 +3,17 @@ import {useSpring, animated} from 'react-spring'
 import styled from 'styled-components'
 
 const OahuSVG = styled(animated.svg)`
-
   position: relative;
   top: -100vh;
   left: -75vw;
   height: 300vh;
   width: 300vw;
 
-
 @media (min-width: 768px) {
- 
     top:  -50vh;
     left: -40vw;
     height: 200vh;
     width: 200vw;
-  
 }
 
 .st1 {

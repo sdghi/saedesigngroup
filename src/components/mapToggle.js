@@ -23,6 +23,8 @@ const MapToggle = ({ setShowOahuMap, showOahuMap, setFilter }) => {
 
 
 
+    console.log('set show oahu map', setShowOahuMap)
+
 
     return (
         <MapToggleContainer  className="select_container" >

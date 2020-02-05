@@ -1,18 +1,43 @@
-import React from "react"
+import React, { useRef } from "react"
 import Link from "gatsby-plugin-transition-link"
-import { animated, useTrail, config } from "react-spring"
+import { animated, useTrail, useChain, config, useSpring } from "react-spring"
 import styled from "styled-components"
 import { pink, yellow, black } from "../variables"
 
 const items = ["", "services", "about", "contact"]
 
-const Navigation = ({ isNavOpen, toggle }) => {
-  // This has to be converted to a useChain in react spring
+const Navigation = ({ isNavOpen }) => {
+  const springRef = useRef()
+  const transitionRef = useRef()
 
   const trails = useTrail(items.length, {
-    opacity: isNavOpen ? 1 : 0,
-    config: config.gentle,
+    ref: transitionRef,
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: isNavOpen ? 1 : 0,
+    },
+    config: config.stiff,
   })
+
+  const toggle = useSpring({
+    ref: springRef,
+    from: { transform: `translate3d(0, -100%, 0)` },
+    to: {
+      transform: isNavOpen
+        ? `translate3d(0, 0, 0)`
+        : `translate3d(0, -100%, 0)`,
+    },
+    config: {
+      duration: 350,
+      tension: 250,
+      velocity: 5,
+    },
+  })
+
+  useChain(isNavOpen ? [springRef, transitionRef] : [transitionRef, springRef])
+
   return (
     <Nav style={toggle}>
       <ul>

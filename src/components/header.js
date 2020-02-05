@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import Link from "gatsby-plugin-transition-link"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { useSpring } from "react-spring"
 import { black, pink, yellow } from "../variables"
 // Components
 import SiteBranding from "./siteBranding"
@@ -11,20 +10,12 @@ import Navigation from "./navigation"
 const Header = () => {
   const [isNavOpen, setNav] = useState(false)
 
-  const toggle = useSpring({
-    transform: isNavOpen ? `translate3d(0, 0, 0)` : `translate3d(0, -100%, 0)`,
-    config: {
-      tension: 200,
-      velocity: 3,
-    },
-  })
-
   return (
     <SiteHeader>
       <Link to="/" className={`site-branding`}>
         <SiteBranding />
       </Link>
-      <Navigation isNavOpen={isNavOpen} toggle={toggle} />
+      <Navigation isNavOpen={isNavOpen} />
       <ToggleBtn
         onClick={() => {
           setNav(!isNavOpen)

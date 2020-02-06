@@ -17,9 +17,9 @@ const Header = () => {
   return (
     <SiteHeader>
       <Link to="/" className={`site-branding`}>
-        <SiteBranding />
+        <SiteBranding setNav={setNav} />
       </Link>
-      <Navigation isNavOpen={isNavOpen} />
+      <Navigation isNavOpen={isNavOpen} setNav={setNav} />
       <ToggleBtn
         onClick={() => {
           setNav(!isNavOpen)

@@ -1,6 +1,6 @@
 import React from "react"
 
-const SiteBranding = () => {
+const SiteBranding = ({ setNav }) => {
   return (
     <svg
       version="1.1"
@@ -9,6 +9,7 @@ const SiteBranding = () => {
       x="0px"
       y="0px"
       viewBox="0 0 294 80"
+      onClick={() => setNav(false)}
     >
       <g>
         <g>

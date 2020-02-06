@@ -52,6 +52,12 @@ const SiteHeader = styled.header`
     height: 60%;
     width: fit-content;
 
+    &:hover {
+      #sdg-face {
+        animation: pulse 0.5s infinite;
+      }
+    }
+
     svg {
       height: 100%;
       fill: ${pink};
@@ -59,6 +65,18 @@ const SiteHeader = styled.header`
       &:hover {
         fill: ${yellow};
       }
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.04);
+    }
+    100% {
+      transform: scale(1);
     }
   }
 `

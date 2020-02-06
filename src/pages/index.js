@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import styled from "styled-components"
 import ProjectImageWithTitle from "../components/projectImageWithTitle"
 import { black, white } from "../variables"
+import { myContext } from "../provider"
 
 export const query = graphql`
   {
@@ -41,25 +42,49 @@ const IndexPage = ({ data }) => {
   const projects = data.allPrismicProjectTemplate.edges
 
   return (
-    <Layout>
-      <SEO title="Home" />
-      <HomeHero>
-        <HeroText>
-          Sae Design Group is an agency that makes <strong>branding</strong>,{" "}
-          <strong>packaging</strong>, and <strong>web&nbsp;stuff</strong>.
-        </HeroText>
-      </HomeHero>
-      <ProjectsSection>
-        <ProjectsFilter>
-          <h1>hiii</h1>
-          <h4>byeee</h4>
-        </ProjectsFilter>
-        {projects.map(project => (
-          <ProjectImageWithTitle key={project.node.uid} project={project} />
-        ))}
-      </ProjectsSection>
-      <Link to="/page-2/">Go to page 2</Link>
-    </Layout>
+    <myContext.Consumer>
+      {context => (
+        <Layout>
+          <SEO title="Home" />
+          <HomeHero>
+            <HeroText>
+              Sae Design Group is an agency that makes{" "}
+              <strong
+                onMouseOver={() => context.setCursorElement("branding")}
+                onMouseLeave={() => context.setCursorElement("initial")}
+              >
+                branding
+              </strong>
+              ,{" "}
+              <strong
+                onMouseOver={() => context.setCursorElement("packaging")}
+                onMouseLeave={() => context.setCursorElement("initial")}
+              >
+                packaging
+              </strong>
+              , and{" "}
+              <strong
+                onMouseOver={() => context.setCursorElement("web")}
+                onMouseLeave={() => context.setCursorElement("initial")}
+              >
+                web&nbsp;stuff
+              </strong>
+              .
+            </HeroText>
+          </HomeHero>
+          <ProjectsSection>
+            <ProjectsFilter>
+              <h1>hiii</h1>
+              <h4>byeee</h4>
+            </ProjectsFilter>
+            {projects.map(project => (
+              <ProjectImageWithTitle key={project.node.uid} project={project} />
+            ))}
+          </ProjectsSection>
+          <Link to="/page-2/">Go to page 2</Link>
+        </Layout>
+      )}
+    </myContext.Consumer>
   )
 }
 
@@ -84,6 +109,8 @@ const HeroText = styled.h1`
 
   strong {
     cursor: pointer;
+    position: relative;
+    z-index: 10;
   }
 `
 

@@ -11,7 +11,6 @@ import { useDrag } from "react-use-gesture"
 const ContactPage = () => {
   const [showOahuMap, setShowOahuMap] = useState(true)
   const [showMapToggle, setShowMapToggle] = useState(true)
-  const [centerMap, setCenterMap] = useState(false)
 
   const [{ x, y }, set] = useSpring(() => ({ x: 0, y: 0 }))
 

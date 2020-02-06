@@ -1,37 +1,31 @@
 import React from "react"
-import styled from "styled-components"
-import { breakpointMedium } from "../variables"
+import InitialCursor from "./cursors/initialCursor"
+import BrandingCursor from "./cursors/brandingCursor"
+import PackagingCursor from "./cursors/packagingCursor"
+import WorkCursor from "./cursors/workCursor"
+import ServicesCursor from "./cursors/servicesCursor"
+import AboutCursor from "./cursors/aboutCursor"
+import ContactCursor from "./cursors/contactCursor"
 
 const CustomCursor = ({ xValue, yValue, cursorElement }) => {
-  return (
-    <Cursor
-      top={yValue}
-      left={xValue}
-      height="20"
-      width="100"
-      zIndex="99999999999"
-    >
-      {cursorElement}
-    </Cursor>
-  )
+  switch (cursorElement) {
+    case "initial":
+      return <InitialCursor xValue={xValue} yValue={yValue} />
+    case "branding":
+      return <BrandingCursor xValue={xValue} yValue={yValue} />
+    case "packaging":
+      return <PackagingCursor xValue={xValue} yValue={yValue} />
+    case "work":
+      return <WorkCursor xValue={xValue} yValue={yValue} />
+    case "services":
+      return <ServicesCursor xValue={xValue} yValue={yValue} />
+    case "about":
+      return <AboutCursor xValue={xValue} yValue={yValue} />
+    case "contact":
+      return <ContactCursor xValue={xValue} yValue={yValue} />
+    default:
+      return null
+  }
 }
 
 export default CustomCursor
-
-const Cursor = styled.div`
-  position: fixed;
-  display: none;
-  place-items: center;
-  z-index: ${props => props.zIndex};
-  height: ${props => props.height}px;
-  width: ${props => props.width}px;
-  border-radius: ${props => props.borderRadius};
-  pointer-events: none;
-  transform: ${props => `translate(${props.left}px, ${props.top}px)`};
-  left: ${props => `-${props.width / 2}px`};
-  top: ${props => `-${props.height / 2}px`};
-
-  @media (min-width: ${breakpointMedium}) {
-    display: grid;
-  }
-`

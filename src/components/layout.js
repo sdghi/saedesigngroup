@@ -29,7 +29,11 @@ const Layout = ({ children }) => {
   return (
     <myContext.Consumer>
       {context => (
-        <div onMouseMove={e => trackMouse(e)}>
+        <div
+          onMouseMove={e => {
+            trackMouse(e)
+          }}
+        >
           <Header
             siteTitle={data.site.siteMetadata.title}
             setCursorElement={context.setCursorElement}

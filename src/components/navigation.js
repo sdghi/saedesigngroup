@@ -30,7 +30,7 @@ const Navigation = ({ isNavOpen }) => {
         : `translate3d(0, -100%, 0)`,
     },
     config: {
-      duration: 350,
+      duration: 250,
       tension: 250,
       velocity: 5,
     },

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Link from "gatsby-plugin-transition-link"
 import PropTypes from "prop-types"
 import styled from "styled-components"
@@ -10,12 +10,16 @@ import Navigation from "./navigation"
 const Header = () => {
   const [isNavOpen, setNav] = useState(false)
 
+  useEffect(() => {
+    document.body.style.overflow = isNavOpen ? "hidden" : "auto"
+  })
+
   return (
     <SiteHeader>
       <Link to="/" className={`site-branding`}>
-        <SiteBranding />
+        <SiteBranding setNav={setNav} />
       </Link>
-      <Navigation isNavOpen={isNavOpen} />
+      <Navigation isNavOpen={isNavOpen} setNav={setNav} />
       <ToggleBtn
         onClick={() => {
           setNav(!isNavOpen)

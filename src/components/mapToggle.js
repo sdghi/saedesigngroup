@@ -60,7 +60,21 @@ const MapToggle = ({
         </div>
       </div>
 
-      {!showOahuMap ? (
+      {showOahuMap ? (
+        <animated.div className="info" id="oahu_info" style={fadeOahu}>
+          <a href="tel:808-544-0002">(808) 544-0002</a>
+          <br />
+          <a
+            href="https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {/* INSERT THE CORRECT ADRESS FOR OAHU */}
+            555 South St Suite #108
+            <br /> Honolulu, HI 96813
+          </a>
+        </animated.div>
+      ) : (
         <animated.div className="info" style={fadeMaui}>
           <a href="tel:808-249-2200">(808) 249-2200</a>
           <br />
@@ -69,20 +83,6 @@ const MapToggle = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            2261 Aupuni St # 101
-            <br /> Wailuku, HI 96793
-          </a>
-        </animated.div>
-      ) : (
-        <animated.div className="info" id="oahu_info" style={fadeOahu}>
-          <a href="tel:808-249-2200">(808) 249-2200</a>
-          <br />
-          <a
-            href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {/* INSERT THE CORRECT ADRESS FOR OAHU */}
             2261 Aupuni St # 101
             <br /> Wailuku, HI 96793
           </a>

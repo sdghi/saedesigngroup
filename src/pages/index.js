@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import ProjectImageWithTitle from "../components/projectImageWithTitle"
+import { black, white } from "../variables"
 
 export const query = graphql`
   {
@@ -42,6 +43,12 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
+      <HomeHero>
+        <HeroText>
+          Sae Design Group is an agency that makes <strong>branding</strong>,{" "}
+          <strong>packaging</strong>, and <strong>web&nbsp;stuff</strong>.
+        </HeroText>
+      </HomeHero>
       <ProjectsSection>
         <ProjectsFilter>
           <h1>hiii</h1>
@@ -57,6 +64,28 @@ const IndexPage = ({ data }) => {
 }
 
 export default IndexPage
+
+const HomeHero = styled.section`
+  height: calc(100vh - 7vh);
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 50px;
+  background: ${black};
+`
+
+const HeroText = styled.h1`
+  font-size: 5rem;
+  margin: 0;
+  width: fit-content;
+  font-weight: 400;
+  text-align: center;
+  color: ${white};
+
+  strong {
+    cursor: pointer;
+  }
+`
 
 const ProjectsSection = styled.section`
   padding: 50px 0;

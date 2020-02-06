@@ -6,7 +6,7 @@ import { pink, yellow, black } from "../variables"
 
 const items = ["", "services", "about", "contact"]
 
-const Navigation = ({ isNavOpen }) => {
+const Navigation = ({ isNavOpen, setNav }) => {
   const springRef = useRef()
   const transitionRef = useRef()
 
@@ -30,7 +30,7 @@ const Navigation = ({ isNavOpen }) => {
         : `translate3d(0, -100%, 0)`,
     },
     config: {
-      duration: 350,
+      duration: 250,
       tension: 250,
       velocity: 5,
     },
@@ -42,7 +42,11 @@ const Navigation = ({ isNavOpen }) => {
     <Nav style={toggle}>
       <ul>
         {trails.map((animation, index) => (
-          <animated.li key={items[index]} style={animation}>
+          <animated.li
+            key={items[index]}
+            style={animation}
+            onClick={() => setNav(false)}
+          >
             <Link to={`/${items[index]}`}>
               {items[index] === "" ? "work" : items[index]}
             </Link>

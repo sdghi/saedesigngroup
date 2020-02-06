@@ -1,20 +1,10 @@
 import React from "react"
-import { Cursor } from "../elements"
+import InitialCursor from "./cursors/initialCursor"
 
 const CustomCursor = ({ xValue, yValue, cursorElement }) => {
   switch (cursorElement) {
     case "initial":
-      return (
-        <Cursor
-          top={yValue}
-          left={xValue}
-          height="20"
-          width="100"
-          zIndex="99999999999"
-        >
-          initial
-        </Cursor>
-      )
+      return <InitialCursor xValue={xValue} yValue={yValue} />
     default:
       return null
   }

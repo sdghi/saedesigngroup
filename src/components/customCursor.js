@@ -1,23 +1,18 @@
 import React from "react"
 import styled from "styled-components"
 import { breakpointMedium } from "../variables"
-import { myContext } from "../provider"
 
-const CustomCursor = ({ xValue, yValue }) => {
+const CustomCursor = ({ xValue, yValue, cursorElement }) => {
   return (
-    <myContext.Consumer>
-      {context => (
-        <Cursor
-          top={yValue}
-          left={xValue}
-          height="20"
-          width="100"
-          zIndex="99999999999"
-        >
-          {context.cursorElement}
-        </Cursor>
-      )}
-    </myContext.Consumer>
+    <Cursor
+      top={yValue}
+      left={xValue}
+      height="20"
+      width="100"
+      zIndex="99999999999"
+    >
+      {cursorElement}
+    </Cursor>
   )
 }
 

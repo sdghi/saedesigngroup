@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { GlobalStyle } from "../utils"
 import Header from "./header"
 import CustomCursor from "./customCursor"
+import { myContext } from "../provider"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -26,17 +27,28 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <div onMouseMove={e => trackMouse(e)}>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <GlobalStyle />
-      <CustomCursor xValue={xValue} yValue={yValue} />
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
-    </div>
+    <myContext.Consumer>
+      {context => (
+        <div onMouseMove={e => trackMouse(e)}>
+          <Header
+            siteTitle={data.site.siteMetadata.title}
+            setCursorElement={context.setCursorElement}
+          />
+          <GlobalStyle />
+          <CustomCursor
+            xValue={xValue}
+            yValue={yValue}
+            cursorElement={context.cursorElement}
+          />
+          <main>{children}</main>
+          <footer>
+            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </footer>
+        </div>
+      )}
+    </myContext.Consumer>
   )
 }
 

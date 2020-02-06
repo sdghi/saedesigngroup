@@ -1,12 +1,23 @@
 import React from "react"
 import styled from "styled-components"
 import { breakpointMedium } from "../variables"
+import { myContext } from "../provider"
 
 const CustomCursor = ({ xValue, yValue }) => {
   return (
-    <Cursor top={yValue} left={xValue} height="20" width="100" zIndex="99999">
-      cursor
-    </Cursor>
+    <myContext.Consumer>
+      {context => (
+        <Cursor
+          top={yValue}
+          left={xValue}
+          height="20"
+          width="100"
+          zIndex="99999999999"
+        >
+          {context.cursorElement}
+        </Cursor>
+      )}
+    </myContext.Consumer>
   )
 }
 
@@ -24,7 +35,6 @@ const Cursor = styled.div`
   transform: ${props => `translate(${props.left}px, ${props.top}px)`};
   left: ${props => `-${props.width / 2}px`};
   top: ${props => `-${props.height / 2}px`};
-  transition: transform 0.1s ease;
 
   @media (min-width: ${breakpointMedium}) {
     display: grid;

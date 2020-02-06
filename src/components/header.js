@@ -7,7 +7,7 @@ import { black, pink, yellow } from "../variables"
 import SiteBranding from "./siteBranding"
 import Navigation from "./navigation"
 
-const Header = () => {
+const Header = ({ setCursorElement }) => {
   const [isNavOpen, setNav] = useState(false)
 
   useEffect(() => {
@@ -19,7 +19,11 @@ const Header = () => {
       <Link to="/" className={`site-branding`}>
         <SiteBranding setNav={setNav} />
       </Link>
-      <Navigation isNavOpen={isNavOpen} setNav={setNav} />
+      <Navigation
+        isNavOpen={isNavOpen}
+        setNav={setNav}
+        setCursorElement={setCursorElement}
+      />
       <ToggleBtn
         onClick={() => {
           setNav(!isNavOpen)

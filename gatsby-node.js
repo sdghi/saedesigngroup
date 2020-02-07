@@ -10,6 +10,20 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             id
             uid
+            data {
+              project_name {
+                text
+              }
+              featured_image {
+                localFile {
+                  childImageSharp {
+                    fixed {
+                      srcSet
+                    }
+                  }
+                }
+              }
+            }
           }
           next {
             uid
@@ -58,9 +72,16 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve("./src/templates/project.js"),
       context: {
         id: edge.node.id,
-        previous: edge.previous,
+        previous:
+          pages.data.allPrismicProjectTemplate.edges[
+            pages.data.allPrismicProjectTemplate.edges.length - 1
+          ].node,
         next: edge.next,
       },
     })
   })
 }
+
+// edge.previous
+// ? edge.previous
+// :

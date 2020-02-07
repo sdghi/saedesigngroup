@@ -5,6 +5,7 @@ import { GlobalStyle } from "../utils"
 import Header from "./header"
 import CustomCursor from "./customCursor"
 import { myContext } from "../provider"
+import Footer from "./footer"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -58,11 +59,7 @@ const Layout = ({ children }) => {
             />
           )}
           <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+          <Footer />
         </div>
       )}
     </myContext.Consumer>

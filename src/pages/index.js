@@ -103,7 +103,7 @@ const HeroTextFilterItem = ({
   content,
 }) => {
   const handleProjectFilter = filterValue => {
-    console.log("filter Value")
+    console.log("filter Value", filterValue)
     // scroll down the window the height of the heroRef
   }
 

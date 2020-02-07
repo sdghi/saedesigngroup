@@ -18,7 +18,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 localFile {
                   childImageSharp {
                     fixed {
-                      srcSet
+                      src
                     }
                   }
                 }
@@ -36,7 +36,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 localFile {
                   childImageSharp {
                     fixed {
-                      srcSet
+                      src
                     }
                   }
                 }
@@ -54,7 +54,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 localFile {
                   childImageSharp {
                     fixed {
-                      srcSet
+                      src
                     }
                   }
                 }
@@ -72,16 +72,15 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve("./src/templates/project.js"),
       context: {
         id: edge.node.id,
-        previous:
-          pages.data.allPrismicProjectTemplate.edges[
-            pages.data.allPrismicProjectTemplate.edges.length - 1
-          ].node,
-        next: edge.next,
+        previous: edge.previous
+          ? edge.previous
+          : pages.data.allPrismicProjectTemplate.edges[
+              pages.data.allPrismicProjectTemplate.edges.length - 1
+            ].node,
+        next: edge.next
+          ? edge.next
+          : pages.data.allPrismicProjectTemplate.edges[0].node,
       },
     })
   })
 }
-
-// edge.previous
-// ? edge.previous
-// :

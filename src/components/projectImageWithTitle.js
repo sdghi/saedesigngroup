@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import Link from "gatsby-plugin-transition-link"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 
@@ -11,8 +11,15 @@ const ProjectImageWithTitle = ({ project }) => {
 
   return (
     <ProjetContainer key={project.uid} right="10">
-      <Img fixed={imageSrc} objectFit="cover" objectPosition="50% 50%" alt="" />
-      <Link to={`/${slug}`}>{projectName}</Link>
+      <Link to={`/${slug}`}>
+        <Img
+          fixed={imageSrc}
+          objectFit="cover"
+          objectPosition="50% 50%"
+          alt=""
+        />
+        {projectName}
+      </Link>
     </ProjetContainer>
   )
 }

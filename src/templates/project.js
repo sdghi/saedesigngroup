@@ -3,23 +3,30 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Link from "gatsby-plugin-transition-link"
 import SEO from "../components/seo"
+// SLICES
+import TextSection from "../slices/textSection"
+import Testimonial from "../slices/testimonial"
+import LargeImage from "../slices/largeImage"
+import ImageCaption from "../slices/imageCaption"
+import ImageGallery from "../slices/imageGallery"
+import StaggeredImages from "../slices/staggeredImages"
 
 const ProjectSlices = ({ slices, theme }) => {
   return slices.map((slice, index) => {
     const res = (() => {
       switch (slice.slice_type) {
         case "text_section":
-          return "text section"
+          return <TextSection key={index} slice={slice} theme={theme} />
         case "testimonial":
-          return "testimonial"
+          return <Testimonial key={index} slice={slice} theme={theme} />
         case "large_image":
-          return "large image"
+          return <LargeImage key={index} slice={slice} theme={theme} />
         case "2_3_image__caption":
-          return "2/3 image"
+          return <ImageCaption key={index} slice={slice} theme={theme} />
         case "image_gallery":
-          return "image gallery"
+          return <ImageGallery key={index} slice={slice} theme={theme} />
         case "staggered_images":
-          return "staggered images"
+          return <StaggeredImages key={index} slice={slice} theme={theme} />
         default:
           return
       }

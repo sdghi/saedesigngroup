@@ -98,7 +98,7 @@ export const query = graphql`
                     localFile {
                       childImageSharp {
                         fixed {
-                          srcSet
+                          ...GatsbyImageSharpFixed
                         }
                       }
                     }
@@ -116,7 +116,7 @@ export const query = graphql`
                     localFile {
                       childImageSharp {
                         fixed {
-                          srcSet
+                          ...GatsbyImageSharpFixed
                         }
                       }
                     }
@@ -131,7 +131,7 @@ export const query = graphql`
                     localFile {
                       childImageSharp {
                         fixed {
-                          srcSet
+                          ...GatsbyImageSharpFixed
                         }
                       }
                     }
@@ -152,7 +152,7 @@ export const query = graphql`
                     localFile {
                       childImageSharp {
                         fixed {
-                          srcSet
+                          ...GatsbyImageSharpFixed
                         }
                       }
                     }
@@ -161,7 +161,7 @@ export const query = graphql`
                     localFile {
                       childImageSharp {
                         fixed {
-                          srcSet
+                          ...GatsbyImageSharpFixed
                         }
                       }
                     }

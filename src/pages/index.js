@@ -43,10 +43,6 @@ const IndexPage = ({ data }) => {
 
   const heroRef = useRef(null)
 
-  const handleProjectFilter = filterValue => {
-    console.log("hero ref", heroRef)
-  }
-
   return (
     <myContext.Consumer>
       {context => (

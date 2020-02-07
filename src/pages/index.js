@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -41,40 +41,40 @@ export const query = graphql`
 const IndexPage = ({ data }) => {
   const projects = data.allPrismicProjectTemplate.edges
 
+  const heroRef = useRef(null)
+
+  const handleProjectFilter = filterValue => {
+    console.log("hero ref", heroRef)
+  }
+
   return (
     <myContext.Consumer>
       {context => (
         <Layout>
           <SEO title="Home" />
-          <HomeHero>
+          <HomeHero ref={heroRef}>
             <HeroText>
               Sae Design Group is an agency that makes{" "}
-              <strong
-                role="button"
-                tabIndex={0}
-                onMouseEnter={() => context.setCursorElement("branding")}
-                onMouseLeave={() => context.setCursorElement("initial")}
-              >
-                branding
-              </strong>
+              <HeroTextFilterItem
+                filterValue="branding"
+                newCursorElement="branding"
+                content="branding"
+                context={context}
+              />
               ,{" "}
-              <strong
-                role="button"
-                tabIndex={0}
-                onMouseEnter={() => context.setCursorElement("packaging")}
-                onMouseLeave={() => context.setCursorElement("initial")}
-              >
-                packaging
-              </strong>
+              <HeroTextFilterItem
+                filterValue="packaging"
+                newCursorElement="packaging"
+                content="packaging"
+                context={context}
+              />
               , and{" "}
-              <strong
-                role="button"
-                tabIndex={0}
-                onMouseEnter={() => context.setCursorElement("web")}
-                onMouseLeave={() => context.setCursorElement("initial")}
-              >
-                web&nbsp;stuff
-              </strong>
+              <HeroTextFilterItem
+                filterValue="web"
+                newCursorElement="web"
+                content="web&nbsp;stuff"
+                context={context}
+              />
               .
             </HeroText>
           </HomeHero>
@@ -95,6 +95,31 @@ const IndexPage = ({ data }) => {
 }
 
 export default IndexPage
+
+const HeroTextFilterItem = ({
+  context,
+  filterValue,
+  newCursorElement,
+  content,
+}) => {
+  const handleProjectFilter = filterValue => {
+    console.log("filter Value")
+    // scroll down the window the height of the heroRef
+  }
+
+  return (
+    <strong
+      role="button"
+      tabIndex={0}
+      onMouseEnter={() => context.setCursorElement(newCursorElement)}
+      onMouseLeave={() => context.setCursorElement("initial")}
+      onClick={() => handleProjectFilter(filterValue)}
+      onKeyDown={() => handleProjectFilter(filterValue)}
+    >
+      {content}
+    </strong>
+  )
+}
 
 const HomeHero = styled.section`
   height: calc(100vh - 7vh);

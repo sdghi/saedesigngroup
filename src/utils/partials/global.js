@@ -31,4 +31,8 @@ export const GlobalStyle = createGlobalStyle`
     overflow: initial;
   }
 
+  *[role=button]{
+    outline: none;
+  }
+
 `

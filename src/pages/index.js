@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -40,6 +40,23 @@ const IndexPage = ({ data }) => {
 
   const heroRef = useRef(null)
 
+  const [scrollWindowHeight, setScrollWindowHeight] = useState(0)
+  const [startScroll, setStartScroll] = useState(false)
+
+  useEffect(() => {
+    // If start scroll is true scroll down the height of the first section
+    startScroll && setScrollWindowHeight(heroRef.current.offsetHeight)
+
+    // Scroll down the window
+    window.scroll({
+      top: scrollWindowHeight,
+      behavior: "smooth",
+    })
+
+    // Reset the scroll in case the user scrolls back up
+    setStartScroll(false)
+  }, [scrollWindowHeight, startScroll])
+
   return (
     <myContext.Consumer>
       {context => (
@@ -53,6 +70,7 @@ const IndexPage = ({ data }) => {
                 newCursorElement="branding"
                 content="branding"
                 context={context}
+                setStartScroll={setStartScroll}
               />
               ,{" "}
               <HeroTextFilterItem
@@ -60,6 +78,7 @@ const IndexPage = ({ data }) => {
                 newCursorElement="packaging"
                 content="packaging"
                 context={context}
+                setStartScroll={setStartScroll}
               />
               , and{" "}
               <HeroTextFilterItem
@@ -67,6 +86,7 @@ const IndexPage = ({ data }) => {
                 newCursorElement="web"
                 content="web&nbsp;stuff"
                 context={context}
+                setStartScroll={setStartScroll}
               />
               .
             </HeroText>
@@ -93,10 +113,11 @@ const HeroTextFilterItem = ({
   filterValue,
   newCursorElement,
   content,
+  setStartScroll,
 }) => {
   const handleProjectFilter = filterValue => {
     console.log("filter Value", filterValue)
-    // scroll down the window the height of the heroRef
+    setStartScroll(true)
   }
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { GlobalStyle } from "../utils"
@@ -17,6 +17,7 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const [showCursor, setShowCursor] = useState(false)
   const [xValue, setXValue] = useState(0)
   const [yValue, setYValue] = useState(0)
 
@@ -26,12 +27,22 @@ const Layout = ({ children }) => {
     setXValue(clientX)
   }
 
+  // Disable the cursor until the user moves their mouse
+  useEffect(() => {
+    setShowCursor(false)
+  }, [])
+
+  const handleTrackCursor = e => {
+    setShowCursor(true)
+    trackMouse(e)
+  }
+
   return (
     <myContext.Consumer>
       {context => (
         <div
           onMouseMove={e => {
-            trackMouse(e)
+            handleTrackCursor(e)
           }}
         >
           <Header
@@ -39,11 +50,13 @@ const Layout = ({ children }) => {
             setCursorElement={context.setCursorElement}
           />
           <GlobalStyle />
-          <CustomCursor
-            xValue={xValue}
-            yValue={yValue}
-            cursorElement={context.cursorElement}
-          />
+          {showCursor && (
+            <CustomCursor
+              xValue={xValue}
+              yValue={yValue}
+              cursorElement={context.cursorElement}
+            />
+          )}
           <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with

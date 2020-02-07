@@ -36,6 +36,9 @@ const MapToggle = ({
           onClick={() => {
             setShowOahuMap(false)
           }}
+          onKeyDown={() => setShowOahuMap(false)}
+          role="button"
+          tabIndex={0}
         >
           <h1
             className="uppercase"
@@ -50,6 +53,9 @@ const MapToggle = ({
           onClick={() => {
             setShowOahuMap(true)
           }}
+          onKeyDown={() => setShowOahuMap(true)}
+          role="button"
+          tabIndex={0}
         >
           <h1
             style={!showOahuMap ? { color: "grey" } : { color: "black" }}

@@ -50,21 +50,27 @@ const IndexPage = ({ data }) => {
             <HeroText>
               Sae Design Group is an agency that makes{" "}
               <strong
-                onMouseOver={() => context.setCursorElement("branding")}
+                role="button"
+                tabIndex={0}
+                onMouseEnter={() => context.setCursorElement("branding")}
                 onMouseLeave={() => context.setCursorElement("initial")}
               >
                 branding
               </strong>
               ,{" "}
               <strong
-                onMouseOver={() => context.setCursorElement("packaging")}
+                role="button"
+                tabIndex={0}
+                onMouseEnter={() => context.setCursorElement("packaging")}
                 onMouseLeave={() => context.setCursorElement("initial")}
               >
                 packaging
               </strong>
               , and{" "}
               <strong
-                onMouseOver={() => context.setCursorElement("web")}
+                role="button"
+                tabIndex={0}
+                onMouseEnter={() => context.setCursorElement("web")}
                 onMouseLeave={() => context.setCursorElement("initial")}
               >
                 web&nbsp;stuff

@@ -33,10 +33,19 @@ const Footer = () => {
         <a href="tel:808-544-0002">808.544.0002</a>
       </ContactInfo>
       <ContactInfo className="center">
-        <p>
-          <span>info@saedesign.com</span> <span>insta</span> |{" "}
-          <span>bonus</span>
-        </p>
+        <a href="mailto: info@saedesign.com">info@saedesign.com</a>
+        <span>
+          <a
+            href="https://www.instagram.com/saedesignhi/?hl=en"
+            target="_blank"
+          >
+            insta
+          </a>{" "}
+          |{" "}
+          <a href="https://saemin.saedesign.com" target="_blank">
+            bonus
+          </a>
+        </span>
       </ContactInfo>
     </FooterContent>
   )

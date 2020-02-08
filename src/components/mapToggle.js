@@ -20,8 +20,8 @@ const MapToggle = ({
   const setMapToggle = useSpring({
     opacity: showMapToggle ? 1 : 0,
     config: {
-      duration: 300,
-      mass: 2,
+      duration: 150,
+      mass: 1,
     },
   })
 
@@ -105,10 +105,10 @@ const MapToggleContainer = styled(animated.div)`
   background: ${white};
   height: fit-content;
   padding: 20px;
-  width: calc(100% - 20px);
-  position: relative;
+  width: fit-content;
+  padding: 20px 10px;
   z-index: 100;
-  position: fixed;
+  position: absolute;
 
   h5 {
     text-align: center;
@@ -121,9 +121,11 @@ const MapToggleContainer = styled(animated.div)`
   }
 
   #map_select {
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: space-between;
+    place-items: center;
+    grid-gap: 20px;
+    grid-template-columns: 2fr 0.5fr 2fr;
 
     h1 {
       font-size: 3rem;
@@ -145,6 +147,7 @@ const MapToggleContainer = styled(animated.div)`
   }
 
   @media (min-width: 768px) {
+    position: absolute;
     height: fit-content;
     width: fit-content;
     padding: 30px;

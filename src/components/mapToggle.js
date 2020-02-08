@@ -147,7 +147,6 @@ const MapToggleContainer = styled(animated.div)`
   }
 
   @media (min-width: 768px) {
-    position: absolute;
     height: fit-content;
     width: fit-content;
     padding: 30px;

@@ -15,7 +15,8 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Maui 2261 Aupuni Street #101 Wailuku, HI 96793
+          Maui
+          <br /> 2261 Aupuni Street #101 Wailuku, HI 96793
         </a>{" "}
         <br />
         <a href="tel:808-249-2200">808.249.2200</a>
@@ -26,7 +27,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Oahu 555 South Street #108 Honolulu, HI 96813
+          Oahu <br /> 555 South Street #108 Honolulu, HI 96813
         </a>{" "}
         <br />
         <a href="tel:808-544-0002">808.544.0002</a>
@@ -46,20 +47,39 @@ export default Footer
 const FooterContent = styled.footer`
   padding: 20px;
 
+  img {
+    margin-bottom: 33px;
+    width: 220px;
+  }
+
   @media (min-width: ${breakpointSmall}) {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+
+    img {
+      margin-bottom: 0;
+    }
   }
 
   @media (min-width: ${breakpointMedium}) {
     padding: 64px;
+
+    img {
+      width: 300px;
+    }
   }
 `
 
 const ContactInfo = styled.div`
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
+  margin-bottom: 33px;
+  width: 300px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 
   a {
     margin: 0;
@@ -69,6 +89,8 @@ const ContactInfo = styled.div`
 
   @media (min-width: ${breakpointSmall}) {
     width: 236px;
+    font-size: 14px;
+    margin-bottom: 0;
 
     &.center {
       height: 126px;

@@ -17,6 +17,9 @@ export const query = graphql`
             project_name {
               text
             }
+            categories {
+              category
+            }
             featured_image {
               alt
               url
@@ -42,6 +45,7 @@ const IndexPage = ({ data }) => {
 
   const [scrollWindowHeight, setScrollWindowHeight] = useState(0)
   const [startScroll, setStartScroll] = useState(false)
+  const [projectCategoryFilter, setProjectCategoryFilter] = useState("all")
 
   useEffect(() => {
     // If start scroll is true scroll down the height of the first section
@@ -71,6 +75,7 @@ const IndexPage = ({ data }) => {
                 content="branding"
                 context={context}
                 setStartScroll={setStartScroll}
+                setProjectCategoryFilter={setProjectCategoryFilter}
               />
               ,{" "}
               <HeroTextFilterItem
@@ -79,6 +84,7 @@ const IndexPage = ({ data }) => {
                 content="packaging"
                 context={context}
                 setStartScroll={setStartScroll}
+                setProjectCategoryFilter={setProjectCategoryFilter}
               />
               , and{" "}
               <HeroTextFilterItem
@@ -87,6 +93,7 @@ const IndexPage = ({ data }) => {
                 content="web&nbsp;stuff"
                 context={context}
                 setStartScroll={setStartScroll}
+                setProjectCategoryFilter={setProjectCategoryFilter}
               />
               .
             </HeroText>
@@ -97,7 +104,11 @@ const IndexPage = ({ data }) => {
               <h4>byeee</h4>
             </ProjectsFilter>
             {projects.map(project => (
-              <ProjectImageWithTitle key={project.node.uid} project={project} />
+              <ProjectImageWithTitle
+                key={project.node.uid}
+                project={project}
+                projectCategoryFilter={projectCategoryFilter}
+              />
             ))}
           </ProjectsSection>
         </Layout>
@@ -114,9 +125,10 @@ const HeroTextFilterItem = ({
   newCursorElement,
   content,
   setStartScroll,
+  setProjectCategoryFilter,
 }) => {
   const handleProjectFilter = filterValue => {
-    console.log("filter Value", filterValue)
+    setProjectCategoryFilter(filterValue)
     setStartScroll(true)
   }
 

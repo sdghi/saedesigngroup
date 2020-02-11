@@ -17,7 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
               featured_image {
                 localFile {
                   childImageSharp {
-                    fixed {
+                    fluid {
                       src
                     }
                   }
@@ -35,7 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
               featured_image {
                 localFile {
                   childImageSharp {
-                    fixed {
+                    fluid {
                       src
                     }
                   }
@@ -53,7 +53,7 @@ exports.createPages = async ({ graphql, actions }) => {
               featured_image {
                 localFile {
                   childImageSharp {
-                    fixed {
+                    fluid {
                       src
                     }
                   }

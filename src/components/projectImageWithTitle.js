@@ -11,6 +11,7 @@ const ProjectImageWithTitle = ({ project, projectCategoryFilter }) => {
   const projectName = project.node.data.project_name.text
   const imageSrc =
     project.node.data.featured_image.localFile.childImageSharp.fluid
+  const imageAlt = project.node.data.featured_image.alt
 
   useEffect(() => {
     // Reset to false in case it changes
@@ -35,7 +36,7 @@ const ProjectImageWithTitle = ({ project, projectCategoryFilter }) => {
               fluid={imageSrc}
               objectFit="cover"
               objectPosition="50% 50%"
-              alt=""
+              alt={imageAlt}
             />
             {projectName}
           </Link>

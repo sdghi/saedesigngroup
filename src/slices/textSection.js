@@ -21,7 +21,6 @@ const ContainerSection = styled(Container)`
 
   p {
     margin: auto;
-    font-size: 1.4rem;
   }
 `
 

@@ -46,7 +46,7 @@ const Navigation = ({ isNavOpen, setNav, setCursorElement }) => {
             key={items[index]}
             style={animation}
             onClick={() => setNav(false)}
-            onMouseOver={() =>
+            onMouseEnter={() =>
               setCursorElement(items[index] === "" ? "work" : items[index])
             }
             onMouseLeave={() => setCursorElement("initial")}

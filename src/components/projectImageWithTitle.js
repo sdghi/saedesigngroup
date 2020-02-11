@@ -1,19 +1,47 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useState, useEffect } from "react"
+import Link from "gatsby-plugin-transition-link"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 
-const ProjectImageWithTitle = ({ project }) => {
+const ProjectImageWithTitle = ({ project, projectCategoryFilter }) => {
+  const [showProject, setShowProject] = useState(false)
+
   const slug = project.node.uid
+  const categories = project.node.data.categories
   const projectName = project.node.data.project_name.text
   const imageSrc =
     project.node.data.featured_image.localFile.childImageSharp.fixed
 
+  useEffect(() => {
+    // Reset to false in case it changes
+    setShowProject(false)
+    categories.map(category => {
+      // Show project if the category matches the project filter
+      // If it's all show all the projects
+      if (projectCategoryFilter === category.category) {
+        setShowProject(true)
+      } else if (projectCategoryFilter === "all") {
+        setShowProject(true)
+      }
+    })
+  }, [projectCategoryFilter])
+
   return (
-    <ProjetContainer key={project.uid} right="10">
-      <Img fixed={imageSrc} objectFit="cover" objectPosition="50% 50%" alt="" />
-      <Link to={`/${slug}`}>{projectName}</Link>
-    </ProjetContainer>
+    <>
+      {showProject && (
+        <ProjetContainer key={project.uid} right="10">
+          <Link to={`/${slug}`}>
+            <Img
+              fixed={imageSrc}
+              objectFit="cover"
+              objectPosition="50% 50%"
+              alt=""
+            />
+            {projectName}
+          </Link>
+        </ProjetContainer>
+      )}
+    </>
   )
 }
 

@@ -1,5 +1,5 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React, { useRef, useEffect, useState } from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
@@ -17,14 +17,14 @@ export const query = graphql`
             project_name {
               text
             }
+            categories {
+              category
+            }
             featured_image {
               alt
               url
               localFile {
                 childImageSharp {
-                  fluid {
-                    srcSet
-                  }
                   fixed {
                     ...GatsbyImageSharpFixed
                   }
@@ -41,34 +41,60 @@ export const query = graphql`
 const IndexPage = ({ data }) => {
   const projects = data.allPrismicProjectTemplate.edges
 
+  const heroRef = useRef(null)
+
+  const [scrollWindowHeight, setScrollWindowHeight] = useState(0)
+  const [startScroll, setStartScroll] = useState(false)
+  const [projectCategoryFilter, setProjectCategoryFilter] = useState("all")
+
+  useEffect(() => {
+    // If start scroll is true scroll down the height of the first section
+    startScroll && setScrollWindowHeight(heroRef.current.offsetHeight)
+
+    // Scroll down the window
+    window.scroll({
+      top: scrollWindowHeight,
+      behavior: "smooth",
+    })
+
+    // Reset the scroll in case the user scrolls back up
+    setStartScroll(false)
+  }, [scrollWindowHeight, startScroll])
+
   return (
     <myContext.Consumer>
       {context => (
         <Layout>
           <SEO title="Home" />
-          <HomeHero>
+          <HomeHero ref={heroRef}>
             <HeroText>
               Sae Design Group is an agency that makes{" "}
-              <strong
-                onMouseOver={() => context.setCursorElement("branding")}
-                onMouseLeave={() => context.setCursorElement("initial")}
-              >
-                branding
-              </strong>
+              <HeroTextFilterItem
+                filterValue="branding"
+                newCursorElement="branding"
+                content="branding"
+                context={context}
+                setStartScroll={setStartScroll}
+                setProjectCategoryFilter={setProjectCategoryFilter}
+              />
               ,{" "}
-              <strong
-                onMouseOver={() => context.setCursorElement("packaging")}
-                onMouseLeave={() => context.setCursorElement("initial")}
-              >
-                packaging
-              </strong>
+              <HeroTextFilterItem
+                filterValue="packaging"
+                newCursorElement="packaging"
+                content="packaging"
+                context={context}
+                setStartScroll={setStartScroll}
+                setProjectCategoryFilter={setProjectCategoryFilter}
+              />
               , and{" "}
-              <strong
-                onMouseOver={() => context.setCursorElement("web")}
-                onMouseLeave={() => context.setCursorElement("initial")}
-              >
-                web&nbsp;stuff
-              </strong>
+              <HeroTextFilterItem
+                filterValue="web"
+                newCursorElement="web"
+                content="web&nbsp;stuff"
+                context={context}
+                setStartScroll={setStartScroll}
+                setProjectCategoryFilter={setProjectCategoryFilter}
+              />
               .
             </HeroText>
           </HomeHero>
@@ -78,10 +104,13 @@ const IndexPage = ({ data }) => {
               <h4>byeee</h4>
             </ProjectsFilter>
             {projects.map(project => (
-              <ProjectImageWithTitle key={project.node.uid} project={project} />
+              <ProjectImageWithTitle
+                key={project.node.uid}
+                project={project}
+                projectCategoryFilter={projectCategoryFilter}
+              />
             ))}
           </ProjectsSection>
-          <Link to="/page-2/">Go to page 2</Link>
         </Layout>
       )}
     </myContext.Consumer>
@@ -89,6 +118,33 @@ const IndexPage = ({ data }) => {
 }
 
 export default IndexPage
+
+const HeroTextFilterItem = ({
+  context,
+  filterValue,
+  newCursorElement,
+  content,
+  setStartScroll,
+  setProjectCategoryFilter,
+}) => {
+  const handleProjectFilter = filterValue => {
+    setProjectCategoryFilter(filterValue)
+    setStartScroll(true)
+  }
+
+  return (
+    <strong
+      role="button"
+      tabIndex={0}
+      onMouseEnter={() => context.setCursorElement(newCursorElement)}
+      onMouseLeave={() => context.setCursorElement("initial")}
+      onClick={() => handleProjectFilter(filterValue)}
+      onKeyDown={() => handleProjectFilter(filterValue)}
+    >
+      {content}
+    </strong>
+  )
+}
 
 const HomeHero = styled.section`
   height: calc(100vh - 7vh);

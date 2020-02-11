@@ -145,7 +145,7 @@ const MauiMap = ({showOahuMap}) => {
     to: {opacity: 1, pointerEvents: 'all'},
     from: {opacity: 0, pointerEvents: 'none'},
     config: {
-      duration: 500,
+      duration: 300,
       mass: 2,
       velocity: 200
     }

@@ -17,5 +17,7 @@ export const ImageContainer = styled(Img)`
 
   @media (min-width: ${breakpointSmall}) {
     height: ${props => (props.heightMd ? props.heightMd : "80vh")};
+    width: ${props => (props.widthMd ? props.widthMd : "100%")};
+    margin: ${props => (props.marginMd ? props.marginMd : "0 auto")};
   }
 `

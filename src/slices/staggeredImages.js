@@ -1,7 +1,7 @@
 import React from "react"
-import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
-import { Paragraph, Container } from "../elements"
+import { Paragraph, Container, ImageContainer } from "../elements"
+import { breakpointSmall, breakpointMedium } from "../variables"
 
 const StaggeredImages = ({ slice }) => {
   // Destructure items
@@ -12,11 +12,21 @@ const StaggeredImages = ({ slice }) => {
 
   return (
     <StaggeredImageContainer>
-      <div className="staggered-top">
-        <Img fluid={imageOneSrc} alt={image_1.alt} />
-        <Paragraph>{caption.text}</Paragraph>
-      </div>
-      <Img fluid={imageTwoSrc} alt={image_2.alt} />
+      <ImageContainer
+        fluid={imageOneSrc}
+        alt={image_1.alt}
+        widthMd="60%"
+        margin="0 0 20px 0"
+        marginMd="0"
+      />
+      <ImageContainer
+        fluid={imageTwoSrc}
+        alt={image_2.alt}
+        widthMd="60%"
+        marginMd="-10% 0 0 auto"
+      />
+
+      {caption && <Paragraph>{caption.text}</Paragraph>}
     </StaggeredImageContainer>
   )
 }
@@ -24,15 +34,28 @@ const StaggeredImages = ({ slice }) => {
 export default StaggeredImages
 
 const StaggeredImageContainer = styled(Container)`
-  display: flex;
-  flex-direction: column;
-
-  img {
-    width: 300px;
+  ${Paragraph} {
+    margin-top: 30px;
+    font-size: 14px;
   }
 
-  .staggered-top {
-    /* display: flex; */
-    align-items: center;
+  @media (min-width: ${breakpointSmall}) {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    ${Paragraph} {
+      position: absolute;
+      top: 20%;
+      right: 5%;
+      max-width: 250px;
+      margin-top: 0;
+    }
+  }
+
+  @media (min-width: ${breakpointMedium}) {
+    ${Paragraph} {
+      right: 20%;
+    }
   }
 `

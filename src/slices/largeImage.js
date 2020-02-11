@@ -1,12 +1,14 @@
 import React from "react"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
+import { Container } from "../elements"
+import { breakpointSmall } from "../variables"
 
 const LargeImage = ({ slice }) => {
   const { image, caption } = slice.primary
 
   return (
-    <div>
+    <Container padding="0 5%">
       <ImageContainer
         fluid={image.localFile.childImageSharp.fluid}
         objectFit="cover"
@@ -16,7 +18,7 @@ const LargeImage = ({ slice }) => {
       />
 
       {caption && <p>{caption.text}</p>}
-    </div>
+    </Container>
   )
 }
 
@@ -24,5 +26,10 @@ export default LargeImage
 
 const ImageContainer = styled(Img)`
   width: 100%;
-  height: 500px;
+  height: 300px;
+  max-width: 1781.99px;
+
+  @media (min-width: ${breakpointSmall}) {
+    height: 80vh;
+  }
 `

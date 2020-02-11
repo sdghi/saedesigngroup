@@ -21,7 +21,7 @@ const ProjectSlices = ({ slices, theme }) => {
           return <Testimonial key={index} slice={slice} theme={theme} />
         case "large_image":
           return <LargeImage key={index} slice={slice} theme={theme} />
-        case "2_3_image__caption":
+        case "2_3_image___caption":
           return <ImageCaption key={index} slice={slice} theme={theme} />
         case "image_gallery":
           return <ImageGallery key={index} slice={slice} theme={theme} />

@@ -4,7 +4,6 @@ import { Container, Paragraph } from "../elements"
 import { grey } from "../variables"
 
 const Testimonial = ({ slice }) => {
-  console.log("Testimonial slice", slice.primary)
   const testimonialContent = slice.primary.text.text
 
   return (

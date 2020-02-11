@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { Container } from "../elements"
 
 const TextSection = ({ slice, theme }) => {
-  console.log("Text section slice", slice)
   const heading = slice.primary.heading.text
   const text = slice.primary.text.text
 

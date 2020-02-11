@@ -1,7 +1,7 @@
 import React from "react"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
-import { Container } from "../elements"
+import { Container, Paragraph } from "../elements"
 import { breakpointSmall } from "../variables"
 
 const LargeImage = ({ slice }) => {
@@ -17,7 +17,11 @@ const LargeImage = ({ slice }) => {
         stlye={{ width: "90vw", height: "500px" }}
       />
 
-      {caption && <p>{caption.text}</p>}
+      {caption && (
+        <Paragraph textAlign="center" top="20px">
+          {caption.text}
+        </Paragraph>
+      )}
     </Container>
   )
 }

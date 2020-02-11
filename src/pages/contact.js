@@ -14,10 +14,13 @@ const ContactPage = () => {
 
   const [{ x, y }, set] = useSpring(() => ({ x: 0, y: 0 }))
 
-  const bind = useDrag(({ down, movement: [mx, my] }) => {
-    // Turn 0 into mx or my to not center the map on drag
-    set({ x: down ? mx : 0, y: down ? my : 0 })
-  })
+  const bind = useDrag(
+    ({ movement: [mx, my] }) => {
+      // Turn 0 into mx or my to not center the map on drag
+      set({ x: mx, y: my })
+    },
+    { bounds: { left: -200, right: 200, top: -200, bottom: 200 } }
+  )
 
   return (
     <Layout>

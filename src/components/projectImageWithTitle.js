@@ -10,7 +10,8 @@ const ProjectImageWithTitle = ({ project, projectCategoryFilter }) => {
   const categories = project.node.data.categories
   const projectName = project.node.data.project_name.text
   const imageSrc =
-    project.node.data.featured_image.localFile.childImageSharp.fixed
+    project.node.data.featured_image.localFile.childImageSharp.fluid
+  const imageAlt = project.node.data.featured_image.alt
 
   useEffect(() => {
     // Reset to false in case it changes
@@ -32,10 +33,10 @@ const ProjectImageWithTitle = ({ project, projectCategoryFilter }) => {
         <ProjetContainer key={project.uid} right="10">
           <Link to={`/${slug}`}>
             <Img
-              fixed={imageSrc}
+              fluid={imageSrc}
               objectFit="cover"
               objectPosition="50% 50%"
-              alt=""
+              alt={imageAlt}
             />
             {projectName}
           </Link>

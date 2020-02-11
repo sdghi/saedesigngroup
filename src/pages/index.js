@@ -25,8 +25,8 @@ export const query = graphql`
               url
               localFile {
                 childImageSharp {
-                  fixed {
-                    ...GatsbyImageSharpFixed
+                  fluid {
+                    ...GatsbyImageSharpFluid
                   }
                 }
               }

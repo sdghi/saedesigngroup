@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Link from "gatsby-plugin-transition-link"
 import SEO from "../components/seo"
+import RelatedProjects from "../components/relatedProjects"
 // SLICES
 import TextSection from "../slices/textSection"
 import Testimonial from "../slices/testimonial"
@@ -21,7 +21,7 @@ const ProjectSlices = ({ slices, theme }) => {
           return <Testimonial key={index} slice={slice} theme={theme} />
         case "large_image":
           return <LargeImage key={index} slice={slice} theme={theme} />
-        case "2_3_image__caption":
+        case "2_3_image___caption":
           return <ImageCaption key={index} slice={slice} theme={theme} />
         case "image_gallery":
           return <ImageGallery key={index} slice={slice} theme={theme} />
@@ -48,14 +48,6 @@ export default props => {
   const title = doc.node.data.project_name.text
 
   const { next, previous } = props.pageContext
-  const { project_name: nextName } = next.data
-  const { project_name: prevName } = previous.data
-  const {
-    src: prevImage,
-  } = previous.data.featured_image.localFile.childImageSharp.fixed
-  const {
-    src: nextImage,
-  } = next.data.featured_image.localFile.childImageSharp.fixed
 
   if (!doc) return null
 
@@ -63,19 +55,7 @@ export default props => {
     <Layout>
       <SEO title={title} />
       <Project project={doc.node} theme={doc.node.data.theme} />
-      <div>
-        <h3>previous</h3>
-        <Link to={`/${previous.uid}`}>
-          <img src={prevImage} alt={prevName.text} />
-          <p>{prevName.text}</p>
-        </Link>
-        <h3>next</h3>
-
-        <Link to={`/${next.uid}`}>
-          <img src={nextImage} alt={nextName.text} />
-          <p>{nextName.text}</p>
-        </Link>
-      </div>
+      <RelatedProjects next={next} previous={previous} />
     </Layout>
   )
 }
@@ -97,8 +77,8 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fixed {
-                          ...GatsbyImageSharpFixed
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -115,8 +95,8 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fixed {
-                          ...GatsbyImageSharpFixed
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -130,8 +110,8 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fixed {
-                          ...GatsbyImageSharpFixed
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -151,8 +131,8 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fixed {
-                          ...GatsbyImageSharpFixed
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -160,8 +140,8 @@ export const query = graphql`
                   image_2 {
                     localFile {
                       childImageSharp {
-                        fixed {
-                          ...GatsbyImageSharpFixed
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }

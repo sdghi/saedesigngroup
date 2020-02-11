@@ -8,7 +8,7 @@ const LargeImage = ({ slice }) => {
   const { image, caption } = slice.primary
 
   return (
-    <Container padding="0 5%">
+    <Container>
       <ImageContainer
         fluid={image.localFile.childImageSharp.fluid}
         objectFit="cover"

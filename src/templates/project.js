@@ -52,10 +52,10 @@ export default props => {
   const { project_name: prevName } = previous.data
   const {
     src: prevImage,
-  } = previous.data.featured_image.localFile.childImageSharp.fixed
+  } = previous.data.featured_image.localFile.childImageSharp.fluid
   const {
     src: nextImage,
-  } = next.data.featured_image.localFile.childImageSharp.fixed
+  } = next.data.featured_image.localFile.childImageSharp.fluid
 
   if (!doc) return null
 
@@ -97,8 +97,8 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fixed {
-                          ...GatsbyImageSharpFixed
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -115,8 +115,8 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fixed {
-                          ...GatsbyImageSharpFixed
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -130,8 +130,8 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fixed {
-                          ...GatsbyImageSharpFixed
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -151,8 +151,8 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fixed {
-                          ...GatsbyImageSharpFixed
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -160,8 +160,8 @@ export const query = graphql`
                   image_2 {
                     localFile {
                       childImageSharp {
-                        fixed {
-                          ...GatsbyImageSharpFixed
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }

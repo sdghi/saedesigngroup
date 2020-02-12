@@ -14,7 +14,13 @@ const LargeImage = ({ slice }) => {
       />
 
       {caption && (
-        <Paragraph textAlign="center" top="20px">
+        <Paragraph
+          textAlign="center"
+          top="20px"
+          fontSize="14px"
+          lineHeight="26px"
+          color="#818386"
+        >
           {caption.text}
         </Paragraph>
       )}

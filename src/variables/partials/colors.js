@@ -1,6 +1,6 @@
 export const white = "#fefcf6"
 export const black = "#2D2926"
-export const grey = "#E0E1E3"
+export const grey = "#818386"
 export const dark_blue = "#0c363c"
 export const pink = "#e24363"
 export const yellow = "#efd46b"

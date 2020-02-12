@@ -47,7 +47,7 @@ export default props => {
   const doc = props.data.allPrismicProjectTemplate.edges.slice(0, 1).pop()
   const title = doc.node.data.project_name.text
 
-  const { next, previous } = props.pageContext
+  const { next, previous, doubleNext } = props.pageContext
 
   if (!doc) return null
 
@@ -55,7 +55,11 @@ export default props => {
     <Layout>
       <SEO title={title} />
       <Project project={doc.node} theme={doc.node.data.theme} />
-      <RelatedProjects next={next} previous={previous} />
+      <RelatedProjects
+        next={next}
+        previous={previous}
+        doubleNext={doubleNext}
+      />
     </Layout>
   )
 }

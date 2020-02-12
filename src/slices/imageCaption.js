@@ -4,8 +4,6 @@ import { breakpointMedium, grey } from "../variables"
 import styled from "styled-components"
 
 const ImageCaption = ({ slice }) => {
-  console.log("Image caption slice", slice.primary)
-
   const { image, caption } = slice.primary
 
   const { fluid: imageSrc } = image.localFile.childImageSharp

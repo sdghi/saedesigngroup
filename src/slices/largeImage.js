@@ -1,8 +1,5 @@
 import React from "react"
-import Img from "gatsby-image/withIEPolyfill"
-import styled from "styled-components"
 import { Container, Paragraph, ImageContainer } from "../elements"
-import { breakpointSmall } from "../variables"
 
 const LargeImage = ({ slice }) => {
   const { image, caption } = slice.primary

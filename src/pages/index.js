@@ -171,6 +171,7 @@ const HeroText = styled.h1`
 `
 
 const ProjectsSection = styled.section`
+  min-height: 100vh;
   padding: 50px 0;
   position: relative;
 `

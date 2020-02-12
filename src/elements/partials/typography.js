@@ -7,6 +7,7 @@ export const Paragraph = styled.p`
   text-align: ${props => props.textAlign};
   margin-top: ${props => props.top};
   margin-bottom: ${props => props.bottom};
+  color: ${props => props.color};
 
   @media (min-width: ${breakpointSmall}) {
     font-size: ${props => props.fontSizeMd};
@@ -22,6 +23,7 @@ export const HeadingTwo = styled.h2`
   text-align: ${props => props.textAlign};
   margin-top: ${props => props.top};
   margin-bottom: ${props => props.bottom};
+  color: ${props => props.color};
 
   @media (min-width: ${breakpointSmall}) {
     font-size: ${props => props.fontSizeMd};

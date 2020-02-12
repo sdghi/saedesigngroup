@@ -6,6 +6,22 @@ export const Paragraph = styled.p`
   line-height: ${props => props.lineHeight};
   text-align: ${props => props.textAlign};
   margin-top: ${props => props.top};
+  margin-bottom: ${props => props.bottom};
+
+  @media (min-width: ${breakpointSmall}) {
+    font-size: ${props => props.fontSizeMd};
+  }
+
+  @media (min-width: ${breakpointMedium}) {
+    font-size: ${props => props.fontSizeLg};
+  }
+`
+export const HeadingTwo = styled.h2`
+  font-size: ${props => props.fontSize};
+  line-height: ${props => props.lineHeight};
+  text-align: ${props => props.textAlign};
+  margin-top: ${props => props.top};
+  margin-bottom: ${props => props.bottom};
 
   @media (min-width: ${breakpointSmall}) {
     font-size: ${props => props.fontSizeMd};

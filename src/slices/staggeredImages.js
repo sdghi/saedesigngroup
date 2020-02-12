@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Paragraph, Container, ImageContainer } from "../elements"
-import { breakpointSmall, breakpointMedium } from "../variables"
+import { breakpointSmall, breakpointMedium, grey } from "../variables"
 
 const StaggeredImages = ({ slice }) => {
   // Destructure items
@@ -37,6 +37,8 @@ const StaggeredImageContainer = styled(Container)`
   ${Paragraph} {
     margin-top: 30px;
     font-size: 14px;
+    line-height: 26px;
+    color: ${grey};
   }
 
   @media (min-width: ${breakpointSmall}) {

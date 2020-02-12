@@ -48,18 +48,34 @@ const RelatedProjects = ({ next, previous, doubleNext }) => {
 export default RelatedProjects
 
 const RelatedWrapper = styled.div`
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 15px;
+  display: flex;
+  overflow-x: scroll;
+
+  a {
+    margin-right: 30px;
+  }
 
   img {
-    height: 330px;
+    height: 280px;
     object-fit: cover;
-    width: 100%;
+    width: 280px;
   }
 
   @media (min-width: ${breakpointSmall}) {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+
+    a {
+      margin-right: 0;
+    }
+
+    img {
+      width: 100%;
+      height: 330px;
+    }
+
     p {
       display: none;
     }

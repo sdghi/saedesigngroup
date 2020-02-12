@@ -11,10 +11,12 @@ export const Paragraph = styled.p`
 
   @media (min-width: ${breakpointSmall}) {
     font-size: ${props => props.fontSizeMd};
+    line-height: ${props => props.lineHeightMd};
   }
 
   @media (min-width: ${breakpointMedium}) {
     font-size: ${props => props.fontSizeLg};
+    line-height: ${props => props.lineHeightLg};
   }
 `
 export const HeadingTwo = styled.h2`

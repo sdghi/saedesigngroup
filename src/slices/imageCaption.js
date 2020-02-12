@@ -13,7 +13,7 @@ const ImageCaption = ({ slice }) => {
   return (
     <TwoThirdContainer>
       <ImageContainer fluid={imageSrc} alt={image.alt} />
-      <Paragraph textAlign="center">{caption.text}</Paragraph>
+      <Paragraph>{caption.text}</Paragraph>
     </TwoThirdContainer>
   )
 }
@@ -25,18 +25,19 @@ const TwoThirdContainer = styled(Container)`
     font-size: 12px;
     line-height: 18px;
     color: ${grey};
+    text-align: center;
   }
 
   @media (min-width: ${breakpointMedium}) {
     display: grid;
     grid-template-columns: 2fr 1fr;
     padding: 0;
-    align-items: center;
     place-items: center;
 
     ${Paragraph} {
       max-width: 190px;
       line-height: 22px;
+      text-align: left;
     }
   }
 `

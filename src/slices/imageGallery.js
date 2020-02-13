@@ -3,8 +3,6 @@ import { Container, ImageContainer } from "../elements"
 import styled from "styled-components"
 
 const ImageGallery = ({ slice }) => {
-  console.log("Image gallery slice", slice.items.length)
-
   const Items = slice.items
 
   return (

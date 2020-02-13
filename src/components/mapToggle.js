@@ -106,7 +106,7 @@ const MapToggleContainer = styled(animated.div)`
   height: fit-content;
   padding: 20px;
   width: fit-content;
-  padding: 20px 10px;
+  padding: 20px;
   z-index: 100;
   position: absolute;
 
@@ -124,7 +124,7 @@ const MapToggleContainer = styled(animated.div)`
     display: grid;
     align-items: center;
     place-items: center;
-    grid-gap: 20px;
+    grid-gap: 10px;
     grid-template-columns: 2fr 0.5fr 2fr;
 
     h1 {
@@ -153,10 +153,6 @@ const MapToggleContainer = styled(animated.div)`
 
     h5 {
       margin: 0;
-    }
-
-    span {
-      margin: 0 20px;
     }
 
     button {

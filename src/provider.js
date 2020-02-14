@@ -3,7 +3,7 @@ import React, { useState } from "react"
 export const myContext = React.createContext()
 
 const Provider = props => {
-  const [cursorElement, setCursorElement] = useState("initial")
+  const [cursorElement, setCursorElement] = useState({ initial: "initial" })
 
   return (
     <myContext.Provider

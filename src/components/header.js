@@ -15,7 +15,7 @@ const Header = ({ setCursorElement }) => {
   })
 
   return (
-    <SiteHeader onMouseEnter={() => setCursorElement("initial")}>
+    <SiteHeader onMouseEnter={() => setCursorElement({ initial: "initial" })}>
       <Link to="/" className={`site-branding`}>
         <SiteBranding setNav={setNav} />
       </Link>

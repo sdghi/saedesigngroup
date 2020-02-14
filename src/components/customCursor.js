@@ -6,9 +6,10 @@ import WorkCursor from "./cursors/workCursor"
 import ServicesCursor from "./cursors/servicesCursor"
 import AboutCursor from "./cursors/aboutCursor"
 import ContactCursor from "./cursors/contactCursor"
+import RelatedProjectCursor from "./cursors/relatedProjectsCursor"
 
 const CustomCursor = ({ xValue, yValue, cursorElement }) => {
-  switch (cursorElement) {
+  switch (Object.keys(cursorElement)[0]) {
     case "initial":
       return <InitialCursor xValue={xValue} yValue={yValue} />
     case "branding":
@@ -23,6 +24,14 @@ const CustomCursor = ({ xValue, yValue, cursorElement }) => {
       return <AboutCursor xValue={xValue} yValue={yValue} />
     case "contact":
       return <ContactCursor xValue={xValue} yValue={yValue} />
+    case "related":
+      return (
+        <RelatedProjectCursor
+          xValue={xValue}
+          yValue={yValue}
+          cursorContent={Object.values(cursorElement)[0]}
+        />
+      )
     default:
       return null
   }

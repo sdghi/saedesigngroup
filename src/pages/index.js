@@ -136,8 +136,10 @@ const HeroTextFilterItem = ({
     <strong
       role="button"
       tabIndex={0}
-      onMouseEnter={() => context.setCursorElement(newCursorElement)}
-      onMouseLeave={() => context.setCursorElement("initial")}
+      onMouseEnter={() =>
+        context.setCursorElement({ [newCursorElement]: newCursorElement })
+      }
+      onMouseLeave={() => context.setCursorElement({ initial: "initial" })}
       onClick={() => handleProjectFilter(filterValue)}
       onKeyDown={() => handleProjectFilter(filterValue)}
     >

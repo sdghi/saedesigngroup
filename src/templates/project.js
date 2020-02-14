@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import RelatedProjects from "../components/relatedProjects"
+import { myContext } from "../provider"
 // SLICES
 import TextSection from "../slices/textSection"
 import Testimonial from "../slices/testimonial"

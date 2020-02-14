@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import RelatedProjects from "../components/relatedProjects"
 import { myContext } from "../provider"
 // SLICES
+import FullWidthImage from "../slices/fullWidthImage"
 import TextSection from "../slices/textSection"
 import Testimonial from "../slices/testimonial"
 import LargeImage from "../slices/largeImage"
@@ -16,6 +17,8 @@ const ProjectSlices = ({ slices, theme }) => {
   return slices.map((slice, index) => {
     const res = (() => {
       switch (slice.slice_type) {
+        case "full_width_image":
+          return <FullWidthImage key={index} slice={slice} theme={theme} />
         case "text_section":
           return <TextSection key={index} slice={slice} theme={theme} />
         case "testimonial":
@@ -81,6 +84,21 @@ export const query = graphql`
               text
             }
             body {
+              ... on PrismicProjectTemplateBodyFullWidthImage {
+                slice_type
+                primary {
+                  full_image {
+                    alt
+                    localFile {
+                      childImageSharp {
+                        fluid {
+                          srcSet
+                        }
+                      }
+                    }
+                  }
+                }
+              }
               ... on PrismicProjectTemplateBody23ImageCaption {
                 slice_type
                 primary {

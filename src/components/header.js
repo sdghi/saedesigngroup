@@ -82,11 +82,14 @@ const SiteHeader = styled.header`
 `
 
 const ToggleBtn = styled.div`
-  font-size: 1.2rem;
   font-weight: 600;
   color: ${pink};
   transition: all 0.01s ease-in;
   user-select: none;
+
+  h2 {
+    font-size: 20px;
+  }
 
   @media (min-width: 768px) {
     &:hover {

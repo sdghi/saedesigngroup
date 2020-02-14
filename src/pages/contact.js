@@ -23,7 +23,7 @@ const ContactPage = () => {
     { bounds: { left: -200, right: 200, top: -200, bottom: 200 } }
   )
 
-  const { setCursorElement, cursorElement } = useContext(myContext)
+  const { setCursorElement } = useContext(myContext)
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })

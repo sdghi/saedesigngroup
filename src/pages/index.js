@@ -1,10 +1,10 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useRef, useEffect, useState, useContext } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import ProjectImageWithTitle from "../components/projectImageWithTitle"
-import { black, white, pink, yellow } from "../variables"
+import { breakpointSmall, breakpointMedium, pink, yellow } from "../variables"
 import { myContext } from "../provider"
 
 export const query = graphql`
@@ -46,6 +46,12 @@ const IndexPage = ({ data }) => {
   const [scrollWindowHeight, setScrollWindowHeight] = useState(0)
   const [startScroll, setStartScroll] = useState(false)
   const [projectCategoryFilter, setProjectCategoryFilter] = useState("all")
+
+  const { setCursorElement } = useContext(myContext)
+
+  useEffect(() => {
+    setCursorElement({ initial: "initial" })
+  }, [])
 
   useEffect(() => {
     // If start scroll is true scroll down the height of the first section
@@ -158,17 +164,26 @@ const HomeHero = styled.section`
 `
 
 const HeroText = styled.h1`
-  font-size: 104px;
+  font-size: 48px;
   margin: 0 auto;
   width: fit-content;
   max-width: 1200px;
   font-weight: 400;
   color: ${pink};
+  padding: 0 50px;
 
   strong {
     cursor: pointer;
     position: relative;
     z-index: 10;
+  }
+
+  @media (min-width: ${breakpointSmall}) {
+    font-size: 64px;
+  }
+
+  @media (min-width: ${breakpointMedium}) {
+    font-size: 104px;
   }
 `
 

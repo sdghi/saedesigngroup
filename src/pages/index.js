@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import ProjectImageWithTitle from "../components/projectImageWithTitle"
-import { black, white } from "../variables"
+import { black, white, pink, yellow } from "../variables"
 import { myContext } from "../provider"
 
 export const query = graphql`
@@ -68,7 +68,8 @@ const IndexPage = ({ data }) => {
           <SEO title="Home" />
           <HomeHero ref={heroRef}>
             <HeroText>
-              Sae Design Group is an agency that makes{" "}
+              Delightful design by good people. <br />
+              Our superpowers are{" "}
               <HeroTextFilterItem
                 filterValue="branding"
                 newCursorElement="branding"
@@ -85,12 +86,12 @@ const IndexPage = ({ data }) => {
                 context={context}
                 setStartScroll={setStartScroll}
                 setProjectCategoryFilter={setProjectCategoryFilter}
-              />
-              , and{" "}
+              />{" "}
+              and{" "}
               <HeroTextFilterItem
-                filterValue="web"
-                newCursorElement="web"
-                content="web&nbsp;stuff"
+                filterValue="hospitality"
+                newCursorElement="hospitality"
+                content="hospitality"
                 context={context}
                 setStartScroll={setStartScroll}
                 setProjectCategoryFilter={setProjectCategoryFilter}
@@ -153,17 +154,16 @@ const HomeHero = styled.section`
   width: 100%;
   display: grid;
   place-items: center;
-  padding: 50px;
-  background: ${black};
+  background: ${yellow};
 `
 
 const HeroText = styled.h1`
-  font-size: 5rem;
-  margin: 0;
+  font-size: 104px;
+  margin: 0 auto;
   width: fit-content;
+  max-width: 1200px;
   font-weight: 400;
-  text-align: center;
-  color: ${white};
+  color: ${pink};
 
   strong {
     cursor: pointer;

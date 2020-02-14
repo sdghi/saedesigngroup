@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import SEO from "../components/seo"
@@ -7,6 +7,7 @@ import OahuMap from "../components/oahuMap"
 import MapToggle from "../components/mapToggle"
 import { useSpring, animated, interpolate } from "react-spring"
 import { useDrag } from "react-use-gesture"
+import { myContext } from "../provider"
 
 const ContactPage = () => {
   const [showOahuMap, setShowOahuMap] = useState(true)
@@ -21,6 +22,12 @@ const ContactPage = () => {
     },
     { bounds: { left: -200, right: 200, top: -200, bottom: 200 } }
   )
+
+  const { setCursorElement, cursorElement } = useContext(myContext)
+
+  useEffect(() => {
+    setCursorElement({ initial: "initial" })
+  }, [])
 
   return (
     <Layout>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useContext } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -51,6 +51,12 @@ export default props => {
   const { next, previous, doubleNext } = props.pageContext
 
   if (!doc) return null
+
+  const { setCursorElement } = useContext(myContext)
+
+  useEffect(() => {
+    setCursorElement({ initial: "initial" })
+  }, [])
 
   return (
     <Layout>

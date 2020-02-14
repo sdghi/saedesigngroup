@@ -1,16 +1,29 @@
 import React from "react"
 import styled from "styled-components"
-import { Container } from "../elements"
+import { Container, HeadingTwo, Paragraph } from "../elements"
 
 const TextSection = ({ slice, theme }) => {
   const heading = slice.primary.heading.text
   const text = slice.primary.text.text
 
   return (
-    <ContainerSection maxWidth="850px" margin="0 auto 10vh auto">
-      {theme}
-      <h1>{heading}</h1>
-      <p>{text}</p>
+    <ContainerSection maxWidth="850px">
+      <HeadingTwo
+        fontSize="27px"
+        fontSizeLg="34px"
+        lineHeight="41px"
+        lineHeightMd="49px"
+      >
+        {heading}
+      </HeadingTwo>
+      <Paragraph
+        fontSize="15px"
+        lineHeight="30px"
+        fontSizeLg="18px"
+        lineHeight="32px"
+      >
+        {text}
+      </Paragraph>
     </ContainerSection>
   )
 }

@@ -1,8 +1,15 @@
-import React from "react"
+import React, { useEffect, useContext } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { myContext } from "../provider"
 
 const ServicesPage = () => {
+  const { setCursorElement } = useContext(myContext)
+
+  useEffect(() => {
+    setCursorElement({ initial: "initial" })
+  }, [])
+
   return (
     <Layout>
       <SEO title="Services" />

@@ -6,7 +6,7 @@ import { pink, yellow, black } from "../variables"
 
 const items = ["", "services", "about", "contact"]
 
-const Navigation = ({ isNavOpen, setCursorElement }) => {
+const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
   const springRef = useRef()
   const transitionRef = useRef()
 
@@ -45,10 +45,15 @@ const Navigation = ({ isNavOpen, setCursorElement }) => {
           <animated.li
             key={items[index]}
             style={animation}
+            onClick={() => setNav(false)}
             onMouseEnter={() =>
-              setCursorElement(items[index] === "" ? "work" : items[index])
+              setCursorElement(
+                items[index] === ""
+                  ? { work: "work" }
+                  : { [items[index]]: items[index] }
+              )
             }
-            onMouseLeave={() => setCursorElement("initial")}
+            onMouseLeave={() => setCursorElement({ initial: "initial" })}
           >
             <Link to={`/${items[index]}`}>
               {items[index] === "" ? "work" : items[index]}

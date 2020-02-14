@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useEffect, useContext } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { myContext } from "../provider"
 
 export const query = graphql`
   {
@@ -24,6 +25,12 @@ export const query = graphql`
 
 const AboutPage = ({ data }) => {
   const { title, page_description } = data.allPrismicAbout.edges[0].node.data
+
+  const { setCursorElement } = useContext(myContext)
+
+  useEffect(() => {
+    setCursorElement({ initial: "initial" })
+  }, [])
 
   return (
     <Layout>

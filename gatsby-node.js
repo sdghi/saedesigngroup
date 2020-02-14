@@ -66,7 +66,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  pages.data.allPrismicProjectTemplate.edges.forEach(edge => {
+  pages.data.allPrismicProjectTemplate.edges.forEach((edge, i) => {
     createPage({
       path: `/${edge.node.uid}`,
       component: path.resolve("./src/templates/project.js"),
@@ -80,6 +80,12 @@ exports.createPages = async ({ graphql, actions }) => {
         next: edge.next
           ? edge.next
           : pages.data.allPrismicProjectTemplate.edges[0].node,
+        doubleNext:
+          i + 2 > pages.data.allPrismicProjectTemplate.edges.length - 1
+            ? pages.data.allPrismicProjectTemplate.edges[
+                i - (pages.data.allPrismicProjectTemplate.edges.length - 1) + 2
+              ].node
+            : pages.data.allPrismicProjectTemplate.edges[i + 2].node,
       },
     })
   })

@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Container, Paragraph } from "../elements"
-import { grey } from "../variables"
+import { lightGrey } from "../variables"
 
 const Testimonial = ({ slice }) => {
   const testimonialContent = slice.primary.text.text
@@ -14,6 +14,7 @@ const Testimonial = ({ slice }) => {
         fontSizeMd="18px"
         fontSizeLg="21px"
         textAlign="center"
+        lineHeight="36px"
       >
         {testimonialContent}
       </Paragraph>
@@ -29,5 +30,5 @@ const QuoteMark = styled.h2`
   margin: 0 auto;
   font-size: 110px;
   line-height: 1.5;
-  color: ${grey};
+  color: ${lightGrey};
 `

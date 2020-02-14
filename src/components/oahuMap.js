@@ -96,7 +96,7 @@ const OahuMap = ({ showOahuMap }) => {
     to: { opacity: 1, pointerEvents: "all" },
     from: { opacity: 0, pointerEvents: "none" },
     config: {
-      duration: 300,
+      duration: 100,
       mass: 2,
       velocity: 200,
     },

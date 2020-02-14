@@ -1,10 +1,10 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useRef, useEffect, useState, useContext } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import ProjectImageWithTitle from "../components/projectImageWithTitle"
-import { black, white } from "../variables"
+import { breakpointSmall, breakpointMedium, pink, yellow } from "../variables"
 import { myContext } from "../provider"
 
 export const query = graphql`
@@ -47,6 +47,12 @@ const IndexPage = ({ data }) => {
   const [startScroll, setStartScroll] = useState(false)
   const [projectCategoryFilter, setProjectCategoryFilter] = useState("all")
 
+  const { setCursorElement } = useContext(myContext)
+
+  useEffect(() => {
+    setCursorElement({ initial: "initial" })
+  }, [])
+
   useEffect(() => {
     // If start scroll is true scroll down the height of the first section
     startScroll && setScrollWindowHeight(heroRef.current.offsetHeight)
@@ -68,7 +74,8 @@ const IndexPage = ({ data }) => {
           <SEO title="Home" />
           <HomeHero ref={heroRef}>
             <HeroText>
-              Sae Design Group is an agency that makes{" "}
+              Delightful design by good people. <br />
+              Our superpowers are{" "}
               <HeroTextFilterItem
                 filterValue="branding"
                 newCursorElement="branding"
@@ -85,12 +92,12 @@ const IndexPage = ({ data }) => {
                 context={context}
                 setStartScroll={setStartScroll}
                 setProjectCategoryFilter={setProjectCategoryFilter}
-              />
-              , and{" "}
+              />{" "}
+              and{" "}
               <HeroTextFilterItem
-                filterValue="web"
-                newCursorElement="web"
-                content="web&nbsp;stuff"
+                filterValue="hospitality"
+                newCursorElement="hospitality"
+                content="hospitality"
                 context={context}
                 setStartScroll={setStartScroll}
                 setProjectCategoryFilter={setProjectCategoryFilter}
@@ -136,8 +143,10 @@ const HeroTextFilterItem = ({
     <strong
       role="button"
       tabIndex={0}
-      onMouseEnter={() => context.setCursorElement(newCursorElement)}
-      onMouseLeave={() => context.setCursorElement("initial")}
+      onMouseEnter={() =>
+        context.setCursorElement({ [newCursorElement]: newCursorElement })
+      }
+      onMouseLeave={() => context.setCursorElement({ initial: "initial" })}
       onClick={() => handleProjectFilter(filterValue)}
       onKeyDown={() => handleProjectFilter(filterValue)}
     >
@@ -151,26 +160,35 @@ const HomeHero = styled.section`
   width: 100%;
   display: grid;
   place-items: center;
-  padding: 50px;
-  background: ${black};
+  background: ${yellow};
 `
 
 const HeroText = styled.h1`
-  font-size: 5rem;
-  margin: 0;
+  font-size: 48px;
+  margin: 0 auto;
   width: fit-content;
+  max-width: 1200px;
   font-weight: 400;
-  text-align: center;
-  color: ${white};
+  color: ${pink};
+  padding: 0 50px;
 
   strong {
     cursor: pointer;
     position: relative;
     z-index: 10;
   }
+
+  @media (min-width: ${breakpointSmall}) {
+    font-size: 64px;
+  }
+
+  @media (min-width: ${breakpointMedium}) {
+    font-size: 104px;
+  }
 `
 
 const ProjectsSection = styled.section`
+  min-height: 100vh;
   padding: 50px 0;
   position: relative;
 `

@@ -6,7 +6,7 @@ export const Container = styled.section`
   padding: ${props => (props.padding ? props.padding : "0 5%")};
   max-width: ${props => props.maxWidth};
   width: ${props => props.width};
-  margin: ${props => (props.margin ? props.margin : "0 auto 10vh auto")};
+  margin: ${props => (props.margin ? props.margin : "0 auto 20vh auto")};
 `
 
 export const ImageContainer = styled(Img)`

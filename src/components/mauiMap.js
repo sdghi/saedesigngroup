@@ -1,6 +1,6 @@
 import React from "react"
-import {useSpring, animated} from 'react-spring'
-import styled from 'styled-components';
+import { useSpring, animated } from "react-spring"
+import styled from "styled-components"
 
 const MauiSVG = styled(animated.svg)`
   position: relative;
@@ -9,146 +9,146 @@ const MauiSVG = styled(animated.svg)`
   height: 300vh;
   width: 300vw;
 
-@media (min-width: 768px) {  
+  @media (min-width: 768px) {
     top: -50vh;
     left: -50vw;
     height: 200vh;
     width: 200vw;
-}
+  }
 
-.st1 {
-  display: inline;
-  opacity: 0.8;
-}
- 
-.st0 {
-  display: none;
-  opacity: 0.8;
-}
+  .st1 {
+    display: inline;
+    opacity: 0.8;
+  }
 
-.st2 {
-  display: inline;
-}
+  .st0 {
+    display: none;
+    opacity: 0.8;
+  }
 
-.st3 {
-  clip-path: url(#SVGID_2_);
-}
+  .st2 {
+    display: inline;
+  }
 
-.st4 {
-  fill: #84c8b6;
-}
+  .st3 {
+    clip-path: url(#SVGID_2_);
+  }
 
-.st5 {
-  fill: #eed46e;
-}
+  .st4 {
+    fill: #84c8b6;
+  }
 
-.st6 {
-  fill: #11363d;
-}
+  .st5 {
+    fill: #eed46e;
+  }
 
-.st7 {
-  fill: none;
-  stroke: #30918e;
-  stroke-width: 2.9986;
-  stroke-linecap: round;
-  stroke-miterlimit: 10;
-}
+  .st6 {
+    fill: #11363d;
+  }
 
-.st8 {
-  fill: none;
-  stroke: #ffffff;
-  stroke-width: 2.9986;
-  stroke-linecap: round;
-  stroke-miterlimit: 10;
-}
+  .st7 {
+    fill: none;
+    stroke: #30918e;
+    stroke-width: 2.9986;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+  }
 
-.st9 {
-  fill: none;
-  stroke: #ffffff;
-  stroke-width: 3.7029;
-  stroke-linecap: round;
-  stroke-miterlimit: 10;
-}
+  .st8 {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2.9986;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+  }
 
-.st10 {
-  fill: #ffffff;
-}
+  .st9 {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 3.7029;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+  }
 
-.st11 {
-  fill: #ca6a28;
-}
+  .st10 {
+    fill: #ffffff;
+  }
 
-.st12 {
-  display: none;
-}
+  .st11 {
+    fill: #ca6a28;
+  }
 
-.st13 {
-  fill: none;
-  stroke: #e93157;
-  stroke-width: 1.25;
-  stroke-linecap: round;
-  stroke-miterlimit: 10;
-}
+  .st12 {
+    display: none;
+  }
 
-.st14 {
-  fill: none;
-  stroke: #e93157;
-  stroke-width: 1.25;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-}
+  .st13 {
+    fill: none;
+    stroke: #e93157;
+    stroke-width: 1.25;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+  }
 
-.st15 {
-  fill: #ea3357;
-}
+  .st14 {
+    fill: none;
+    stroke: #e93157;
+    stroke-width: 1.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+  }
 
-.st16 {
-  fill: none;
-  stroke: #ea3357;
-  stroke-width: 0.952;
-  stroke-miterlimit: 10;
-}
+  .st15 {
+    fill: #ea3357;
+  }
 
-.st17 {
-  fill: #eabc4e;
-}
+  .st16 {
+    fill: none;
+    stroke: #ea3357;
+    stroke-width: 0.952;
+    stroke-miterlimit: 10;
+  }
 
-.st18 {
-  fill: #12363d;
-}
+  .st17 {
+    fill: #eabc4e;
+  }
 
-.st19 {
-  fill: none;
-  stroke: #ca6a28;
-  stroke-width: 1.25;
-  stroke-miterlimit: 10;
-}
+  .st18 {
+    fill: #12363d;
+  }
 
-.st20 {
-  fill: none;
-  stroke: #ea3357;
-  stroke-width: 1.25;
-  stroke-miterlimit: 10;
-}
+  .st19 {
+    fill: none;
+    stroke: #ca6a28;
+    stroke-width: 1.25;
+    stroke-miterlimit: 10;
+  }
 
-.st21 {
-  fill: none;
-  stroke: #ea3357;
-  stroke-width: 1.2497;
-  stroke-miterlimit: 10;
-}
-`;
+  .st20 {
+    fill: none;
+    stroke: #ea3357;
+    stroke-width: 1.25;
+    stroke-miterlimit: 10;
+  }
 
-const MauiMap = ({showOahuMap}) => {
+  .st21 {
+    fill: none;
+    stroke: #ea3357;
+    stroke-width: 1.2497;
+    stroke-miterlimit: 10;
+  }
+`
+
+const MauiMap = ({ showOahuMap }) => {
   const fade = useSpring({
-    to: {opacity: 1, pointerEvents: 'all'},
-    from: {opacity: 0, pointerEvents: 'none'},
+    to: { opacity: 1, pointerEvents: "all" },
+    from: { opacity: 0, pointerEvents: "none" },
     config: {
-      duration: 300,
+      duration: 100,
       mass: 2,
-      velocity: 200
-    }
+      velocity: 200,
+    },
   })
 
   return (

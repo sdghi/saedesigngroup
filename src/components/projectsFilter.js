@@ -1,16 +1,41 @@
 import React from "react"
 import styled from "styled-components"
 import { breakpointSmall } from "../variables"
+import { useStaticQuery, graphql } from "gatsby"
 
-const ProjectsFilter = () => {
+const ProjectsFilter = ({ setProjectCategoryFilter }) => {
+  const data = useStaticQuery(graphql`
+    {
+      allPrismicCategory {
+        edges {
+          node {
+            data {
+              category
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const categories = data.allPrismicCategory.edges
+
   return (
     <FilterContainer>
       <div className="filter-categories">
         <h3>work</h3>
         <ul>
-          <li>hi</li>
-          <li>bye</li>
-          <li>clout</li>
+          <li onClick={() => setProjectCategoryFilter("all")}>all</li>
+          {categories.map((category, index) => (
+            <li
+              key={index}
+              onClick={() =>
+                setProjectCategoryFilter(category.node.data.category)
+              }
+            >
+              {category.node.data.category}
+            </li>
+          ))}
         </ul>
       </div>
       <div className="display-btn-container">

@@ -16,11 +16,13 @@ export const query = graphql`
         node {
           uid
           data {
+            categories {
+              category {
+                slug
+              }
+            }
             project_name {
               text
-            }
-            categories {
-              category
             }
             featured_image {
               alt
@@ -99,10 +101,9 @@ const IndexPage = ({ data }) => {
             </HeroText>
           </HomeHero>
           <ProjectsSection>
-            <ProjectsFilter>
-              <h1>hiii</h1>
-              <h4>byeee</h4>
-            </ProjectsFilter>
+            <ProjectsFilter
+              setProjectCategoryFilter={setProjectCategoryFilter}
+            />
             {projects.map(project => (
               <ProjectImageWithTitle
                 key={project.node.uid}

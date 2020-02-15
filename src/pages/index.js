@@ -6,6 +6,7 @@ import styled from "styled-components"
 import ProjectImageWithTitle from "../components/projectImageWithTitle"
 import { breakpointSmall, breakpointMedium, pink, yellow } from "../variables"
 import { myContext } from "../provider"
+import HeroTextFilterItem from "../components/heroTextFilterItem"
 
 export const query = graphql`
   {
@@ -74,8 +75,8 @@ const IndexPage = ({ data }) => {
           <SEO title="Home" />
           <HomeHero ref={heroRef}>
             <HeroText>
-              Delightful design by good people. <br />
-              Our superpowers are{" "}
+              Sae what you mean to sae, with SaeDesignGroup. <br />
+              Delightful{" "}
               <HeroTextFilterItem
                 filterValue="branding"
                 newCursorElement="branding"
@@ -93,16 +94,7 @@ const IndexPage = ({ data }) => {
                 setStartScroll={setStartScroll}
                 setProjectCategoryFilter={setProjectCategoryFilter}
               />{" "}
-              and{" "}
-              <HeroTextFilterItem
-                filterValue="hospitality"
-                newCursorElement="hospitality"
-                content="hospitality"
-                context={context}
-                setStartScroll={setStartScroll}
-                setProjectCategoryFilter={setProjectCategoryFilter}
-              />
-              .
+              design (and more) by good people
             </HeroText>
           </HomeHero>
           <ProjectsSection>
@@ -126,35 +118,6 @@ const IndexPage = ({ data }) => {
 
 export default IndexPage
 
-const HeroTextFilterItem = ({
-  context,
-  filterValue,
-  newCursorElement,
-  content,
-  setStartScroll,
-  setProjectCategoryFilter,
-}) => {
-  const handleProjectFilter = filterValue => {
-    setProjectCategoryFilter(filterValue)
-    setStartScroll(true)
-  }
-
-  return (
-    <strong
-      role="button"
-      tabIndex={0}
-      onMouseEnter={() =>
-        context.setCursorElement({ [newCursorElement]: newCursorElement })
-      }
-      onMouseLeave={() => context.setCursorElement({ initial: "initial" })}
-      onClick={() => handleProjectFilter(filterValue)}
-      onKeyDown={() => handleProjectFilter(filterValue)}
-    >
-      {content}
-    </strong>
-  )
-}
-
 const HomeHero = styled.section`
   height: calc(100vh - 7vh);
   width: 100%;
@@ -167,8 +130,8 @@ const HeroText = styled.h1`
   font-size: 48px;
   margin: 0 auto;
   width: fit-content;
-  max-width: 1200px;
-  font-weight: 400;
+  max-width: 1400px;
+  font-weight: 300;
   color: ${pink};
   padding: 0 50px;
 
@@ -191,6 +154,9 @@ const ProjectsSection = styled.section`
   min-height: 100vh;
   padding: 50px 0;
   position: relative;
+  overflow-x: initial;
+  overflow-y: initial;
+  overflow: initial;
 `
 
 const ProjectsFilter = styled.div`

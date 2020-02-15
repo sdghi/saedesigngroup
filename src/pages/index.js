@@ -6,6 +6,7 @@ import styled from "styled-components"
 import ProjectImageWithTitle from "../components/projectImageWithTitle"
 import { breakpointSmall, breakpointMedium, pink, yellow } from "../variables"
 import { myContext } from "../provider"
+import HeroTextFilterItem from "../components/heroTextFilterItem"
 
 export const query = graphql`
   {
@@ -125,35 +126,6 @@ const IndexPage = ({ data }) => {
 }
 
 export default IndexPage
-
-const HeroTextFilterItem = ({
-  context,
-  filterValue,
-  newCursorElement,
-  content,
-  setStartScroll,
-  setProjectCategoryFilter,
-}) => {
-  const handleProjectFilter = filterValue => {
-    setProjectCategoryFilter(filterValue)
-    setStartScroll(true)
-  }
-
-  return (
-    <strong
-      role="button"
-      tabIndex={0}
-      onMouseEnter={() =>
-        context.setCursorElement({ [newCursorElement]: newCursorElement })
-      }
-      onMouseLeave={() => context.setCursorElement({ initial: "initial" })}
-      onClick={() => handleProjectFilter(filterValue)}
-      onKeyDown={() => handleProjectFilter(filterValue)}
-    >
-      {content}
-    </strong>
-  )
-}
 
 const HomeHero = styled.section`
   height: calc(100vh - 7vh);

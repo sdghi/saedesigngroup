@@ -15,6 +15,7 @@ const FullWidthImage = ({ slice }) => {
         maxWidth="100%"
         fluid={imageSrc}
         alt={full_image.alt}
+        fadeIn={false}
       />
     </Container>
   )

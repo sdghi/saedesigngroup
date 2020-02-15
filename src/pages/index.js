@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState, useContext } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ProjectsFilter from "../components/projectsFilter"
 import styled from "styled-components"
 import ProjectImageWithTitle from "../components/projectImageWithTitle"
 import { breakpointSmall, breakpointMedium, pink, yellow } from "../variables"
@@ -157,14 +158,4 @@ const ProjectsSection = styled.section`
   overflow-x: initial;
   overflow-y: initial;
   overflow: initial;
-`
-
-const ProjectsFilter = styled.div`
-  position: sticky;
-  width: 100%;
-  justify-content: space-between;
-  top: 0;
-  padding: 0 20px;
-  display: flex;
-  margin-bottom: 20px;
 `

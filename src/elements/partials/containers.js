@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { breakpointSmall, breakpointMedium } from "../../variables"
+import { breakpointSmall } from "../../variables"
 import Img from "gatsby-image"
 
 export const Container = styled.section`

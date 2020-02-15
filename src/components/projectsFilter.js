@@ -1,17 +1,51 @@
 import React from "react"
 import styled from "styled-components"
 import { breakpointSmall } from "../variables"
+import { useStaticQuery, graphql } from "gatsby"
 
-const ProjectsFilter = () => {
+const ProjectsFilter = ({ setProjectCategoryFilter }) => {
+  const data = useStaticQuery(graphql`
+    {
+      allPrismicCategory {
+        edges {
+          node {
+            data {
+              category
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const categories = data.allPrismicCategory.edges
+
   return (
     <FilterContainer>
       <div className="filter-categories">
         <h3>work</h3>
-        <ul>
-          <li>hi</li>
-          <li>bye</li>
-          <li>clout</li>
-        </ul>
+        <div>
+          <button
+            onClick={() => setProjectCategoryFilter("all")}
+            onKeyDown={() => setProjectCategoryFilter("all")}
+          >
+            all
+          </button>
+
+          {categories.map((category, index) => (
+            <button
+              key={index}
+              onClick={() =>
+                setProjectCategoryFilter(category.node.data.category)
+              }
+              onKeyDown={() =>
+                setProjectCategoryFilter(category.node.data.category)
+              }
+            >
+              {category.node.data.category}
+            </button>
+          ))}
+        </div>
       </div>
       <div className="display-btn-container">
         <GridBtn />
@@ -43,14 +77,24 @@ const FilterContainer = styled.div`
       margin: 0 0 20px 0;
     }
 
-    ul {
+    div {
       list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 
-      li {
+      button {
+        background: none;
+        border: none;
         font-weight: 900;
         font-size: 18px;
         line-height: 1.5;
         text-transform: uppercase;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
       }
     }
   }

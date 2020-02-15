@@ -38,11 +38,16 @@ const Footer = () => {
           <a
             href="https://www.instagram.com/saedesignhi/?hl=en"
             target="_blank"
+            rel="noopener noreferrer"
           >
             insta
           </a>{" "}
           |{" "}
-          <a href="https://saemin.saedesign.com" target="_blank">
+          <a
+            href="https://saemin.saedesign.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             bonus
           </a>
         </span>

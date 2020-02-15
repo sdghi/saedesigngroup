@@ -26,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   .tl-edges{
-    overflow: initial;
+    overflow: auto;
   }
 
   *[role=button]{

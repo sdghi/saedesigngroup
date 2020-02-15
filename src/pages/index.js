@@ -75,8 +75,8 @@ const IndexPage = ({ data }) => {
           <SEO title="Home" />
           <HomeHero ref={heroRef}>
             <HeroText>
-              Delightful design by good people. <br />
-              Our superpowers are{" "}
+              Sae what you mean to sae, with SaeDesignGroup. <br />
+              Delightful{" "}
               <HeroTextFilterItem
                 filterValue="branding"
                 newCursorElement="branding"
@@ -94,16 +94,7 @@ const IndexPage = ({ data }) => {
                 setStartScroll={setStartScroll}
                 setProjectCategoryFilter={setProjectCategoryFilter}
               />{" "}
-              and{" "}
-              <HeroTextFilterItem
-                filterValue="hospitality"
-                newCursorElement="hospitality"
-                content="hospitality"
-                context={context}
-                setStartScroll={setStartScroll}
-                setProjectCategoryFilter={setProjectCategoryFilter}
-              />
-              .
+              design (and more) by good people
             </HeroText>
           </HomeHero>
           <ProjectsSection>
@@ -139,8 +130,8 @@ const HeroText = styled.h1`
   font-size: 48px;
   margin: 0 auto;
   width: fit-content;
-  max-width: 1200px;
-  font-weight: 400;
+  max-width: 1400px;
+  font-weight: 300;
   color: ${pink};
   padding: 0 50px;
 
@@ -163,6 +154,9 @@ const ProjectsSection = styled.section`
   min-height: 100vh;
   padding: 50px 0;
   position: relative;
+  overflow-x: initial;
+  overflow-y: initial;
+  overflow: initial;
 `
 
 const ProjectsFilter = styled.div`

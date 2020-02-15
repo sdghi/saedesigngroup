@@ -59,7 +59,7 @@ export default props => {
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
-  }, [])
+  }, [setCursorElement])
 
   return (
     <Layout>

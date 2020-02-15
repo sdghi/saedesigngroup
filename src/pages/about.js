@@ -30,7 +30,7 @@ const AboutPage = ({ data }) => {
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
-  }, [])
+  }, [setCursorElement])
 
   return (
     <Layout>

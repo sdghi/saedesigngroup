@@ -27,7 +27,7 @@ const ContactPage = () => {
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
-  }, [])
+  }, [setCursorElement])
 
   return (
     <Layout>

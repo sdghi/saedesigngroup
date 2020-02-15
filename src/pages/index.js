@@ -55,7 +55,7 @@ const IndexPage = ({ data }) => {
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
-  }, [])
+  }, [setCursorElement])
 
   useEffect(() => {
     // If start scroll is true scroll down the height of the first section

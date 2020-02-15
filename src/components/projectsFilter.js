@@ -24,19 +24,28 @@ const ProjectsFilter = ({ setProjectCategoryFilter }) => {
     <FilterContainer>
       <div className="filter-categories">
         <h3>work</h3>
-        <ul>
-          <li onClick={() => setProjectCategoryFilter("all")}>all</li>
+        <div>
+          <button
+            onClick={() => setProjectCategoryFilter("all")}
+            onKeyDown={() => setProjectCategoryFilter("all")}
+          >
+            all
+          </button>
+
           {categories.map((category, index) => (
-            <li
+            <button
               key={index}
               onClick={() =>
                 setProjectCategoryFilter(category.node.data.category)
               }
+              onKeyDown={() =>
+                setProjectCategoryFilter(category.node.data.category)
+              }
             >
               {category.node.data.category}
-            </li>
+            </button>
           ))}
-        </ul>
+        </div>
       </div>
       <div className="display-btn-container">
         <GridBtn />
@@ -68,14 +77,24 @@ const FilterContainer = styled.div`
       margin: 0 0 20px 0;
     }
 
-    ul {
+    div {
       list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 
-      li {
+      button {
+        background: none;
+        border: none;
         font-weight: 900;
         font-size: 18px;
         line-height: 1.5;
         text-transform: uppercase;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
       }
     }
   }

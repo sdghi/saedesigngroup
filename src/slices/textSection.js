@@ -20,7 +20,7 @@ const TextSection = ({ slice, theme }) => {
         fontSize="15px"
         lineHeight="30px"
         fontSizeLg="18px"
-        lineHeight="32px"
+        lineHeightMd="32px"
       >
         {text}
       </Paragraph>

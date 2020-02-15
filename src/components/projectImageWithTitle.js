@@ -19,13 +19,15 @@ const ProjectImageWithTitle = ({ project, projectCategoryFilter }) => {
     categories.map(category => {
       // Show project if the category matches the project filter
       // If it's all show all the projects
-      if (projectCategoryFilter.toLowerCase() == category.category.slug) {
+      if (projectCategoryFilter.toLowerCase() === category.category.slug) {
         setShowProject(true)
       } else if (projectCategoryFilter === "all") {
         setShowProject(true)
       }
+
+      return null
     })
-  }, [projectCategoryFilter])
+  }, [projectCategoryFilter, categories])
 
   return (
     <>

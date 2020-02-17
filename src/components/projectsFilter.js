@@ -61,7 +61,7 @@ const FilterContainer = styled.div`
   position: sticky;
   width: 100%;
   justify-content: space-between;
-  top: 0;
+  top: 9vh;
   padding: 0 20px;
   display: flex;
   margin-bottom: 20px;

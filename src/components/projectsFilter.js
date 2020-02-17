@@ -84,6 +84,7 @@ const FilterContainer = styled.div`
       align-items: flex-start;
 
       button {
+        padding: 0;
         background: none;
         border: none;
         font-weight: 900;

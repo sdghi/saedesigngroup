@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 const AboutCursor = ({ xValue, yValue }) => {
   return (
-    <About top={yValue} left={xValue} height="250" width="250" zIndex="999999">
+    <About top={yValue} left={xValue} height="150" width="150" zIndex="999999">
       <svg
         version="1.1"
         id="Layer_1"

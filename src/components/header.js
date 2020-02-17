@@ -11,7 +11,7 @@ const Header = ({ setCursorElement }) => {
   const [isNavOpen, setNav] = useState(false)
 
   useEffect(() => {
-    document.body.style.overflow = isNavOpen ? "hidden" : "auto"
+    document.body.style.overflow = isNavOpen ? "hidden" : "visible"
   })
 
   return (

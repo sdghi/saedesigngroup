@@ -7,8 +7,8 @@ const ContactCursor = ({ xValue, yValue }) => {
     <Contact
       top={yValue}
       left={xValue}
-      height="250"
-      width="250"
+      height="150"
+      width="150"
       zIndex="999999"
     >
       <svg

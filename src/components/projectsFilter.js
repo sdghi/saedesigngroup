@@ -8,6 +8,8 @@ const ProjectsFilter = ({
   setProjectCategoryFilter,
   setDisplayProjectsGrid,
   displayProjectsGrid,
+  setShowLogos,
+  showLogos,
 }) => {
   const data = useStaticQuery(graphql`
     {
@@ -25,6 +27,12 @@ const ProjectsFilter = ({
 
   const categories = data.allPrismicCategory.edges
 
+  // Sets project filter and show logo status on click
+  const handleClickEvent = (value, showLogo = false) => {
+    setProjectCategoryFilter(value)
+    setShowLogos(showLogo)
+  }
+
   return (
     <FilterContainer>
       <div className="filter-categories">
@@ -32,8 +40,8 @@ const ProjectsFilter = ({
         <div>
           <button
             className={projectCategoryFilter === "all" && "selected"}
-            onClick={() => setProjectCategoryFilter("all")}
-            onKeyDown={() => setProjectCategoryFilter("all")}
+            onClick={() => handleClickEvent("all")}
+            onKeyDown={() => handleClickEvent("all")}
           >
             all
           </button>
@@ -45,28 +53,32 @@ const ProjectsFilter = ({
                   category.node.data.category.toLowerCase() && "selected"
               }
               key={index}
-              onClick={() =>
-                setProjectCategoryFilter(category.node.data.category)
-              }
-              onKeyDown={() =>
-                setProjectCategoryFilter(category.node.data.category)
-              }
+              onClick={() => handleClickEvent(category.node.data.category)}
+              onKeyDown={() => handleClickEvent(category.node.data.category)}
             >
               {category.node.data.category}
             </button>
           ))}
+          <button
+            className={showLogos && "selected"}
+            onClick={() => handleClickEvent("", true)}
+          >
+            logos
+          </button>
         </div>
       </div>
-      <div className="display-btn-container">
-        <GridBtn
-          displayProjectsGrid={displayProjectsGrid}
-          setDisplayProjectsGrid={setDisplayProjectsGrid}
-        />
-        <StaggeredBtn
-          displayProjectsGrid={displayProjectsGrid}
-          setDisplayProjectsGrid={setDisplayProjectsGrid}
-        />
-      </div>
+      {!showLogos && (
+        <div className="display-btn-container">
+          <GridBtn
+            displayProjectsGrid={displayProjectsGrid}
+            setDisplayProjectsGrid={setDisplayProjectsGrid}
+          />
+          <StaggeredBtn
+            displayProjectsGrid={displayProjectsGrid}
+            setDisplayProjectsGrid={setDisplayProjectsGrid}
+          />
+        </div>
+      )}
     </FilterContainer>
   )
 }

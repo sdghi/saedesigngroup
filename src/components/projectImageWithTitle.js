@@ -3,7 +3,11 @@ import Link from "gatsby-plugin-transition-link"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 
-const ProjectImageWithTitle = ({ project, projectCategoryFilter }) => {
+const ProjectImageWithTitle = ({
+  project,
+  projectCategoryFilter,
+  displayProjectsGrid,
+}) => {
   const [showProject, setShowProject] = useState(false)
 
   const slug = project.node.uid
@@ -32,7 +36,10 @@ const ProjectImageWithTitle = ({ project, projectCategoryFilter }) => {
   return (
     <>
       {showProject && (
-        <ProjetContainer key={project.uid} right="10">
+        <ProjetContainer
+          key={project.uid}
+          width={displayProjectsGrid ? "100%" : "80%"}
+        >
           <Link to={`/${slug}`}>
             <Img
               fluid={imageSrc}
@@ -52,7 +59,7 @@ export default ProjectImageWithTitle
 
 const ProjetContainer = styled.div`
   position: relative;
-  width: fit-content;
+  width: ${props => props.width};
   margin: 0 auto 0 auto;
   top: ${props => `${props.top}em`};
   left: ${props => `${props.left}em`};

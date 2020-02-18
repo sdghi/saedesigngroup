@@ -3,6 +3,7 @@ import Link from "gatsby-plugin-transition-link"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 import { breakpointSmall } from "../variables"
+import { ImageContainer } from "../elements"
 
 const ProjectImageWithTitle = ({
   project,
@@ -42,11 +43,10 @@ const ProjectImageWithTitle = ({
           widthMd={displayProjectsGrid ? "100%" : "80%"}
         >
           <Link to={`/${slug}`}>
-            <Img
+            <ImageContainer
               fluid={imageSrc}
-              objectFit="cover"
-              objectPosition="50% 50%"
               alt={imageAlt}
+              heightMd={displayProjectsGrid ? "300px" : "auto"}
             />
             {projectName}
           </Link>

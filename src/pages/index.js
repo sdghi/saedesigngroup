@@ -91,6 +91,7 @@ const IndexPage = ({ data }) => {
                 context={context}
                 setStartScroll={setStartScroll}
                 setProjectCategoryFilter={setProjectCategoryFilter}
+                setShowLogos={setShowLogos}
               />
               ,{" "}
               <HeroTextFilterItem
@@ -100,6 +101,7 @@ const IndexPage = ({ data }) => {
                 context={context}
                 setStartScroll={setStartScroll}
                 setProjectCategoryFilter={setProjectCategoryFilter}
+                setShowLogos={setShowLogos}
               />{" "}
               design (and more) by good people
             </HeroText>

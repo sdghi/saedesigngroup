@@ -107,6 +107,7 @@ const IndexPage = ({ data }) => {
               projectCategoryFilter={projectCategoryFilter}
               setProjectCategoryFilter={setProjectCategoryFilter}
               setDisplayProjectsGrid={setDisplayProjectsGrid}
+              displayProjectsGrid={displayProjectsGrid}
             />
             <ProjectsContainer
               display={displayProjectsGrid ? "grid" : "block"}

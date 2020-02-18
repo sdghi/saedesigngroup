@@ -7,6 +7,7 @@ const ProjectsFilter = ({
   projectCategoryFilter,
   setProjectCategoryFilter,
   setDisplayProjectsGrid,
+  displayProjectsGrid,
 }) => {
   const data = useStaticQuery(graphql`
     {
@@ -57,8 +58,14 @@ const ProjectsFilter = ({
         </div>
       </div>
       <div className="display-btn-container">
-        <GridBtn setDisplayProjectsGrid={setDisplayProjectsGrid} />
-        <StaggeredBtn setDisplayProjectsGrid={setDisplayProjectsGrid} />
+        <GridBtn
+          displayProjectsGrid={displayProjectsGrid}
+          setDisplayProjectsGrid={setDisplayProjectsGrid}
+        />
+        <StaggeredBtn
+          displayProjectsGrid={displayProjectsGrid}
+          setDisplayProjectsGrid={setDisplayProjectsGrid}
+        />
       </div>
     </FilterContainer>
   )
@@ -119,13 +126,22 @@ const FilterContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
+
+    svg {
+      fill: ${grey};
+
+      &.selected {
+        fill: ${black};
+      }
+    }
   }
 `
 
 // Grid Btn
-const GridBtn = ({ setDisplayProjectsGrid }) => {
+const GridBtn = ({ setDisplayProjectsGrid, displayProjectsGrid }) => {
   return (
     <svg
+      className={displayProjectsGrid && "selected"}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -141,9 +157,10 @@ const GridBtn = ({ setDisplayProjectsGrid }) => {
 }
 
 // Staggered Btn
-const StaggeredBtn = ({ setDisplayProjectsGrid }) => {
+const StaggeredBtn = ({ setDisplayProjectsGrid, displayProjectsGrid }) => {
   return (
     <svg
+      className={!displayProjectsGrid && "selected"}
       onClick={() => setDisplayProjectsGrid(false)}
       xmlns="http://www.w3.org/2000/svg"
       width="23.132"

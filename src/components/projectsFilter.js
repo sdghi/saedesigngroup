@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { breakpointSmall } from "../variables"
+import { breakpointSmall, black, grey } from "../variables"
 import { useStaticQuery, graphql } from "gatsby"
 
 const ProjectsFilter = ({
+  projectCategoryFilter,
   setProjectCategoryFilter,
   setDisplayProjectsGrid,
 }) => {
@@ -29,6 +30,7 @@ const ProjectsFilter = ({
         <h3>work</h3>
         <div>
           <button
+            className={projectCategoryFilter === "all" && "selected"}
             onClick={() => setProjectCategoryFilter("all")}
             onKeyDown={() => setProjectCategoryFilter("all")}
           >
@@ -37,6 +39,10 @@ const ProjectsFilter = ({
 
           {categories.map((category, index) => (
             <button
+              className={
+                projectCategoryFilter.toLowerCase() ===
+                  category.node.data.category.toLowerCase() && "selected"
+              }
               key={index}
               onClick={() =>
                 setProjectCategoryFilter(category.node.data.category)
@@ -96,6 +102,11 @@ const FilterContainer = styled.div`
         line-height: 1.5;
         text-transform: uppercase;
         cursor: pointer;
+        color: ${grey};
+
+        &.selected {
+          color: ${black};
+        }
 
         &:focus {
           outline: none;

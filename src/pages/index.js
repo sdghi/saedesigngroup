@@ -104,12 +104,13 @@ const IndexPage = ({ data }) => {
           </HomeHero>
           <ProjectsSection>
             <ProjectsFilter
+              projectCategoryFilter={projectCategoryFilter}
               setProjectCategoryFilter={setProjectCategoryFilter}
               setDisplayProjectsGrid={setDisplayProjectsGrid}
             />
             <ProjectsContainer
               display={displayProjectsGrid ? "grid" : "block"}
-              padding="0 10%"
+              padding="0 15%"
             >
               {projects.map(project => (
                 <ProjectImageWithTitle

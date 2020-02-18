@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Container, ImageContainer } from "../elements"
 import { breakpointSmall } from "../variables"
 import styled from "styled-components"
+import Popup from "../components/popup"
 
 const Logos = () => {
   const data = useStaticQuery(graphql`
@@ -41,22 +42,22 @@ const Logos = () => {
   `)
 
   const logosData = data.allPrismicLogos.edges[0].node.data.body
-  console.log("logos data", logosData)
+
+  const [showLightbox, setShowLightbox] = useState(false)
 
   return (
     <LogosContainer padding="0 5%" paddingMd="0 15%">
-      {logosData.map(logo => {
-        console.log(
-          "logos",
-          logo.primary.logo_image.localFile.childImageSharp.fluid
-        )
-        return (
+      {logosData.map(logo => (
+        <div key={logo.id} onClick={() => setShowLightbox(true)}>
           <ImageContainer
             alt={logo.primary.logo_image.alt}
             fluid={logo.primary.logo_image.localFile.childImageSharp.fluid}
           />
-        )
-      })}
+        </div>
+      ))}
+      {showLightbox && (
+        <Popup showPopup={showLightbox} setShowPopup={setShowLightbox} />
+      )}
     </LogosContainer>
   )
 }
@@ -66,6 +67,10 @@ export default Logos
 const LogosContainer = styled(Container)`
   display: grid;
   grid-gap: 20px;
+
+  div {
+    padding-bottom: 0% !important;
+  }
 
   @media (min-width: ${breakpointSmall}) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

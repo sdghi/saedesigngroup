@@ -52,6 +52,7 @@ const Logos = () => {
           <ImageContainer
             alt={logo.primary.logo_image.alt}
             fluid={logo.primary.logo_image.localFile.childImageSharp.fluid}
+            heightMd="300px"
           />
         </div>
       ))}
@@ -74,9 +75,5 @@ const LogosContainer = styled(Container)`
 
   @media (min-width: ${breakpointSmall}) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-    .fjTCnV {
-      height: 300px;
-    }
   }
 `

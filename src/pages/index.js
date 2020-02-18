@@ -9,6 +9,7 @@ import { breakpointSmall, breakpointMedium, pink, yellow } from "../variables"
 import { Container } from "../elements"
 import { myContext } from "../provider"
 import HeroTextFilterItem from "../components/heroTextFilterItem"
+import Logos from "../components/logos"
 
 export const query = graphql`
   {
@@ -52,6 +53,7 @@ const IndexPage = ({ data }) => {
   const [startScroll, setStartScroll] = useState(false)
   const [projectCategoryFilter, setProjectCategoryFilter] = useState("all")
   const [displayProjectsGrid, setDisplayProjectsGrid] = useState(false)
+  const [showLogos, setShowLogos] = useState(false)
 
   const { setCursorElement } = useContext(myContext)
 
@@ -108,20 +110,25 @@ const IndexPage = ({ data }) => {
               setProjectCategoryFilter={setProjectCategoryFilter}
               setDisplayProjectsGrid={setDisplayProjectsGrid}
               displayProjectsGrid={displayProjectsGrid}
+              setShowLogos={setShowLogos}
+              showLogos={showLogos}
             />
-            <ProjectsContainer
-              display={displayProjectsGrid ? "grid" : "block"}
-              padding="0 15%"
-            >
-              {projects.map(project => (
-                <ProjectImageWithTitle
-                  displayProjectsGrid={displayProjectsGrid}
-                  key={project.node.uid}
-                  project={project}
-                  projectCategoryFilter={projectCategoryFilter}
-                />
-              ))}
-            </ProjectsContainer>
+            {showLogos && <Logos />}
+            {!showLogos && (
+              <ProjectsContainer
+                display={displayProjectsGrid ? "grid" : "block"}
+                padding="0 15%"
+              >
+                {projects.map(project => (
+                  <ProjectImageWithTitle
+                    displayProjectsGrid={displayProjectsGrid}
+                    key={project.node.uid}
+                    project={project}
+                    projectCategoryFilter={projectCategoryFilter}
+                  />
+                ))}
+              </ProjectsContainer>
+            )}
           </ProjectsSection>
         </Layout>
       )}

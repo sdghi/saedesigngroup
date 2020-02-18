@@ -1,32 +1,77 @@
 import React from "react"
-import { Container } from "../elements"
+import { useStaticQuery, graphql } from "gatsby"
+import { Container, ImageContainer } from "../elements"
 import { breakpointSmall } from "../variables"
 import styled from "styled-components"
 
 const Logos = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allPrismicLogos {
+        edges {
+          node {
+            data {
+              body {
+                primary {
+                  title {
+                    text
+                  }
+                  logo_image {
+                    alt
+                    localFile {
+                      childImageSharp {
+                        fluid {
+                          ...GatsbyImageSharpFluid
+                        }
+                      }
+                    }
+                  }
+                  link_to_project {
+                    document {
+                      uid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const logosData = data.allPrismicLogos.edges[0].node.data.body
+  console.log("logos data", logosData)
+
   return (
-    <LogoContainer padding="0 5%" paddingMd="0 15%">
-      <h1>logo 1</h1>
-      <h1>logo 2</h1>
-      <h1>logo 3</h1>
-    </LogoContainer>
+    <LogosContainer padding="0 5%" paddingMd="0 15%">
+      {logosData.map(logo => {
+        console.log(
+          "logos",
+          logo.primary.logo_image.localFile.childImageSharp.fluid
+        )
+        return (
+          <ImageContainer
+            alt={logo.primary.logo_image.alt}
+            fluid={logo.primary.logo_image.localFile.childImageSharp.fluid}
+          />
+        )
+      })}
+    </LogosContainer>
   )
 }
 
 export default Logos
 
-const LogoContainer = styled(Container)`
+const LogosContainer = styled(Container)`
   display: grid;
   grid-gap: 20px;
 
   @media (min-width: ${breakpointSmall}) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
 
-  h1 {
-    height: 300px;
-    width: 100%;
-    background: red;
-    margin: 0;
+    .fjTCnV {
+      height: 300px;
+    }
   }
 `

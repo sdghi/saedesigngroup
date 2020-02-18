@@ -140,10 +140,11 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 
 const ProjectsContainer = styled(Container)`
-  display: ${props => props.display};
+  display: grid;
   grid-gap: 20px;
 
   @media (min-width: ${breakpointSmall}) {
+    display: ${props => props.display};
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 `

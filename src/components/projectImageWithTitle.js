@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Link from "gatsby-plugin-transition-link"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
+import { breakpointSmall } from "../variables"
 
 const ProjectImageWithTitle = ({
   project,
@@ -38,7 +39,7 @@ const ProjectImageWithTitle = ({
       {showProject && (
         <ProjetContainer
           key={project.uid}
-          width={displayProjectsGrid ? "100%" : "80%"}
+          widthMd={displayProjectsGrid ? "100%" : "80%"}
         >
           <Link to={`/${slug}`}>
             <Img
@@ -59,9 +60,13 @@ export default ProjectImageWithTitle
 
 const ProjetContainer = styled.div`
   position: relative;
-  width: ${props => props.width};
+  width: 100%;
   margin: 0 auto 0 auto;
   top: ${props => `${props.top}em`};
   left: ${props => `${props.left}em`};
   right: ${props => `${props.right}em`};
+
+  @media (min-width: ${breakpointSmall}) {
+    width: ${props => props.width};
+  }
 `

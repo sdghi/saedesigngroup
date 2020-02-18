@@ -7,10 +7,12 @@ const HeroTextFilterItem = ({
   content,
   setStartScroll,
   setProjectCategoryFilter,
+  setShowLogos,
 }) => {
   const handleProjectFilter = filterValue => {
     setProjectCategoryFilter(filterValue)
     setStartScroll(true)
+    setShowLogos(false)
   }
 
   return (

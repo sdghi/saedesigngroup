@@ -69,10 +69,6 @@ const LogosContainer = styled(Container)`
   display: grid;
   grid-gap: 20px;
 
-  div {
-    padding-bottom: 0% !important;
-  }
-
   @media (min-width: ${breakpointSmall}) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }

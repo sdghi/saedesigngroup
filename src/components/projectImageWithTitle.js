@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react"
 import Link from "gatsby-plugin-transition-link"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
+import { breakpointSmall } from "../variables"
+import { ImageContainer } from "../elements"
 
-const ProjectImageWithTitle = ({ project, projectCategoryFilter }) => {
+const ProjectImageWithTitle = ({
+  project,
+  projectCategoryFilter,
+  displayProjectsGrid,
+}) => {
   const [showProject, setShowProject] = useState(false)
 
   const slug = project.node.uid
@@ -19,24 +25,28 @@ const ProjectImageWithTitle = ({ project, projectCategoryFilter }) => {
     categories.map(category => {
       // Show project if the category matches the project filter
       // If it's all show all the projects
-      if (projectCategoryFilter === category.category) {
+      if (projectCategoryFilter.toLowerCase() === category.category.slug) {
         setShowProject(true)
       } else if (projectCategoryFilter === "all") {
         setShowProject(true)
       }
+
+      return null
     })
-  }, [projectCategoryFilter])
+  }, [projectCategoryFilter, categories])
 
   return (
     <>
       {showProject && (
-        <ProjetContainer key={project.uid} right="10">
+        <ProjetContainer
+          key={project.uid}
+          widthMd={displayProjectsGrid ? "100%" : "80%"}
+        >
           <Link to={`/${slug}`}>
-            <Img
+            <ImageContainer
               fluid={imageSrc}
-              objectFit="cover"
-              objectPosition="50% 50%"
               alt={imageAlt}
+              heightMd={displayProjectsGrid ? "300px" : "auto"}
             />
             {projectName}
           </Link>
@@ -50,9 +60,13 @@ export default ProjectImageWithTitle
 
 const ProjetContainer = styled.div`
   position: relative;
-  width: fit-content;
+  width: 100%;
   margin: 0 auto 0 auto;
   top: ${props => `${props.top}em`};
   left: ${props => `${props.left}em`};
   right: ${props => `${props.right}em`};
+
+  @media (min-width: ${breakpointSmall}) {
+    width: ${props => props.width};
+  }
 `

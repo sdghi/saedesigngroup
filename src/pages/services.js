@@ -8,7 +8,7 @@ const ServicesPage = () => {
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
-  }, [])
+  }, [setCursorElement])
 
   return (
     <Layout>

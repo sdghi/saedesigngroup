@@ -2,10 +2,14 @@ import React, { useRef, useEffect, useState, useContext } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ProjectsFilter from "../components/projectsFilter"
 import styled from "styled-components"
 import ProjectImageWithTitle from "../components/projectImageWithTitle"
 import { breakpointSmall, breakpointMedium, pink, yellow } from "../variables"
+import { Container } from "../elements"
 import { myContext } from "../provider"
+import HeroTextFilterItem from "../components/heroTextFilterItem"
+import Logos from "../components/logos"
 
 export const query = graphql`
   {
@@ -14,11 +18,13 @@ export const query = graphql`
         node {
           uid
           data {
+            categories {
+              category {
+                slug
+              }
+            }
             project_name {
               text
-            }
-            categories {
-              category
             }
             featured_image {
               alt
@@ -46,12 +52,14 @@ const IndexPage = ({ data }) => {
   const [scrollWindowHeight, setScrollWindowHeight] = useState(0)
   const [startScroll, setStartScroll] = useState(false)
   const [projectCategoryFilter, setProjectCategoryFilter] = useState("all")
+  const [displayProjectsGrid, setDisplayProjectsGrid] = useState(false)
+  const [showLogos, setShowLogos] = useState(false)
 
   const { setCursorElement } = useContext(myContext)
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
-  }, [])
+  }, [setCursorElement])
 
   useEffect(() => {
     // If start scroll is true scroll down the height of the first section
@@ -74,8 +82,8 @@ const IndexPage = ({ data }) => {
           <SEO title="Home" />
           <HomeHero ref={heroRef}>
             <HeroText>
-              Delightful design by good people. <br />
-              Our superpowers are{" "}
+              Sae what you mean to sae, with SaeDesignGroup. <br />
+              Delightful{" "}
               <HeroTextFilterItem
                 filterValue="branding"
                 newCursorElement="branding"
@@ -83,6 +91,7 @@ const IndexPage = ({ data }) => {
                 context={context}
                 setStartScroll={setStartScroll}
                 setProjectCategoryFilter={setProjectCategoryFilter}
+                setShowLogos={setShowLogos}
               />
               ,{" "}
               <HeroTextFilterItem
@@ -92,31 +101,37 @@ const IndexPage = ({ data }) => {
                 context={context}
                 setStartScroll={setStartScroll}
                 setProjectCategoryFilter={setProjectCategoryFilter}
+                setShowLogos={setShowLogos}
               />{" "}
-              and{" "}
-              <HeroTextFilterItem
-                filterValue="hospitality"
-                newCursorElement="hospitality"
-                content="hospitality"
-                context={context}
-                setStartScroll={setStartScroll}
-                setProjectCategoryFilter={setProjectCategoryFilter}
-              />
-              .
+              design (and more) by good people
             </HeroText>
           </HomeHero>
           <ProjectsSection>
-            <ProjectsFilter>
-              <h1>hiii</h1>
-              <h4>byeee</h4>
-            </ProjectsFilter>
-            {projects.map(project => (
-              <ProjectImageWithTitle
-                key={project.node.uid}
-                project={project}
-                projectCategoryFilter={projectCategoryFilter}
-              />
-            ))}
+            <ProjectsFilter
+              projectCategoryFilter={projectCategoryFilter}
+              setProjectCategoryFilter={setProjectCategoryFilter}
+              setDisplayProjectsGrid={setDisplayProjectsGrid}
+              displayProjectsGrid={displayProjectsGrid}
+              setShowLogos={setShowLogos}
+              showLogos={showLogos}
+            />
+            {showLogos && <Logos />}
+            {!showLogos && (
+              <ProjectsContainer
+                display={displayProjectsGrid ? "grid" : "block"}
+                padding="0 5%"
+                paddingMd="0 15%"
+              >
+                {projects.map(project => (
+                  <ProjectImageWithTitle
+                    displayProjectsGrid={displayProjectsGrid}
+                    key={project.node.uid}
+                    project={project}
+                    projectCategoryFilter={projectCategoryFilter}
+                  />
+                ))}
+              </ProjectsContainer>
+            )}
           </ProjectsSection>
         </Layout>
       )}
@@ -126,34 +141,15 @@ const IndexPage = ({ data }) => {
 
 export default IndexPage
 
-const HeroTextFilterItem = ({
-  context,
-  filterValue,
-  newCursorElement,
-  content,
-  setStartScroll,
-  setProjectCategoryFilter,
-}) => {
-  const handleProjectFilter = filterValue => {
-    setProjectCategoryFilter(filterValue)
-    setStartScroll(true)
-  }
+const ProjectsContainer = styled(Container)`
+  display: grid;
+  grid-gap: 20px;
 
-  return (
-    <strong
-      role="button"
-      tabIndex={0}
-      onMouseEnter={() =>
-        context.setCursorElement({ [newCursorElement]: newCursorElement })
-      }
-      onMouseLeave={() => context.setCursorElement({ initial: "initial" })}
-      onClick={() => handleProjectFilter(filterValue)}
-      onKeyDown={() => handleProjectFilter(filterValue)}
-    >
-      {content}
-    </strong>
-  )
-}
+  @media (min-width: ${breakpointSmall}) {
+    display: ${props => props.display};
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+`
 
 const HomeHero = styled.section`
   height: calc(100vh - 7vh);
@@ -167,8 +163,8 @@ const HeroText = styled.h1`
   font-size: 48px;
   margin: 0 auto;
   width: fit-content;
-  max-width: 1200px;
-  font-weight: 400;
+  max-width: 1400px;
+  font-weight: 300;
   color: ${pink};
   padding: 0 50px;
 
@@ -191,14 +187,7 @@ const ProjectsSection = styled.section`
   min-height: 100vh;
   padding: 50px 0;
   position: relative;
-`
-
-const ProjectsFilter = styled.div`
-  position: sticky;
-  width: 100%;
-  justify-content: space-between;
-  top: 0;
-  padding: 0 20px;
-  display: flex;
-  margin-bottom: 20px;
+  overflow-x: initial;
+  overflow-y: initial;
+  overflow: initial;
 `

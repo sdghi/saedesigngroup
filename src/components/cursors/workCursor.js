@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 const WorkCursor = ({ xValue, yValue }) => {
   return (
-    <Work top={yValue} left={xValue} height="250" width="250" zIndex="999999">
+    <Work top={yValue} left={xValue} height="150" width="150" zIndex="999999">
       <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 145 145">
         <path
           className="st0"

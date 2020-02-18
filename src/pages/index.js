@@ -117,7 +117,8 @@ const IndexPage = ({ data }) => {
             {!showLogos && (
               <ProjectsContainer
                 display={displayProjectsGrid ? "grid" : "block"}
-                padding="0 15%"
+                padding="0 5%"
+                paddingMd="0 15%"
               >
                 {projects.map(project => (
                   <ProjectImageWithTitle
@@ -140,8 +141,11 @@ export default IndexPage
 
 const ProjectsContainer = styled(Container)`
   display: ${props => props.display};
-  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+
+  @media (min-width: ${breakpointSmall}) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
 `
 
 const HomeHero = styled.section`

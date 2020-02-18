@@ -27,9 +27,10 @@ const ProjectsFilter = ({
 
   const categories = data.allPrismicCategory.edges
 
-  const handleClickEvent = value => {
+  // Sets project filter and show logo status on click
+  const handleClickEvent = (value, showLogo = false) => {
     setProjectCategoryFilter(value)
-    setShowLogos(false)
+    setShowLogos(showLogo)
   }
 
   return (
@@ -58,7 +59,12 @@ const ProjectsFilter = ({
               {category.node.data.category}
             </button>
           ))}
-          <button onClick={() => setShowLogos(true)}>logos</button>
+          <button
+            className={showLogos && "selected"}
+            onClick={() => handleClickEvent("", true)}
+          >
+            logos
+          </button>
         </div>
       </div>
       {!showLogos && (

@@ -1,9 +1,14 @@
 import React from "react"
 import styled from "styled-components"
-import { breakpointSmall } from "../variables"
+import { breakpointSmall, black, grey } from "../variables"
 import { useStaticQuery, graphql } from "gatsby"
 
-const ProjectsFilter = ({ setProjectCategoryFilter }) => {
+const ProjectsFilter = ({
+  projectCategoryFilter,
+  setProjectCategoryFilter,
+  setDisplayProjectsGrid,
+  displayProjectsGrid,
+}) => {
   const data = useStaticQuery(graphql`
     {
       allPrismicCategory {
@@ -26,6 +31,7 @@ const ProjectsFilter = ({ setProjectCategoryFilter }) => {
         <h3>work</h3>
         <div>
           <button
+            className={projectCategoryFilter === "all" && "selected"}
             onClick={() => setProjectCategoryFilter("all")}
             onKeyDown={() => setProjectCategoryFilter("all")}
           >
@@ -34,6 +40,10 @@ const ProjectsFilter = ({ setProjectCategoryFilter }) => {
 
           {categories.map((category, index) => (
             <button
+              className={
+                projectCategoryFilter.toLowerCase() ===
+                  category.node.data.category.toLowerCase() && "selected"
+              }
               key={index}
               onClick={() =>
                 setProjectCategoryFilter(category.node.data.category)
@@ -48,8 +58,14 @@ const ProjectsFilter = ({ setProjectCategoryFilter }) => {
         </div>
       </div>
       <div className="display-btn-container">
-        <GridBtn />
-        <StaggeredBtn />
+        <GridBtn
+          displayProjectsGrid={displayProjectsGrid}
+          setDisplayProjectsGrid={setDisplayProjectsGrid}
+        />
+        <StaggeredBtn
+          displayProjectsGrid={displayProjectsGrid}
+          setDisplayProjectsGrid={setDisplayProjectsGrid}
+        />
       </div>
     </FilterContainer>
   )
@@ -65,6 +81,7 @@ const FilterContainer = styled.div`
   padding: 0 20px;
   display: flex;
   margin-bottom: 20px;
+  z-index: 100;
 
   @media (min-width: ${breakpointSmall}) {
     padding: 0 50px;
@@ -92,6 +109,11 @@ const FilterContainer = styled.div`
         line-height: 1.5;
         text-transform: uppercase;
         cursor: pointer;
+        color: ${grey};
+
+        &.selected {
+          color: ${black};
+        }
 
         &:focus {
           outline: none;
@@ -104,17 +126,27 @@ const FilterContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
+
+    svg {
+      fill: ${grey};
+
+      &.selected {
+        fill: ${black};
+      }
+    }
   }
 `
 
 // Grid Btn
-const GridBtn = () => {
+const GridBtn = ({ setDisplayProjectsGrid, displayProjectsGrid }) => {
   return (
     <svg
+      className={displayProjectsGrid && "selected"}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       viewBox="0 0 24 24"
+      onClick={() => setDisplayProjectsGrid(true)}
     >
       <path
         d="M4-185h6v6H4Zm9,0h6v6H13Zm9,0h6v6H22ZM4-176h6v6H4Zm9,0h6v6H13Zm9,0h6v6H22ZM4-167h6v6H4Zm9,0h6v6H13Zm9,0h6v6H22Z"
@@ -125,9 +157,11 @@ const GridBtn = () => {
 }
 
 // Staggered Btn
-const StaggeredBtn = () => {
+const StaggeredBtn = ({ setDisplayProjectsGrid, displayProjectsGrid }) => {
   return (
     <svg
+      className={!displayProjectsGrid && "selected"}
+      onClick={() => setDisplayProjectsGrid(false)}
       xmlns="http://www.w3.org/2000/svg"
       width="23.132"
       height="24"

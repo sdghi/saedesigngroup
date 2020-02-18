@@ -6,6 +6,7 @@ import ProjectsFilter from "../components/projectsFilter"
 import styled from "styled-components"
 import ProjectImageWithTitle from "../components/projectImageWithTitle"
 import { breakpointSmall, breakpointMedium, pink, yellow } from "../variables"
+import { Container } from "../elements"
 import { myContext } from "../provider"
 import HeroTextFilterItem from "../components/heroTextFilterItem"
 
@@ -50,6 +51,7 @@ const IndexPage = ({ data }) => {
   const [scrollWindowHeight, setScrollWindowHeight] = useState(0)
   const [startScroll, setStartScroll] = useState(false)
   const [projectCategoryFilter, setProjectCategoryFilter] = useState("all")
+  const [displayProjectsGrid, setDisplayProjectsGrid] = useState(false)
 
   const { setCursorElement } = useContext(myContext)
 
@@ -102,15 +104,24 @@ const IndexPage = ({ data }) => {
           </HomeHero>
           <ProjectsSection>
             <ProjectsFilter
+              projectCategoryFilter={projectCategoryFilter}
               setProjectCategoryFilter={setProjectCategoryFilter}
+              setDisplayProjectsGrid={setDisplayProjectsGrid}
+              displayProjectsGrid={displayProjectsGrid}
             />
-            {projects.map(project => (
-              <ProjectImageWithTitle
-                key={project.node.uid}
-                project={project}
-                projectCategoryFilter={projectCategoryFilter}
-              />
-            ))}
+            <ProjectsContainer
+              display={displayProjectsGrid ? "grid" : "block"}
+              padding="0 15%"
+            >
+              {projects.map(project => (
+                <ProjectImageWithTitle
+                  displayProjectsGrid={displayProjectsGrid}
+                  key={project.node.uid}
+                  project={project}
+                  projectCategoryFilter={projectCategoryFilter}
+                />
+              ))}
+            </ProjectsContainer>
           </ProjectsSection>
         </Layout>
       )}
@@ -119,6 +130,12 @@ const IndexPage = ({ data }) => {
 }
 
 export default IndexPage
+
+const ProjectsContainer = styled(Container)`
+  display: ${props => props.display};
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+`
 
 const HomeHero = styled.section`
   height: calc(100vh - 7vh);

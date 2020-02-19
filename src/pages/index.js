@@ -72,10 +72,11 @@ const IndexPage = ({ data }) => {
 
     // If start scroll is true scroll down the height of the first section
     // Scroll down the window
-    window.scroll({
-      top: startScroll && scrollWindowHeight,
-      behavior: "smooth",
-    })
+    startScroll &&
+      window.scroll({
+        top: scrollWindowHeight,
+        behavior: "smooth",
+      })
 
     // Reset the scroll in case the user scrolls back up
     setStartScroll(false)

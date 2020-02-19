@@ -27,11 +27,11 @@ const Logos = () => {
                       }
                     }
                   }
-                  link_to_project {
-                    document {
-                      uid
-                    }
-                  }
+                  # link_to_project {
+                  #   document {
+                  #     uid
+                  #   }
+                  # }
                 }
               }
             }

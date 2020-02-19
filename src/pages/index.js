@@ -169,13 +169,13 @@ const HomeHero = styled.section`
 `
 
 const HeroText = styled.h1`
-  font-size: 48px;
+  font-size: 24px;
   margin: 0 auto;
   width: fit-content;
   max-width: 1400px;
   font-weight: 300;
   color: ${pink};
-  padding: 0 50px;
+  padding: 0 20px;
 
   strong {
     cursor: pointer;
@@ -185,6 +185,7 @@ const HeroText = styled.h1`
 
   @media (min-width: ${breakpointSmall}) {
     font-size: 64px;
+    padding: 0 50px;
   }
 
   @media (min-width: ${breakpointMedium}) {

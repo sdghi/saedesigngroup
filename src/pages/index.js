@@ -10,6 +10,7 @@ import { Container } from "../elements"
 import { myContext } from "../provider"
 import HeroTextFilterItem from "../components/heroTextFilterItem"
 import Logos from "../components/logos"
+import ProjectCategoryInfo from "../components/projectCategoryInfo"
 
 export const query = graphql`
   {
@@ -119,6 +120,10 @@ const IndexPage = ({ data }) => {
           showLogos={showLogos}
         />
         {showLogos && <Logos />}
+        {/* Show the project category info it isn't all  and logos aren't active */}
+        {projectCategoryFilter !== "all" && !showLogos && (
+          <ProjectCategoryInfo projectCategoryFilter={projectCategoryFilter} />
+        )}
         {!showLogos && (
           <ProjectsContainer
             display={displayProjectsGrid ? "grid" : "block"}

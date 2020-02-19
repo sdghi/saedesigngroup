@@ -39,7 +39,7 @@ const ProjectsFilter = ({
         <h3>work</h3>
         <div>
           <button
-            className={projectCategoryFilter === "all" && "selected"}
+            className={projectCategoryFilter === "all" ? "selected" : null}
             onClick={() => handleClickEvent("all")}
             onKeyDown={() => handleClickEvent("all")}
           >
@@ -50,7 +50,9 @@ const ProjectsFilter = ({
             <button
               className={
                 projectCategoryFilter.toLowerCase() ===
-                  category.node.data.category.toLowerCase() && "selected"
+                category.node.data.category.toLowerCase()
+                  ? "selected"
+                  : null
               }
               key={index}
               onClick={() => handleClickEvent(category.node.data.category)}
@@ -60,7 +62,7 @@ const ProjectsFilter = ({
             </button>
           ))}
           <button
-            className={showLogos && "selected"}
+            className={showLogos ? "selected" : null}
             onClick={() => handleClickEvent("", true)}
           >
             logos
@@ -153,7 +155,7 @@ const FilterContainer = styled.div`
 const GridBtn = ({ setDisplayProjectsGrid, displayProjectsGrid }) => {
   return (
     <svg
-      className={displayProjectsGrid && "selected"}
+      className={displayProjectsGrid ? "selected" : null}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -172,7 +174,7 @@ const GridBtn = ({ setDisplayProjectsGrid, displayProjectsGrid }) => {
 const StaggeredBtn = ({ setDisplayProjectsGrid, displayProjectsGrid }) => {
   return (
     <svg
-      className={!displayProjectsGrid && "selected"}
+      className={!displayProjectsGrid ? "selected" : null}
       onClick={() => setDisplayProjectsGrid(false)}
       xmlns="http://www.w3.org/2000/svg"
       width="23.132"

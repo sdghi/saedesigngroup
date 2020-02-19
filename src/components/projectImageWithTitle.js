@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import Link from "gatsby-plugin-transition-link"
-import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 import { breakpointSmall } from "../variables"
 import { ImageContainer } from "../elements"

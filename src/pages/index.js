@@ -79,7 +79,7 @@ const IndexPage = ({ data }) => {
 
     // Reset the scroll in case the user scrolls back up
     setStartScroll(false)
-  }, [scrollWindowHeight, startScroll])
+  }, [scrollWindowHeight, setScrollWindowHeight, startScroll])
 
   return (
     <Layout>
@@ -121,9 +121,11 @@ const IndexPage = ({ data }) => {
         />
         {showLogos && <Logos />}
         {/* Show the project category info it isn't all  and logos aren't active */}
+        {/* Right now doesn't work if project filter category is clicked */}
         {projectCategoryFilter !== "all" && !showLogos && (
           <ProjectCategoryInfo projectCategoryFilter={projectCategoryFilter} />
         )}
+
         {!showLogos && (
           <ProjectsContainer
             display={displayProjectsGrid ? "grid" : "block"}

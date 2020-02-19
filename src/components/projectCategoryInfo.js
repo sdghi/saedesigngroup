@@ -34,7 +34,6 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
     }
   `)
 
-  //   console.log("data", data.allPrismicCategory.edges)
   return (
     <>
       {data.allPrismicCategory.edges.map(item => {
@@ -51,6 +50,8 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
             </CategoryInfo>
           )
         }
+
+        return null
       })}
     </>
   )

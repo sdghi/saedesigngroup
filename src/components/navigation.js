@@ -1,14 +1,17 @@
-import React, { useRef } from "react"
+import React, { useRef, useContext } from "react"
 import Link from "gatsby-plugin-transition-link"
 import { animated, useTrail, useChain, config, useSpring } from "react-spring"
 import styled from "styled-components"
 import { pink, yellow, black } from "../variables"
+import { myContext } from "../provider"
 
 const items = ["", "services", "about", "contact"]
 
 const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
   const springRef = useRef()
   const transitionRef = useRef()
+
+  const { scrollWindowHeight } = useContext(myContext)
 
   const trails = useTrail(items.length, {
     ref: transitionRef,
@@ -38,6 +41,22 @@ const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
 
   useChain(isNavOpen ? [springRef, transitionRef] : [transitionRef, springRef])
 
+  const handleNavClick = value => {
+    setNav(false)
+
+    // If the value is work since the initial value is ""
+    if (value === "") {
+      // Set slight delay for the scroll animation
+      setTimeout(() => {
+        // Scroll down the window
+        window.scroll({
+          top: scrollWindowHeight,
+          behavior: "smooth",
+        })
+      }, 500)
+    }
+  }
+
   return (
     <Nav style={toggle}>
       <ul>
@@ -45,7 +64,7 @@ const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
           <animated.li
             key={items[index]}
             style={animation}
-            onClick={() => setNav(false)}
+            onClick={() => handleNavClick(items[index])}
             onMouseEnter={() =>
               setCursorElement(
                 items[index] === ""

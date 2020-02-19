@@ -60,6 +60,8 @@ const IndexPage = ({ data }) => {
     setScrollWindowHeight,
   } = useContext(myContext)
 
+  const context = useContext(myContext)
+
   useEffect(() => {
     setCursorElement({ initial: "initial" })
   }, [setCursorElement])
@@ -79,66 +81,62 @@ const IndexPage = ({ data }) => {
   }, [scrollWindowHeight, startScroll])
 
   return (
-    <myContext.Consumer>
-      {context => (
-        <Layout>
-          <SEO title="Home" />
-          <HomeHero ref={heroRef}>
-            <HeroText>
-              Sae what you mean to sae, with SaeDesignGroup. <br />
-              Delightful{" "}
-              <HeroTextFilterItem
-                filterValue="branding"
-                newCursorElement="branding"
-                content="branding"
-                context={context}
-                setStartScroll={setStartScroll}
-                setProjectCategoryFilter={setProjectCategoryFilter}
-                setShowLogos={setShowLogos}
+    <Layout>
+      <SEO title="Home" />
+      <HomeHero ref={heroRef}>
+        <HeroText>
+          Sae what you mean to sae, with SaeDesignGroup. <br />
+          Delightful{" "}
+          <HeroTextFilterItem
+            filterValue="branding"
+            newCursorElement="branding"
+            content="branding"
+            context={context}
+            setStartScroll={setStartScroll}
+            setProjectCategoryFilter={setProjectCategoryFilter}
+            setShowLogos={setShowLogos}
+          />
+          ,{" "}
+          <HeroTextFilterItem
+            filterValue="packaging"
+            newCursorElement="packaging"
+            content="packaging"
+            context={context}
+            setStartScroll={setStartScroll}
+            setProjectCategoryFilter={setProjectCategoryFilter}
+            setShowLogos={setShowLogos}
+          />{" "}
+          design (and more) by good people
+        </HeroText>
+      </HomeHero>
+      <ProjectsSection>
+        <ProjectsFilter
+          projectCategoryFilter={projectCategoryFilter}
+          setProjectCategoryFilter={setProjectCategoryFilter}
+          setDisplayProjectsGrid={setDisplayProjectsGrid}
+          displayProjectsGrid={displayProjectsGrid}
+          setShowLogos={setShowLogos}
+          showLogos={showLogos}
+        />
+        {showLogos && <Logos />}
+        {!showLogos && (
+          <ProjectsContainer
+            display={displayProjectsGrid ? "grid" : "block"}
+            padding="0 5%"
+            paddingMd="0 15%"
+          >
+            {projects.map(project => (
+              <ProjectImageWithTitle
+                displayProjectsGrid={displayProjectsGrid}
+                key={project.node.uid}
+                project={project}
+                projectCategoryFilter={projectCategoryFilter}
               />
-              ,{" "}
-              <HeroTextFilterItem
-                filterValue="packaging"
-                newCursorElement="packaging"
-                content="packaging"
-                context={context}
-                setStartScroll={setStartScroll}
-                setProjectCategoryFilter={setProjectCategoryFilter}
-                setShowLogos={setShowLogos}
-              />{" "}
-              design (and more) by good people
-            </HeroText>
-          </HomeHero>
-          <ProjectsSection>
-            <ProjectsFilter
-              projectCategoryFilter={projectCategoryFilter}
-              setProjectCategoryFilter={setProjectCategoryFilter}
-              setDisplayProjectsGrid={setDisplayProjectsGrid}
-              displayProjectsGrid={displayProjectsGrid}
-              setShowLogos={setShowLogos}
-              showLogos={showLogos}
-            />
-            {showLogos && <Logos />}
-            {!showLogos && (
-              <ProjectsContainer
-                display={displayProjectsGrid ? "grid" : "block"}
-                padding="0 5%"
-                paddingMd="0 15%"
-              >
-                {projects.map(project => (
-                  <ProjectImageWithTitle
-                    displayProjectsGrid={displayProjectsGrid}
-                    key={project.node.uid}
-                    project={project}
-                    projectCategoryFilter={projectCategoryFilter}
-                  />
-                ))}
-              </ProjectsContainer>
-            )}
-          </ProjectsSection>
-        </Layout>
-      )}
-    </myContext.Consumer>
+            ))}
+          </ProjectsContainer>
+        )}
+      </ProjectsSection>
+    </Layout>
   )
 }
 

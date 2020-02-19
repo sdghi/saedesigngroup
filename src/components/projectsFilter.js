@@ -97,10 +97,6 @@ const FilterContainer = styled.div`
   margin-bottom: 20px;
   z-index: 100;
 
-  @media (min-width: ${breakpointSmall}) {
-    padding: 0 50px;
-  }
-
   .filter-categories {
     h3 {
       font-size: 24px;
@@ -137,15 +133,23 @@ const FilterContainer = styled.div`
   }
 
   .display-btn-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    display: none;
+  }
 
-    svg {
-      fill: ${grey};
+  @media (min-width: ${breakpointSmall}) {
+    padding: 0 50px;
 
-      &.selected {
-        fill: ${black};
+    .display-btn-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+
+      svg {
+        fill: ${grey};
+
+        &.selected {
+          fill: ${black};
+        }
       }
     }
   }

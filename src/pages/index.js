@@ -49,25 +49,28 @@ const IndexPage = ({ data }) => {
 
   const heroRef = useRef(null)
 
-  const [scrollWindowHeight, setScrollWindowHeight] = useState(0)
   const [startScroll, setStartScroll] = useState(false)
   const [projectCategoryFilter, setProjectCategoryFilter] = useState("all")
   const [displayProjectsGrid, setDisplayProjectsGrid] = useState(false)
   const [showLogos, setShowLogos] = useState(false)
 
-  const { setCursorElement } = useContext(myContext)
+  const {
+    setCursorElement,
+    scrollWindowHeight,
+    setScrollWindowHeight,
+  } = useContext(myContext)
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
   }, [setCursorElement])
 
   useEffect(() => {
-    // If start scroll is true scroll down the height of the first section
-    startScroll && setScrollWindowHeight(heroRef.current.offsetHeight)
+    setScrollWindowHeight(heroRef.current.offsetHeight)
 
+    // If start scroll is true scroll down the height of the first section
     // Scroll down the window
     window.scroll({
-      top: scrollWindowHeight,
+      top: startScroll && scrollWindowHeight,
       behavior: "smooth",
     })
 

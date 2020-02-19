@@ -1,6 +1,5 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { ImageContainer } from "../elements"
 import { breakpointSmall } from "../variables"
 import styled from "styled-components"
 
@@ -20,13 +19,7 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
               logos {
                 logo {
                   alt
-                  localFile {
-                    childImageSharp {
-                      fluid {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
+                  url
                 }
               }
             }
@@ -50,15 +43,7 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
               {logos.length > 1 && (
                 <div className="hotel-logos">
                   {logos.map((logo, i) => (
-                    <ImageContainer
-                      height="50px"
-                      heightMd="100px"
-                      width="50px"
-                      widthMd="100px"
-                      key={i}
-                      alt={logo.logo.alt}
-                      fluid={logo.logo.localFile.childImageSharp.fluid}
-                    />
+                    <img src={logo.logo.url} alt={logo.logo.alt} />
                   ))}
                 </div>
               )}
@@ -83,10 +68,8 @@ const CategoryInfo = styled.div`
     margin: 50px auto;
     width: 90%;
     display: flex;
-
-    div {
-      border-radius: 50%;
-    }
+    align-items: flex-end;
+    justify-content: space-between;
   }
 
   @media (min-width: ${breakpointSmall}) {

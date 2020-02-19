@@ -48,7 +48,12 @@ const Logos = () => {
   return (
     <LogosContainer padding="0 5%" paddingMd="0 15%">
       {logosData.map(logo => (
-        <div key={logo.id} onClick={() => setShowLightbox(true)}>
+        <div
+          role="button"
+          key={logo.id}
+          onClick={() => setShowLightbox(true)}
+          onKeyDown={() => setShowLightbox(true)}
+        >
           <ImageContainer
             alt={logo.primary.logo_image.alt}
             fluid={logo.primary.logo_image.localFile.childImageSharp.fluid}

@@ -10,6 +10,7 @@ import { Container } from "../elements"
 import { myContext } from "../provider"
 import HeroTextFilterItem from "../components/heroTextFilterItem"
 import Logos from "../components/logos"
+import ProjectCategoryInfo from "../components/projectCategoryInfo"
 
 export const query = graphql`
   {
@@ -49,93 +50,100 @@ const IndexPage = ({ data }) => {
 
   const heroRef = useRef(null)
 
-  const [scrollWindowHeight, setScrollWindowHeight] = useState(0)
   const [startScroll, setStartScroll] = useState(false)
   const [projectCategoryFilter, setProjectCategoryFilter] = useState("all")
   const [displayProjectsGrid, setDisplayProjectsGrid] = useState(false)
   const [showLogos, setShowLogos] = useState(false)
 
-  const { setCursorElement } = useContext(myContext)
+  const {
+    setCursorElement,
+    scrollWindowHeight,
+    setScrollWindowHeight,
+  } = useContext(myContext)
+
+  const context = useContext(myContext)
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
   }, [setCursorElement])
 
   useEffect(() => {
-    // If start scroll is true scroll down the height of the first section
-    startScroll && setScrollWindowHeight(heroRef.current.offsetHeight)
+    setScrollWindowHeight(heroRef.current.offsetHeight)
 
+    // If start scroll is true scroll down the height of the first section
     // Scroll down the window
     window.scroll({
-      top: scrollWindowHeight,
+      top: startScroll && scrollWindowHeight,
       behavior: "smooth",
     })
 
     // Reset the scroll in case the user scrolls back up
     setStartScroll(false)
-  }, [scrollWindowHeight, startScroll])
+  }, [scrollWindowHeight, setScrollWindowHeight, startScroll])
 
   return (
-    <myContext.Consumer>
-      {context => (
-        <Layout>
-          <SEO title="Home" />
-          <HomeHero ref={heroRef}>
-            <HeroText>
-              Sae what you mean to sae, with SaeDesignGroup. <br />
-              Delightful{" "}
-              <HeroTextFilterItem
-                filterValue="branding"
-                newCursorElement="branding"
-                content="branding"
-                context={context}
-                setStartScroll={setStartScroll}
-                setProjectCategoryFilter={setProjectCategoryFilter}
-                setShowLogos={setShowLogos}
+    <Layout>
+      <SEO title="Home" />
+      <HomeHero ref={heroRef}>
+        <HeroText>
+          Sae what you mean to sae, with SaeDesignGroup. <br />
+          Delightful{" "}
+          <HeroTextFilterItem
+            filterValue="branding"
+            newCursorElement="branding"
+            content="branding"
+            context={context}
+            setStartScroll={setStartScroll}
+            setProjectCategoryFilter={setProjectCategoryFilter}
+            setShowLogos={setShowLogos}
+          />
+          ,{" "}
+          <HeroTextFilterItem
+            filterValue="packaging"
+            newCursorElement="packaging"
+            content="packaging"
+            context={context}
+            setStartScroll={setStartScroll}
+            setProjectCategoryFilter={setProjectCategoryFilter}
+            setShowLogos={setShowLogos}
+          />{" "}
+          design (and more) by good people
+        </HeroText>
+      </HomeHero>
+      <ProjectsSection>
+        <ProjectsFilter
+          projectCategoryFilter={projectCategoryFilter}
+          setProjectCategoryFilter={setProjectCategoryFilter}
+          setDisplayProjectsGrid={setDisplayProjectsGrid}
+          displayProjectsGrid={displayProjectsGrid}
+          setShowLogos={setShowLogos}
+          showLogos={showLogos}
+        />
+        {showLogos && <Logos />}
+        {/* Show the project category info it isn't all  and logos aren't active */}
+        {/* Right now doesn't work if project filter category is clicked */}
+        {projectCategoryFilter !== "all" && !showLogos && (
+          <ProjectCategoryInfo projectCategoryFilter={projectCategoryFilter} />
+        )}
+
+        {!showLogos && (
+          <ProjectsContainer
+            display={displayProjectsGrid ? "grid" : "block"}
+            padding="0 5%"
+            paddingMd="0 15%"
+          >
+            {projects.map(project => (
+              <ProjectImageWithTitle
+                displayProjectsGrid={displayProjectsGrid}
+                key={project.node.uid}
+                project={project}
+                projectCategoryFilter={projectCategoryFilter}
               />
-              ,{" "}
-              <HeroTextFilterItem
-                filterValue="packaging"
-                newCursorElement="packaging"
-                content="packaging"
-                context={context}
-                setStartScroll={setStartScroll}
-                setProjectCategoryFilter={setProjectCategoryFilter}
-                setShowLogos={setShowLogos}
-              />{" "}
-              design (and more) by good people
-            </HeroText>
-          </HomeHero>
-          <ProjectsSection>
-            <ProjectsFilter
-              projectCategoryFilter={projectCategoryFilter}
-              setProjectCategoryFilter={setProjectCategoryFilter}
-              setDisplayProjectsGrid={setDisplayProjectsGrid}
-              displayProjectsGrid={displayProjectsGrid}
-              setShowLogos={setShowLogos}
-              showLogos={showLogos}
-            />
-            {showLogos && <Logos />}
-            {!showLogos && (
-              <ProjectsContainer
-                display={displayProjectsGrid ? "grid" : "block"}
-                padding="0 5%"
-                paddingMd="0 15%"
-              >
-                {projects.map(project => (
-                  <ProjectImageWithTitle
-                    displayProjectsGrid={displayProjectsGrid}
-                    key={project.node.uid}
-                    project={project}
-                    projectCategoryFilter={projectCategoryFilter}
-                  />
-                ))}
-              </ProjectsContainer>
-            )}
-          </ProjectsSection>
-        </Layout>
-      )}
-    </myContext.Consumer>
+            ))}
+          </ProjectsContainer>
+        )}
+      </ProjectsSection>
+    </Layout>
   )
 }
 

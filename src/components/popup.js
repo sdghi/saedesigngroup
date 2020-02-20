@@ -44,7 +44,11 @@ const PopupContainer = styled(animated.div)`
   button {
     position: absolute;
     top: 5%;
-    left: 5%;
+    right: 5%;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
   }
 `
 

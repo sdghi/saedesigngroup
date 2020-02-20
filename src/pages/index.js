@@ -72,10 +72,11 @@ const IndexPage = ({ data }) => {
 
     // If start scroll is true scroll down the height of the first section
     // Scroll down the window
-    window.scroll({
-      top: startScroll && scrollWindowHeight,
-      behavior: "smooth",
-    })
+    startScroll &&
+      window.scroll({
+        top: scrollWindowHeight,
+        behavior: "smooth",
+      })
 
     // Reset the scroll in case the user scrolls back up
     setStartScroll(false)
@@ -168,13 +169,13 @@ const HomeHero = styled.section`
 `
 
 const HeroText = styled.h1`
-  font-size: 48px;
+  font-size: 24px;
   margin: 0 auto;
   width: fit-content;
   max-width: 1400px;
   font-weight: 300;
   color: ${pink};
-  padding: 0 50px;
+  padding: 0 20px;
 
   strong {
     cursor: pointer;
@@ -184,6 +185,7 @@ const HeroText = styled.h1`
 
   @media (min-width: ${breakpointSmall}) {
     font-size: 64px;
+    padding: 0 50px;
   }
 
   @media (min-width: ${breakpointMedium}) {

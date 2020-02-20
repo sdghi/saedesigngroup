@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
-import { useSpring, animated } from "react-spring"
 import { ImageContainer } from "../elements"
 
 const Popup = ({ showPopup, setShowPopup, lightBoxImage }) => {
@@ -10,12 +9,8 @@ const Popup = ({ showPopup, setShowPopup, lightBoxImage }) => {
     })
   }, [showPopup, setShowPopup])
 
-  const fadeIn = useSpring({
-    opacity: showPopup ? 1 : 0,
-  })
-
   return (
-    <PopupContainer style={fadeIn}>
+    <PopupContainer>
       <button onClick={() => setShowPopup(false)}>close</button>
       <ImageContainer
         alt={lightBoxImage.primary.logo_image.alt}
@@ -30,7 +25,7 @@ const Popup = ({ showPopup, setShowPopup, lightBoxImage }) => {
   )
 }
 
-const PopupContainer = styled(animated.div)`
+const PopupContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;

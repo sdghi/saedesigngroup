@@ -22,7 +22,9 @@ const Popup = ({ showPopup, setShowPopup, lightBoxImage }) => {
         fluid={lightBoxImage.primary.logo_image.localFile.childImageSharp.fluid}
         width="80%"
         widthMd="60%"
+        maxWidth="1200px"
         height="400px"
+        objectFit="contain"
       />
     </PopupContainer>
   )

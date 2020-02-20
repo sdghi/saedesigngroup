@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Link from "gatsby-plugin-transition-link"
+import { Link } from "gatsby"
 import styled from "styled-components"
 import { breakpointSmall } from "../variables"
 import { ImageContainer } from "../elements"

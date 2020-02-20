@@ -44,6 +44,12 @@ const Logos = () => {
   const logosData = data.allPrismicLogos.edges[0].node.data.body
 
   const [showLightbox, setShowLightbox] = useState(false)
+  const [lightBoxImage, setLightboxImage] = useState(null)
+
+  const handleLightBox = logo => {
+    setShowLightbox(true)
+    setLightboxImage(logo)
+  }
 
   return (
     <LogosContainer padding="0 5%" paddingMd="0 15%">
@@ -51,7 +57,7 @@ const Logos = () => {
         <div
           role="button"
           key={logo.id}
-          onClick={() => setShowLightbox(true)}
+          onClick={() => handleLightBox(logo)}
           onKeyDown={() => setShowLightbox(true)}
         >
           <ImageContainer
@@ -62,7 +68,11 @@ const Logos = () => {
         </div>
       ))}
       {showLightbox && (
-        <Popup showPopup={showLightbox} setShowPopup={setShowLightbox} />
+        <Popup
+          showPopup={showLightbox}
+          setShowPopup={setShowLightbox}
+          lightBoxImage={lightBoxImage}
+        />
       )}
     </LogosContainer>
   )

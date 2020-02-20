@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { breakpointSmall } from "../../variables"
-import Img from "gatsby-image"
+import Img from "gatsby-image/withIEPolyfill"
 
 export const Container = styled.section`
   padding: ${props => (props.padding ? props.padding : "0 5%")};

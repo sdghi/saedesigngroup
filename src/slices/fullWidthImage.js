@@ -1,5 +1,6 @@
 import React from "react"
 import { ImageContainer, Container } from "../elements"
+import { loadingContentColor } from "../variables"
 
 const FullWidthImage = ({ slice }) => {
   const { full_image } = slice.primary
@@ -15,7 +16,7 @@ const FullWidthImage = ({ slice }) => {
         maxWidth="100%"
         fluid={imageSrc}
         alt={full_image.alt}
-        fadeIn={false}
+        backgroundColor={loadingContentColor}
       />
     </Container>
   )

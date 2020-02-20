@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Link from "gatsby-plugin-transition-link"
+import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { black, pink, yellow } from "../variables"

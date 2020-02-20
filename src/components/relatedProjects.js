@@ -1,5 +1,5 @@
 import React from "react"
-import Link from "gatsby-plugin-transition-link"
+import { Link } from "gatsby"
 import styled from "styled-components"
 import { HeadingTwo } from "../elements"
 import { breakpointSmall } from "../variables"

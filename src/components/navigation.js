@@ -1,5 +1,5 @@
 import React, { useRef, useContext } from "react"
-import Link from "gatsby-plugin-transition-link"
+import { Link } from "gatsby"
 import { animated, useTrail, useChain, config, useSpring } from "react-spring"
 import styled from "styled-components"
 import { pink, yellow, black } from "../variables"

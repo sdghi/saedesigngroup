@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Link from "gatsby-plugin-transition-link"
+import { Link } from "gatsby"
 import { breakpointSmall, breakpointMedium, black } from "../variables"
 
 const Footer = () => {

@@ -8,6 +8,7 @@ const ProjectImageWithTitle = ({
   project,
   projectCategoryFilter,
   displayProjectsGrid,
+  setCursorElement,
 }) => {
   const [showProject, setShowProject] = useState(false)
 
@@ -39,15 +40,28 @@ const ProjectImageWithTitle = ({
       {showProject && (
         <ProjetContainer
           key={project.uid}
-          widthMd={displayProjectsGrid ? "100%" : "80%"}
+          displayProjectsGrid={displayProjectsGrid}
+          onMouseOver={() => setCursorElement({ selected: "selected" })}
+          onMouseLeave={() => setCursorElement({ initial: "initial" })}
+          // Adjust sizes of non grid according to cms
+          heightMd={displayProjectsGrid ? "300px" : `${400 * 1}px`}
+          widthMd={displayProjectsGrid ? "100%" : `${60 * 1}%`}
+          // Top will be directly affected by the top property in the cms
+          top={displayProjectsGrid ? "0" : 0 * 1}
+          //  Left will be multiplied by the column property in the cms
+          left={displayProjectsGrid ? "0" : 0 * 1}
+          // Right will be multiplied by the column property in the cms
+          right={displayProjectsGrid ? "0" : 0 * 1}
         >
           <Link to={`/${slug}`}>
             <ImageContainer
+              width="100%"
+              widthMd="100%"
+              heightMd="100%"
               fluid={imageSrc}
               alt={imageAlt}
-              heightMd={displayProjectsGrid ? "300px" : "auto"}
             />
-            {projectName}
+            <h2>{projectName}</h2>
           </Link>
         </ProjetContainer>
       )}
@@ -59,13 +73,37 @@ export default ProjectImageWithTitle
 
 const ProjetContainer = styled.div`
   position: relative;
-  width: 100%;
   margin: 0 auto 0 auto;
-  top: ${props => `${props.top}em`};
-  left: ${props => `${props.left}em`};
-  right: ${props => `${props.right}em`};
+  width: 100%;
+
+  h2 {
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+
+  ${ImageContainer} {
+    filter: brightness(0.8);
+    transition: all 0.2s ease-out;
+  }
+
+  &:hover {
+    ${ImageContainer} {
+      filter: brightness(1);
+      transition: all 0.2s ease-in;
+    }
+  }
 
   @media (min-width: ${breakpointSmall}) {
-    width: ${props => props.width};
+    margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
+    margin-top: ${props => `${props.top}em`};
+    margin-left: ${props => `${props.left}em`};
+    margin-right: ${props => `${props.right}em`};
+    width: ${props => props.widthMd};
+    height: ${props => props.heightMd};
   }
 `

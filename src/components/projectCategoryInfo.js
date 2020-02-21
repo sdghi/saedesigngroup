@@ -4,8 +4,6 @@ import { breakpointSmall, breakpointMedium } from "../variables"
 import styled from "styled-components"
 
 const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
-  console.log("project category filter", projectCategoryFilter)
-
   const data = useStaticQuery(graphql`
     {
       allPrismicCategory {
@@ -35,7 +33,7 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
         const id = item.node.id
         const { category, description, logos } = item.node.data
 
-        if (projectCategoryFilter === category) {
+        if (projectCategoryFilter.toLowerCase() === category.toLowerCase()) {
           return (
             <CategoryInfo key={id}>
               <h2>{category}</h2>
@@ -63,6 +61,18 @@ const CategoryInfo = styled.div`
   text-align: center;
   margin-bottom: 50px;
   width: 100%;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 300;
+    max-width: 550px;
+    margin: 0 auto;
+  }
 
   .hotel-logos {
     margin: 50px auto;

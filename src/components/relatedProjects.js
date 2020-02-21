@@ -77,7 +77,7 @@ export default RelatedProjects
 
 const RelatedWrapper = styled.div`
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
 
   a {
     margin-right: 30px;
@@ -87,6 +87,7 @@ const RelatedWrapper = styled.div`
     height: 280px;
     object-fit: cover;
     width: 280px;
+    filter: brightness(0.9);
   }
 
   @media (min-width: ${breakpointSmall}) {

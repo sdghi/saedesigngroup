@@ -61,8 +61,6 @@ const IndexPage = ({ data }) => {
     setScrollWindowHeight,
   } = useContext(myContext)
 
-  const context = useContext(myContext)
-
   useEffect(() => {
     setCursorElement({ initial: "initial" })
   }, [setCursorElement])
@@ -93,7 +91,7 @@ const IndexPage = ({ data }) => {
             filterValue="branding"
             newCursorElement="branding"
             content="branding"
-            context={context}
+            setCursorElement={setCursorElement}
             setStartScroll={setStartScroll}
             setProjectCategoryFilter={setProjectCategoryFilter}
             setShowLogos={setShowLogos}
@@ -103,7 +101,7 @@ const IndexPage = ({ data }) => {
             filterValue="packaging"
             newCursorElement="packaging"
             content="packaging"
-            context={context}
+            setCursorElement={setCursorElement}
             setStartScroll={setStartScroll}
             setProjectCategoryFilter={setProjectCategoryFilter}
             setShowLogos={setShowLogos}
@@ -120,9 +118,9 @@ const IndexPage = ({ data }) => {
           setShowLogos={setShowLogos}
           showLogos={showLogos}
         />
-        {showLogos && <Logos />}
+        {showLogos && <Logos setCursorElement={setCursorElement} />}
+
         {/* Show the project category info it isn't all  and logos aren't active */}
-        {/* Right now doesn't work if project filter category is clicked */}
         {projectCategoryFilter !== "all" && !showLogos && (
           <ProjectCategoryInfo projectCategoryFilter={projectCategoryFilter} />
         )}
@@ -139,6 +137,7 @@ const IndexPage = ({ data }) => {
                 key={project.node.uid}
                 project={project}
                 projectCategoryFilter={projectCategoryFilter}
+                setCursorElement={setCursorElement}
               />
             ))}
           </ProjectsContainer>
@@ -156,7 +155,7 @@ const ProjectsContainer = styled(Container)`
 
   @media (min-width: ${breakpointSmall}) {
     display: ${props => props.display};
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
 `
 

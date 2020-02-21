@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
-import { useSpring, animated } from "react-spring"
 import { ImageContainer } from "../elements"
 
 const Popup = ({ showPopup, setShowPopup, lightBoxImage }) => {
@@ -10,27 +9,28 @@ const Popup = ({ showPopup, setShowPopup, lightBoxImage }) => {
     })
   }, [showPopup, setShowPopup])
 
-  const fadeIn = useSpring({
-    opacity: showPopup ? 1 : 0,
-  })
-
   return (
-    <PopupContainer style={fadeIn}>
-      <button onClick={() => setShowPopup(false)}>close</button>
-      <ImageContainer
-        alt={lightBoxImage.primary.logo_image.alt}
-        fluid={lightBoxImage.primary.logo_image.localFile.childImageSharp.fluid}
-        width="80%"
-        widthMd="60%"
-        maxWidth="1200px"
-        height="400px"
-        objectFit="contain"
-      />
+    <PopupContainer>
+      <div className="popup-content">
+        <button onClick={() => setShowPopup(false)}>close</button>
+        <ImageContainer
+          alt={lightBoxImage.primary.logo_image.alt}
+          fluid={
+            lightBoxImage.primary.logo_image.localFile.childImageSharp.fluid
+          }
+          width="100%"
+          widthMd="100%"
+          maxWidth="1200px"
+          height="100%"
+          heightMd="100%"
+          objectFit="contain"
+        />
+      </div>
     </PopupContainer>
   )
 }
 
-const PopupContainer = styled(animated.div)`
+const PopupContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -41,14 +41,21 @@ const PopupContainer = styled(animated.div)`
   display: grid;
   place-items: center;
 
-  button {
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
+  .popup-content {
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    height: fit-content;
+
+    button {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+    }
   }
 `
 

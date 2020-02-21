@@ -7,8 +7,8 @@ export const Cursor = styled.div.attrs(props => ({
     width: `${props.width}px`,
     height: `${props.height}px`,
     borderRadius: props.borderRadius,
-    left: `-${props.width / 2}px`,
-    top: `-${props.height / 2}px`,
+    top: props.posTop ? props.posTop : `-${props.height / 2}px`,
+    left: props.posLeft ? props.posLeft : `-${props.width / 2}px`,
     transform: `translate(${props.left}px, ${props.top}px)`,
   },
 }))`

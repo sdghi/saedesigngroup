@@ -5,6 +5,8 @@ export const myContext = React.createContext()
 const Provider = props => {
   const [cursorElement, setCursorElement] = useState({ initial: "initial" })
   const [scrollWindowHeight, setScrollWindowHeight] = useState(0)
+  const [xValue, setXValue] = useState(0)
+  const [yValue, setYValue] = useState(0)
 
   return (
     <myContext.Provider
@@ -13,6 +15,10 @@ const Provider = props => {
         setCursorElement,
         scrollWindowHeight,
         setScrollWindowHeight,
+        yValue,
+        setYValue,
+        xValue,
+        setXValue,
       }}
     >
       {props.children}

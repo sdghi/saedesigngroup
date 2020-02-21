@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { GlobalStyle } from "../utils"
@@ -18,9 +18,16 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const {
+    xValue,
+    yValue,
+    setXValue,
+    setYValue,
+    cursorElement,
+    setCursorElement,
+  } = useContext(myContext)
+
   const [showCursor, setShowCursor] = useState(false)
-  const [xValue, setXValue] = useState(0)
-  const [yValue, setYValue] = useState(0)
 
   const trackMouse = e => {
     const { clientX, clientY } = e
@@ -39,30 +46,26 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <myContext.Consumer>
-      {context => (
-        <div
-          onMouseMove={e => {
-            handleTrackCursor(e)
-          }}
-        >
-          <Header
-            siteTitle={data.site.siteMetadata.title}
-            setCursorElement={context.setCursorElement}
-          />
-          <GlobalStyle />
-          {showCursor && (
-            <CustomCursor
-              xValue={xValue}
-              yValue={yValue}
-              cursorElement={context.cursorElement}
-            />
-          )}
-          <main>{children}</main>
-          <Footer />
-        </div>
+    <div
+      onMouseMove={e => {
+        handleTrackCursor(e)
+      }}
+    >
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        setCursorElement={setCursorElement}
+      />
+      <GlobalStyle />
+      {showCursor && (
+        <CustomCursor
+          xValue={xValue}
+          yValue={yValue}
+          cursorElement={cursorElement}
+        />
       )}
-    </myContext.Consumer>
+      <main>{children}</main>
+      <Footer />
+    </div>
   )
 }
 

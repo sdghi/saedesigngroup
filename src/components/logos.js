@@ -21,7 +21,7 @@ const Logos = ({ setCursorElement }) => {
                     alt
                     localFile {
                       childImageSharp {
-                        fluid {
+                        fluid(quality: 90) {
                           ...GatsbyImageSharpFluid
                         }
                       }

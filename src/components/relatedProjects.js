@@ -87,6 +87,7 @@ const RelatedWrapper = styled.div`
     height: 280px;
     object-fit: cover;
     width: 280px;
+    filter: brightness(0.9);
   }
 
   @media (min-width: ${breakpointSmall}) {

@@ -40,6 +40,7 @@ const ProjectImageWithTitle = ({
       {showProject && (
         <ProjetContainer
           key={project.uid}
+          displayProjectsGrid={displayProjectsGrid}
           onMouseOver={() => setCursorElement({ selected: "selected" })}
           onMouseLeave={() => setCursorElement({ initial: "initial" })}
           // Adjust sizes of non grid according to cms
@@ -81,7 +82,7 @@ const ProjetContainer = styled.div`
     bottom: 20px;
     left: 20px;
     margin: 0;
-    font-size: 3rem;
+    font-size: 2rem;
     text-transform: uppercase;
   }
 
@@ -98,7 +99,7 @@ const ProjetContainer = styled.div`
   }
 
   @media (min-width: ${breakpointSmall}) {
-    margin-bottom: 50px;
+    margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
     margin-top: ${props => `${props.top}em`};
     margin-left: ${props => `${props.left}em`};
     margin-right: ${props => `${props.right}em`};

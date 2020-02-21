@@ -155,7 +155,7 @@ const ProjectsContainer = styled(Container)`
 
   @media (min-width: ${breakpointSmall}) {
     display: ${props => props.display};
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
 `
 

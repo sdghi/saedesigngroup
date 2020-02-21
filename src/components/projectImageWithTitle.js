@@ -8,6 +8,7 @@ const ProjectImageWithTitle = ({
   project,
   projectCategoryFilter,
   displayProjectsGrid,
+  setCursorElement,
 }) => {
   const [showProject, setShowProject] = useState(false)
 
@@ -40,6 +41,8 @@ const ProjectImageWithTitle = ({
         <ProjetContainer
           key={project.uid}
           widthMd={displayProjectsGrid ? "100%" : "80%"}
+          onMouseOver={() => setCursorElement({ selected: "selected" })}
+          onMouseLeave={() => setCursorElement({ initial: "initial" })}
         >
           <Link to={`/${slug}`}>
             <ImageContainer
@@ -47,7 +50,7 @@ const ProjectImageWithTitle = ({
               alt={imageAlt}
               heightMd={displayProjectsGrid ? "300px" : "auto"}
             />
-            {projectName}
+            <h2>{projectName}</h2>
           </Link>
         </ProjetContainer>
       )}
@@ -64,6 +67,26 @@ const ProjetContainer = styled.div`
   top: ${props => `${props.top}em`};
   left: ${props => `${props.left}em`};
   right: ${props => `${props.right}em`};
+
+  h2 {
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+  }
+
+  ${ImageContainer} {
+    filter: brightness(0.8);
+    transition: all 0.2s ease-out;
+  }
+
+  &:hover {
+    ${ImageContainer} {
+      filter: brightness(1);
+      transition: all 0.2s ease-in;
+    }
+  }
 
   @media (min-width: ${breakpointSmall}) {
     width: ${props => props.width};

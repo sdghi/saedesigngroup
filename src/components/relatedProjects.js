@@ -77,7 +77,7 @@ export default RelatedProjects
 
 const RelatedWrapper = styled.div`
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
 
   a {
     margin-right: 30px;

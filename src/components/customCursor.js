@@ -7,6 +7,7 @@ import ServicesCursor from "./cursors/servicesCursor"
 import AboutCursor from "./cursors/aboutCursor"
 import ContactCursor from "./cursors/contactCursor"
 import RelatedProjectCursor from "./cursors/relatedProjectsCursor"
+import SelectedCursor from "./cursors/selectedCursor"
 
 const CustomCursor = ({ xValue, yValue, cursorElement }) => {
   switch (Object.keys(cursorElement)[0]) {
@@ -24,6 +25,8 @@ const CustomCursor = ({ xValue, yValue, cursorElement }) => {
       return <AboutCursor xValue={xValue} yValue={yValue} />
     case "contact":
       return <ContactCursor xValue={xValue} yValue={yValue} />
+    case "selected":
+      return <SelectedCursor xValue={xValue} yValue={yValue} />
     case "related":
       return (
         <RelatedProjectCursor

@@ -5,7 +5,7 @@ import { breakpointSmall } from "../variables"
 import styled from "styled-components"
 import Popup from "../components/popup"
 
-const Logos = () => {
+const Logos = ({ setCursorElement }) => {
   const data = useStaticQuery(graphql`
     {
       allPrismicLogos {
@@ -59,6 +59,8 @@ const Logos = () => {
           key={logo.id}
           onClick={() => handleLightBox(logo)}
           onKeyDown={() => setShowLightbox(true)}
+          onMouseOver={() => setCursorElement({ selected: "selected" })}
+          onMouseLeave={() => setCursorElement({ initial: "initial" })}
         >
           <ImageContainer
             alt={logo.primary.logo_image.alt}

@@ -1,7 +1,7 @@
 import React from "react"
 
 const HeroTextFilterItem = ({
-  context,
+  setCursorElement,
   filterValue,
   newCursorElement,
   content,
@@ -20,9 +20,9 @@ const HeroTextFilterItem = ({
       role="button"
       tabIndex={0}
       onMouseEnter={() =>
-        context.setCursorElement({ [newCursorElement]: newCursorElement })
+        setCursorElement({ [newCursorElement]: newCursorElement })
       }
-      onMouseLeave={() => context.setCursorElement({ initial: "initial" })}
+      onMouseLeave={() => setCursorElement({ initial: "initial" })}
       onClick={() => handleProjectFilter(filterValue)}
       onKeyDown={() => handleProjectFilter(filterValue)}
     >

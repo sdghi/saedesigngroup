@@ -61,8 +61,6 @@ const IndexPage = ({ data }) => {
     setScrollWindowHeight,
   } = useContext(myContext)
 
-  const context = useContext(myContext)
-
   useEffect(() => {
     setCursorElement({ initial: "initial" })
   }, [setCursorElement])
@@ -121,8 +119,8 @@ const IndexPage = ({ data }) => {
           showLogos={showLogos}
         />
         {showLogos && <Logos setCursorElement={setCursorElement} />}
+
         {/* Show the project category info it isn't all  and logos aren't active */}
-        {/* Right now doesn't work if project filter category is clicked */}
         {projectCategoryFilter !== "all" && !showLogos && (
           <ProjectCategoryInfo projectCategoryFilter={projectCategoryFilter} />
         )}

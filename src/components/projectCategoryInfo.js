@@ -33,7 +33,7 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
         const id = item.node.id
         const { category, description, logos } = item.node.data
 
-        if (projectCategoryFilter === category) {
+        if (projectCategoryFilter === category.toLowerCase()) {
           return (
             <CategoryInfo key={id}>
               <h2>{category}</h2>

@@ -82,6 +82,7 @@ const ProjetContainer = styled.div`
     left: 20px;
     margin: 0;
     font-size: 3rem;
+    text-transform: uppercase;
   }
 
   ${ImageContainer} {

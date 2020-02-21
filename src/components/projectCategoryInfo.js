@@ -4,8 +4,6 @@ import { breakpointSmall, breakpointMedium } from "../variables"
 import styled from "styled-components"
 
 const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
-  console.log("project category filter", projectCategoryFilter)
-
   const data = useStaticQuery(graphql`
     {
       allPrismicCategory {

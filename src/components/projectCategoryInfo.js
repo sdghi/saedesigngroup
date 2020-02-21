@@ -62,6 +62,18 @@ const CategoryInfo = styled.div`
   margin-bottom: 50px;
   width: 100%;
 
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 300;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
   .hotel-logos {
     margin: 50px auto;
     width: 90%;

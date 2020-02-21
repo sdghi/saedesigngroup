@@ -40,7 +40,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            insta
+            <img src={"/SD_icon_instagram.svg"} alt="Sae design instagram" />
           </a>{" "}
           |{" "}
           <a
@@ -48,7 +48,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            bonus
+            <img src={"/SD_icon_saemin.svg"} alt="Saemin" />
           </a>
         </span>
       </ContactInfo>
@@ -111,6 +111,23 @@ const ContactInfo = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      span {
+        display: grid;
+        grid-template-columns: 2fr 1fr 2fr;
+        grid-gap: 10px;
+        place-items: center;
+        align-items: center;
+        width: fit-content;
+
+        a {
+          line-height: 0;
+        }
+
+        img {
+          width: 30px;
+        }
+      }
     }
   }
 

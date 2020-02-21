@@ -15,12 +15,15 @@ const ImageGallery = ({ slice }) => {
   const toggleSlideshowCursors = () => {
     // Get the total width of container and get halfway point
     const halfwayPoint = slideshowRef.current.clientWidth / 2
-    // Get the current mouse position
+
+    // Get the current mouse position and see if it past the halfway point
     if (xValue > halfwayPoint) {
-      console.log("next")
+      // Set to next
+      setCursorElement({ related: "Next" })
       setNextImage(true)
     } else {
-      console.log("prev")
+      // Set to prev
+      setCursorElement({ related: "Prev" })
       setNextImage(false)
     }
   }

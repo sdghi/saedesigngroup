@@ -1,6 +1,7 @@
 import React from "react"
 import { ImageContainer, Container } from "../elements"
 import { loadingContentColor } from "../variables"
+import styled from "styled-components"
 
 const FullWidthImage = ({ slice }) => {
   const { full_image } = slice.primary

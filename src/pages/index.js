@@ -120,7 +120,7 @@ const IndexPage = ({ data }) => {
           setShowLogos={setShowLogos}
           showLogos={showLogos}
         />
-        {showLogos && <Logos />}
+        {showLogos && <Logos setCursorElement={setCursorElement} />}
         {/* Show the project category info it isn't all  and logos aren't active */}
         {/* Right now doesn't work if project filter category is clicked */}
         {projectCategoryFilter !== "all" && !showLogos && (

@@ -82,7 +82,7 @@ const ProjetContainer = styled.div`
     bottom: 20px;
     left: 20px;
     margin: 0;
-    font-size: 3rem;
+    font-size: 2rem;
     text-transform: uppercase;
   }
 

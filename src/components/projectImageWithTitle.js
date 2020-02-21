@@ -46,9 +46,11 @@ const ProjectImageWithTitle = ({
           heightMd={displayProjectsGrid ? "300px" : `${400 * 1}px`}
           widthMd={displayProjectsGrid ? "100%" : `${60 * 1}%`}
           // Top will be directly affected by the top property in the cms
-          top="0"
+          top={displayProjectsGrid ? "0" : 0 * 1}
           //  Left will be multiplied by the column property in the cms
-          left="0"
+          left={displayProjectsGrid ? "0" : 0 * 1}
+          // Right will be multiplied by the column property in the cms
+          right={displayProjectsGrid ? "0" : 0 * 1}
         >
           <Link to={`/${slug}`}>
             <ImageContainer
@@ -79,6 +81,7 @@ const ProjetContainer = styled.div`
     bottom: 20px;
     left: 20px;
     margin: 0;
+    font-size: 3rem;
   }
 
   ${ImageContainer} {
@@ -94,9 +97,10 @@ const ProjetContainer = styled.div`
   }
 
   @media (min-width: ${breakpointSmall}) {
-    top: ${props => `${props.top}em`};
-    left: ${props => `${props.left}em`};
-    right: ${props => `${props.right}em`};
+    margin-bottom: 50px;
+    margin-top: ${props => `${props.top}em`};
+    margin-left: ${props => `${props.left}em`};
+    margin-right: ${props => `${props.right}em`};
     width: ${props => props.widthMd};
     height: ${props => props.heightMd};
   }

@@ -74,7 +74,6 @@ export default ImageGallery
 
 const GalleryContainer = styled(Container)`
   overflow: hidden;
-  border: 1px solid red;
 `
 
 const SlideshowWrapper = styled.div`

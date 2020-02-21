@@ -8,6 +8,7 @@ const ProjectImageWithTitle = ({
   project,
   projectCategoryFilter,
   displayProjectsGrid,
+  setCursorElement,
 }) => {
   const [showProject, setShowProject] = useState(false)
 
@@ -40,6 +41,8 @@ const ProjectImageWithTitle = ({
         <ProjetContainer
           key={project.uid}
           widthMd={displayProjectsGrid ? "100%" : "80%"}
+          onMouseOver={() => setCursorElement({ selected: "selected" })}
+          onMouseLeave={() => setCursorElement({ initial: "initial" })}
         >
           <Link to={`/${slug}`}>
             <ImageContainer

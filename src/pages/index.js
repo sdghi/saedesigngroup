@@ -93,7 +93,7 @@ const IndexPage = ({ data }) => {
             filterValue="branding"
             newCursorElement="branding"
             content="branding"
-            context={context}
+            setCursorElement={setCursorElement}
             setStartScroll={setStartScroll}
             setProjectCategoryFilter={setProjectCategoryFilter}
             setShowLogos={setShowLogos}
@@ -103,7 +103,7 @@ const IndexPage = ({ data }) => {
             filterValue="packaging"
             newCursorElement="packaging"
             content="packaging"
-            context={context}
+            setCursorElement={setCursorElement}
             setStartScroll={setStartScroll}
             setProjectCategoryFilter={setProjectCategoryFilter}
             setShowLogos={setShowLogos}
@@ -139,6 +139,7 @@ const IndexPage = ({ data }) => {
                 key={project.node.uid}
                 project={project}
                 projectCategoryFilter={projectCategoryFilter}
+                setCursorElement={setCursorElement}
               />
             ))}
           </ProjectsContainer>

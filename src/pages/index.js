@@ -32,7 +32,7 @@ export const query = graphql`
               url
               localFile {
                 childImageSharp {
-                  fluid {
+                  fluid(quality: 90) {
                     ...GatsbyImageSharpFluid
                   }
                 }

@@ -91,8 +91,8 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fluid {
-                          srcSet
+                        fluid(quality: 90, maxWidth: 1800) {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -106,7 +106,7 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fluid {
+                        fluid(quality: 90, maxWidth: 1800) {
                           ...GatsbyImageSharpFluid
                         }
                       }
@@ -124,7 +124,7 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fluid {
+                        fluid(quality: 90, maxWidth: 1800) {
                           ...GatsbyImageSharpFluid
                         }
                       }
@@ -139,7 +139,7 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fluid {
+                        fluid(quality: 90, maxWidth: 1800) {
                           ...GatsbyImageSharpFluid
                         }
                       }
@@ -160,7 +160,7 @@ export const query = graphql`
                     alt
                     localFile {
                       childImageSharp {
-                        fluid {
+                        fluid(quality: 90, maxWidth: 1800) {
                           ...GatsbyImageSharpFluid
                         }
                       }
@@ -169,7 +169,7 @@ export const query = graphql`
                   image_2 {
                     localFile {
                       childImageSharp {
-                        fluid {
+                        fluid(quality: 90, maxWidth: 1800) {
                           ...GatsbyImageSharpFluid
                         }
                       }

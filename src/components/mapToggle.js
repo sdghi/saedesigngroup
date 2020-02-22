@@ -27,7 +27,9 @@ const MapToggle = ({
 
   return (
     <MapToggleContainer className="select_container" style={setMapToggle}>
-      <button onClick={() => setShowMapToggle(false)}>close</button>
+      <button onClick={() => setShowMapToggle(false)}>
+        <span className="x-icon"></span>
+      </button>
 
       <h5>Choose Location</h5>
       <div id="map_select">
@@ -118,6 +120,33 @@ const MapToggleContainer = styled(animated.div)`
     position: absolute;
     right: 20px;
     top: 20px;
+    background: none;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    .x-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 15px;
+      width: 2px;
+      background: ${black};
+      transform: rotate(45deg);
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        height: 15px;
+        width: 2px;
+        background: ${black};
+        transform: rotate(-90deg);
+      }
+    }
   }
 
   #map_select {

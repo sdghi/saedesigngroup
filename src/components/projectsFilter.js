@@ -118,7 +118,6 @@ const FilterContainer = styled.div`
         font-size: 18px;
         line-height: 1.5;
         text-transform: uppercase;
-        cursor: pointer;
         color: ${grey};
 
         &.selected {

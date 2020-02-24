@@ -87,15 +87,7 @@ const ProjetContainer = styled.div`
   }
 
   ${ImageContainer} {
-    filter: brightness(0.8);
-    transition: all 0.2s ease-out;
-  }
-
-  &:hover {
-    ${ImageContainer} {
-      filter: brightness(1);
-      transition: all 0.2s ease-in;
-    }
+    filter: brightness(0.95);
   }
 
   @media (min-width: ${breakpointSmall}) {

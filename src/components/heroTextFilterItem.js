@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useContext, useState, useEffect } from "react"
+import { myContext } from "../provider"
 
 const HeroTextFilterItem = ({
   setCursorElement,
@@ -15,6 +16,25 @@ const HeroTextFilterItem = ({
     setShowLogos(false)
   }
 
+  const { setCurrentImageIndex } = useContext(myContext)
+
+  // ImgStep control how much the mouse will move before going to the next picture
+  const [imgStep, setImgStep] = useState(0)
+
+  const handleMouseMove = () => {
+    // Increase the imgStep by 1 everytime the mouse moves over it
+    setImgStep(imgStep + 1)
+
+    // 80 = how much images (4) * how many pixels before it moves (20)
+    if (imgStep >= 80) {
+      // If it is the max index of pics then go back to 0
+      setImgStep(0)
+    }
+
+    // Turn the imgStep into a flat value and set it to the img Index
+    setCurrentImageIndex(Math.floor(imgStep / 20))
+  }
+
   return (
     <strong
       role="button"
@@ -22,6 +42,7 @@ const HeroTextFilterItem = ({
       onMouseEnter={() =>
         setCursorElement({ [newCursorElement]: newCursorElement })
       }
+      onMouseMove={() => handleMouseMove()}
       onMouseLeave={() => setCursorElement({ initial: "initial" })}
       onClick={() => handleProjectFilter(filterValue)}
       onKeyDown={() => handleProjectFilter(filterValue)}

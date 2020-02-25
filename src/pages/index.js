@@ -38,6 +38,11 @@ export const query = graphql`
                 }
               }
             }
+            grid_column
+            top
+            left
+            bottom
+            right
           }
         }
       }
@@ -138,6 +143,7 @@ const IndexPage = ({ data }) => {
                 project={project}
                 projectCategoryFilter={projectCategoryFilter}
                 setCursorElement={setCursorElement}
+                totalProjects={projects.length}
               />
             ))}
           </ProjectsContainer>
@@ -177,7 +183,6 @@ const HeroText = styled.h1`
   padding: 0 20px;
 
   strong {
-    cursor: pointer;
     position: relative;
     z-index: 10;
   }

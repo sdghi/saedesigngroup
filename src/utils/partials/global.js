@@ -8,11 +8,14 @@ export const GlobalStyle = createGlobalStyle`
 
   *, *:before, *:after{
     box-sizing:inherit;
+      /* Globally disables the cursor  */
+      cursor: none;
   }
 
   body{
     margin: 7vh 0 0 0;
     padding: 0;
+  
   }
 
   a {

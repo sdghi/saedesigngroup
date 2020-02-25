@@ -7,11 +7,10 @@ const SelectedCursor = ({ xValue, yValue }) => {
     <Selected
       top={yValue}
       left={xValue}
-      height="50"
-      width="50"
+      height="35"
+      width="35"
       posTop="0"
       posLeft="0"
-      borderRadius="50%"
       zIndex="99999999999"
     >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 201.32 230.19">

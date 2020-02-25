@@ -159,7 +159,6 @@ const MapToggleContainer = styled(animated.div)`
     h1 {
       font-size: 3rem;
       margin: 0;
-      cursor: pointer;
     }
   }
 

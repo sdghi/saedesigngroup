@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { breakpointSmall, black, grey } from "../variables"
+import { breakpointSmall, breakpointMedium, black, grey } from "../variables"
 import { useStaticQuery, graphql } from "gatsby"
 
 const ProjectsFilter = ({
@@ -89,7 +89,7 @@ export default ProjectsFilter
 
 const FilterContainer = styled.div`
   position: sticky;
-  width: 100%;
+  width: fit-content;
   justify-content: space-between;
   top: 9vh;
   padding: 0 20px;
@@ -118,7 +118,6 @@ const FilterContainer = styled.div`
         font-size: 18px;
         line-height: 1.5;
         text-transform: uppercase;
-        cursor: pointer;
         color: ${grey};
 
         &.selected {
@@ -138,6 +137,7 @@ const FilterContainer = styled.div`
 
   @media (min-width: ${breakpointSmall}) {
     padding: 0 50px;
+    width: 100%;
 
     .display-btn-container {
       display: grid;
@@ -152,6 +152,10 @@ const FilterContainer = styled.div`
         }
       }
     }
+  }
+
+  @media (min-width: ${breakpointMedium}) {
+    z-index: 0;
   }
 `
 

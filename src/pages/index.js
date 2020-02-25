@@ -143,6 +143,7 @@ const IndexPage = ({ data }) => {
                 project={project}
                 projectCategoryFilter={projectCategoryFilter}
                 setCursorElement={setCursorElement}
+                totalProjects={projects.length}
               />
             ))}
           </ProjectsContainer>

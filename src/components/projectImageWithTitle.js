@@ -9,6 +9,7 @@ const ProjectImageWithTitle = ({
   projectCategoryFilter,
   displayProjectsGrid,
   setCursorElement,
+  totalProjects,
 }) => {
   const [showProject, setShowProject] = useState(false)
 
@@ -18,6 +19,8 @@ const ProjectImageWithTitle = ({
   const imageSrc =
     project.node.data.featured_image.localFile.childImageSharp.fluid
   const imageAlt = project.node.data.featured_image.alt
+
+  const { grid_column, top, left, right, bottom } = project.node.data
 
   useEffect(() => {
     // Reset to false in case it changes
@@ -46,12 +49,16 @@ const ProjectImageWithTitle = ({
           // Adjust sizes of non grid according to cms
           heightMd={displayProjectsGrid ? "300px" : `${400 * 1}px`}
           widthMd={displayProjectsGrid ? "100%" : `${60 * 1}%`}
-          // Top will be directly affected by the top property in the cms
-          top={displayProjectsGrid ? "0" : 0 * 1}
-          //  Left will be multiplied by the column property in the cms
-          left={displayProjectsGrid ? "0" : 0 * 1}
-          // Right will be multiplied by the column property in the cms
-          right={displayProjectsGrid ? "0" : 0 * 1}
+          // Top, Left, Bottom and Right will be directly affected by their properties in the cms
+          top={displayProjectsGrid ? "0" : top * 5}
+          left={displayProjectsGrid ? "0" : left * 5}
+          right={displayProjectsGrid ? "0" : right * 5}
+          bottom={displayProjectsGrid ? "0" : bottom * 5}
+          // Subtract 1 so that if its the 1st column it will start at margin 0
+          gridColumn={grid_column - 1}
+          // Total width of allProjectsContainer / total number of columns
+          // Container is 70% wide with 5 columns
+          columnIncrements={70 / 5}
         >
           <Link to={`/${slug}`}>
             <ImageContainer
@@ -93,9 +100,13 @@ const ProjetContainer = styled.div`
   @media (min-width: ${breakpointSmall}) {
     margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
     margin-top: ${props => `${props.top}em`};
-    margin-left: ${props => `${props.left}em`};
-    margin-right: ${props => `${props.right}em`};
+    left: ${props => `${props.left}%`};
+    right: ${props => `${props.right}%`};
     width: ${props => props.widthMd};
     height: ${props => props.heightMd};
+    margin-left: ${props =>
+      props.displayProjectsGrid
+        ? "0px"
+        : `${props.gridColumn * props.columnIncrements}%`};
   }
 `

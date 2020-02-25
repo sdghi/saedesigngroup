@@ -44,6 +44,9 @@ const PackagingCursor = ({ xValue, yValue }) => {
             <ImageContainer
               key={index}
               fluid={img.image.localFile.childImageSharp.fluid}
+              objectFit="contain"
+              height="100%"
+              heightMd="100%"
             />
           )
       )}

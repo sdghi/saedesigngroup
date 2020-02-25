@@ -7,6 +7,7 @@ const Provider = props => {
   const [scrollWindowHeight, setScrollWindowHeight] = useState(0)
   const [xValue, setXValue] = useState(0)
   const [yValue, setYValue] = useState(0)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   return (
     <myContext.Provider
@@ -19,6 +20,8 @@ const Provider = props => {
         setYValue,
         xValue,
         setXValue,
+        currentImageIndex,
+        setCurrentImageIndex,
       }}
     >
       {props.children}

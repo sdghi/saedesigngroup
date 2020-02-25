@@ -3,17 +3,15 @@ import { useSpring, animated } from "react-spring"
 import styled from "styled-components"
 
 const OahuSVG = styled(animated.svg)`
-  position: relative;
+  /* position: relative;
   top: -100vh;
   left: -100vw;
   height: 300vh;
-  width: 300vw;
+  width: 300vw; */
 
   @media (min-width: 768px) {
-    top: -120vh;
-    left: -100vw;
-    height: 300vh;
-    width: 300vw;
+    height: 140vh;
+    width: 140vw;
   }
 
   .cls-1 {
@@ -118,7 +116,7 @@ const OahuMap = ({ showOahuMap }) => {
   return (
     <OahuSVG
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 4793.14 4374.89"
+      viewBox="1800 1500 1793.14 2374.89"
       style={showOahuMap && fade}
       id="map-svg"
       className="oahu"

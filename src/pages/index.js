@@ -177,7 +177,6 @@ const HeroText = styled.h1`
   padding: 0 20px;
 
   strong {
-    cursor: pointer;
     position: relative;
     z-index: 10;
   }

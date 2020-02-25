@@ -20,7 +20,7 @@ const ContactPage = () => {
       // Turn 0 into mx or my to not center the map on drag
       set({ x: mx, y: my })
     },
-    { bounds: { left: -200, right: 200, top: -200, bottom: 200 } }
+    { bounds: { left: -50, right: 50, top: -50, bottom: 50 } }
   )
 
   const { setCursorElement } = useContext(myContext)

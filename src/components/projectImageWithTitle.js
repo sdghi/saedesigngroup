@@ -50,15 +50,15 @@ const ProjectImageWithTitle = ({
           heightMd={displayProjectsGrid ? "300px" : `${400 * 1}px`}
           widthMd={displayProjectsGrid ? "100%" : `${60 * 1}%`}
           // Top, Left, Bottom and Right will be directly affected by their properties in the cms
-          top={displayProjectsGrid ? "0" : top * 5}
-          left={displayProjectsGrid ? "0" : left * 5}
-          right={displayProjectsGrid ? "0" : right * 5}
-          bottom={displayProjectsGrid ? "0" : bottom * 5}
+          top={displayProjectsGrid ? "0" : top * 4}
+          left={displayProjectsGrid ? "0" : left * 4}
+          right={displayProjectsGrid ? "0" : right * 4}
+          bottom={displayProjectsGrid ? "0" : bottom * 4}
           // Subtract 1 so that if its the 1st column it will start at margin 0
           gridColumn={grid_column - 1}
           // Total width of allProjectsContainer / total number of columns
-          // Container is 70% wide with 5 columns
-          columnIncrements={70 / 5}
+          // Container is 70% wide with 4 columns
+          columnIncrements={70 / 4}
         >
           <Link to={`/${slug}`}>
             <ImageContainer
@@ -104,9 +104,15 @@ const ProjetContainer = styled.div`
     right: ${props => `${props.right}%`};
     width: ${props => props.widthMd};
     height: ${props => props.heightMd};
+    /* If the gridColumn is the maximum then make the margin right 0 so it snaps to the end  */
+    margin-right: ${props => props.gridColumn === 3 && 0};
+    /* If the gridColumn is not the maximum then give a margin left of the gridColumn * columnIncrements
+      If it is the maximum then don't render a margin left so that it will snap to the margin right specified above
+     */
     margin-left: ${props =>
       props.displayProjectsGrid
         ? "0px"
-        : `${props.gridColumn * props.columnIncrements}%`};
+        : `calc(${props.gridColumn !== 3 &&
+            props.gridColumn * props.columnIncrements}% )`};
   }
 `

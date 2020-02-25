@@ -16,9 +16,7 @@ const HeroTextFilterItem = ({
     setShowLogos(false)
   }
 
-  const { currentImageIndex, setCurrentImageIndex, xValue } = useContext(
-    myContext
-  )
+  const { setCurrentImageIndex } = useContext(myContext)
 
   // ImgStep control how much the mouse will move before going to the next picture
   const [imgStep, setImgStep] = useState(0)

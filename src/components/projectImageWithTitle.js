@@ -47,8 +47,10 @@ const ProjectImageWithTitle = ({
           onMouseOver={() => setCursorElement({ selected: "selected" })}
           onMouseLeave={() => setCursorElement({ initial: "initial" })}
           // Adjust sizes of non grid according to cms
-          heightMd={displayProjectsGrid ? "300px" : `${400 * 1}px`}
-          widthMd={displayProjectsGrid ? "100%" : `${60 * 1}%`}
+          // 70 and 100 are the biggest values that work before breaking the grid
+          // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
+          heightMd={displayProjectsGrid ? "300px" : `${1000 / 1}px`}
+          widthMd={displayProjectsGrid ? "100%" : `${70 / 1}%`}
           // Top, Left, Bottom and Right will be directly affected by their properties in the cms
           top={displayProjectsGrid ? "0" : top * 4}
           left={displayProjectsGrid ? "0" : left * 4}
@@ -58,6 +60,7 @@ const ProjectImageWithTitle = ({
           gridColumn={grid_column - 1}
           // Total width of allProjectsContainer / total number of columns
           // Container is 70% wide with 4 columns
+          // IF COLUMNS OR THE WIDTH OF THE CONTAINER EVER CHANGES THEN THESE VALUES ALSO NEED TO CHANGE
           columnIncrements={70 / 4}
         >
           <Link to={`/${slug}`}>
@@ -98,12 +101,13 @@ const ProjetContainer = styled.div`
   }
 
   @media (min-width: ${breakpointSmall}) {
-    margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
-    margin-top: ${props => `${props.top}em`};
-    left: ${props => `${props.left}%`};
-    right: ${props => `${props.right}%`};
     width: ${props => props.widthMd};
     height: ${props => props.heightMd};
+    margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
+    margin-top: ${props => `${props.top}em`};
+    /* Keep thes values left and right or they will override  the grid snapping of margins below  */
+    left: ${props => `${props.left}%`};
+    right: ${props => `${props.right}%`};
     /* If the gridColumn is the maximum then make the margin right 0 so it snaps to the end  */
     margin-right: ${props => props.gridColumn === 3 && 0};
     /* If the gridColumn is not the maximum then give a margin left of the gridColumn * columnIncrements

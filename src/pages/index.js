@@ -38,6 +38,11 @@ export const query = graphql`
                 }
               }
             }
+            grid_column
+            top
+            left
+            bottom
+            right
           }
         }
       }

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components"
+import { breakpointMedium } from "../../variables"
 
 export const GlobalStyle = createGlobalStyle`
   html{
@@ -8,8 +9,13 @@ export const GlobalStyle = createGlobalStyle`
 
   *, *:before, *:after{
     box-sizing:inherit;
+  }
+
+  @media(min-width: ${breakpointMedium}){
+    *, *:before, *:after{
       /* Globally disables the cursor  */
       cursor: none;
+    }
   }
 
   body{

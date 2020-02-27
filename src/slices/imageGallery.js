@@ -61,7 +61,6 @@ const ImageGallery = ({ slice }) => {
               <ImageContainer
                 fluid={item.gallery_image.localFile.childImageSharp.fluid}
                 width="100%"
-                maxWidth="100%"
               />
             )}
           </div>
@@ -79,7 +78,7 @@ const GalleryContainer = styled(Container)`
 
 const SlideshowWrapper = styled.div`
   width: 100%;
-  height: 80vh;
+  height: fit-content;
   position: relative;
 
   ${ImageContainer} {

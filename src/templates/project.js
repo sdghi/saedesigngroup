@@ -183,6 +183,9 @@ export const query = graphql`
                   text {
                     text
                   }
+                  author {
+                    text
+                  }
                 }
               }
               ... on PrismicProjectTemplateBodyTextSection {
@@ -192,6 +195,9 @@ export const query = graphql`
                     text
                   }
                   text {
+                    text
+                  }
+                  bottom_sub_text {
                     text
                   }
                 }

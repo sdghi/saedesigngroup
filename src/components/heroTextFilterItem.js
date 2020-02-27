@@ -25,8 +25,9 @@ const HeroTextFilterItem = ({
     // Increase the imgStep by 1 everytime the mouse moves over it
     setImgStep(imgStep + 1)
 
-    // 80 = how much images (4) * how many pixels before it moves (20)
-    if (imgStep >= totalFilterImages * 20) {
+    // 80 = how much images (totalFilterImages) * how many pixels before it moves (20)
+    // Be sure to add the next step after the multiplication
+    if (imgStep > totalFilterImages * 20 + 20) {
       // If it is the max index of pics then go back to 0
       setImgStep(0)
     }

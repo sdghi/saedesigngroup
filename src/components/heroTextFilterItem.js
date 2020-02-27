@@ -16,7 +16,7 @@ const HeroTextFilterItem = ({
     setShowLogos(false)
   }
 
-  const { setCurrentImageIndex } = useContext(myContext)
+  const { setCurrentImageIndex, totalFilterImages } = useContext(myContext)
 
   // ImgStep control how much the mouse will move before going to the next picture
   const [imgStep, setImgStep] = useState(0)
@@ -26,7 +26,7 @@ const HeroTextFilterItem = ({
     setImgStep(imgStep + 1)
 
     // 80 = how much images (4) * how many pixels before it moves (20)
-    if (imgStep >= 80) {
+    if (imgStep >= totalFilterImages * 20) {
       // If it is the max index of pics then go back to 0
       setImgStep(0)
     }

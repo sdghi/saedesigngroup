@@ -9,9 +9,9 @@ const ProjectImageWithTitle = ({
   projectCategoryFilter,
   displayProjectsGrid,
   setCursorElement,
-  totalProjects,
 }) => {
   const [showProject, setShowProject] = useState(false)
+  const [projectSize, setProjectSize] = useState(false)
 
   const slug = project.node.uid
   const categories = project.node.data.categories
@@ -20,11 +20,31 @@ const ProjectImageWithTitle = ({
     project.node.data.featured_image.localFile.childImageSharp.fluid
   const imageAlt = project.node.data.featured_image.alt
 
-  const { grid_column, top, left, right, bottom } = project.node.data
+  const {
+    grid_column,
+    top,
+    left,
+    right,
+    bottom,
+    size,
+    is_case_study,
+  } = project.node.data
+
+  // Handle rendering the sizes
+  const renderSizes = () => {
+    if (size === "Small") {
+      setProjectSize(0.6)
+    } else if (size === "Medium") {
+      setProjectSize(0.8)
+    } else if (size === "Large") {
+      setProjectSize(1)
+    }
+  }
 
   useEffect(() => {
     // Reset to false in case it changes
     setShowProject(false)
+    renderSizes()
     categories.map(category => {
       // Show project if the category matches the project filter
       // If it's all show all the projects
@@ -49,8 +69,8 @@ const ProjectImageWithTitle = ({
           // Adjust sizes of non grid according to cms
           // 70 and 100 are the biggest values that work before breaking the grid
           // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
-          heightMd={displayProjectsGrid ? "300px" : `${1000 / 1}px`}
-          widthMd={displayProjectsGrid ? "100%" : `${70 / 1}%`}
+          // heightMd={displayProjectsGrid ? "300px" : `${1000 / 1}px`}
+          widthMd={displayProjectsGrid ? "100%" : `${50 / projectSize}%`}
           // Top, Left, Bottom and Right will be directly affected by their properties in the cms
           top={displayProjectsGrid ? "0" : top * 4}
           left={displayProjectsGrid ? "0" : left * 4}
@@ -102,8 +122,12 @@ const ProjetContainer = styled.div`
 
   @media (min-width: ${breakpointSmall}) {
     width: ${props => props.widthMd};
-    height: ${props => props.heightMd};
+    /* Height auto will maintain the orientation of the image  */
+    height: auto;
+    /* Default spacing between the project image with title  */
     margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
+    /* Bottom will override the default spacing  */
+    bottom: ${props => !props.displayProjectsGrid && `${props.bottom}em`};
     margin-top: ${props => `${props.top}em`};
     /* Keep thes values left and right or they will override  the grid snapping of margins below  */
     left: ${props => `${props.left}%`};

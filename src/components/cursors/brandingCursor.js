@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { myContext } from "../../provider"
 import { Cursor, ImageContainer } from "../../elements"
 import styled from "styled-components"
@@ -7,22 +7,29 @@ import { useStaticQuery, graphql } from "gatsby"
 const BrandingCursor = ({ xValue, yValue }) => {
   const context = useContext(myContext)
 
-  const { currentImageIndex } = context
+  const { currentImageIndex, setTotalFilterImages, totalFilterImages } = context
 
   const data = useStaticQuery(graphql`
-    query {
-      allPrismicCategoryCursor(filter: { uid: { eq: "branding-cursor" } }) {
+    {
+      allPrismicProjectTemplate(
+        filter: {
+          data: {
+            categories: {
+              elemMatch: { category: { slug: { eq: "branding" } } }
+            }
+          }
+        }
+      ) {
+        totalCount
         edges {
           node {
             data {
-              cursor_images {
-                image {
-                  alt
-                  localFile {
-                    childImageSharp {
-                      fluid(quality: 90) {
-                        ...GatsbyImageSharpFluid
-                      }
+              featured_image {
+                alt
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      src
                     }
                   }
                 }
@@ -34,8 +41,15 @@ const BrandingCursor = ({ xValue, yValue }) => {
     }
   `)
 
-  const imagesArr =
-    data.allPrismicCategoryCursor.edges[0].node.data.cursor_images
+  const imagesArr = data.allPrismicProjectTemplate.edges
+  const { totalCount } = data.allPrismicProjectTemplate
+
+  useEffect(() => {
+    // Has to be -1 for the cursor index
+    setTotalFilterImages(totalCount - 1)
+
+    console.log({ currentImageIndex })
+  }, [setTotalFilterImages, currentImageIndex])
 
   return (
     <Branding top={yValue} left={xValue} height="450" width="300" zIndex="0">
@@ -44,7 +58,13 @@ const BrandingCursor = ({ xValue, yValue }) => {
           currentImageIndex === index && (
             <ImageContainer
               key={index}
-              fluid={img.image.localFile.childImageSharp.fluid}
+              fluid={
+                img.node.data.featured_image.localFile.childImageSharp.fluid
+              }
+              alt={img.node.data.featured_image.alt}
+              objectFit="contain"
+              height="100%"
+              heightMd="100%"
             />
           )
       )}

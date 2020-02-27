@@ -1,20 +1,20 @@
 import React from "react"
 import styled from "styled-components"
 import { Container, HeadingTwo, Paragraph } from "../elements"
+import { grey } from "../variables"
 
 const TextSection = ({ slice, theme }) => {
-  const heading = slice.primary.heading.text
-  const text = slice.primary.text.text
+  const { heading, text, bottom_sub_text } = slice.primary
 
   return (
-    <ContainerSection maxWidth="850px">
+    <ContainerSection maxWidth="850px" padding="0">
       <HeadingTwo
         fontSize="27px"
         fontSizeLg="34px"
         lineHeight="41px"
         lineHeightMd="49px"
       >
-        {heading}
+        {heading.text}
       </HeadingTwo>
       <Paragraph
         fontSize="15px"
@@ -22,8 +22,17 @@ const TextSection = ({ slice, theme }) => {
         fontSizeLg="18px"
         lineHeightMd="32px"
       >
-        {text}
+        {text.text}
       </Paragraph>
+      {bottom_sub_text && (
+        <Paragraph
+          fontSize="14px"
+          color={grey}
+          css="text-transform: uppercase; padding-top: 60px"
+        >
+          {bottom_sub_text.text}
+        </Paragraph>
+      )}
     </ContainerSection>
   )
 }

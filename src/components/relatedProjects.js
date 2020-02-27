@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { HeadingTwo } from "../elements"
@@ -9,6 +9,10 @@ const RelatedProjects = ({ next, previous, doubleNext }) => {
   const { project_name: nextName } = next.data
   const { project_name: prevName } = previous.data
   const { project_name: doubleNextName } = doubleNext.data
+
+  const context = useContext(myContext)
+
+  const { setCursorElement } = context
 
   const {
     src: prevImage,
@@ -23,53 +27,50 @@ const RelatedProjects = ({ next, previous, doubleNext }) => {
   } = doubleNext.data.featured_image.localFile.childImageSharp.fluid
 
   return (
-    <myContext.Consumer>
-      {context => (
-        <div>
-          <HeadingTwo fontSize="20px" textAlign="center" bottom="35px">
-            More Stuff
-          </HeadingTwo>
-          <RelatedWrapper>
-            <Link
-              to={`/${previous.uid}`}
-              onMouseEnter={() =>
-                context.setCursorElement({ related: prevName.text })
-              }
-              onMouseLeave={() => {
-                context.setCursorElement({ initial: "initial" })
-              }}
-            >
-              <img src={prevImage} alt={prevName.text} />
-              <p>{prevName.text}</p>
-            </Link>
-            <Link
-              to={`/${next.uid}`}
-              onMouseEnter={() =>
-                context.setCursorElement({ related: nextName.text })
-              }
-              onMouseLeave={() => {
-                context.setCursorElement({ initial: "initial" })
-              }}
-            >
-              <img src={nextImage} alt={nextName.text} />
-              <p>{nextName.text}</p>
-            </Link>
-            <Link
-              to={`/${doubleNext.uid}`}
-              onMouseEnter={() =>
-                context.setCursorElement({ related: doubleNextName.text })
-              }
-              onMouseLeave={() => {
-                context.setCursorElement({ initial: "initial" })
-              }}
-            >
-              <img src={doubleNextImage} alt={doubleNextName.text} />
-              <p>{doubleNextName.text}</p>
-            </Link>
-          </RelatedWrapper>
-        </div>
-      )}
-    </myContext.Consumer>
+    <div>
+      <HeadingTwo
+        fontSize="20px"
+        textAlign="center"
+        bottom="35px"
+        css="text-transform: uppercase"
+      >
+        More Stuff
+      </HeadingTwo>
+      <RelatedWrapper>
+        <Link
+          to={`/${previous.uid}`}
+          onMouseEnter={() => setCursorElement({ related: prevName.text })}
+          onMouseLeave={() => {
+            setCursorElement({ initial: "initial" })
+          }}
+        >
+          <img src={prevImage} alt={prevName.text} />
+          <p>{prevName.text}</p>
+        </Link>
+        <Link
+          to={`/${next.uid}`}
+          onMouseEnter={() => setCursorElement({ related: nextName.text })}
+          onMouseLeave={() => {
+            setCursorElement({ initial: "initial" })
+          }}
+        >
+          <img src={nextImage} alt={nextName.text} />
+          <p>{nextName.text}</p>
+        </Link>
+        <Link
+          to={`/${doubleNext.uid}`}
+          onMouseEnter={() =>
+            setCursorElement({ related: doubleNextName.text })
+          }
+          onMouseLeave={() => {
+            setCursorElement({ initial: "initial" })
+          }}
+        >
+          <img src={doubleNextImage} alt={doubleNextName.text} />
+          <p>{doubleNextName.text}</p>
+        </Link>
+      </RelatedWrapper>
+    </div>
   )
 }
 

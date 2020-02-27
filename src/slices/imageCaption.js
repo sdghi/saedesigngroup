@@ -33,7 +33,7 @@ const TwoThirdContainer = styled(Container)`
     place-items: center;
 
     ${Paragraph} {
-      max-width: 190px;
+      max-width: 194px;
       line-height: 22px;
       text-align: left;
     }

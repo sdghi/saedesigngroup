@@ -2,9 +2,10 @@ import React, { useState, useRef, useEffect, useContext } from "react"
 import { Container, ImageContainer } from "../elements"
 import styled from "styled-components"
 import { myContext } from "../provider"
+import { grey, lightGrey } from "../variables"
 
 const ImageGallery = ({ slice }) => {
-  const Items = slice.items
+  const items = slice.items
   const [visibleImage, setVisibleImage] = useState(0)
   const [nextImage, setNextImage] = useState(null)
   const slideshowRef = useRef(null)
@@ -32,7 +33,7 @@ const ImageGallery = ({ slice }) => {
   const handleSlideshowImage = () => {
     // If nextImage then go to next, else go to prev
     if (nextImage) {
-      if (visibleImage < Items.length - 1) {
+      if (visibleImage < items.length - 1) {
         setVisibleImage(visibleImage + 1)
       } else {
         setVisibleImage(0)
@@ -41,7 +42,7 @@ const ImageGallery = ({ slice }) => {
       if (visibleImage > 0) {
         setVisibleImage(visibleImage - 1)
       } else {
-        setVisibleImage(Items.length - 1)
+        setVisibleImage(items.length - 1)
       }
     }
   }
@@ -55,9 +56,9 @@ const ImageGallery = ({ slice }) => {
         length={slice.items.length}
         onClick={() => handleSlideshowImage()}
       >
-        {Items.map((item, i) => (
+        {items.map((item, i) => (
           <div key={i}>
-            {i === visibleImage && i < Items.length && (
+            {i === visibleImage && i < items.length && (
               <ImageContainer
                 fluid={item.gallery_image.localFile.childImageSharp.fluid}
                 width="100%"
@@ -66,6 +67,17 @@ const ImageGallery = ({ slice }) => {
           </div>
         ))}
       </SlideshowWrapper>
+      <div className="counter">
+        {items.map((item, i) => (
+          <div
+            key={i}
+            className={i === visibleImage ? "item selected" : "item"}
+            onClick={() => setVisibleImage(i)}
+          >
+            hi
+          </div>
+        ))}
+      </div>
     </GalleryContainer>
   )
 }
@@ -74,6 +86,29 @@ export default ImageGallery
 
 const GalleryContainer = styled(Container)`
   overflow: hidden;
+
+  .counter {
+    display: flex;
+    width: fit-content;
+    margin: 52px auto 0 auto;
+
+    .item {
+      margin: 0 10px;
+      background: ${lightGrey};
+      width: 53px;
+      height: 3.6px;
+      transition: all 0.2s ease-out;
+
+      &:hover {
+        background: ${grey};
+        transition: all 0.2s ease-in;
+      }
+
+      &.selected {
+        background: ${grey};
+      }
+    }
+  }
 `
 
 const SlideshowWrapper = styled.div`

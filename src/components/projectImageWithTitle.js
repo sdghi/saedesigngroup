@@ -102,8 +102,10 @@ const ProjetContainer = styled.div`
   @media (min-width: ${breakpointSmall}) {
     width: ${props => props.widthMd};
     height: ${props => props.heightMd};
-    margin-bottom: ${props =>
-      props.displayProjectsGrid ? "0px" : props.bottom};
+    /* Default spacing between the project image with title  */
+    margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
+    /* Bottom will override the default spacing  */
+    bottom: ${props => !props.displayProjectsGrid && `${props.bottom}em`};
     margin-top: ${props => `${props.top}em`};
     /* Keep thes values left and right or they will override  the grid snapping of margins below  */
     left: ${props => `${props.left}%`};

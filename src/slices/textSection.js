@@ -4,9 +4,7 @@ import { Container, HeadingTwo, Paragraph } from "../elements"
 import { grey } from "../variables"
 
 const TextSection = ({ slice, theme }) => {
-  const heading = slice.primary.heading.text
-  const text = slice.primary.text.text
-  const bottomSubText = slice.primary.bottom_sub_text.text
+  const { heading, text, bottom_sub_text } = slice.primary
 
   return (
     <ContainerSection maxWidth="850px" padding="0">
@@ -16,7 +14,7 @@ const TextSection = ({ slice, theme }) => {
         lineHeight="41px"
         lineHeightMd="49px"
       >
-        {heading}
+        {heading.text}
       </HeadingTwo>
       <Paragraph
         fontSize="15px"
@@ -24,15 +22,17 @@ const TextSection = ({ slice, theme }) => {
         fontSizeLg="18px"
         lineHeightMd="32px"
       >
-        {text}
+        {text.text}
       </Paragraph>
-      <Paragraph
-        fontSize="14px"
-        color={grey}
-        css="text-transform: uppercase; padding-top: 60px"
-      >
-        {bottomSubText}
-      </Paragraph>
+      {bottom_sub_text && (
+        <Paragraph
+          fontSize="14px"
+          color={grey}
+          css="text-transform: uppercase; padding-top: 60px"
+        >
+          {bottom_sub_text.text}
+        </Paragraph>
+      )}
     </ContainerSection>
   )
 }

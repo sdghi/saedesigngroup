@@ -10,6 +10,7 @@ const ProjectsFilter = ({
   displayProjectsGrid,
   setShowLogos,
   showLogos,
+  showMobile,
 }) => {
   const data = useStaticQuery(graphql`
     {
@@ -34,9 +35,9 @@ const ProjectsFilter = ({
   }
 
   return (
-    <FilterContainer>
+    <FilterContainer showMobile={showMobile}>
       <div className="filter-categories">
-        <h3>work</h3>
+        {/* <h3>work</h3> */}
         <div>
           <button
             className={projectCategoryFilter === "all" ? "selected" : null}
@@ -93,9 +94,8 @@ const FilterContainer = styled.div`
   justify-content: space-between;
   top: 9vh;
   padding: 0 20px;
-  display: flex;
   margin-bottom: 20px;
-  z-index: 100;
+  display: ${props => (props.showMobile === true ? "flex" : "none")};
 
   .filter-categories {
     h3 {
@@ -136,7 +136,7 @@ const FilterContainer = styled.div`
   }
 
   @media (min-width: ${breakpointSmall}) {
-    padding: 0 50px;
+    display: ${props => (props.showMobile === true ? "none" : "flex")};
     width: 100%;
 
     .display-btn-container {

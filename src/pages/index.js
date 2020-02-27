@@ -11,6 +11,7 @@ import { myContext } from "../provider"
 import HeroTextFilterItem from "../components/heroTextFilterItem"
 import Logos from "../components/logos"
 import ProjectCategoryInfo from "../components/projectCategoryInfo"
+import MobileProjectsFilter from "../components/mobileProjectsFilter"
 
 export const query = graphql`
   {
@@ -38,7 +39,9 @@ export const query = graphql`
                 }
               }
             }
+            is_case_study
             grid_column
+            size
             top
             left
             bottom
@@ -115,6 +118,7 @@ const IndexPage = ({ data }) => {
         </HeroText>
       </HomeHero>
       <ProjectsSection>
+        {/* Desktop project filter  */}
         <ProjectsFilter
           projectCategoryFilter={projectCategoryFilter}
           setProjectCategoryFilter={setProjectCategoryFilter}
@@ -122,6 +126,17 @@ const IndexPage = ({ data }) => {
           displayProjectsGrid={displayProjectsGrid}
           setShowLogos={setShowLogos}
           showLogos={showLogos}
+          showMobile={false}
+        />
+        {/* Mobile project filter  */}
+        <MobileProjectsFilter
+          projectCategoryFilter={projectCategoryFilter}
+          setProjectCategoryFilter={setProjectCategoryFilter}
+          setDisplayProjectsGrid={setDisplayProjectsGrid}
+          displayProjectsGrid={displayProjectsGrid}
+          setShowLogos={setShowLogos}
+          showLogos={showLogos}
+          showMobile={true}
         />
         {showLogos && <Logos setCursorElement={setCursorElement} />}
 
@@ -204,4 +219,8 @@ const ProjectsSection = styled.section`
   overflow-x: initial;
   overflow-y: initial;
   overflow: initial;
+
+  .view-filters {
+    padding-left: 20px;
+  }
 `

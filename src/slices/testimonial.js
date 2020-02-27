@@ -1,13 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 import { Container, Paragraph } from "../elements"
-import { lightGrey } from "../variables"
+import { lightGrey, grey } from "../variables"
 
 const Testimonial = ({ slice }) => {
   const testimonialContent = slice.primary.text.text
+  const authorContent = slice.primary.author.text
 
   return (
-    <Container maxWidth="850px" padding="0">
+    <Container maxWidth="850px" width="90%" padding="0">
       <QuoteMark>&#8220;</QuoteMark>
       <Paragraph
         fontSize="15px"
@@ -18,6 +19,9 @@ const Testimonial = ({ slice }) => {
       >
         {testimonialContent}
       </Paragraph>
+      <AuthorText fontSize="14px" textAlign="center">
+        - {authorContent}
+      </AuthorText>
       <QuoteMark>&#8221;</QuoteMark>
     </Container>
   )
@@ -31,4 +35,9 @@ const QuoteMark = styled.h2`
   font-size: 110px;
   line-height: 1.5;
   color: ${lightGrey};
+`
+
+const AuthorText = styled(Paragraph)`
+  text-transform: uppercase;
+  line-height: 36px;
 `

@@ -50,7 +50,7 @@ const StaggeredImageContainer = styled(Container)`
       position: absolute;
       top: 20%;
       right: 5%;
-      max-width: 250px;
+      max-width: 258px;
       margin-top: 0;
     }
   }

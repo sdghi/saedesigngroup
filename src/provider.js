@@ -7,7 +7,9 @@ const Provider = props => {
   const [scrollWindowHeight, setScrollWindowHeight] = useState(0)
   const [xValue, setXValue] = useState(0)
   const [yValue, setYValue] = useState(0)
+  // For the project title filter text elements
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [totalFilterImages, setTotalFilterImages] = useState(0)
 
   return (
     <myContext.Provider
@@ -22,6 +24,8 @@ const Provider = props => {
         setXValue,
         currentImageIndex,
         setCurrentImageIndex,
+        totalFilterImages,
+        setTotalFilterImages,
       }}
     >
       {props.children}

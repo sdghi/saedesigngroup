@@ -31,7 +31,7 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         // Add Icon here
-        // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/sdg-icon.svg`, // This path is relative to the root of the site.
       },
     },
     {

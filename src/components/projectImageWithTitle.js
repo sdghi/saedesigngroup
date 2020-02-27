@@ -20,7 +20,15 @@ const ProjectImageWithTitle = ({
     project.node.data.featured_image.localFile.childImageSharp.fluid
   const imageAlt = project.node.data.featured_image.alt
 
-  const { grid_column, top, left, right, bottom, size } = project.node.data
+  const {
+    grid_column,
+    top,
+    left,
+    right,
+    bottom,
+    size,
+    is_case_study,
+  } = project.node.data
 
   // Handle rendering the sizes
   const renderSizes = () => {

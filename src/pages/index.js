@@ -39,6 +39,7 @@ export const query = graphql`
                 }
               }
             }
+            is_case_study
             grid_column
             size
             top

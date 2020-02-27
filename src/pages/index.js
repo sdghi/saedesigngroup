@@ -40,6 +40,7 @@ export const query = graphql`
               }
             }
             grid_column
+            size
             top
             left
             bottom

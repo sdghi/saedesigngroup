@@ -73,9 +73,7 @@ const ImageGallery = ({ slice }) => {
             key={i}
             className={i === visibleImage ? "item selected" : "item"}
             onClick={() => setVisibleImage(i)}
-          >
-            hi
-          </div>
+          ></div>
         ))}
       </div>
     </GalleryContainer>

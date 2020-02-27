@@ -7,7 +7,7 @@ import { useStaticQuery, graphql } from "gatsby"
 const BrandingCursor = ({ xValue, yValue }) => {
   const context = useContext(myContext)
 
-  const { currentImageIndex, setTotalFilterImages } = context
+  const { currentImageIndex, setTotalFilterImages, totalFilterImages } = context
 
   const data = useStaticQuery(graphql`
     {
@@ -45,18 +45,11 @@ const BrandingCursor = ({ xValue, yValue }) => {
   const { totalCount } = data.allPrismicProjectTemplate
 
   useEffect(() => {
-    setTotalFilterImages(totalCount)
+    // Has to be -1 for the cursor index
+    setTotalFilterImages(totalCount - 1)
 
-    console.log(
-      imagesArr.map(img => {
-        console.log(
-          "img",
-          img.node.data.featured_image.alt,
-          img.node.data.featured_image.localFile.childImageSharp.fluid
-        )
-      })
-    )
-  }, [setTotalFilterImages])
+    console.log({ currentImageIndex })
+  }, [setTotalFilterImages, currentImageIndex])
 
   return (
     <Branding top={yValue} left={xValue} height="450" width="300" zIndex="0">

@@ -9,7 +9,6 @@ const ProjectImageWithTitle = ({
   projectCategoryFilter,
   displayProjectsGrid,
   setCursorElement,
-  totalProjects,
 }) => {
   const [showProject, setShowProject] = useState(false)
 
@@ -103,7 +102,8 @@ const ProjetContainer = styled.div`
   @media (min-width: ${breakpointSmall}) {
     width: ${props => props.widthMd};
     height: ${props => props.heightMd};
-    margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
+    margin-bottom: ${props =>
+      props.displayProjectsGrid ? "0px" : props.bottom};
     margin-top: ${props => `${props.top}em`};
     /* Keep thes values left and right or they will override  the grid snapping of margins below  */
     left: ${props => `${props.left}%`};

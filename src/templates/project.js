@@ -197,6 +197,9 @@ export const query = graphql`
                   text {
                     text
                   }
+                  bottom_sub_text {
+                    text
+                  }
                 }
               }
             }

@@ -7,7 +7,7 @@ const TextSection = ({ slice, theme }) => {
   const text = slice.primary.text.text
 
   return (
-    <ContainerSection maxWidth="850px">
+    <ContainerSection maxWidth="850px" padding="0">
       <HeadingTwo
         fontSize="27px"
         fontSizeLg="34px"

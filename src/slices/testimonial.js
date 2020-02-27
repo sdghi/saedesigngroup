@@ -7,7 +7,7 @@ const Testimonial = ({ slice }) => {
   const testimonialContent = slice.primary.text.text
 
   return (
-    <Container maxWidth="850px">
+    <Container maxWidth="850px" padding="0">
       <QuoteMark>&#8220;</QuoteMark>
       <Paragraph
         fontSize="15px"

@@ -63,6 +63,7 @@ const Layout = ({ children }) => {
           cursorElement={cursorElement}
         />
       )}
+
       <main>{children}</main>
       <Footer />
     </div>

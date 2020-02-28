@@ -11,6 +11,7 @@ const StaggeredImages = ({ slice }) => {
   const { fluid: imageOneSrc } = image_1.localFile.childImageSharp
   const { fluid: imageTwoSrc } = image_2.localFile.childImageSharp
 
+  // Parallax intialization
   useEffect(() => {
     const ParallaxElements = document.querySelectorAll(".parallax-element")
 

@@ -8,6 +8,7 @@ import AboutCursor from "./cursors/aboutCursor"
 import ContactCursor from "./cursors/contactCursor"
 import RelatedProjectCursor from "./cursors/relatedProjectsCursor"
 import SelectedCursor from "./cursors/selectedCursor"
+import CaseStudyCursor from './cursors/caseStudyCursor'
 
 const CustomCursor = ({ xValue, yValue, cursorElement }) => {
   switch (Object.keys(cursorElement)[0]) {
@@ -35,6 +36,8 @@ const CustomCursor = ({ xValue, yValue, cursorElement }) => {
           cursorContent={Object.values(cursorElement)[0]}
         />
       )
+    case 'caseStudy':
+      return <CaseStudyCursor xValue={xValue} yValue={yValue} />
     default:
       return null
   }

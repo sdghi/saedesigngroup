@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react"
+import React, { useState, useRef, useContext } from "react"
 import { Container, ImageContainer } from "../elements"
 import styled from "styled-components"
 import { myContext } from "../provider"

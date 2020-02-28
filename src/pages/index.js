@@ -15,7 +15,7 @@ import MobileProjectsFilter from "../components/mobileProjectsFilter"
 
 export const query = graphql`
   {
-    allPrismicProjectTemplate {
+    allPrismicProjectTemplate(sort: {fields: first_publication_date, order: DESC}) {
       edges {
         node {
           uid

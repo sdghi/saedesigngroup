@@ -51,7 +51,7 @@ const ProjectsFilter = ({
             <button
               className={
                 projectCategoryFilter.toLowerCase() ===
-                category.node.data.category.toLowerCase()
+                  category.node.data.category.toLowerCase()
                   ? "selected"
                   : null
               }
@@ -121,6 +121,10 @@ const FilterContainer = styled.div`
         color: ${grey};
 
         &.selected {
+          color: ${black};
+        }
+
+        &:hover{
           color: ${black};
         }
 

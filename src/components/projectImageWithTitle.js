@@ -64,7 +64,7 @@ const ProjectImageWithTitle = ({
         <ProjetContainer
           key={project.uid}
           displayProjectsGrid={displayProjectsGrid}
-          onMouseOver={() => setCursorElement({ selected: "selected" })}
+          onMouseOver={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
           onMouseLeave={() => setCursorElement({ initial: "initial" })}
           // Adjust sizes of non grid according to cms
           // 70 and 100 are the biggest values that work before breaking the grid
@@ -123,7 +123,7 @@ const ProjetContainer = styled.div`
   @media (min-width: ${breakpointSmall}) {
     width: ${props => props.widthMd};
     /* Height auto will maintain the orientation of the image  */
-    height: auto;
+    height: ${props => props.displayProjectsGrid ? '300px' : 'auto'};
     /* Default spacing between the project image with title  */
     margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
     /* Bottom will override the default spacing  */
@@ -138,9 +138,9 @@ const ProjetContainer = styled.div`
       If it is the maximum then don't render a margin left so that it will snap to the margin right specified above
      */
     margin-left: ${props =>
-      props.displayProjectsGrid
-        ? "0px"
-        : `calc(${props.gridColumn !== 3 &&
-            props.gridColumn * props.columnIncrements}% )`};
+    props.displayProjectsGrid
+      ? "0px"
+      : `calc(${props.gridColumn !== 3 &&
+      props.gridColumn * props.columnIncrements}% )`};
   }
 `

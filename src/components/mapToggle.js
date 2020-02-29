@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { useSpring, animated } from "react-spring"
 import { white, black, pink } from "../variables"
+import { myContext } from '../provider';
 
 const MapToggle = ({
   setShowOahuMap,
@@ -25,6 +26,8 @@ const MapToggle = ({
     },
   })
 
+  const { setCursorElement } = useContext(myContext);
+
   return (
     <MapToggleContainer className="select_container" style={setMapToggle}>
       <button onClick={() => setShowMapToggle(false)}>
@@ -41,6 +44,8 @@ const MapToggle = ({
           onKeyDown={() => setShowOahuMap(false)}
           role="button"
           tabIndex={0}
+          onMouseEnter={() => setCursorElement({ selected: 'selected' })}
+          onMouseLeave={() => setCursorElement({ initial: 'initial' })}
         >
           <h1
             className="uppercase"
@@ -58,6 +63,8 @@ const MapToggle = ({
           onKeyDown={() => setShowOahuMap(true)}
           role="button"
           tabIndex={0}
+          onMouseEnter={() => setCursorElement({ selected: 'selected' })}
+          onMouseLeave={() => setCursorElement({ initial: 'initial' })}
         >
           <h1
             style={!showOahuMap ? { color: "grey" } : { color: "black" }}
@@ -83,19 +90,19 @@ const MapToggle = ({
           </a>
         </animated.div>
       ) : (
-        <animated.div className="info" style={fadeMaui}>
-          <a href="tel:808-249-2200">(808) 249-2200</a>
-          <br />
-          <a
-            href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            2261 Aupuni St # 101
+          <animated.div className="info" style={fadeMaui}>
+            <a href="tel:808-249-2200">(808) 249-2200</a>
+            <br />
+            <a
+              href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              2261 Aupuni St # 101
             <br /> Wailuku, HI 96793
           </a>
-        </animated.div>
-      )}
+          </animated.div>
+        )}
     </MapToggleContainer>
   )
 }

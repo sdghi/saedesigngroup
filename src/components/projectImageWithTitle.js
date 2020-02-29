@@ -123,7 +123,7 @@ const ProjetContainer = styled.div`
   @media (min-width: ${breakpointSmall}) {
     width: ${props => props.widthMd};
     /* Height auto will maintain the orientation of the image  */
-    height: auto;
+    height: ${props => props.displayProjectsGrid ? '300px' : 'auto'};
     /* Default spacing between the project image with title  */
     margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
     /* Bottom will override the default spacing  */

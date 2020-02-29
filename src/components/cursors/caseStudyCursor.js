@@ -1,7 +1,6 @@
 import React from "react"
 import { Cursor } from "../../elements"
 import styled from "styled-components"
-import { white } from "../../variables"
 
 const CaseStudyCursor = ({ xValue, yValue }) => {
     return (

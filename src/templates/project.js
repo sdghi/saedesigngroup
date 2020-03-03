@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import RelatedProjects from "../components/relatedProjects"
 import { myContext } from "../provider"
+import { ImageContainer, Container } from '../elements'
 // SLICES
 import FullWidthImage from "../slices/fullWidthImage"
 import TextSection from "../slices/textSection"
@@ -40,8 +41,21 @@ const ProjectSlices = ({ slices, theme }) => {
 }
 
 const Project = ({ project, theme }) => {
+  const { hero_image } = project.data;
+
   return (
     <div>
+      <Container padding="0">
+        <ImageContainer
+          height="calc(100vh - 7vh)"
+          width="100%"
+          heightMd="calc(100vh - 7vh)"
+          widthMd="100%"
+          maxWidth="100%"
+          fluid={hero_image.localFile.childImageSharp.fluid}
+          alt={hero_image.alt}
+        />
+      </Container>
       <ProjectSlices slices={project.data.body} theme={theme} />
     </div>
   )
@@ -87,7 +101,7 @@ export const query = graphql`
             alt
             localFile {
               childImageSharp {
-                fluid {
+                fluid(quality: 90, maxWidth: 1800) {
                   src
                 }
               }

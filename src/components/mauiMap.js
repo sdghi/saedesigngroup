@@ -1,8 +1,8 @@
 import React from "react"
-import { useSpring, animated } from "react-spring"
+import {motion} from 'framer-motion'
 import styled from "styled-components"
 
-const MauiSVG = styled(animated.svg)`
+const MauiSVG = styled(motion.svg)`
   position: relative;
   top: -100vh;
   left: -100vw;
@@ -141,26 +141,19 @@ const MauiSVG = styled(animated.svg)`
 `
 
 const MauiMap = ({ showOahuMap }) => {
-  const fade = useSpring({
-    to: { opacity: 1, pointerEvents: "all" },
-    from: { opacity: 0, pointerEvents: "none" },
-    config: {
-      duration: 100,
-      mass: 2,
-      velocity: 200,
-    },
-  })
-
   return (
     <MauiSVG
       version="1.1"
       x="0px"
       y="0px"
       viewBox="0 0 5294 4162"
-      style={!showOahuMap && fade}
       id="maui"
     >
-      <g>
+      <motion.g 
+        drag 
+        dragConstraints={{top: -200, left: -200, right: 200, bottom: 200}} 
+        transition={{dampness: 200}}
+      >
         <g id="maui-map-illustration">
           <g id="Land_and_Water">
             <rect
@@ -8294,7 +8287,7 @@ const MauiMap = ({ showOahuMap }) => {
             </g>
           </g>
         </g>
-      </g>
+      </motion.g>
     </MauiSVG>
   )
 }

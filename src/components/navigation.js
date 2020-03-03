@@ -1,45 +1,62 @@
-import React, { useRef, useContext } from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
-import { animated, useTrail, useChain, config, useSpring } from "react-spring"
 import styled from "styled-components"
 import { pink, yellow, black } from "../variables"
 import { myContext } from "../provider"
+import { motion } from 'framer-motion'
 
 const items = ["", "services", "about", "contact"]
 
+const navVariants = {
+  open: {
+    y: 0,
+    transition: {
+      delay: 0.3,
+      dampness: 300
+    }
+
+  },
+  closed: {
+    y: '-100%',
+    transition: {
+      delay: 0.5,
+      dampness: 300
+    }
+  }
+}
+
+const ulVariants = {
+  open: {
+    transition: {
+      delay: 0.7,
+      staggerChildren: 0.2,
+      delayChildren: 0.2,
+      staggerDirection: 1, // 1 is forwards and -1 is backwards this is optional 
+      when: 'afterChildren'
+    }
+  },
+  closed: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+      staggerDirection: -1, // 1 is forwards and -1 is backwards this is optional 
+    }
+  }
+}
+
+const linkVariants = {
+  open: {
+    scale: 1,
+    opacity: 1,
+  },
+  closed: {
+    scale: 0,
+    opacity: 0
+  }
+}
+
 const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
-  const springRef = useRef()
-  const transitionRef = useRef()
-
   const { scrollWindowHeight } = useContext(myContext)
-
-  const trails = useTrail(items.length, {
-    ref: transitionRef,
-    from: {
-      opacity: 0,
-    },
-    to: {
-      opacity: isNavOpen ? 1 : 0,
-    },
-    config: config.stiff,
-  })
-
-  const toggle = useSpring({
-    ref: springRef,
-    from: { transform: `translate3d(0, -100%, 0)` },
-    to: {
-      transform: isNavOpen
-        ? `translate3d(0, 0, 0)`
-        : `translate3d(0, -100%, 0)`,
-    },
-    config: {
-      duration: 250,
-      tension: 250,
-      velocity: 5,
-    },
-  })
-
-  useChain(isNavOpen ? [springRef, transitionRef] : [transitionRef, springRef])
 
   const handleNavClick = value => {
     setNav(false)
@@ -58,33 +75,39 @@ const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
   }
 
   return (
-    <Nav style={toggle}>
-      <ul>
-        {trails.map((animation, index) => (
-          <animated.li
-            key={items[index]}
-            style={animation}
-            onClick={() => handleNavClick(items[index])}
+    <Nav
+      variants={navVariants}
+      initial="closed"
+      animate={isNavOpen ? 'open' : 'closed'}
+    >
+      <motion.ul variants={ulVariants}>
+        {items.map((item, index) => (
+          <motion.li
+            key={index}
+            onClick={() => handleNavClick(index)}
             onMouseEnter={() =>
               setCursorElement(
-                items[index] === ""
+                item === ""
                   ? { work: "work" }
-                  : { [items[index]]: items[index] }
+                  : { [item]: [item] }
               )
             }
             onMouseLeave={() => setCursorElement({ initial: "initial" })}
+            variants={linkVariants}
           >
-            <Link to={`/${items[index]}`}>
-              {items[index] === "" ? "work" : items[index]}
+            <Link to={`/${item}`}>
+              <motion.p whileHover={{ rotate: index % 2 === 0 ? 5 : -5 }}>
+                {item === "" ? "work" : item}
+              </motion.p>
             </Link>
-          </animated.li>
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
     </Nav>
   )
 }
 
-const Nav = styled(animated.nav)`
+const Nav = styled(motion.nav)`
   position: absolute;
   z-index: 9999;
   height: 100vh;
@@ -133,6 +156,10 @@ const Nav = styled(animated.nav)`
         color: transparent;
         transition: all 0.3s ease;
         transform-origin: center center;
+
+        p{
+          margin: 0;
+        }
       }
 
       li:hover {
@@ -141,15 +168,17 @@ const Nav = styled(animated.nav)`
           color: ${yellow};
         }
       }
-    }
 
-    ul li:hover:nth-of-type(odd):hover {
+      li:hover:nth-of-type(odd):hover {
       transform: scale(1.05) rotate(-4deg);
     }
 
-    ul li:nth-of-type(even):hover {
+    li:nth-of-type(even):hover {
       transform: scale(1.05) rotate(4deg);
     }
+    }
+
+
   }
 `
 

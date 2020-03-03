@@ -83,22 +83,17 @@ export const query = graphql`
             project_name {
               text
             }
-            body {
-              ... on PrismicProjectTemplateBodyFullWidthImage {
-                slice_type
-                primary {
-                  full_image {
-                    alt
-                    localFile {
-                      childImageSharp {
-                        fluid(quality: 90, maxWidth: 1800) {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                  }
+            hero_image {
+            alt
+            localFile {
+              childImageSharp {
+                fluid {
+                  src
                 }
               }
+            }
+          }
+            body {
               ... on PrismicProjectTemplateBody23ImageCaption {
                 slice_type
                 primary {
@@ -135,6 +130,7 @@ export const query = graphql`
               ... on PrismicProjectTemplateBodyLargeImage {
                 slice_type
                 primary {
+                  full_width
                   image {
                     alt
                     localFile {

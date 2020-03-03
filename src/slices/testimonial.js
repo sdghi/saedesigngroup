@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Container, Paragraph } from "../elements"
-import { lightGrey, grey } from "../variables"
+import { lightGrey } from "../variables"
 
 const Testimonial = ({ slice }) => {
   const testimonialContent = slice.primary.text.text

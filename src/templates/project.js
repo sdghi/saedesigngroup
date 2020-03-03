@@ -45,6 +45,7 @@ const Project = ({ project, theme }) => {
 
   return (
     <div>
+      {/* This is the hero image  */}
       <Container padding="0">
         <ImageContainer
           height="calc(100vh - 7vh)"
@@ -56,6 +57,7 @@ const Project = ({ project, theme }) => {
           alt={hero_image.alt}
         />
       </Container>
+      {/* This is the slices  */}
       <ProjectSlices slices={project.data.body} theme={theme} />
     </div>
   )

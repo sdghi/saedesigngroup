@@ -11,6 +11,7 @@ const LargeImage = ({ slice }) => {
         objectFit="cover"
         objectPosition="50% 50%"
         alt={image.alt}
+        // Togggle if the full_width is checked in the cms 
         maxWidth={full_width === 'true' && '100%'}
         height={full_width === 'true' && "100vh"}
         heightMd={full_width === 'true' && "100vh"}

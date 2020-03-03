@@ -1,17 +1,17 @@
-import React, { useRef, useEffect, useState, useContext } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ProjectsFilter from "../components/projectsFilter"
 import styled from "styled-components"
 import ProjectImageWithTitle from "../components/projectImageWithTitle"
-import { breakpointSmall, breakpointMedium, pink, yellow } from "../variables"
+import { breakpointSmall } from "../variables"
 import { Container } from "../elements"
 import { myContext } from "../provider"
-import HeroTextFilterItem from "../components/heroTextFilterItem"
 import Logos from "../components/logos"
 import ProjectCategoryInfo from "../components/projectCategoryInfo"
 import MobileProjectsFilter from "../components/mobileProjectsFilter"
+import HomeHeroSection from '../components/homeHeroSection'
 
 export const query = graphql`
   {
@@ -56,8 +56,6 @@ export const query = graphql`
 const IndexPage = ({ data }) => {
   const projects = data.allPrismicProjectTemplate.edges
 
-  const heroRef = useRef(null)
-
   const [startScroll, setStartScroll] = useState(false)
   const [projectCategoryFilter, setProjectCategoryFilter] = useState("all")
   const [displayProjectsGrid, setDisplayProjectsGrid] = useState(false)
@@ -74,7 +72,6 @@ const IndexPage = ({ data }) => {
   }, [setCursorElement])
 
   useEffect(() => {
-    setScrollWindowHeight(heroRef.current.offsetHeight)
 
     // If start scroll is true scroll down the height of the first section
     // Scroll down the window
@@ -91,37 +88,22 @@ const IndexPage = ({ data }) => {
     if (projectCategoryFilter !== 'all') {
       setDisplayProjectsGrid(true)
     }
+    if (projectCategoryFilter === 'all') {
+      setDisplayProjectsGrid(false)
+    }
   }, [scrollWindowHeight, setScrollWindowHeight, startScroll, projectCategoryFilter])
 
   return (
     <Layout>
       <SEO title="Home" />
-      <HomeHero ref={heroRef}>
-        <HeroText>
-          Sae what you mean to sae, with SaeDesignGroup. <br />
-          Delightful{" "}
-          <HeroTextFilterItem
-            filterValue="branding"
-            newCursorElement="branding"
-            content="branding"
-            setCursorElement={setCursorElement}
-            setStartScroll={setStartScroll}
-            setProjectCategoryFilter={setProjectCategoryFilter}
-            setShowLogos={setShowLogos}
-          />
-          ,{" "}
-          <HeroTextFilterItem
-            filterValue="packaging"
-            newCursorElement="packaging"
-            content="packaging"
-            setCursorElement={setCursorElement}
-            setStartScroll={setStartScroll}
-            setProjectCategoryFilter={setProjectCategoryFilter}
-            setShowLogos={setShowLogos}
-          />{" "}
-          design (and more) by good people
-        </HeroText>
-      </HomeHero>
+      <HomeHeroSection
+        setCursorElement={setCursorElement}
+        setStartScroll={setStartScroll}
+        setProjectCategoryFilter={setProjectCategoryFilter}
+        setShowLogos={setShowLogos}
+        setScrollWindowHeight={setScrollWindowHeight}
+      />
+
       <ProjectsSection>
         {/* Desktop project filter  */}
         <ProjectsFilter
@@ -185,37 +167,7 @@ const ProjectsContainer = styled(Container)`
   }
 `
 
-const HomeHero = styled.section`
-  height: calc(100vh - 7vh);
-  width: 100%;
-  display: grid;
-  place-items: center;
-  background: ${yellow};
-`
 
-const HeroText = styled.h1`
-  font-size: 24px;
-  margin: 0 auto;
-  width: fit-content;
-  max-width: 1400px;
-  font-weight: 300;
-  color: ${pink};
-  padding: 0 20px;
-
-  strong {
-    position: relative;
-    z-index: 10;
-  }
-
-  @media (min-width: ${breakpointSmall}) {
-    font-size: 64px;
-    padding: 0 50px;
-  }
-
-  @media (min-width: ${breakpointMedium}) {
-    font-size: 104px;
-  }
-`
 
 const ProjectsSection = styled.section`
   min-height: 100vh;

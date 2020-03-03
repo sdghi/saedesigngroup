@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components"
-import { breakpointMedium } from "../../variables"
+import { breakpointMedium, pink } from "../../variables"
 
 export const GlobalStyle = createGlobalStyle`
   html{
@@ -27,6 +27,12 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     user-select: none;
+    transition: all .2s ease-out;
+
+    &:hover{
+      transition: all .2s ease-in;
+      color: ${pink};
+    }
   }
 
   ul {

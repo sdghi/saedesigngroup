@@ -84,7 +84,7 @@ const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
         {items.map((item, index) => (
           <motion.li
             key={index}
-            onClick={() => handleNavClick(index)}
+            onClick={() => handleNavClick(item)}
             onMouseEnter={() =>
               setCursorElement(
                 item === ""

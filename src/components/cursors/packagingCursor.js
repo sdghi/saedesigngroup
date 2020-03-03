@@ -50,7 +50,7 @@ const PackagingCursor = ({ xValue, yValue }) => {
   }, [setTotalFilterImages, totalCount])
 
   return (
-    <Packaging top={yValue} left={xValue} height="450" width="300" zIndex="0">
+    <Packaging top={yValue} left={xValue} height="450" width="300" zIndex="1">
       {imagesArr.map(
         (img, index) =>
           currentImageIndex === index && (

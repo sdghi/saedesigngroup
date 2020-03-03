@@ -1,6 +1,5 @@
-import React, { useRef, useContext } from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
-import { animated, useTrail, useChain, config, useSpring } from "react-spring"
 import styled from "styled-components"
 import { pink, yellow, black } from "../variables"
 import { myContext } from "../provider"
@@ -8,10 +7,55 @@ import { motion } from 'framer-motion'
 
 const items = ["", "services", "about", "contact"]
 
-const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
-  const springRef = useRef()
-  const transitionRef = useRef()
+const navVariants = {
+  open: {
+    y: 0,
+    transition: {
+      delay: 0.3,
+      dampness: 300
+    }
 
+  },
+  closed: {
+    y: '-100%',
+    transition: {
+      delay: 0.5,
+      dampness: 300
+    }
+  }
+}
+
+const ulVariants = {
+  open: {
+    transition: {
+      delay: 0.7,
+      staggerChildren: 0.2,
+      delayChildren: 0.2,
+      staggerDirection: 1, // 1 is forwards and -1 is backwards this is optional 
+      when: 'afterChildren'
+    }
+  },
+  closed: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+      staggerDirection: -1, // 1 is forwards and -1 is backwards this is optional 
+    }
+  }
+}
+
+const linkVariants = {
+  open: {
+    scale: 1,
+    opacity: 1,
+  },
+  closed: {
+    scale: 0,
+    opacity: 0
+  }
+}
+
+const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
   const { scrollWindowHeight } = useContext(myContext)
 
   const handleNavClick = value => {
@@ -29,55 +73,6 @@ const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
       }, 500)
     }
   }
-
-  const navVariants = {
-    open: {
-      y: 0,
-      transition: {
-        delay: 0.3,
-        dampness: 300
-      }
-
-    },
-    closed: {
-      y: '-100%',
-      transition: {
-        delay: 0.3,
-        dampness: 300
-      }
-    }
-  }
-
-  const ulVariants = {
-    open: {
-      transition: {
-        delay: 0.7,
-        staggerChildren: 0.2,
-        delayChildren: 0.2,
-        staggerDirection: 1, // 1 is forwards and -1 is backwards this is optional 
-        when: 'afterChildren'
-      }
-    },
-    closed: {
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.2,
-        staggerDirection: -1, // 1 is forwards and -1 is backwards this is optional 
-      }
-    }
-  }
-
-  const linkVariants = {
-    open: {
-      scale: 1,
-      opacity: 1,
-    },
-    closed: {
-      scale: 0,
-      opacity: 0
-    }
-  }
-
 
   return (
     <Nav

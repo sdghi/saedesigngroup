@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { HeadingTwo } from "../elements"
-import { breakpointSmall } from "../variables"
+import { breakpointSmall, black, pink } from "../variables"
 import { myContext } from "../provider"
 
 const RelatedProjects = ({ next, previous, doubleNext }) => {
@@ -79,6 +79,17 @@ export default RelatedProjects
 const RelatedWrapper = styled.div`
   display: flex;
   overflow-x: auto;
+  margin-bottom: 50px;
+
+  ::-webkit-scrollbar{
+    background: ${black};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${pink};
+    border-radius: 15px;
+    width: 50px;
+  }
 
   a {
     margin-right: 30px;
@@ -91,11 +102,19 @@ const RelatedWrapper = styled.div`
     filter: brightness(0.95);
   }
 
+  p{
+    text-transform: uppercase;
+    color: ${black};
+    font-weight: 700;
+    text-align: center;
+  }
+
   @media (min-width: ${breakpointSmall}) {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
+    margin-bottom: 0;
 
     a {
       margin-right: 0;

@@ -69,11 +69,12 @@ const ImageGallery = ({ slice }) => {
       </SlideshowWrapper>
       <div className="counter">
         {items.map((item, i) => (
-          <div
+          <button
             key={i}
-            className={i === visibleImage ? "item selected" : "item"}
             onClick={() => setVisibleImage(i)}
-          ></div>
+          >
+            <div className={i === visibleImage ? "item selected" : "item"}></div>
+          </button>
         ))}
       </div>
     </GalleryContainer>
@@ -88,7 +89,26 @@ const GalleryContainer = styled(Container)`
   .counter {
     display: flex;
     width: fit-content;
-    margin: 52px auto 0 auto;
+    /* margin is 52 but minus the 20px padding top  */
+    margin: 32px auto 0 auto;
+
+    button{
+      border: none;
+      background: none;
+      height: fit-content;
+      padding: 20px 0;
+
+      &:focus{
+        outline: none;
+      }
+
+      &:hover{
+        .item{
+          background: ${grey};
+        transition: all 0.2s ease-in;
+        }
+      }
+    }
 
     .item {
       margin: 0 10px;
@@ -96,11 +116,6 @@ const GalleryContainer = styled(Container)`
       width: 53px;
       height: 3.6px;
       transition: all 0.2s ease-out;
-
-      &:hover {
-        background: ${grey};
-        transition: all 0.2s ease-in;
-      }
 
       &.selected {
         background: ${grey};

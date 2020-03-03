@@ -1,35 +1,18 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
-import { useSpring, animated } from "react-spring"
 import { white, black, pink } from "../variables"
 import { myContext } from '../provider';
 
 const MapToggle = ({
   setShowOahuMap,
   showOahuMap,
-  showMapToggle,
   setShowMapToggle,
 }) => {
-  const fadeMaui = useSpring({
-    opacity: !showOahuMap ? 1 : 0,
-  })
-
-  const fadeOahu = useSpring({
-    opacity: showOahuMap ? 1 : 0,
-  })
-
-  const setMapToggle = useSpring({
-    opacity: showMapToggle ? 1 : 0,
-    config: {
-      duration: 150,
-      mass: 1,
-    },
-  })
 
   const { setCursorElement } = useContext(myContext);
 
   return (
-    <MapToggleContainer className="select_container" style={setMapToggle}>
+    <MapToggleContainer className="select_container" >
       <button onClick={() => setShowMapToggle(false)}>
         <span className="x-icon"></span>
       </button>
@@ -76,7 +59,7 @@ const MapToggle = ({
       </div>
 
       {showOahuMap ? (
-        <animated.div className="info" id="oahu_info" style={fadeOahu}>
+        <div className="info" id="oahu_info" >
           <a href="tel:808-544-0002">(808) 544-0002</a>
           <br />
           <a
@@ -88,9 +71,9 @@ const MapToggle = ({
             555 South St Suite #108
             <br /> Honolulu, HI 96813
           </a>
-        </animated.div>
+        </div>
       ) : (
-          <animated.div className="info" style={fadeMaui}>
+          <div className="info" >
             <a href="tel:808-249-2200">(808) 249-2200</a>
             <br />
             <a
@@ -101,7 +84,7 @@ const MapToggle = ({
               2261 Aupuni St # 101
             <br /> Wailuku, HI 96793
           </a>
-          </animated.div>
+          </div>
         )}
     </MapToggleContainer>
   )
@@ -109,7 +92,7 @@ const MapToggle = ({
 
 export default MapToggle
 
-const MapToggleContainer = styled(animated.div)`
+const MapToggleContainer = styled.div`
   margin: 10px;
   background: ${white};
   height: fit-content;

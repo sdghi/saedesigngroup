@@ -1,8 +1,8 @@
 import React from "react"
-import { useSpring, animated } from "react-spring"
 import styled from "styled-components"
+import { motion } from 'framer-motion'
 
-const OahuSVG = styled(animated.svg)`
+const OahuSVG = styled(motion.svg)`
   /* position: relative;
   top: -100vh;
   left: -100vw;
@@ -103,25 +103,19 @@ const OahuSVG = styled(animated.svg)`
 `
 
 const OahuMap = ({ showOahuMap }) => {
-  const fade = useSpring({
-    to: { opacity: 1, pointerEvents: "all" },
-    from: { opacity: 0, pointerEvents: "none" },
-    config: {
-      duration: 100,
-      mass: 2,
-      velocity: 200,
-    },
-  })
 
   return (
     <OahuSVG
       xmlns="http://www.w3.org/2000/svg"
       viewBox="1800 1500 1793.14 2374.89"
-      style={showOahuMap && fade}
       id="map-svg"
       className="oahu"
     >
-      <g>
+      <motion.g
+        drag
+        dragConstraints={{ top: -200, left: -200, right: 200, bottom: 200 }}
+        transition={{ dampness: 200 }}
+      >
         <g id="Land_Water" data-name="Land &amp; Water">
           <path className="cls-3" d="M261.9 54.89h4104v4320h-4104z" />
           <path
@@ -2025,7 +2019,7 @@ const OahuMap = ({ showOahuMap }) => {
             transform="translate(261.9 54.89)"
           />
         </g>
-      </g>
+      </motion.g>
     </OahuSVG>
   )
 }

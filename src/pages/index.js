@@ -86,7 +86,12 @@ const IndexPage = ({ data }) => {
 
     // Reset the scroll in case the user scrolls back up
     setStartScroll(false)
-  }, [scrollWindowHeight, setScrollWindowHeight, startScroll])
+
+    // If projectCategoryFilter !== 'all' set projects to display grid
+    if (projectCategoryFilter !== 'all') {
+      setDisplayProjectsGrid(true)
+    }
+  }, [scrollWindowHeight, setScrollWindowHeight, startScroll, projectCategoryFilter])
 
   return (
     <Layout>

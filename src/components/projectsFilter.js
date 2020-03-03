@@ -81,16 +81,23 @@ const ProjectsFilter = ({
       </div>
       {!showLogos && (
         <div className="display-btn-container">
-          <GridBtn
-            displayProjectsGrid={displayProjectsGrid}
-            setDisplayProjectsGrid={setDisplayProjectsGrid}
-            setCursorElement={setCursorElement}
-          />
-          <StaggeredBtn
-            displayProjectsGrid={displayProjectsGrid}
-            setDisplayProjectsGrid={setDisplayProjectsGrid}
-            setCursorElement={setCursorElement}
-          />
+
+          {projectCategoryFilter === 'all' &&
+            <>
+              <GridBtn
+                displayProjectsGrid={displayProjectsGrid}
+                setDisplayProjectsGrid={setDisplayProjectsGrid}
+                setCursorElement={setCursorElement}
+              />
+
+              <StaggeredBtn
+                displayProjectsGrid={displayProjectsGrid}
+                setDisplayProjectsGrid={setDisplayProjectsGrid}
+                setCursorElement={setCursorElement}
+              />
+            </>
+          }
+
         </div>
       )}
     </FilterContainer>

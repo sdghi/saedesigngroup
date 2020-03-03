@@ -47,9 +47,7 @@ const PackagingCursor = ({ xValue, yValue }) => {
   useEffect(() => {
     // Has to be -1 for the cursor index
     setTotalFilterImages(totalCount - 1)
-
-    console.log({ currentImageIndex })
-  }, [setTotalFilterImages, currentImageIndex])
+  }, [setTotalFilterImages, totalCount])
 
   return (
     <Packaging top={yValue} left={xValue} height="450" width="300" zIndex="0">

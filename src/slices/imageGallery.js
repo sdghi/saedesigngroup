@@ -97,6 +97,7 @@ const GalleryContainer = styled(Container)`
       background: none;
       height: fit-content;
       padding: 20px 0;
+      
 
       &:focus{
         outline: none;

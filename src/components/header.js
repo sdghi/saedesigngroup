@@ -95,16 +95,9 @@ const ToggleBtn = styled.div`
     &:hover {
       h2 {
         color: ${yellow};
-        -webkit-text-stroke-color: ${yellow};
         transform: scale(1.05) rotate(-4deg);
         transition: all 0.01s ease-out;
       }
-    }
-
-    h2 {
-      -webkit-text-stroke-width: 0.75px;
-      -webkit-text-stroke-color: ${pink};
-      color: transparent;
     }
   }
 `

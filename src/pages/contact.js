@@ -13,16 +13,6 @@ const ContactPage = () => {
   const [showOahuMap, setShowOahuMap] = useState(true)
   const [showMapToggle, setShowMapToggle] = useState(true)
 
-  // const [{ x, y }, set] = useSpring(() => ({ x: 0, y: 0 }))
-
-  // const bind = useDrag(
-  //   ({ movement: [mx, my] }) => {
-  //     // Turn 0 into mx or my to not center the map on drag
-  //     set({ x: mx, y: my })
-  //   },
-  //   { bounds: { left: -50, right: 50, top: -50, bottom: 50 } }
-  // )
-
   const { setCursorElement } = useContext(myContext)
 
   useEffect(() => {
@@ -33,12 +23,14 @@ const ContactPage = () => {
     <Layout>
       <SEO title="Contact" />
       <MapContainer>
-        <MapToggle
-          setShowOahuMap={setShowOahuMap}
-          showOahuMap={showOahuMap}
-          showMapToggle={showMapToggle}
-          setShowMapToggle={setShowMapToggle}
-        />
+        {showMapToggle &&
+          <MapToggle
+            setShowOahuMap={setShowOahuMap}
+            showOahuMap={showOahuMap}
+            showMapToggle={showMapToggle}
+            setShowMapToggle={setShowMapToggle}
+          />
+        }
         <div>
           {showOahuMap ? (
             <OahuMap showOahuMap={showOahuMap} />

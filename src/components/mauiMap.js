@@ -4,17 +4,8 @@ import styled from "styled-components"
 
 const MauiSVG = styled(motion.svg)`
   position: relative;
-  top: -100vh;
-  left: -100vw;
-  height: 300vh;
-  width: 300vw;
-
-  @media (min-width: 768px) {
-    top: -50vh;
-    left: -50vw;
-    height: 200vh;
-    width: 200vw;
-  }
+  height: 100vh;
+  width: 100%;
 
   .st1 {
     display: inline;
@@ -146,12 +137,13 @@ const MauiMap = ({ showOahuMap }) => {
       version="1.1"
       x="0px"
       y="0px"
-      viewBox="0 0 5294 4162"
+      viewBox=" 1600 1600 1500 1400"
       id="maui"
     >
       <motion.g 
+        className="map-contents"
         drag 
-        dragConstraints={{top: -200, left: -200, right: 200, bottom: 200}} 
+        dragConstraints={{top: -300, left: -300, right: 300, bottom: 300}} 
         transition={{dampness: 200}}
       >
         <g id="maui-map-illustration">

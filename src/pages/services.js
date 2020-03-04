@@ -153,7 +153,7 @@ const MenuContainer = styled.div`
 
 
     @media(min-width: ${breakpointSmall}){
-      grid-template-columns: 3fr 1fr;
+      grid-template-columns: 2fr 1fr;
       grid-template-rows: repeat(5, 1fr);
       width: 100%;
       grid-template-areas: 
@@ -201,6 +201,7 @@ const MainMenu = styled.section`
   border: 4px solid ${dark_blue};
   border-radius: 19.41px;
   display: grid;
+  place-content: center;
   grid-template-columns: 1fr;
   grid-gap: 20px;
 
@@ -246,6 +247,35 @@ const MainMenu = styled.section`
       color: ${dark_blue};
       font-weight: 700;
     }
+  }
+
+  @media(min-width: ${breakpointSmall}){
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 270px 270px;
+    grid-template-rows: repeat(4, 220px);
+    grid-gap: 20px 60px ;
+    grid-template-areas: 
+      "branding packaging"
+      "branding marketing"
+      "print digital"
+      "print sides";
+
+      .branding{
+        grid-area: branding;
+      }
+
+      .packaging{
+        grid-area: packaging;
+      }
+
+      .print{
+        grid-area: print;
+      }
+
+      .add-a-side-of{
+        grid-area: sides;
+      }
   }
 `;
 

@@ -61,43 +61,75 @@ const ServicesPage = ({ data }) => {
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
-    console.log({ mainMenu, add_a_side_of, design_audit, we_do_it_all })
+    console.log({ we_do_it_all })
   }, [setCursorElement])
 
   return (
     <Layout>
       <SEO title="Services" />
-      <MainMenuSection>
-        {mainMenu.map(service => (
-          <div key={service.id}>
-            <h2>{service.primary.title.text}</h2>
+      <MenuContainer>
+        <MainMenu>
+          {mainMenu.map(service => (
+            <div key={service.id}>
+              <h2>{service.primary.title.text}</h2>
 
-            {service.items.map((item, index) => (
+              {service.items.map((item, index) => (
+                <div key={index}>
+                  <h3>{item.feature_title.text}</h3>
+                  <p>{item.feature_description.text}</p>
+                </div>
+              ))}
+            </div>
+          ))}
+          <div className="add-a-side-of">
+            <h2>Add A Side Of</h2>
+            {add_a_side_of.map((side, index) => (
+              <p key={index}>{side.title.text}</p>
+            ))}
+          </div>
+        </MainMenu>
+        <DesignAudit>
+          <div>
+            {design_audit.map((audit, index) => (
               <div key={index}>
-                <h3>{item.feature_title.text}</h3>
-                <p>{item.feature_description.text}</p>
+                <h3>{audit.title.text}</h3>
+                <p>{audit.description.text}</p>
               </div>
             ))}
           </div>
-        ))}
-        <div className="add-a-side-of">
-          <h2>Add A Side Of</h2>
-          {add_a_side_of.map((side, index) => (
-            <p key={index}>{side.title.text}</p>
-          ))}
-        </div>
-      </MainMenuSection>
+        </DesignAudit>
+        <WeDoItAll>
+          <div>
+            {we_do_it_all.map((item, index) => (
+              <p key={index}>{item.industries.text}</p>
+            ))}
+          </div>
+        </WeDoItAll>
+      </MenuContainer>
     </Layout>
   )
 }
 
 export default ServicesPage
 
-const MainMenuSection = styled.section`
+const MenuContainer = styled.div`
+`;
+
+const MainMenu = styled.section`
   padding: 20px;
   border: 1px solid red;
 
   .add-a-side-of{
     border: 1px solid green;
   }
+`;
+
+const DesignAudit = styled.section`
+  padding: 20px;
+  border: 1px solid blue;
+`;
+
+const WeDoItAll = styled.section`
+  padding: 20px;
+  border: 1px solid orange;
 `;

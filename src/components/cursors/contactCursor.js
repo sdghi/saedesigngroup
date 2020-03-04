@@ -65,6 +65,7 @@ const ContactCursor = ({ xValue, yValue }) => {
         <g>
           <path
             className="st10"
+            id="line_1"
             d="M112.9,25.3c-0.2,0-0.4,0-0.6-0.1c-0.9-0.3-1.3-1.3-0.9-2.2l4.3-10.6c0.3-0.9,1.3-1.3,2.2-0.9
 		c0.9,0.3,1.3,1.3,0.9,2.2l-4.3,10.6C114.2,24.9,113.6,25.3,112.9,25.3z"
           />
@@ -72,6 +73,7 @@ const ContactCursor = ({ xValue, yValue }) => {
         <g>
           <path
             className="st10"
+            id="line_2"
             d="M118.1,28.7c-0.4,0-0.7-0.1-1-0.3c-0.7-0.6-0.9-1.6-0.3-2.3l10.9-14.4c0.6-0.7,1.6-0.9,2.3-0.3
 		s0.9,1.6,0.3,2.3l-10.9,14.4C119.1,28.5,118.6,28.7,118.1,28.7z"
           />
@@ -79,6 +81,7 @@ const ContactCursor = ({ xValue, yValue }) => {
         <g>
           <path
             className="st10"
+            id="line_3"
             d="M122.8,33.7c-0.6,0-1.2-0.3-1.5-0.9c-0.4-0.8,0-1.8,0.8-2.2l9.4-4.5c0.8-0.4,1.8,0,2.2,0.8
 		c0.4,0.8,0,1.8-0.8,2.2l-9.4,4.5C123.3,33.6,123.1,33.7,122.8,33.7z"
           />
@@ -214,5 +217,35 @@ const Contact = styled(Cursor)`
     stroke: #c4d1bf;
     stroke-width: 4;
     stroke-miterlimit: 10;
+  }
+
+  #line_1,
+  #line_2,
+  #line_3 {
+    opacity: 0;
+    animation: appear 0.3s infinite;
+  }
+
+  #line_1 {
+    animation-delay: 0;
+  }
+
+  #line_2 {
+    animation-delay: 0.05s;
+  }
+  #line_3 {
+    animation-delay: 0.1s;
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 `

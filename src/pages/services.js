@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { myContext } from "../provider"
 import styled from 'styled-components'
-import { light_blue, dark_blue, yellow, pink, white } from '../variables'
+import { light_blue, dark_blue, yellow, pink, white, altFont } from '../variables'
 
 export const query = graphql`
 {
@@ -126,6 +126,10 @@ const MenuContainer = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 30px;
 
+  h2{
+    font-family: ${altFont};
+  }
+
   h3{
       font-size: 13px;
       letter-spacing: 0.2em;
@@ -232,6 +236,7 @@ const WeDoItAll = styled.section`
   border: 4px solid ${dark_blue};
   border-radius: 19.41px;
   background: ${light_blue};
+
 
   .we-do-it-all-heading{
     padding: 27px 0;

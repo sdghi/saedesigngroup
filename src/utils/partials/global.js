@@ -1,10 +1,10 @@
 import { createGlobalStyle } from "styled-components"
-import { breakpointMedium, pink } from "../../variables"
+import { breakpointMedium, pink, baseFont } from "../../variables"
 
 export const GlobalStyle = createGlobalStyle`
   html{
     box-sizing: border-box;
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: ${baseFont};
   }
 
   *, *:before, *:after{

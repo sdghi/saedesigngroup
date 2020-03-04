@@ -3,16 +3,9 @@ import styled from "styled-components"
 import { motion } from 'framer-motion'
 
 const OahuSVG = styled(motion.svg)`
-  /* position: relative;
-  top: -100vh;
-  left: -100vw;
-  height: 300vh;
-  width: 300vw; */
-
-  @media (min-width: 768px) {
-    height: 140vh;
-    width: 140vw;
-  }
+  position: relative;
+  height: 100vh;
+  width: 100%;
 
   .cls-1 {
     isolation: isolate;
@@ -107,13 +100,13 @@ const OahuMap = ({ showOahuMap }) => {
   return (
     <OahuSVG
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="1800 1500 1793.14 2374.89"
+      viewBox="1800 1600 1200 1200"
       id="map-svg"
       className="oahu"
     >
       <motion.g
         drag
-        dragConstraints={{ top: -200, left: -200, right: 200, bottom: 200 }}
+        dragConstraints={{ top: -300, left: -300, right: 300, bottom: 300 }}
         transition={{ dampness: 200 }}
       >
         <g id="Land_Water" data-name="Land &amp; Water">

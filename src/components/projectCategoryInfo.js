@@ -59,7 +59,7 @@ export default ProjectCategoryInfo
 
 const CategoryInfo = styled.div`
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 112px;
   width: 100%;
 
   h2 {

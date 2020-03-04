@@ -3,16 +3,9 @@ import styled from "styled-components"
 import { motion } from 'framer-motion'
 
 const OahuSVG = styled(motion.svg)`
-  /* position: relative;
-  top: -100vh;
-  left: -100vw;
-  height: 300vh;
-  width: 300vw; */
-
-  @media (min-width: 768px) {
-    height: 140vh;
-    width: 140vw;
-  }
+  position: relative;
+  height: 100vh;
+  width: 100%;
 
   .cls-1 {
     isolation: isolate;

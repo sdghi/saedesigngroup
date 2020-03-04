@@ -131,13 +131,13 @@ const MauiSVG = styled(motion.svg)`
   }
 `
 
-const MauiMap = ({ showOahuMap }) => {
+const MauiMap = () => {
   return (
     <MauiSVG
       version="1.1"
       x="0px"
       y="0px"
-      viewBox=" 1600 1600 1500 1400"
+      viewBox=" 1800 1400 1500 1400"
       id="maui"
     >
       <motion.g 

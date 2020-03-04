@@ -112,8 +112,9 @@ const ProjetContainer = styled.div`
     bottom: 20px;
     left: 20px;
     margin: 0;
-    font-size: 2rem;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1.875rem;
   }
 
   ${ImageContainer} {

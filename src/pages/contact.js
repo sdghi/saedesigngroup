@@ -5,8 +5,6 @@ import SEO from "../components/seo"
 import MauiMap from "../components/mauiMap"
 import OahuMap from "../components/oahuMap"
 import MapToggle from "../components/mapToggle"
-// import { useSpring, animated, interpolate } from "react-spring"
-// import { useDrag } from "react-use-gesture"
 import { myContext } from "../provider"
 
 const ContactPage = () => {

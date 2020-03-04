@@ -14,6 +14,8 @@ const HeroTextFilterItem = ({
     setProjectCategoryFilter(filterValue)
     setStartScroll(true)
     setShowLogos(false)
+    // Reset to initial cursor so images don't appear on scroll
+    setCursorElement({ initial: "initial" })
   }
 
   const { setCurrentImageIndex, totalFilterImages } = useContext(myContext)

@@ -135,6 +135,10 @@ const Nav = styled(motion.nav)`
       margin: 0;
       position: relative;
       z-index: 10;
+
+      p{
+          margin: 0;
+      }
     }
   }
 
@@ -156,10 +160,6 @@ const Nav = styled(motion.nav)`
         color: transparent;
         transition: all 0.3s ease;
         transform-origin: center center;
-
-        p{
-          margin: 0;
-        }
       }
 
       li:hover {

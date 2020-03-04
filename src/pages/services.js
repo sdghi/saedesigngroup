@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { myContext } from "../provider"
 import styled from 'styled-components'
-import { light_blue, dark_blue, yellow, pink, white, altFont } from '../variables'
+import { light_blue, dark_blue, yellow, pink, white, altFont, breakpointMedium, breakpointSmall } from '../variables'
 
 export const query = graphql`
 {
@@ -68,7 +68,7 @@ const ServicesPage = ({ data }) => {
     <Layout>
       <SEO title="Services" />
       <MenuContainer>
-        <MainMenu>
+        <MainMenu className="menu-main">
           {mainMenu.map(service => (
             // Adds the name of the feature as a classname to use as a grid area  
             <div key={service.id} className={service.primary.title.text.toLowerCase()}>
@@ -89,7 +89,7 @@ const ServicesPage = ({ data }) => {
             ))}
           </div>
         </MainMenu>
-        <DesignAudit>
+        <DesignAudit className="design-audit">
           <hr />
           <h4>IT MAY BE TIME TO LOOK AT YOUR
 BRAND WITH A CRITICAL EYE </h4>
@@ -103,7 +103,7 @@ BRAND WITH A CRITICAL EYE </h4>
             ))}
           </div>
         </DesignAudit>
-        <WeDoItAll>
+        <WeDoItAll className="do-it-all">
           <div className="we-do-it-all-heading">
             <h2>We do it all!</h2>
             <h4>Mostly!</h4>
@@ -114,8 +114,8 @@ BRAND WITH A CRITICAL EYE </h4>
             ))}
           </div>
         </WeDoItAll>
+        <MenuFooter class="menu-footer">who you going to call and face goes here</MenuFooter>
       </MenuContainer>
-      <MenuFooter>who you going to call and face goes here</MenuFooter>
     </Layout>
   )
 }
@@ -150,7 +150,51 @@ const MenuContainer = styled.div`
       font-weight: 300;
       line-height: 1.4;
     }
+
+
+    @media(min-width: ${breakpointSmall}){
+      grid-template-columns: 3fr 1fr;
+      grid-template-rows: repeat(5, 1fr);
+      width: 100%;
+      grid-template-areas: 
+        "main audit"
+        "main audit"
+        "main doit"
+        "main doit"
+        "menuFoot menuFoot"
+        ;
+
+        .menu-main{
+          grid-area: main;
+        }
+
+        .design-audit{
+          grid-area: audit;
+        }
+
+        .do-it-all{
+          grid-area: doit;
+        }
+
+        .menu-footer{
+          grid-area: menuFoot;
+        } 
+    }
+
+    @media(min-width: ${breakpointMedium}){
+      grid-template-rows: repeat(7, 1fr);
+      grid-template-areas: 
+        "main audit"
+        "main audit"
+        "main audit"
+        "main audit"
+        "main doit"
+        "menuFoot doit"
+        "menuFoot doit"
+        ;
+    }
 `;
+
 
 const MainMenu = styled.section`
   padding: 43px 30px 30px 30px;

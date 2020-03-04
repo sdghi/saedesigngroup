@@ -70,7 +70,8 @@ const ServicesPage = ({ data }) => {
       <MenuContainer>
         <MainMenu>
           {mainMenu.map(service => (
-            <div key={service.id}>
+            // Adds the name of the feature as a classname to use as a grid area  
+            <div key={service.id} className={service.primary.title.text.toLowerCase()}>
               <h2>{service.primary.title.text}</h2>
 
               {service.items.map((item, index) => (
@@ -114,11 +115,16 @@ BRAND WITH A CRITICAL EYE </h4>
           </div>
         </WeDoItAll>
       </MenuContainer>
+      <MenuFooter>who you going to call and face goes here</MenuFooter>
     </Layout>
   )
 }
 
 export default ServicesPage
+
+const MenuFooter = styled.div`
+  
+`;
 
 const MenuContainer = styled.div`
   padding: 18.5px;

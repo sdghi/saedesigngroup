@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { myContext } from "../provider"
 import styled from 'styled-components'
-import { light_blue, dark_blue, yellow, pink } from '../variables'
+import { light_blue, dark_blue, yellow, pink, white } from '../variables'
 
 export const query = graphql`
 {
@@ -89,7 +89,11 @@ const ServicesPage = ({ data }) => {
           </div>
         </MainMenu>
         <DesignAudit>
-          <div>
+          <hr />
+          <h4>IT MAY BE TIME TO LOOK AT YOUR
+BRAND WITH A CRITICAL EYE </h4>
+          <hr />
+          <div class="design-audit-content">
             {design_audit.map((audit, index) => (
               <div key={index}>
                 <h3>{audit.title.text}</h3>
@@ -99,9 +103,13 @@ const ServicesPage = ({ data }) => {
           </div>
         </DesignAudit>
         <WeDoItAll>
-          <div>
+          <div className="we-do-it-all-heading">
+            <h2>We do it all!</h2>
+            <h4>Mostly!</h4>
+          </div>
+          <div className="we-do-it-all-container">
             {we_do_it_all.map((item, index) => (
-              <p key={index}>{item.industries.text}</p>
+              <h4 key={index}>{item.industries.text}</h4>
             ))}
           </div>
         </WeDoItAll>
@@ -117,6 +125,21 @@ const MenuContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 30px;
+
+  h3{
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      font-weight: 900;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    p{
+      margin: 0;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.4;
+    }
 `;
 
 const MainMenu = styled.section`
@@ -136,22 +159,18 @@ const MainMenu = styled.section`
     text-transform: uppercase;
   }
 
+  p{
+    font-weight: 300;
+  }
+
   .service-item{
     margin-bottom: 18px;
 
-    .service-title{
-      font-size: 13px;
-      letter-spacing: 0.2em;
-      font-weight: 900;
-      margin: 0;
-      text-transform: uppercase;
+    h3{
+      color: ${dark_blue};
     }
 
-    p{
-      margin: 0;
-      font-size: 13px;
-      font-weight: 300;
-    }
+
   }
 
   .add-a-side-of{
@@ -170,6 +189,7 @@ const MainMenu = styled.section`
       margin: 0;
       line-height: 2.1;
       font-size: 13px;
+      color: ${dark_blue};
       font-weight: 700;
     }
   }
@@ -179,10 +199,75 @@ const DesignAudit = styled.section`
   padding: 20px;
   border: 4px solid ${pink};
   border-radius: 19.41px;
+  
+  hr{
+   border: 1px solid ${dark_blue};
+  }
+
+  h4{
+    text-align: center;
+    font-size: 13px;
+    margin: 0;
+    line-height: 18px;
+    letter-spacing: 0.153rem;
+    margin: 10px 0;
+  }
+
+  .design-audit-content{
+    margin-top: 33px;
+
+    h3{
+      color: ${pink};
+    }
+
+    div{
+      margin-bottom: 20px;
+    }
+  }
+
 `;
 
 const WeDoItAll = styled.section`
-  padding: 20px;
+  padding: 0 0 50px 0;
   border: 4px solid ${dark_blue};
   border-radius: 19.41px;
+  background: ${light_blue};
+
+  .we-do-it-all-heading{
+    padding: 27px 0;
+
+    h2,
+    h4{
+      text-align: center;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    h2{
+      font-size: 36px;
+      font-weight: 500;
+    }
+
+    h4{
+      font-weight: 700;
+      color: ${white};
+      font-size: 21px;
+    }
+  }
+
+  .we-do-it-all-container{
+    padding: 27px;
+    background-image: url('curved-bg.svg');
+    background-repeat: no-repeat;
+    height: fit-content;
+    background-size: cover;
+
+    h4{
+      margin: 0;
+      line-height: 1.75;
+      text-align: center;
+    }
+  }
+
+
 `;

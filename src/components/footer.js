@@ -31,8 +31,9 @@ const Footer = () => {
             <img src={"/SD_icon_instagram.svg"} alt="Sae design instagram" />
           </a>{" "}
           |{" "}
-          <a href="https://saemin.saedesign.com">
+          <a href="https://saemin.saedesign.com" className="saemin-link">
             <img src={"/SD_icon_saemin.svg"} alt="Saemin" />
+            <p>Saemin Generator</p>
           </a>
         </span>
       </ContactInfo>
@@ -93,7 +94,7 @@ const ContactInfo = styled.div`
 
     span {
       display: grid;
-      grid-template-columns: 2fr 1fr 2fr;
+      grid-template-columns: 2fr 1fr 6fr;
       grid-gap: 10px;
       place-items: center;
       align-items: center;
@@ -101,6 +102,16 @@ const ContactInfo = styled.div`
 
       a {
         line-height: 0;
+      }
+
+      .saemin-link{
+        display: flex;
+        align-items: center;
+      
+        p{
+          margin-left: 5px;
+          font-size: 12px;
+        }
       }
 
       img {

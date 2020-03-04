@@ -64,7 +64,7 @@ const ProjectImageWithTitle = ({
         <ProjetContainer
           key={project.uid}
           displayProjectsGrid={displayProjectsGrid}
-          onMouseOver={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
+          onMouseEnter={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
           onMouseLeave={() => setCursorElement({ initial: "initial" })}
           // Adjust sizes of non grid according to cms
           // 70 and 100 are the biggest values that work before breaking the grid
@@ -112,8 +112,9 @@ const ProjetContainer = styled.div`
     bottom: 20px;
     left: 20px;
     margin: 0;
-    font-size: 2rem;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1.875rem;
   }
 
   ${ImageContainer} {

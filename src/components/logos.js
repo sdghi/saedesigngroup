@@ -53,7 +53,7 @@ const Logos = ({ setCursorElement }) => {
             <Link
               to={logo.primary.link_to_project.uid}
               className="open-project-link"
-              onMouseOver={() => setCursorElement({ selected: "selected" })}
+              onMouseEnter={() => setCursorElement({ selected: "selected" })}
               onMouseLeave={() => setCursorElement({ initial: "initial" })}
             >
               <button>go to project</button>

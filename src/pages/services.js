@@ -114,7 +114,32 @@ BRAND WITH A CRITICAL EYE </h4>
             ))}
           </div>
         </WeDoItAll>
-        <MenuFooter class="menu-footer">who you going to call and face goes here</MenuFooter>
+        <MenuFooter class="menu-footer">
+          <div className="left">
+            <h3 className="footer-cta">WHO YOU GOING CALL?</h3>
+            <hr />
+            <div className="footer-main">
+              <div className="phone-number">
+                <h2>808-249-2200</h2>
+                <h4>SERVING ALL ISLANDS & BEYOND</h4>
+              </div>
+              <div className="address">
+                <div>
+                  <h4>MAUI OFFICE</h4>
+                  <a href="#">2261 Aupuni St # 101, Wailuku, Hi 96793</a>
+                </div>
+                <div>
+                  <h4>‘OAHU OFFICE</h4>
+                  <a href="/">555 South Street #108, Honolulu, Hi 96813</a>
+                </div>
+              </div>
+            </div>
+            <hr />
+          </div>
+          <div className="right">
+            <img src="menu-face.svg" alt="sdg menu face" />
+          </div>
+        </MenuFooter>
       </MenuContainer>
     </Layout>
   )
@@ -123,7 +148,101 @@ BRAND WITH A CRITICAL EYE </h4>
 export default ServicesPage
 
 const MenuFooter = styled.div`
+  hr{
+    /* Override the other borders  */
+    border: none;
+    border-bottom: 4px solid ${dark_blue};
+    margin: 0;
+  }
+
+  h2,
+  h3,
+  h4{
+    margin: 0;
+  }
+
+  .footer-cta{
+    font-size: 40px;
+    color: ${pink};
+    text-align: center;
+  }
+
+  .phone-number{
+    text-align: center;
+    margin-bottom: 14px;
+
+    h2{
+      font-size: 46px;
+    }
+
+    h4{
+      font-size: 17px;
+      color: ${pink};
+      letter-spacing: 0.2rem;
+    }
+  }
+
+  .address{
+    text-align: center;
+
+    div{
+      margin-bottom: 14px;
+
+      a{
+        color: ${dark_blue};
+
+        &:hover{
+          color: ${pink};
+        }
+      }
+    }
+  }
+
+  .footer-main{
+    padding: 21px 0;
+  }
+
+  @media(min-width: ${breakpointSmall}){
+    display: inline-grid;
+    grid-template-columns: 5fr 1fr;
+    grid-gap: 40px;
+
+
+    .right{
+      display: grid;
+      place-items: center;
+    }
   
+    .footer-cta{ 
+      font-size: 56px;
+    }
+
+    .footer-main{
+      display: flex;
+      justify-content: space-between;
+
+      .phone-number{
+        text-align: left;
+
+        h2{
+          font-size: 64px;
+        }
+        h4{
+          font-size: 24px;
+        }
+      }
+
+      .address{
+        text-align: left;
+      }
+    }
+  }
+
+  @media(min-width: ${breakpointMedium}){
+    .footer-cta{
+      font-size: 50px;
+    }
+  }
 `;
 
 const MenuContainer = styled.div`
@@ -153,16 +272,14 @@ const MenuContainer = styled.div`
 
 
     @media(min-width: ${breakpointSmall}){
-      grid-template-columns: 2fr 1fr;
-      grid-template-rows: repeat(5, 1fr);
+      padding: 0 220px;
+      grid-template-columns: 2fr 330px;
+      grid-template-rows: 1fr 1fr 1fr;
       width: 100%;
       grid-template-areas: 
         "main audit"
-        "main audit"
         "main doit"
-        "main doit"
-        "menuFoot menuFoot"
-        ;
+        "menuFoot menuFoot";
 
         .menu-main{
           grid-area: main;
@@ -182,14 +299,12 @@ const MenuContainer = styled.div`
     }
 
     @media(min-width: ${breakpointMedium}){
-      grid-template-rows: repeat(7, 1fr);
+      grid-template-rows: repeat(5, 1fr);
       grid-template-areas: 
         "main audit"
         "main audit"
         "main audit"
-        "main audit"
         "main doit"
-        "menuFoot doit"
         "menuFoot doit"
         ;
     }

@@ -276,6 +276,24 @@ const MainMenu = styled.section`
       .add-a-side-of{
         grid-area: sides;
       }
+
+      .digital{
+        grid-area: digital;
+      }
+  }
+
+  @media(min-width: ${breakpointMedium}){
+    grid-template-columns: repeat(3, 270px);
+    grid-template-rows: repeat(6, 100px);
+    justify-content: center;
+    grid-gap: 45px 90px;
+    grid-template-areas: 
+      "branding packaging marketing"
+      "branding packaging marketing"
+      "branding print digital"
+      "branding print digital"
+      "branding print sides"
+      ". print sides "
   }
 `;
 

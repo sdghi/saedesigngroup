@@ -120,17 +120,17 @@ BRAND WITH A CRITICAL EYE </h4>
             <hr />
             <div className="footer-main">
               <div className="phone-number">
-                <h2>808-249-2200</h2>
+                <h2><a href="tel:808-249-2200">808-249-2200</a></h2>
                 <h4>SERVING ALL ISLANDS & BEYOND</h4>
               </div>
               <div className="address">
                 <div>
                   <h4>MAUI OFFICE</h4>
-                  <a href="#">2261 Aupuni St # 101, Wailuku, Hi 96793</a>
+                  <a href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225">2261 Aupuni St # 101, Wailuku, Hi 96793</a>
                 </div>
                 <div>
                   <h4>‘OAHU OFFICE</h4>
-                  <a href="/">555 South Street #108, Honolulu, Hi 96813</a>
+                  <a href="https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513">555 South Street #108, Honolulu, Hi 96813</a>
                 </div>
               </div>
             </div>
@@ -226,6 +226,16 @@ const MenuFooter = styled.div`
 
         h2{
           font-size: 64px;
+
+          a{
+            color: ${dark_blue};
+          }
+
+          &:hover{
+            a{
+              color: ${light_blue};
+            }
+          }
         }
         h4{
           font-size: 24px;
@@ -246,6 +256,7 @@ const MenuFooter = styled.div`
 `;
 
 const MenuContainer = styled.div`
+  margin: 10vh auto 0 auto;
   padding: 18.5px;
   display: grid;
   grid-template-columns: 1fr;
@@ -272,6 +283,7 @@ const MenuContainer = styled.div`
 
 
     @media(min-width: 1100px){
+      margin: 10vh auto 0 auto;
       grid-template-columns: 2fr 330px;
       grid-template-rows: 1fr 1fr 0.5fr;
       width: 100%;
@@ -300,7 +312,7 @@ const MenuContainer = styled.div`
     @media(min-width: ${breakpointLarge}){
       width: 90%;
       max-width: 1470px;
-      margin: 0 auto;
+      margin: 10vh auto 0 auto;
       grid-template-rows: 0.7fr 0.7fr 0.7fr 1fr;
       grid-template-areas: 
         "main audit"

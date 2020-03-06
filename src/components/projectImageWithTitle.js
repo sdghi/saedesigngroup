@@ -48,15 +48,6 @@ const ProjectImageWithTitle = ({
     // Reset to false in case it changes
     setShowProject(false)
     renderSizes()
-    // Setup parallax
-    const parallaxElement = document.querySelectorAll('.parallax-element');
-    const parallax = new Parallax();
-
-    parallax.setup({
-      selector: parallaxElement
-    })
-
-    parallax.init();
 
     // Add Categories for filter
     categories.map(category => {
@@ -71,6 +62,18 @@ const ProjectImageWithTitle = ({
       return null
     })
   }, [projectCategoryFilter, categories])
+
+  useEffect(() => {
+    // Setup parallax
+    const parallaxElement = document.querySelectorAll('.parallax-element');
+    const parallax = new Parallax();
+
+    parallax.setup({
+      selector: parallaxElement
+    })
+
+    parallax.init();
+  })
 
   return (
     <>

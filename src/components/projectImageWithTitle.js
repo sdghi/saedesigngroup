@@ -92,6 +92,7 @@ const ProjectImageWithTitle = ({
           left={displayProjectsGrid ? "0" : left * 4}
           right={displayProjectsGrid ? "0" : right * 4}
           bottom={displayProjectsGrid ? "0" : bottom * 4}
+          placement={placement ? placement : 1}
           // Subtract 1 so that if its the 1st column it will start at margin 0
           gridColumn={grid_column - 1}
           // Total width of allProjectsContainer / total number of columns
@@ -138,6 +139,7 @@ const ProjetContainer = styled.div`
   }
 
   @media (min-width: ${breakpointSmall}) {
+    z-index: ${props => props.placement};
     width: ${props => props.widthMd};
     /* Height auto will maintain the orientation of the image  */
     height: ${props => props.displayProjectsGrid ? '300px' : 'auto'};

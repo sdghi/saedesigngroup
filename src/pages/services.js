@@ -114,7 +114,7 @@ BRAND WITH A CRITICAL EYE </h4>
             ))}
           </div>
         </WeDoItAll>
-        <MenuFooter class="menu-footer">
+        <MenuFooter className="menu-footer">
           <div className="left">
             <h3 className="footer-cta">WHO YOU GOING CALL?</h3>
             <hr />
@@ -273,12 +273,16 @@ const MenuContainer = styled.div`
 
     @media(min-width: 1100px){
       grid-template-columns: 2fr 330px;
-      grid-template-rows: repeat(3, 1fr);
+      grid-template-rows: 1fr 1fr 0.5fr;
       width: 100%;
       grid-template-areas: 
         "main audit"
         "main doit"
         "menuFoot menuFoot";
+
+        .menu-footer{
+          grid-area: menuFoot;
+        } 
 
         .menu-main{
           grid-area: main;
@@ -291,10 +295,6 @@ const MenuContainer = styled.div`
         .do-it-all{
           grid-area: doit;
         }
-
-        .menu-footer{
-          grid-area: menuFoot;
-        } 
     }
 
     @media(min-width: ${breakpointLarge}){

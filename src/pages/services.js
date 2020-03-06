@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { myContext } from "../provider"
 import styled from 'styled-components'
-import { light_blue, dark_blue, yellow, pink, white, altFont, breakpointMedium, breakpointSmall } from '../variables'
+import { light_blue, dark_blue, yellow, pink, white, altFont, breakpointMedium, breakpointSmall, breakpointLarge } from '../variables'
 
 export const query = graphql`
 {
@@ -271,8 +271,7 @@ const MenuContainer = styled.div`
     }
 
 
-    @media(min-width: ${breakpointSmall}){
-      padding: 0 220px;
+    @media(min-width: 1020px){
       grid-template-columns: 2fr 330px;
       grid-template-rows: 1fr 1fr 1fr;
       width: 100%;
@@ -298,7 +297,10 @@ const MenuContainer = styled.div`
         } 
     }
 
-    @media(min-width: ${breakpointMedium}){
+    @media(min-width: ${breakpointLarge}){
+      width: 90%;
+      max-width: 1470px;
+      margin: 0 auto;
       grid-template-rows: repeat(5, 1fr);
       grid-template-areas: 
         "main audit"
@@ -397,7 +399,7 @@ const MainMenu = styled.section`
       }
   }
 
-  @media(min-width: ${breakpointMedium}){
+  @media(min-width: ${breakpointLarge}){
     grid-template-columns: repeat(3, 270px);
     grid-template-rows: repeat(6, 100px);
     justify-content: center;

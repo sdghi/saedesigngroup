@@ -69,7 +69,8 @@ const ProjectImageWithTitle = ({
     const parallax = new Parallax();
 
     parallax.setup({
-      selector: parallaxElement
+      selector: parallaxElement,
+      ease: 'linear'
     })
 
     parallax.init();

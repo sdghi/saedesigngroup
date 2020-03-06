@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { breakpointSmall } from "../variables"
 import { ImageContainer } from "../elements"
 import { Parallax } from 'giftbag'
+import { motion } from 'framer-motion'
 
 const ProjectImageWithTitle = ({
   project,
@@ -80,16 +81,19 @@ const ProjectImageWithTitle = ({
     <>
       {showProject && (
         <ProjetContainer
+          animate={{
+            y: displayProjectsGrid && 0
+          }}
           key={project.uid}
-          className="parallax-element"
-          data-parallax-speed={placement ? projectSize / placement : projectSize / 1}
+          className={!displayProjectsGrid && "parallax-element"}
+          // If it is grid give it 0 paralax or if there is no placement value
+          data-parallax-speed={displayProjectsGrid || !placement ? 0 : projectSize / placement}
           displayProjectsGrid={displayProjectsGrid}
           onMouseEnter={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
           onMouseLeave={() => setCursorElement({ initial: "initial" })}
           // Adjust sizes of non grid according to cms
           // 70 and 100 are the biggest values that work before breaking the grid
           // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
-          // heightMd={displayProjectsGrid ? "300px" : `${1000 / 1}px`}
           widthMd={displayProjectsGrid ? "100%" : `${40 / projectSize}%`}
           // Top, Left, Bottom and Right will be directly affected by their properties in the cms
           top={displayProjectsGrid ? "0" : top * 4}
@@ -122,7 +126,7 @@ const ProjectImageWithTitle = ({
 
 export default ProjectImageWithTitle
 
-const ProjetContainer = styled.div`
+const ProjetContainer = styled(motion.div)`
   position: relative;
   margin: 0 auto 0 auto;
   width: 100%;

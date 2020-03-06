@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { breakpointSmall } from "../variables"
 import { ImageContainer } from "../elements"
 import { Parallax } from 'giftbag'
+import { motion } from 'framer-motion'
 
 const ProjectImageWithTitle = ({
   project,
@@ -13,6 +14,7 @@ const ProjectImageWithTitle = ({
 }) => {
   const [showProject, setShowProject] = useState(false)
   const [projectSize, setProjectSize] = useState(false)
+  const [parallaxSpeed, setParallaxSpeed] = useState(0);
 
   const slug = project.node.uid
   const categories = project.node.data.categories
@@ -64,6 +66,13 @@ const ProjectImageWithTitle = ({
   }, [projectCategoryFilter, categories])
 
   useEffect(() => {
+
+    if (displayProjectsGrid) {
+      setParallaxSpeed(0)
+    } else {
+      placement ? setParallaxSpeed(projectSize / placement) : setParallaxSpeed(projectSize / 1);
+    }
+
     // Setup parallax
     const parallaxElement = document.querySelectorAll('.parallax-element');
     const parallax = new Parallax();
@@ -73,16 +82,19 @@ const ProjectImageWithTitle = ({
       ease: 'linear'
     })
 
-    parallax.init();
-  })
+    !displayProjectsGrid && parallax.init();
+  }, [displayProjectsGrid])
 
   return (
     <>
       {showProject && (
         <ProjetContainer
+          animate={{
+            y: displayProjectsGrid ? 0 : 'auto'
+          }}
           key={project.uid}
-          className="parallax-element"
-          data-parallax-speed={placement ? projectSize / placement : projectSize / 1}
+          className={!displayProjectsGrid && "parallax-element"}
+          data-parallax-speed={parallaxSpeed}
           displayProjectsGrid={displayProjectsGrid}
           onMouseEnter={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
           onMouseLeave={() => setCursorElement({ initial: "initial" })}
@@ -122,7 +134,7 @@ const ProjectImageWithTitle = ({
 
 export default ProjectImageWithTitle
 
-const ProjetContainer = styled.div`
+const ProjetContainer = styled(motion.div)`
   position: relative;
   margin: 0 auto 0 auto;
   width: 100%;

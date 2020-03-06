@@ -86,7 +86,8 @@ const ProjectImageWithTitle = ({
           }}
           key={project.uid}
           className={!displayProjectsGrid && "parallax-element"}
-          data-parallax-speed={displayProjectsGrid ? 0 : placement ? projectSize / placement : projectSize / 1}
+          // If it is grid give it 0 paralax or if there is no placement value
+          data-parallax-speed={displayProjectsGrid || !placement ? 0 : projectSize / placement}
           displayProjectsGrid={displayProjectsGrid}
           onMouseEnter={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
           onMouseLeave={() => setCursorElement({ initial: "initial" })}

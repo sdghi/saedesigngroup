@@ -273,7 +273,7 @@ const MenuContainer = styled.div`
 
     @media(min-width: 1100px){
       grid-template-columns: 2fr 330px;
-      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
       width: 100%;
       grid-template-areas: 
         "main audit"
@@ -301,7 +301,7 @@ const MenuContainer = styled.div`
       width: 90%;
       max-width: 1470px;
       margin: 0 auto;
-      grid-template-rows: repeat(5, 1fr);
+      grid-template-rows: 0.7fr 0.7fr 0.7fr 1fr;
       grid-template-areas: 
         "main audit"
         "main audit"

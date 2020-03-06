@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { breakpointSmall } from "../variables"
 import { ImageContainer } from "../elements"
+import { Parallax } from 'giftbag'
 
 const ProjectImageWithTitle = ({
   project,
@@ -28,6 +29,7 @@ const ProjectImageWithTitle = ({
     bottom,
     size,
     is_case_study,
+    placement
   } = project.node.data
 
   // Handle rendering the sizes
@@ -41,10 +43,13 @@ const ProjectImageWithTitle = ({
     }
   }
 
+
   useEffect(() => {
     // Reset to false in case it changes
     setShowProject(false)
     renderSizes()
+
+    // Add Categories for filter
     categories.map(category => {
       // Show project if the category matches the project filter
       // If it's all show all the projects
@@ -58,11 +63,25 @@ const ProjectImageWithTitle = ({
     })
   }, [projectCategoryFilter, categories])
 
+  useEffect(() => {
+    // Setup parallax
+    const parallaxElement = document.querySelectorAll('.parallax-element');
+    const parallax = new Parallax();
+
+    parallax.setup({
+      selector: parallaxElement
+    })
+
+    parallax.init();
+  })
+
   return (
     <>
       {showProject && (
         <ProjetContainer
           key={project.uid}
+          className="parallax-element"
+          data-parallax-speed={placement ? projectSize / placement : projectSize / 1}
           displayProjectsGrid={displayProjectsGrid}
           onMouseEnter={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
           onMouseLeave={() => setCursorElement({ initial: "initial" })}
@@ -70,12 +89,13 @@ const ProjectImageWithTitle = ({
           // 70 and 100 are the biggest values that work before breaking the grid
           // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
           // heightMd={displayProjectsGrid ? "300px" : `${1000 / 1}px`}
-          widthMd={displayProjectsGrid ? "100%" : `${50 / projectSize}%`}
+          widthMd={displayProjectsGrid ? "100%" : `${40 / projectSize}%`}
           // Top, Left, Bottom and Right will be directly affected by their properties in the cms
           top={displayProjectsGrid ? "0" : top * 4}
           left={displayProjectsGrid ? "0" : left * 4}
           right={displayProjectsGrid ? "0" : right * 4}
           bottom={displayProjectsGrid ? "0" : bottom * 4}
+          placement={placement ? placement : 1}
           // Subtract 1 so that if its the 1st column it will start at margin 0
           gridColumn={grid_column - 1}
           // Total width of allProjectsContainer / total number of columns
@@ -122,6 +142,7 @@ const ProjetContainer = styled.div`
   }
 
   @media (min-width: ${breakpointSmall}) {
+    z-index: ${props => props.placement};
     width: ${props => props.widthMd};
     /* Height auto will maintain the orientation of the image  */
     height: ${props => props.displayProjectsGrid ? '300px' : 'auto'};

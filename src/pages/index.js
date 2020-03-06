@@ -40,6 +40,7 @@ export const query = graphql`
               }
             }
             is_case_study
+            placement
             grid_column
             size
             top

@@ -14,7 +14,6 @@ const ProjectImageWithTitle = ({
 }) => {
   const [showProject, setShowProject] = useState(false)
   const [projectSize, setProjectSize] = useState(false)
-  const [parallaxSpeed, setParallaxSpeed] = useState(0);
 
   const slug = project.node.uid
   const categories = project.node.data.categories
@@ -66,13 +65,6 @@ const ProjectImageWithTitle = ({
   }, [projectCategoryFilter, categories])
 
   useEffect(() => {
-
-    if (displayProjectsGrid) {
-      setParallaxSpeed(0)
-    } else {
-      placement ? setParallaxSpeed(projectSize / placement) : setParallaxSpeed(projectSize / 1);
-    }
-
     // Setup parallax
     const parallaxElement = document.querySelectorAll('.parallax-element');
     const parallax = new Parallax();
@@ -82,26 +74,25 @@ const ProjectImageWithTitle = ({
       ease: 'linear'
     })
 
-    !displayProjectsGrid && parallax.init();
-  }, [displayProjectsGrid])
+    parallax.init();
+  })
 
   return (
     <>
       {showProject && (
         <ProjetContainer
           animate={{
-            y: displayProjectsGrid ? 0 : 'auto'
+            y: displayProjectsGrid && 0
           }}
           key={project.uid}
           className={!displayProjectsGrid && "parallax-element"}
-          data-parallax-speed={parallaxSpeed}
+          data-parallax-speed={displayProjectsGrid ? 0 : placement ? projectSize / placement : projectSize / 1}
           displayProjectsGrid={displayProjectsGrid}
           onMouseEnter={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
           onMouseLeave={() => setCursorElement({ initial: "initial" })}
           // Adjust sizes of non grid according to cms
           // 70 and 100 are the biggest values that work before breaking the grid
           // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
-          // heightMd={displayProjectsGrid ? "300px" : `${1000 / 1}px`}
           widthMd={displayProjectsGrid ? "100%" : `${40 / projectSize}%`}
           // Top, Left, Bottom and Right will be directly affected by their properties in the cms
           top={displayProjectsGrid ? "0" : top * 4}

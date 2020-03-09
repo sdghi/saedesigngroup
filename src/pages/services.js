@@ -94,7 +94,7 @@ const ServicesPage = ({ data }) => {
           <h4>IT MAY BE TIME TO LOOK AT YOUR
 BRAND WITH A CRITICAL EYE </h4>
           <hr />
-          <div class="design-audit-content">
+          <div className="design-audit-content">
             {design_audit.map((audit, index) => (
               <div key={index}>
                 <h3>{audit.title.text}</h3>
@@ -253,6 +253,25 @@ const MenuFooter = styled.div`
       font-size: 50px;
     }
   }
+
+  @media(min-width: 2560px){
+    .footer-cta{
+      font-size: 36px;
+    }
+
+    .footer-main{
+      display: block;
+
+      .phone-number{
+        text-align: center;
+      }
+
+      .address{
+        display: flex;
+        padding: 15px 20px 0 20px;
+      }
+    }
+  }
 `;
 
 const MenuContainer = styled.div`
@@ -322,6 +341,16 @@ const MenuContainer = styled.div`
         "menuFoot doit"
         ;
     }
+
+
+    @media(min-width: 2560px){
+      max-width: 2300px;
+      grid-template-columns: 1382px 1fr 1fr;
+      grid-template-rows: 1.5fr  0.5fr;
+      grid-template-areas: 
+        "main audit doit"
+        "main menuFoot menuFoot"
+    }
 `;
 
 
@@ -345,6 +374,22 @@ const MainMenu = styled.section`
 
   p{
     font-weight: 300;
+  }
+
+  @media(min-width:2560px){
+    h2{
+      font-size: 36px;
+    }
+
+    .service-item{
+      .service-title{
+        font-size: 19px;
+      }
+
+      p{
+        font-size: 17px;
+      }
+    }
   }
 
   .service-item{
@@ -423,6 +468,29 @@ const MainMenu = styled.section`
       "branding print digital"
       "branding print sides"
       ". print sides "
+  }
+
+  @media(min-width: 2560px){
+    grid-template-columns: repeat(3, 350px);
+    grid-template-rows: 150px 150px  1fr;
+    grid-template-areas: 
+      "branding packaging marketing"
+      "branding print digital"
+      "sides sides sides"
+
+      h2{
+      font-size: 36px;
+    }
+
+    .service-item{
+      .service-title{
+        font-size: 19px;
+      }
+
+      p{
+        font-size: 17px;
+      }
+    }
   }
 `;
 

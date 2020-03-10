@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { breakpointSmall } from "../variables"
 import { ImageContainer } from "../elements"
-import { Parallax } from 'giftbag'
-import { motion } from 'framer-motion'
+import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 const ProjectImageWithTitle = ({
   project,
@@ -50,6 +49,11 @@ const ProjectImageWithTitle = ({
     setShowProject(false)
     renderSizes()
 
+    // handle the placement value if there is no placement it will go on the top
+    placement ? setPlacementValue(parseInt(placement)) : setPlacementValue(1)
+
+    console.log('clout', placementValue / projectSize)
+
     // Add Categories for filter
     categories.map(category => {
       // Show project if the category matches the project filter
@@ -64,30 +68,37 @@ const ProjectImageWithTitle = ({
     })
   }, [projectCategoryFilter, categories])
 
-  useEffect(() => {
-    // Setup parallax
-    const parallaxElement = document.querySelectorAll('.parallax-element');
-    const parallax = new Parallax();
 
-    parallax.setup({
-      selector: parallaxElement,
-      ease: 'linear'
-    })
+  // Handle Parallax
 
-    parallax.init();
-  })
+  // Set the element top
+  const [elTop, setElTop] = useState(0)
+  // Const placementValue
+  const [placementValue, setPlacementValue] = useState(0)
+  // Destructure the scroll Y value from useViewportScroll
+  const { scrollY } = useViewportScroll()
+
+  const y = useTransform(scrollY, !displayProjectsGrid ? [elTop, elTop + (placementValue * 1.5 / projectSize)] : [0, 0], [0, -1], {
+    clamp: false
+  });
+
+  const measuredRef = useCallback(node => {
+    if (node !== null) {
+      setElTop(node.offsetTop)
+    }
+  }, []);
+
 
   return (
     <>
       {showProject && (
         <ProjetContainer
+          ref={measuredRef}
           animate={{
             y: displayProjectsGrid && 0
           }}
+          style={{ y }}
           key={project.uid}
-          className={!displayProjectsGrid && "parallax-element"}
-          // If it is grid give it 0 paralax or if there is no placement value
-          data-parallax-speed={displayProjectsGrid || !placement ? 0 : projectSize / placement}
           displayProjectsGrid={displayProjectsGrid}
           onMouseEnter={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
           onMouseLeave={() => setCursorElement({ initial: "initial" })}

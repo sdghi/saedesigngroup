@@ -10,9 +10,12 @@ const ProjectImageWithTitle = ({
   projectCategoryFilter,
   displayProjectsGrid,
   setCursorElement,
+  elTop
 }) => {
   const [showProject, setShowProject] = useState(false)
   const [projectSize, setProjectSize] = useState(false)
+  // Const placementValue
+  const [placementValue, setPlacementValue] = useState(0)
 
   const slug = project.node.uid
   const categories = project.node.data.categories
@@ -69,23 +72,13 @@ const ProjectImageWithTitle = ({
 
 
   // Handle Parallax
-
-  // Set the element top
-  const [elTop, setElTop] = useState(0)
-  // Const placementValue
-  const [placementValue, setPlacementValue] = useState(0)
   // Destructure the scroll Y value from useViewportScroll
   const { scrollY } = useViewportScroll()
 
-  const y = useTransform(scrollY, !displayProjectsGrid ? [elTop, elTop + (placementValue * 1.5 / projectSize)] : [0, 0], [0, -1], {
+  const y = useTransform(scrollY, !displayProjectsGrid ? [elTop, elTop + (placementValue / projectSize * 3)] : [0, 0], [0, -1], {
     clamp: false
   });
 
-  const measuredRef = useCallback(node => {
-    if (node !== null) {
-      setElTop(node.offsetTop)
-    }
-  }, []);
 
 
   return (
@@ -93,7 +86,6 @@ const ProjectImageWithTitle = ({
       {showProject && (
         <Link to={`/${slug}`}>
           <ProjetContainer
-            ref={measuredRef}
             animate={{
               y: displayProjectsGrid && 0
             }}

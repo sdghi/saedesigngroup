@@ -69,6 +69,7 @@ const ServicesPage = ({ data }) => {
       <SEO title="Services" />
       <MenuContainer>
         <MainMenu className="menu-main">
+          <img className="menu-of-services-header" src="menu-of-services.svg" alt="menu of services" />
           {mainMenu.map(service => (
             // Adds the name of the feature as a classname to use as a grid area  
             <div key={service.id} className={service.primary.title.text.toLowerCase()}>
@@ -90,7 +91,8 @@ const ServicesPage = ({ data }) => {
           </div>
         </MainMenu>
         <DesignAudit className="design-audit">
-          <img src="design-audit.svg" />
+          <img className="design-audit-header" src="new-item.svg" alt="new item" />
+          <img src="design-audit.svg" alt="design audit" />
           <hr />
           <h4>IT MAY BE TIME TO LOOK AT YOUR
 BRAND WITH A CRITICAL EYE </h4>
@@ -148,138 +150,6 @@ BRAND WITH A CRITICAL EYE </h4>
 
 export default ServicesPage
 
-const MenuFooter = styled.div`
-  hr{
-    /* Override the other borders  */
-    border: none;
-    border-bottom: 4px solid ${dark_blue};
-    margin: 0;
-  }
-
-  h2,
-  h3,
-  h4{
-    margin: 0;
-  }
-
-  .footer-cta{
-    font-size: 40px;
-    color: ${pink};
-    text-align: center;
-  }
-
-  .phone-number{
-    text-align: center;
-    margin-bottom: 14px;
-
-    h2{
-      font-size: 46px;
-
-      a{
-        color: ${dark_blue};
-      }
-    }
-
-    h4{
-      font-size: 17px;
-      color: ${pink};
-      letter-spacing: 0.2rem;
-    }
-  }
-
-  .address{
-    text-align: center;
-
-    div{
-      margin-bottom: 14px;
-
-      a{
-        color: ${dark_blue};
-
-        &:hover{
-          color: ${pink};
-        }
-      }
-    }
-  }
-
-  .footer-main{
-    padding: 21px 0;
-  }
-
-  .right{
-    width: fit-content;
-    margin:  24px auto 0 auto;
-  }
-
-  @media(min-width: 1100px){
-    display: inline-grid;
-    grid-template-columns: 5fr 1fr;
-    grid-gap: 40px;
-
-
-    .right{
-      display: grid;
-      place-items: center;
-      margin: 0;
-    }
-  
-    .footer-cta{ 
-      font-size: 56px;
-    }
-
-    .footer-main{
-      display: flex;
-      justify-content: space-between;
-
-      .phone-number{
-        text-align: left;
-
-        h2{
-          font-size: 64px;
-
-          &:hover{
-            a{
-              color: ${light_blue};
-            }
-          }
-        }
-        h4{
-          font-size: 24px;
-        }
-      }
-
-      .address{
-        text-align: left;
-      }
-    }
-  }
-
-  @media(min-width: ${breakpointMedium}){
-    .footer-cta{
-      font-size: 50px;
-    }
-  }
-
-  @media(min-width: 2560px){
-    .footer-cta{
-      font-size: 36px;
-    }
-
-    .footer-main{
-      display: block;
-
-      .phone-number{
-        text-align: center;
-      }
-
-      .address{
-        display: flex;
-        padding: 15px 20px 0 20px;
-      }
-    }
-  }
-`;
 
 const MenuContainer = styled.div`
   margin: 10vh auto 0 auto;
@@ -307,15 +177,13 @@ const MenuContainer = styled.div`
       line-height: 1.4;
     }
 
-
-    @media(min-width: 1100px){
-      margin: 10vh auto 0 auto;
-      grid-template-columns: 2fr 330px;
-      grid-template-rows: 1fr 1fr 0.5fr;
+    @media(min-width: ${breakpointSmall}){
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 0.5fr 0.5fr;
       width: 100%;
       grid-template-areas: 
-        "main audit"
-        "main doit"
+        "main main"
+        "audit doit"
         "menuFoot menuFoot";
 
         .menu-footer{
@@ -333,6 +201,18 @@ const MenuContainer = styled.div`
         .do-it-all{
           grid-area: doit;
         }
+    }
+
+
+    @media(min-width: 1100px){
+      margin: 10vh auto 0 auto;
+      grid-template-columns: 2fr 330px;
+      grid-template-rows: 1fr 1fr 0.5fr;
+      width: 100%;
+      grid-template-areas: 
+        "main audit"
+        "main doit"
+        "menuFoot menuFoot";
     }
 
     @media(min-width: ${breakpointLarge}){
@@ -362,6 +242,7 @@ const MenuContainer = styled.div`
 
 
 const MainMenu = styled.section`
+  position: relative;
   padding: 43px 30px 30px 30px;
   border: 4px solid ${dark_blue};
   border-radius: 19.41px;
@@ -369,6 +250,22 @@ const MainMenu = styled.section`
   place-content: center;
   grid-template-columns: 1fr;
   grid-gap: 20px;
+
+  .menu-of-services-header{
+    position: absolute;
+    top: -100px;
+    width: 50%;
+    height: 200px;
+    left: 25%;
+    z-index: 1;
+  }
+
+  h2,
+  h3,
+  p{
+    position: relative;
+    z-index: 10;
+  }
 
   h2{
     color: ${light_blue};
@@ -502,9 +399,27 @@ const MainMenu = styled.section`
 `;
 
 const DesignAudit = styled.section`
-  padding: 20px;
+  padding: 50px 20px 20px 20px;
   border: 4px solid ${pink};
   border-radius: 19.41px;
+  position: relative;
+
+  .design-audit-header{
+    position: absolute;
+    top: -75px;
+    left: 25%;
+    height: 150px;
+    width: 40%;
+  }
+
+  @media(min-width: ${breakpointMedium}){
+    .design-audit-header{
+    top: -75px;
+    left: 15%;
+    height: 150px;
+    width: 70%;
+  }
+  }
 
   img{
     width: 100%;
@@ -579,6 +494,137 @@ const WeDoItAll = styled.section`
       text-align: center;
     }
   }
+`;
+
+const MenuFooter = styled.div`
+  hr{
+    /* Override the other borders  */
+    border: none;
+    border-bottom: 4px solid ${dark_blue};
+    margin: 0;
+  }
+
+  h2,
+  h3,
+  h4{
+    margin: 0;
+  }
+
+  .footer-cta{
+    font-size: 40px;
+    color: ${pink};
+    text-align: center;
+  }
+
+  .phone-number{
+    text-align: center;
+    margin-bottom: 14px;
+
+    h2{
+      font-size: 46px;
+
+      a{
+        color: ${dark_blue};
+      }
+    }
+
+    h4{
+      font-size: 17px;
+      color: ${pink};
+      letter-spacing: 0.2rem;
+    }
+  }
+
+  .address{
+    text-align: center;
+
+    div{
+      margin-bottom: 14px;
+
+      a{
+        color: ${dark_blue};
+
+        &:hover{
+          color: ${pink};
+        }
+      }
+    }
+  }
+
+  .footer-main{
+    padding: 21px 0;
+  }
+
+  .right{
+    width: fit-content;
+    margin:  24px auto 0 auto;
+  }
+
+  @media(min-width: 1100px){
+    display: inline-grid;
+    grid-template-columns: 5fr 1fr;
+    grid-gap: 40px;
 
 
+    .right{
+      display: grid;
+      place-items: center;
+      margin: 0;
+    }
+  
+    .footer-cta{ 
+      font-size: 56px;
+    }
+
+    .footer-main{
+      display: flex;
+      justify-content: space-between;
+
+      .phone-number{
+        text-align: left;
+
+        h2{
+          font-size: 64px;
+
+          &:hover{
+            a{
+              color: ${light_blue};
+            }
+          }
+        }
+        h4{
+          font-size: 24px;
+        }
+      }
+
+      .address{
+        text-align: left;
+      }
+    }
+  }
+
+  @media(min-width: ${breakpointMedium}){
+    .footer-cta{
+      font-size: 50px;
+    }
+  }
+
+  @media(min-width: 2560px){
+    .footer-cta{
+      font-size: 36px;
+    }
+
+    .footer-main{
+      display: block;
+
+      .phone-number{
+        text-align: center;
+      }
+
+      .address{
+        display: flex;
+        padding: 15px 20px 0 20px;
+      }
+    }
+  }
 `;

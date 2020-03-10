@@ -1,8 +1,8 @@
-import React, { useEffect } from "react"
+import React, { useState, useCallback } from "react"
 import styled from "styled-components"
 import { Paragraph, Container, ImageContainer } from "../elements"
 import { breakpointSmall, breakpointMedium, grey } from "../variables"
-import { Parallax } from "giftbag"
+import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 const StaggeredImages = ({ slice }) => {
   // Destructure items
@@ -11,22 +11,26 @@ const StaggeredImages = ({ slice }) => {
   const { fluid: imageOneSrc } = image_1.localFile.childImageSharp
   const { fluid: imageTwoSrc } = image_2.localFile.childImageSharp
 
-  // Parallax intialization
-  useEffect(() => {
-    const ParallaxElements = document.querySelectorAll(".parallax-element")
+  // Handle Parallax
+  // Set the element top
+  const [elTop, setElTop] = useState(0)
 
-    const parallax = new Parallax()
+  // Destructure the scroll Y value from useViewportScroll
+  const { scrollY } = useViewportScroll()
 
-    parallax.setup({
-      selector: ParallaxElements,
-    })
+  const y = useTransform(scrollY, [elTop, elTop + 4], [0, -1], {
+    clamp: false
+  });
 
-    parallax.init()
-  })
+  const ref = useCallback(node => {
+    if (node !== null) {
+      setElTop(node.offsetTop)
+    }
+  }, []);
 
   return (
-    <StaggeredImageContainer>
-      <div className="parallax-element" data-parallax-speed="0.3">
+    <StaggeredImageContainer ref={ref}>
+      <motion.div >
         <ImageContainer
           fluid={imageOneSrc}
           alt={image_1.alt}
@@ -35,18 +39,18 @@ const StaggeredImages = ({ slice }) => {
           marginMd="0"
           width="80%"
         />
-      </div>
+      </motion.div>
 
-      <div className="parallax-element" data-parallax-speed="-0.2">
+      <motion.div style={{ y }} >
         <ImageContainer
           fluid={imageTwoSrc}
           alt={image_2.alt}
           width="80%"
           widthMd="60%"
           margin="-5% 0 0 auto"
-          marginMd="5% 0 0 auto"
+          marginMd="-5% 0 0 auto"
         />
-      </div>
+      </motion.div>
 
       {caption && <Paragraph>{caption.text}</Paragraph>}
     </StaggeredImageContainer>

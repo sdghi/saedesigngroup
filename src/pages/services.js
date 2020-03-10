@@ -177,15 +177,13 @@ const MenuContainer = styled.div`
       line-height: 1.4;
     }
 
-
-    @media(min-width: 1100px){
-      margin: 10vh auto 0 auto;
-      grid-template-columns: 2fr 330px;
-      grid-template-rows: 1fr 1fr 0.5fr;
+    @media(min-width: ${breakpointSmall}){
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 0.5fr 0.5fr;
       width: 100%;
       grid-template-areas: 
-        "main audit"
-        "main doit"
+        "main main"
+        "audit doit"
         "menuFoot menuFoot";
 
         .menu-footer{
@@ -203,6 +201,18 @@ const MenuContainer = styled.div`
         .do-it-all{
           grid-area: doit;
         }
+    }
+
+
+    @media(min-width: 1100px){
+      margin: 10vh auto 0 auto;
+      grid-template-columns: 2fr 330px;
+      grid-template-rows: 1fr 1fr 0.5fr;
+      width: 100%;
+      grid-template-areas: 
+        "main audit"
+        "main doit"
+        "menuFoot menuFoot";
     }
 
     @media(min-width: ${breakpointLarge}){
@@ -397,9 +407,18 @@ const DesignAudit = styled.section`
   .design-audit-header{
     position: absolute;
     top: -75px;
+    left: 25%;
+    height: 150px;
+    width: 40%;
+  }
+
+  @media(min-width: ${breakpointMedium}){
+    .design-audit-header{
+    top: -75px;
     left: 15%;
     height: 150px;
     width: 70%;
+  }
   }
 
   img{

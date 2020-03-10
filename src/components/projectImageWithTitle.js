@@ -52,7 +52,6 @@ const ProjectImageWithTitle = ({
     // handle the placement value if there is no placement it will go on the top
     placement ? setPlacementValue(parseInt(placement)) : setPlacementValue(1)
 
-    console.log('clout', placementValue / projectSize)
 
     // Add Categories for filter
     categories.map(category => {
@@ -92,34 +91,34 @@ const ProjectImageWithTitle = ({
   return (
     <>
       {showProject && (
-        <ProjetContainer
-          ref={measuredRef}
-          animate={{
-            y: displayProjectsGrid && 0
-          }}
-          style={{ y }}
-          key={project.uid}
-          displayProjectsGrid={displayProjectsGrid}
-          onMouseEnter={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
-          onMouseLeave={() => setCursorElement({ initial: "initial" })}
-          // Adjust sizes of non grid according to cms
-          // 70 and 100 are the biggest values that work before breaking the grid
-          // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
-          widthMd={displayProjectsGrid ? "100%" : `${40 / projectSize}%`}
-          // Top, Left, Bottom and Right will be directly affected by their properties in the cms
-          top={displayProjectsGrid ? "0" : top * 4}
-          left={displayProjectsGrid ? "0" : left * 4}
-          right={displayProjectsGrid ? "0" : right * 4}
-          bottom={displayProjectsGrid ? "0" : bottom * 4}
-          placement={placement ? placement : 1}
-          // Subtract 1 so that if its the 1st column it will start at margin 0
-          gridColumn={grid_column - 1}
-          // Total width of allProjectsContainer / total number of columns
-          // Container is 70% wide with 4 columns
-          // IF COLUMNS OR THE WIDTH OF THE CONTAINER EVER CHANGES THEN THESE VALUES ALSO NEED TO CHANGE
-          columnIncrements={70 / 4}
-        >
-          <Link to={`/${slug}`}>
+        <Link to={`/${slug}`}>
+          <ProjetContainer
+            ref={measuredRef}
+            animate={{
+              y: displayProjectsGrid && 0
+            }}
+            style={{ y }}
+            key={project.uid}
+            displayProjectsGrid={displayProjectsGrid}
+            onMouseEnter={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
+            onMouseLeave={() => setCursorElement({ initial: "initial" })}
+            // Adjust sizes of non grid according to cms
+            // 70 and 100 are the biggest values that work before breaking the grid
+            // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
+            widthMd={displayProjectsGrid ? "100%" : `${40 / projectSize}%`}
+            // Top, Left, Bottom and Right will be directly affected by their properties in the cms
+            top={displayProjectsGrid ? "0" : top * 4}
+            left={displayProjectsGrid ? "0" : left * 4}
+            right={displayProjectsGrid ? "0" : right * 4}
+            bottom={displayProjectsGrid ? "0" : bottom * 4}
+            placement={placement ? placement : 1}
+            // Subtract 1 so that if its the 1st column it will start at margin 0
+            gridColumn={grid_column - 1}
+            // Total width of allProjectsContainer / total number of columns
+            // Container is 70% wide with 4 columns
+            // IF COLUMNS OR THE WIDTH OF THE CONTAINER EVER CHANGES THEN THESE VALUES ALSO NEED TO CHANGE
+            columnIncrements={70 / 4}
+          >
             <ImageContainer
               width="100%"
               widthMd="100%"
@@ -128,9 +127,11 @@ const ProjectImageWithTitle = ({
               alt={imageAlt}
             />
             <h2>{projectName}</h2>
-          </Link>
-        </ProjetContainer>
+
+          </ProjetContainer>
+        </Link>
       )}
+
     </>
   )
 }

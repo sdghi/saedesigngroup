@@ -90,6 +90,7 @@ const ServicesPage = ({ data }) => {
           </div>
         </MainMenu>
         <DesignAudit className="design-audit">
+          <img src="design-audit.svg" />
           <hr />
           <h4>IT MAY BE TIME TO LOOK AT YOUR
 BRAND WITH A CRITICAL EYE </h4>
@@ -504,6 +505,10 @@ const DesignAudit = styled.section`
   padding: 20px;
   border: 4px solid ${pink};
   border-radius: 19.41px;
+
+  img{
+    width: 100%;
+  }
   
   hr{
    border: 1px solid ${dark_blue};

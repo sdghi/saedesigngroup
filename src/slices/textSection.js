@@ -40,6 +40,10 @@ const TextSection = ({ slice, theme }) => {
 const ContainerSection = styled(Container)`
   text-align: center;
 
+  ${HeadingTwo}{
+    font-weight: 400;
+  }
+
   p {
     margin: auto;
   }

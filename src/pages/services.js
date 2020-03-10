@@ -173,6 +173,10 @@ const MenuFooter = styled.div`
 
     h2{
       font-size: 46px;
+
+      a{
+        color: ${dark_blue};
+      }
     }
 
     h4{
@@ -202,7 +206,12 @@ const MenuFooter = styled.div`
     padding: 21px 0;
   }
 
-  @media(min-width: ${breakpointSmall}){
+  .right{
+    width: fit-content;
+    margin:  24px auto 0 auto;
+  }
+
+  @media(min-width: 1100px){
     display: inline-grid;
     grid-template-columns: 5fr 1fr;
     grid-gap: 40px;
@@ -211,6 +220,7 @@ const MenuFooter = styled.div`
     .right{
       display: grid;
       place-items: center;
+      margin: 0;
     }
   
     .footer-cta{ 
@@ -226,10 +236,6 @@ const MenuFooter = styled.div`
 
         h2{
           font-size: 64px;
-
-          a{
-            color: ${dark_blue};
-          }
 
           &:hover{
             a{

@@ -174,8 +174,6 @@ const ProjectsSection = styled.section`
   min-height: 100vh;
   padding: 50px 0;
   position: relative;
-  overflow-x: initial;
-  overflow-y: initial;
   overflow: initial;
 
   .view-filters {

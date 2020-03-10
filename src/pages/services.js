@@ -90,11 +90,12 @@ const ServicesPage = ({ data }) => {
           </div>
         </MainMenu>
         <DesignAudit className="design-audit">
+          <img src="design-audit.svg" />
           <hr />
           <h4>IT MAY BE TIME TO LOOK AT YOUR
 BRAND WITH A CRITICAL EYE </h4>
           <hr />
-          <div class="design-audit-content">
+          <div className="design-audit-content">
             {design_audit.map((audit, index) => (
               <div key={index}>
                 <h3>{audit.title.text}</h3>
@@ -173,6 +174,10 @@ const MenuFooter = styled.div`
 
     h2{
       font-size: 46px;
+
+      a{
+        color: ${dark_blue};
+      }
     }
 
     h4{
@@ -202,7 +207,12 @@ const MenuFooter = styled.div`
     padding: 21px 0;
   }
 
-  @media(min-width: ${breakpointSmall}){
+  .right{
+    width: fit-content;
+    margin:  24px auto 0 auto;
+  }
+
+  @media(min-width: 1100px){
     display: inline-grid;
     grid-template-columns: 5fr 1fr;
     grid-gap: 40px;
@@ -211,6 +221,7 @@ const MenuFooter = styled.div`
     .right{
       display: grid;
       place-items: center;
+      margin: 0;
     }
   
     .footer-cta{ 
@@ -226,10 +237,6 @@ const MenuFooter = styled.div`
 
         h2{
           font-size: 64px;
-
-          a{
-            color: ${dark_blue};
-          }
 
           &:hover{
             a{
@@ -251,6 +258,25 @@ const MenuFooter = styled.div`
   @media(min-width: ${breakpointMedium}){
     .footer-cta{
       font-size: 50px;
+    }
+  }
+
+  @media(min-width: 2560px){
+    .footer-cta{
+      font-size: 36px;
+    }
+
+    .footer-main{
+      display: block;
+
+      .phone-number{
+        text-align: center;
+      }
+
+      .address{
+        display: flex;
+        padding: 15px 20px 0 20px;
+      }
     }
   }
 `;
@@ -322,6 +348,16 @@ const MenuContainer = styled.div`
         "menuFoot doit"
         ;
     }
+
+
+    @media(min-width: 2560px){
+      max-width: 2300px;
+      grid-template-columns: 1382px 1fr 1fr;
+      grid-template-rows: 1.5fr  0.5fr;
+      grid-template-areas: 
+        "main audit doit"
+        "main menuFoot menuFoot"
+    }
 `;
 
 
@@ -345,6 +381,22 @@ const MainMenu = styled.section`
 
   p{
     font-weight: 300;
+  }
+
+  @media(min-width:2560px){
+    h2{
+      font-size: 36px;
+    }
+
+    .service-item{
+      .service-title{
+        font-size: 19px;
+      }
+
+      p{
+        font-size: 17px;
+      }
+    }
   }
 
   .service-item{
@@ -424,12 +476,39 @@ const MainMenu = styled.section`
       "branding print sides"
       ". print sides "
   }
+
+  @media(min-width: 2560px){
+    grid-template-columns: repeat(3, 350px);
+    grid-template-rows: 150px 150px  1fr;
+    grid-template-areas: 
+      "branding packaging marketing"
+      "branding print digital"
+      "sides sides sides"
+
+      h2{
+      font-size: 36px;
+    }
+
+    .service-item{
+      .service-title{
+        font-size: 19px;
+      }
+
+      p{
+        font-size: 17px;
+      }
+    }
+  }
 `;
 
 const DesignAudit = styled.section`
   padding: 20px;
   border: 4px solid ${pink};
   border-radius: 19.41px;
+
+  img{
+    width: 100%;
+  }
   
   hr{
    border: 1px solid ${dark_blue};

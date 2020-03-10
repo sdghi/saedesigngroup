@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react"
+import React, { useEffect, useState, useContext, useCallback } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -62,6 +62,9 @@ const IndexPage = ({ data }) => {
   const [displayProjectsGrid, setDisplayProjectsGrid] = useState(false)
   const [showLogos, setShowLogos] = useState(false)
 
+  // Set the element top
+  const [elTop, setElTop] = useState(0)
+
   const {
     setCursorElement,
     scrollWindowHeight,
@@ -93,6 +96,14 @@ const IndexPage = ({ data }) => {
       setDisplayProjectsGrid(false)
     }
   }, [scrollWindowHeight, setScrollWindowHeight, startScroll, projectCategoryFilter])
+
+  // Handle Parallax
+  const measuredRef = useCallback(node => {
+    if (node !== null) {
+      setElTop(node.offsetTop)
+    }
+  }, []);
+
 
   return (
     <Layout>
@@ -138,6 +149,7 @@ const IndexPage = ({ data }) => {
             display={displayProjectsGrid ? "grid" : "block"}
             padding="0 5%"
             paddingMd="0 15%"
+            ref={measuredRef}
           >
             {projects.map(project => (
               <ProjectImageWithTitle
@@ -147,6 +159,7 @@ const IndexPage = ({ data }) => {
                 projectCategoryFilter={projectCategoryFilter}
                 setCursorElement={setCursorElement}
                 totalProjects={projects.length}
+                elTop={elTop}
               />
             ))}
           </ProjectsContainer>
@@ -171,7 +184,8 @@ const ProjectsContainer = styled(Container)`
 
 
 const ProjectsSection = styled.section`
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  height: fit-content;
   padding: 50px 0;
   position: relative;
   overflow: initial;

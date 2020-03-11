@@ -42,7 +42,7 @@ const AboutPage = ({ data }) => {
     <Layout>
       <SEO title="About" />
       <AboutHero>
-        <motion.div drag dragConstraints={{ top: -150, left: -200, right: 200, bottom: 150 }} className="grid-container">
+        <motion.div drag dragConstraints={{ top: -300, left: -400, right: 400, bottom: 300 }} className="grid-container">
           {people.map((person, i) => (
             <AboutCard key={i} />
           ))}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { breakpointSmall } from "../variables"
@@ -68,7 +68,7 @@ const ProjectImageWithTitle = ({
 
       return null
     })
-  }, [projectCategoryFilter, categories])
+  }, [projectCategoryFilter, categories, placement])
 
 
   // Handle Parallax

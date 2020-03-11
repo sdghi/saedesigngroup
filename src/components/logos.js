@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { Container, ImageContainer } from "../elements"
-import { breakpointSmall, breakpointMedium } from "../variables"
+import { breakpointSmall, breakpointMedium, pink } from "../variables"
 import styled from "styled-components"
 
 const Logos = ({ setCursorElement }) => {
@@ -56,7 +56,7 @@ const Logos = ({ setCursorElement }) => {
               onMouseEnter={() => setCursorElement({ selected: "selected" })}
               onMouseLeave={() => setCursorElement({ initial: "initial" })}
             >
-              <button>go to project</button>
+              <button className="full-project-btn">full project <img src="viewproject_icon.svg" alt="full project" /> </button>
             </Link>
           )}
         </div>
@@ -78,6 +78,24 @@ const LogosContainer = styled(Container)`
       position: absolute;
       right: 10px;
       bottom: 10px;
+    }
+  }
+
+  .full-project-btn{
+    display: flex;
+    align-items: center;
+    height: 20px;
+    width: fit-content;
+    background: none;
+    border: none;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: ${pink};
+
+    img{
+      margin-left: 5px;
+      height: 10px;
     }
   }
 

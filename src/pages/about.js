@@ -30,8 +30,6 @@ export const query = graphql`
 const people = ['david', 'arlyn', 'ian', 'louis', 'sae', 'steve', 'leeann', 'judith', 'rachelle', 'marissa', 'kitty', 'patrick', 'leeann']
 
 const AboutPage = ({ data }) => {
-  const { title, page_description } = data.allPrismicAbout.edges[0].node.data
-
   const { setCursorElement } = useContext(myContext)
 
   useEffect(() => {

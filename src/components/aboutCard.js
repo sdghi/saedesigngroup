@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { white } from '../variables'
-import Tilt from "react-parallax-tilt";
+import Tilt from "react-tilt";
+
 
 const AboutCard = () => {
     return (

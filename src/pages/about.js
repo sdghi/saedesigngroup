@@ -67,6 +67,6 @@ const AboutHero = styled.section`
     width: 120vw;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 50px;
+    grid-gap: 100px;
   }
 `;

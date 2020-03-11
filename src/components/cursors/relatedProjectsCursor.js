@@ -23,4 +23,6 @@ const RelatedProjects = styled(Cursor)`
   font-size: 51px;
   font-weight: 700;
   color: ${white};
+  text-align: center;
+  line-height: 1;
 `

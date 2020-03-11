@@ -26,7 +26,8 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "react-tilt": "^0.1.4"
   },
   "keywords": [
     "gatsby"

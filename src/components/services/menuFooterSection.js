@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { light_blue, dark_blue, pink, breakpointMedium } from '../../variables'
+import { light_blue, dark_blue, pink, breakpointMedium, breakpointTablet, breakpoint4k } from '../../variables'
 
 const MenuFooterSection = () => {
     return (
@@ -100,7 +100,7 @@ const MenuFooter = styled.div`
     margin:  24px auto 0 auto;
   }
 
-  @media(min-width: 1100px){
+  @media(min-width: ${breakpointTablet}){
     display: inline-grid;
     grid-template-columns: 5fr 1fr;
     grid-gap: 40px;
@@ -149,7 +149,7 @@ const MenuFooter = styled.div`
     }
   }
 
-  @media(min-width: 2560px){
+  @media(min-width: ${breakpoint4k}){
     .footer-cta{
       font-size: 36px;
     }

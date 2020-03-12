@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext, useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { yellow } from "../variables"
 import { motion } from 'framer-motion'
 import AboutCard from '../components/aboutCard'
+import AboutFeature from '../components/aboutFeature'
 
 export const query = graphql`
   {
@@ -31,6 +32,7 @@ const people = ['david', 'arlyn', 'ian', 'louis', 'sae', 'steve', 'leeann', 'jud
 
 const AboutPage = ({ data }) => {
   const { setCursorElement } = useContext(myContext)
+  const [isSelected, setIsSelected] = useState(null);
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
@@ -41,14 +43,28 @@ const AboutPage = ({ data }) => {
       <SEO title="About" />
       <AboutHero>
         <motion.div
-          drag
+          drag={isSelected ? false : true}
           dragConstraints={{ top: -300, left: -400, right: 400, bottom: 300 }}
           dragElastic={0.3}
           className="grid-container">
           {people.map((person, i) => (
-            <AboutCard key={i} />
+            <AboutCard
+              key={i}
+              index={i + 1}
+              isSelected={isSelected}
+              setIsSelected={setIsSelected}
+              person={person} />
           ))}
         </motion.div>
+
+
+        <AboutFeature
+          setIsSelected={setIsSelected}
+          person={people[isSelected - 1]}
+          isSelected={isSelected}
+        />
+
+
       </AboutHero>
     </Layout>
   )
@@ -63,6 +79,7 @@ const AboutHero = styled.section`
   overflow: hidden;
   display: grid;
   place-content: center;
+  position: relative;
 
   .grid-container{
     height: 120vh;
@@ -72,3 +89,4 @@ const AboutHero = styled.section`
     grid-gap: 100px;
   }
 `;
+

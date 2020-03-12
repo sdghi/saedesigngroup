@@ -85,18 +85,19 @@ const MainMenu = styled.section`
     padding: 27px;
 
     h2{
-      font-size: 18px;
       font-weight: 700;
       margin: 0;
       color: ${yellow};
+      font-size: 22px;
+      letter-spacing: 0.1em;
     }
 
     p{
       margin: 0;
       line-height: 2.1;
-      font-size: 13px;
       color: ${dark_blue};
-      font-weight: 700;
+      font-size: 17px;
+      font-weight: 500;
     }
   }
 

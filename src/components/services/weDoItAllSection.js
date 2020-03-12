@@ -3,19 +3,19 @@ import styled from 'styled-components'
 import { dark_blue, light_blue, white } from '../../variables'
 
 const WeDoItAllSection = ({ we_do_it_all }) => {
-    return (
-        <WeDoItAll className="do-it-all">
-            <div className="we-do-it-all-heading">
-                <h2>We do it all!</h2>
-                <h4>Mostly!</h4>
-            </div>
-            <div className="we-do-it-all-container">
-                {we_do_it_all.map((item, index) => (
-                    <h4 key={index}>{item.industries.text}</h4>
-                ))}
-            </div>
-        </WeDoItAll>
-    )
+  return (
+    <WeDoItAll className="do-it-all">
+      <div className="we-do-it-all-heading">
+        <h2>We do it all!</h2>
+        <h4>Mostly!</h4>
+      </div>
+      <div className="we-do-it-all-container">
+        {we_do_it_all.map((item, index) => (
+          <h4 key={index}>{item.industries.text}</h4>
+        ))}
+      </div>
+    </WeDoItAll>
+  )
 }
 
 export default WeDoItAllSection
@@ -61,6 +61,10 @@ const WeDoItAll = styled.section`
       margin: 0;
       line-height: 1.75;
       text-align: center;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
     }
   }
 `;

@@ -3,24 +3,24 @@ import styled from 'styled-components'
 import { pink, dark_blue, breakpointMedium } from '../../variables'
 
 const DesignAuditSection = ({ design_audit }) => {
-    return (
-        <DesignAudit className="design-audit">
-            <img className="design-audit-header" src="new-item.svg" alt="new item" />
-            <img src="design-audit.svg" alt="design audit" />
-            <hr />
-            <h4>IT MAY BE TIME TO LOOK AT YOUR
+  return (
+    <DesignAudit className="design-audit">
+      <img className="design-audit-header" src="new-item.svg" alt="new item" />
+      <img src="design-audit.svg" alt="design audit" />
+      <hr />
+      <h4>IT MAY BE TIME TO LOOK AT YOUR
 BRAND WITH A CRITICAL EYE </h4>
-            <hr />
-            <div className="design-audit-content">
-                {design_audit.map((audit, index) => (
-                    <div key={index}>
-                        <h3>{audit.title.text}</h3>
-                        <p>{audit.description.text}</p>
-                    </div>
-                ))}
-            </div>
-        </DesignAudit>
-    )
+      <hr />
+      <div className="design-audit-content">
+        {design_audit.map((audit, index) => (
+          <div key={index}>
+            <h3>{audit.title.text}</h3>
+            <p>{audit.description.text}</p>
+          </div>
+        ))}
+      </div>
+    </DesignAudit>
+  )
 }
 
 export default DesignAuditSection;
@@ -62,7 +62,7 @@ const DesignAudit = styled.section`
     font-size: 13px;
     margin: 0;
     line-height: 18px;
-    letter-spacing: 0.153rem;
+    letter-spacing: 0.1em;
     margin: 10px 0;
   }
 
@@ -71,6 +71,13 @@ const DesignAudit = styled.section`
 
     h3{
       color: ${pink};
+      font-size: 15px;
+     letter-spacing: 0.15em;
+    }
+
+    p{
+      font-size: 14px;
+      line-height: 20px;
     }
 
     div{

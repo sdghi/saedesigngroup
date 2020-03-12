@@ -93,6 +93,8 @@ const MenuContainer = styled.div`
 
   h2{
     font-family: ${altFont};
+    font-size: 30px;
+    letter-spacing: 0.075em;
   }
 
   h3{
@@ -105,9 +107,9 @@ const MenuContainer = styled.div`
 
     p{
       margin: 0;
-      font-size: 13px;
       font-weight: 300;
-      line-height: 1.4;
+      font-size: 14px;
+      line-height: 20px
     }
 
     @media(min-width: ${breakpointSmall}){

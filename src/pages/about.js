@@ -6,8 +6,8 @@ import { myContext } from "../provider"
 import styled from 'styled-components'
 import { yellow } from "../variables"
 import { motion } from 'framer-motion'
-import AboutCard from '../components/aboutCard'
-import AboutFeature from '../components/aboutFeature'
+import AboutCard from '../components/about/aboutCard'
+import AboutFeature from '../components/about/aboutFeature'
 
 export const query = graphql`
   {

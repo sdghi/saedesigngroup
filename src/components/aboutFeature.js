@@ -16,22 +16,31 @@ const variants = {
         transition: {
             duration: 0.3
         }
+    },
+    exit: {
+        opacity: 0,
+        scaleX: 0,
+        transition: {
+            duration: 1
+        }
     }
 }
 
-const AboutFeature = ({ setIsSelected, person }) => {
+const AboutFeature = ({ setIsSelected, isSelected, person }) => {
     return (
         <AnimatePresence>
-            <FeatureCard
-                variants={variants}
-                drag
-                onDragEnd={() => setIsSelected(null)}
-                initial="enter"
-                animate="loaded"
-                exit="enter"
-            >
-                {person}
-            </FeatureCard>
+            {isSelected &&
+                <FeatureCard
+                    variants={variants}
+                    drag
+                    onDragEnd={() => setIsSelected(null)}
+                    initial="enter"
+                    animate="loaded"
+                    exit="enter"
+                >
+                    {person}
+                </FeatureCard>
+            }
         </AnimatePresence>
     )
 }
@@ -43,7 +52,7 @@ z-index: 100;
   height: 50vh;
   width: 300px;
   position: absolute;
-  top: 25vh;
+  top: calc(25vh - 3.5vh);
   left: calc(50% - 150px);
   background: ${white};
 `;

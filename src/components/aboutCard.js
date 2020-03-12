@@ -21,7 +21,7 @@ const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
             <Card
                 onClick={() => handleClick()}
                 positionTransition
-                whileHover={{ scale: 1.2 }}
+                whileHover={{ scale: 1.1 }}
             >
                 {person}
             </Card>

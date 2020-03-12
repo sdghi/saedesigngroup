@@ -57,12 +57,13 @@ const AboutPage = ({ data }) => {
           ))}
         </motion.div>
 
-        {isSelected &&
-          <AboutFeature
-            setIsSelected={setIsSelected}
-            person={people[isSelected - 1]}
-          />
-        }
+
+        <AboutFeature
+          setIsSelected={setIsSelected}
+          person={people[isSelected - 1]}
+          isSelected={isSelected}
+        />
+
 
       </AboutHero>
     </Layout>

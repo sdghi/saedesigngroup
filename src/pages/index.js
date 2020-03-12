@@ -2,16 +2,16 @@ import React, { useEffect, useState, useContext, useCallback } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import ProjectsFilter from "../components/projectsFilter"
 import styled from "styled-components"
-import ProjectImageWithTitle from "../components/projectImageWithTitle"
 import { breakpointSmall } from "../variables"
 import { Container } from "../elements"
 import { myContext } from "../provider"
-import Logos from "../components/logos"
-import ProjectCategoryInfo from "../components/projectCategoryInfo"
-import MobileProjectsFilter from "../components/mobileProjectsFilter"
-import HomeHeroSection from '../components/homeHeroSection'
+import ProjectsFilter from "../components/home/projectsFilter"
+import Logos from "../components/home/logos"
+import ProjectCategoryInfo from "../components/home/projectCategoryInfo"
+import MobileProjectsFilter from "../components/home/mobileProjectsFilter"
+import HomeHeroSection from '../components/home/homeHeroSection'
+import ProjectImageWithTitle from "../components/home/projectImageWithTitle"
 
 export const query = graphql`
   {

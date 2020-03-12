@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import HeroTextFilterItem from "./heroTextFilterItem"
 import styled from 'styled-components'
-import { breakpointSmall, breakpointMedium, pink, yellow } from '../variables'
+import { breakpointSmall, breakpointMedium, pink, yellow } from '../../variables'
 
 const HomeHeroSection = ({ setCursorElement, setStartScroll, setProjectCategoryFilter, setShowLogos, setScrollWindowHeight }) => {
 

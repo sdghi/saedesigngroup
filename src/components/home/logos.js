@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import { Container, ImageContainer } from "../elements"
-import { breakpointSmall, breakpointMedium, pink } from "../variables"
+import { Container, ImageContainer } from "../../elements"
+import { breakpointSmall, breakpointMedium, pink } from "../../variables"
 import styled from "styled-components"
 
 const Logos = ({ setCursorElement }) => {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
-import { white, black, pink } from "../variables"
-import { myContext } from '../provider';
+import { white, black, pink } from "../../variables"
+import { myContext } from '../../provider';
 
 const MapToggle = ({
   setShowOahuMap,

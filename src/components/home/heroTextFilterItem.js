@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-import { myContext } from "../provider"
+import { myContext } from "../../provider"
 
 const HeroTextFilterItem = ({
   setCursorElement,

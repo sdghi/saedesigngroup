@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { breakpointSmall, breakpointMedium } from "../variables"
+import { breakpointSmall, breakpointMedium } from "../../variables"
 import styled from "styled-components"
 
 const ProjectCategoryInfo = ({ projectCategoryFilter }) => {

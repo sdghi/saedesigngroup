@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { yellow } from "../variables"
 import { motion } from 'framer-motion'
 import AboutCard from '../components/aboutCard'
-
+import AboutFeature from '../components/aboutFeature'
 
 export const query = graphql`
   {
@@ -43,18 +43,27 @@ const AboutPage = ({ data }) => {
       <SEO title="About" />
       <AboutHero>
         <motion.div
-          drag
-          animate={{
-            x: isSelected && 0,
-            y: isSelected && 0
-          }}
+          drag={isSelected ? false : true}
           dragConstraints={{ top: -300, left: -400, right: 400, bottom: 300 }}
           dragElastic={0.3}
           className="grid-container">
           {people.map((person, i) => (
-            <AboutCard key={i} index={i} isSelected={isSelected} setIsSelected={setIsSelected} person={person} />
+            <AboutCard
+              key={i}
+              index={i + 1}
+              isSelected={isSelected}
+              setIsSelected={setIsSelected}
+              person={person} />
           ))}
         </motion.div>
+
+        {isSelected &&
+          <AboutFeature
+            setIsSelected={setIsSelected}
+            person={people[isSelected - 1]}
+          />
+        }
+
       </AboutHero>
     </Layout>
   )
@@ -79,3 +88,4 @@ const AboutHero = styled.section`
     grid-gap: 100px;
   }
 `;
+

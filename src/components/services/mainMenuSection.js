@@ -1,32 +1,32 @@
 import React from 'react'
 import styled from 'styled-components'
-import { dark_blue, light_blue, yellow, breakpointSmall, breakpointLarge } from '../../variables'
+import { dark_blue, light_blue, yellow, breakpointSmall, breakpointLarge, breakpoint4k } from '../../variables'
 
 const MainMenuSection = ({ mainMenu, add_a_side_of }) => {
-    return (
-        <MainMenu className="menu-main">
-            <img className="menu-of-services-header" src="menu-of-services.svg" alt="menu of services" />
-            {mainMenu.map(service => (
-                // Adds the name of the feature as a classname to use as a grid area  
-                <div key={service.id} className={service.primary.title.text.toLowerCase()}>
-                    <h2>{service.primary.title.text}</h2>
+  return (
+    <MainMenu className="menu-main">
+      <img className="menu-of-services-header" src="menu-of-services.svg" alt="menu of services" />
+      {mainMenu.map(service => (
+        // Adds the name of the feature as a classname to use as a grid area  
+        <div key={service.id} className={service.primary.title.text.toLowerCase()}>
+          <h2>{service.primary.title.text}</h2>
 
-                    {service.items.map((item, index) => (
-                        <div key={index} className="service-item">
-                            <h3 className="service-title">{item.feature_title.text}</h3>
-                            <p>{item.feature_description.text}</p>
-                        </div>
-                    ))}
-                </div>
-            ))}
-            <div className="add-a-side-of">
-                <h2>Add A Side Of</h2>
-                {add_a_side_of.map((side, index) => (
-                    <p key={index}>{side.title.text}</p>
-                ))}
+          {service.items.map((item, index) => (
+            <div key={index} className="service-item">
+              <h3 className="service-title">{item.feature_title.text}</h3>
+              <p>{item.feature_description.text}</p>
             </div>
-        </MainMenu>
-    )
+          ))}
+        </div>
+      ))}
+      <div className="add-a-side-of">
+        <h2>Add A Side Of</h2>
+        {add_a_side_of.map((side, index) => (
+          <p key={index}>{side.title.text}</p>
+        ))}
+      </div>
+    </MainMenu>
+  )
 }
 
 export default MainMenuSection;
@@ -71,30 +71,12 @@ const MainMenu = styled.section`
     font-weight: 300;
   }
 
-  @media(min-width:2560px){
-    h2{
-      font-size: 36px;
-    }
-
-    .service-item{
-      .service-title{
-        font-size: 19px;
-      }
-
-      p{
-        font-size: 17px;
-      }
-    }
-  }
-
   .service-item{
     margin-bottom: 18px;
 
     h3{
       color: ${dark_blue};
     }
-
-
   }
 
   .add-a-side-of{
@@ -165,7 +147,7 @@ const MainMenu = styled.section`
       ". print sides "
   }
 
-  @media(min-width: 2560px){
+  @media(min-width: ${breakpoint4k}){
     grid-template-columns: repeat(3, 350px);
     grid-template-rows: 150px 150px  1fr;
     grid-template-areas: 

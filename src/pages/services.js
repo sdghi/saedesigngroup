@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { myContext } from "../provider"
 import styled from 'styled-components'
-import { altFont, breakpointSmall, breakpointLarge } from '../variables'
+import { altFont, breakpointSmall, breakpointTablet, breakpointLarge, breakpoint4k } from '../variables'
 import MainMenuSection from '../components/services/mainMenuSection'
 import DesignAuditSection from '../components/services/designAuditSection'
 import WeDoItAllSection from '../components/services/weDoItAllSection'
@@ -137,7 +137,7 @@ const MenuContainer = styled.div`
     }
 
 
-    @media(min-width: 1100px){
+    @media(min-width: ${breakpointTablet}){
       margin: 10vh auto 0 auto;
       grid-template-columns: 2fr 330px;
       grid-template-rows: 1fr 1fr 0.5fr;
@@ -163,7 +163,7 @@ const MenuContainer = styled.div`
     }
 
 
-    @media(min-width: 2560px){
+    @media(min-width: ${breakpoint4k}){
       max-width: 2300px;
       grid-template-columns: 1382px 1fr 1fr;
       grid-template-rows: 1.5fr  0.5fr;

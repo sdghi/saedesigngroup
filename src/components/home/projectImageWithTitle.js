@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { breakpointSmall } from "../variables"
-import { ImageContainer } from "../elements"
+import { breakpointSmall } from "../../variables"
+import { ImageContainer } from "../../elements"
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 const ProjectImageWithTitle = ({

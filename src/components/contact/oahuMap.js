@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 import { motion } from 'framer-motion'
-import { myContext } from '../provider'
+import { myContext } from '../../provider'
 
 const OahuSVG = styled(motion.svg)`
   position: relative;

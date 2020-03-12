@@ -1,3 +1,5 @@
 export const breakpointSmall = "768px"
+export const breakpointTablet = "1100px"
 export const breakpointMedium = "1200px"
 export const breakpointLarge = "1550px"
+export const breakpoint4k = "2560px"

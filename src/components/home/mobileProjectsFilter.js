@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import ProjectsFilter from "./projectsFilter"
 import styled from "styled-components"
-import { breakpointSmall } from "../variables"
+import { breakpointSmall } from "../../variables"
 
 const MobileProjectFilter = ({
   projectCategoryFilter,

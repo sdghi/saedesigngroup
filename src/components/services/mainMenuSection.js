@@ -5,7 +5,7 @@ import { dark_blue, light_blue, yellow, breakpointSmall, breakpointLarge, breakp
 const MainMenuSection = ({ mainMenu, add_a_side_of }) => {
   return (
     <MainMenu className="menu-main">
-      <img className="menu-of-services-header" src="menu-of-services.svg" alt="menu of services" />
+      <img className="menu-of-services-header" src={"/menu-of-services.svg"} alt="menu of services" />
       {mainMenu.map(service => (
         // Adds the name of the feature as a classname to use as a grid area  
         <div key={service.id} className={service.primary.title.text.toLowerCase()}>

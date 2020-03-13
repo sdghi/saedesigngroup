@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import RelatedProjects from "../components/relatedProjects"
+import RelatedProjects from "../components/projects/relatedProjects"
 import { myContext } from "../provider"
 import { ImageContainer, Container } from '../elements'
 // SLICES

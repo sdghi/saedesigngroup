@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import styled from 'styled-components'
-import { white } from '../variables'
+import { white } from '../../variables'
 
 const variants = {
     enter: {

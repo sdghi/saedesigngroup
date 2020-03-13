@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white } from '../variables'
+import { white } from '../../variables'
 import Tilt from "react-tilt"
 import { motion } from 'framer-motion'
 

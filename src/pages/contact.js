@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import SEO from "../components/seo"
-import MauiMap from "../components/mauiMap"
-import OahuMap from "../components/oahuMap"
-import MapToggle from "../components/mapToggle"
+import MauiMap from "../components/contact/mauiMap"
+import OahuMap from "../components/contact/oahuMap"
+import MapToggle from "../components/contact/mapToggle"
 import { myContext } from "../provider"
 
 const ContactPage = () => {

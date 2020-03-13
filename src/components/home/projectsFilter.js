@@ -1,8 +1,8 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
-import { breakpointSmall, breakpointMedium, black, grey } from "../variables"
+import { breakpointSmall, breakpointMedium, black, grey } from "../../variables"
 import { useStaticQuery, graphql } from "gatsby"
-import { myContext } from '../provider'
+import { myContext } from '../../provider'
 
 const ProjectsFilter = ({
   projectCategoryFilter,

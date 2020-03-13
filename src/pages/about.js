@@ -28,7 +28,7 @@ export const query = graphql`
   }
 `
 // Comment me out once about content is populated
-const people = ['david', 'arlyn', 'ian', 'louis', 'sae', 'steve', 'leeann', 'judith', 'rachelle', 'marissa', 'kitty', 'patrick', 'leeann']
+const people = ['sae', 'arlyn', 'ian', 'louis', 'steve', 'leeann', 'david', 'judith', 'rachelle', 'marissa', 'kitty', 'patrick', 'leeann']
 
 const AboutPage = ({ data }) => {
   const { setCursorElement } = useContext(myContext)
@@ -37,6 +37,7 @@ const AboutPage = ({ data }) => {
   useEffect(() => {
     setCursorElement({ initial: "initial" })
   }, [setCursorElement])
+
 
   return (
     <Layout>
@@ -57,12 +58,12 @@ const AboutPage = ({ data }) => {
           ))}
         </motion.div>
 
-
+        {/* 
         <AboutFeature
           setIsSelected={setIsSelected}
           person={people[isSelected - 1]}
           isSelected={isSelected}
-        />
+        /> */}
 
 
       </AboutHero>
@@ -82,11 +83,13 @@ const AboutHero = styled.section`
   position: relative;
 
   .grid-container{
-    height: 120vh;
-    width: 120vw;
+    height: 100vh;
+    width: 100vw;
     display: grid;
+    border: 1px  solid red;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 100px;
+    grid-gap: 50px;
+    place-items: center;
   }
 `;
 

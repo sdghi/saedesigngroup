@@ -3,34 +3,34 @@ import styled from 'styled-components'
 import { light_blue, dark_blue, pink, breakpointMedium, breakpointTablet, breakpoint4k } from '../../variables'
 
 const MenuFooterSection = () => {
-    return (
-        <MenuFooter className="menu-footer">
-            <div className="left">
-                <h3 className="footer-cta">WHO YOU GOING CALL?</h3>
-                <hr />
-                <div className="footer-main">
-                    <div className="phone-number">
-                        <h2><a href="tel:808-249-2200">808-249-2200</a></h2>
-                        <h4>SERVING ALL ISLANDS & BEYOND</h4>
-                    </div>
-                    <div className="address">
-                        <div>
-                            <h4>MAUI OFFICE</h4>
-                            <a href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225">2261 Aupuni St # 101, Wailuku, Hi 96793</a>
-                        </div>
-                        <div>
-                            <h4>‘OAHU OFFICE</h4>
-                            <a href="https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513">555 South Street #108, Honolulu, Hi 96813</a>
-                        </div>
-                    </div>
-                </div>
-                <hr />
+  return (
+    <MenuFooter className="menu-footer">
+      <div className="left">
+        <h3 className="footer-cta">WHO YOU GOING CALL?</h3>
+        <hr />
+        <div className="footer-main">
+          <div className="phone-number">
+            <h2><a href="tel:808-249-2200">808-249-2200</a></h2>
+            <h4>SERVING ALL ISLANDS & BEYOND</h4>
+          </div>
+          <div className="address">
+            <div>
+              <h4>MAUI OFFICE</h4>
+              <a href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225">2261 Aupuni St # 101, Wailuku, Hi 96793</a>
             </div>
-            <div className="right">
-                <img src="menu-face.svg" alt="sdg menu face" />
+            <div>
+              <h4>‘OAHU OFFICE</h4>
+              <a href="https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513">555 South Street #108, Honolulu, Hi 96813</a>
             </div>
-        </MenuFooter>
-    )
+          </div>
+        </div>
+        <hr />
+      </div>
+      <div className="right">
+        <img src={"/menu-face.svg"} alt="sdg menu face" />
+      </div>
+    </MenuFooter>
+  )
 }
 
 export default MenuFooterSection

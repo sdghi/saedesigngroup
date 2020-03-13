@@ -5,8 +5,8 @@ import { pink, dark_blue, breakpointMedium } from '../../variables'
 const DesignAuditSection = ({ design_audit }) => {
   return (
     <DesignAudit className="design-audit">
-      <img className="design-audit-header" src="new-item.svg" alt="new item" />
-      <img src="design-audit.svg" alt="design audit" />
+      <img className="design-audit-header" src={"/new-item.svg"} alt="new item" />
+      <img src={"/design-audit.svg"} alt="design audit" />
       <hr />
       <h4>IT MAY BE TIME TO LOOK AT YOUR
 BRAND WITH A CRITICAL EYE </h4>

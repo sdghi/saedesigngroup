@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { dark_blue, light_blue, white } from '../../variables'
+import backgroundImage from '../../images/curved-bg.svg'
 
 const WeDoItAllSection = ({ we_do_it_all }) => {
   return (
@@ -52,7 +53,7 @@ const WeDoItAll = styled.section`
 
   .we-do-it-all-container{
     padding: 27px;
-    background-image: url('curved-bg.svg');
+    background-image: url(${backgroundImage});
     background-repeat: no-repeat;
     height: fit-content;
     background-size: cover;

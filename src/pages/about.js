@@ -7,7 +7,6 @@ import styled from 'styled-components'
 import { yellow } from "../variables"
 import { motion } from 'framer-motion'
 import AboutCard from '../components/about/aboutCard'
-import AboutFeature from '../components/about/aboutFeature'
 
 export const query = graphql`
   {
@@ -64,15 +63,6 @@ const AboutPage = ({ data }) => {
               person={person} />
           ))}
         </motion.div>
-
-        {/* 
-        <AboutFeature
-          setIsSelected={setIsSelected}
-          person={people[isSelected - 1]}
-          isSelected={isSelected}
-        /> */}
-
-
       </AboutHero>
     </Layout>
   )

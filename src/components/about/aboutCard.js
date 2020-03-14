@@ -34,20 +34,28 @@ const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
 
 
     return (
-
+        // <Tilt
+        //     style={isSelected && { position: 'absolute' }}
+        // >
         <Card
             variants={cardVariants}
-            animate={isSelected ? 'selected' : 'unselected'}
+            animate={isSelected === index ? 'selected' : 'unselected'}
             onClick={() => handleClick()}
             positionTransition
             key={index}
             isSelected={isSelected}
             index={index}
-            drag
-            onDragEnd={() => setIsSelected(index - 1)}
+            whileHover={{ scale: 1.1, rotate: '10deg' }}
         >
             {person}
+
+            {
+                isSelected === index &&
+                <p>you can put a custom bio here or something</p>
+            }
         </Card>
+        // </Tilt >
+
 
     )
 }
@@ -61,7 +69,7 @@ const Card = styled(motion.div)`
     border-radius: 10px;
     display: grid;
     place-items: center;
-    position: ${({ isSelected }) => isSelected ? 'absolute' : 'relative'};
-    z-index: ${({ index, isSelected }) => isSelected == index ? '200' : '0'};
+    position: ${({ isSelected, index }) => isSelected === index ? 'absolute' : 'relative'};
+    z-index: ${({ index, isSelected }) => isSelected === index ? '200' : '0'};
     user-select: none;
 `;

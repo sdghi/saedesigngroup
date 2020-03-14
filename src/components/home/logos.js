@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { Container, ImageContainer } from "../../elements"
 import { breakpointSmall, breakpointMedium, pink } from "../../variables"

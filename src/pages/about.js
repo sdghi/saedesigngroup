@@ -7,7 +7,6 @@ import styled from 'styled-components'
 import { yellow } from "../variables"
 import { motion } from 'framer-motion'
 import AboutCard from '../components/about/aboutCard'
-import AboutFeature from '../components/about/aboutFeature'
 
 export const query = graphql`
   {
@@ -45,7 +44,11 @@ const AboutPage = ({ data }) => {
       <AboutHero>
         <motion.div
           drag={isSelected ? false : true}
-          dragConstraints={{ top: -300, left: -400, right: 400, bottom: 300 }}
+          dragConstraints={{ top: -100, left: -150, right: 150, bottom: 100 }}
+          animate={{
+            x: isSelected && 0,
+            y: isSelected && 0
+          }}
           dragElastic={0.3}
           className="grid-container">
           {people.map((person, i) => (
@@ -57,15 +60,6 @@ const AboutPage = ({ data }) => {
               person={person} />
           ))}
         </motion.div>
-
-        {/* 
-        <AboutFeature
-          setIsSelected={setIsSelected}
-          person={people[isSelected - 1]}
-          isSelected={isSelected}
-        /> */}
-
-
       </AboutHero>
     </Layout>
   )
@@ -80,16 +74,17 @@ const AboutHero = styled.section`
   overflow: hidden;
   display: grid;
   place-content: center;
-  position: relative;
+  position: static;
 
   .grid-container{
+    padding: 50px;
     height: 100vh;
     width: 100vw;
     display: grid;
-    border: 1px  solid red;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 50px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 100px;
     place-items: center;
+    position: static;
   }
 `;
 

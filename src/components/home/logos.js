@@ -40,10 +40,21 @@ const Logos = ({ setCursorElement }) => {
 
   const logosData = data.allPrismicLogos.edges[0].node.data.body
 
+  const [hoveredLogo, setHoveredLogo] = useState(null)
+
+  useEffect(() => {
+    console.log('hovered', hoveredLogo)
+  }, [hoveredLogo])
+
   return (
-    <LogosContainer padding="0 5%" paddingMd="0 15%">
+    <LogosContainer padding="0 5%" paddingMd="0 15%" hoveredLogo={hoveredLogo}>
       {logosData.map(logo => (
-        <div className="logo-container" key={logo.id}>
+        <div
+          className="logo-container"
+          key={logo.id}
+          onMouseEnter={() => setHoveredLogo(logo.id)}
+          onMouseLeave={() => setHoveredLogo(null)}
+        >
           <ImageContainer
             alt={logo.primary.logo_image.alt}
             fluid={logo.primary.logo_image.localFile.childImageSharp.fluid}
@@ -106,7 +117,7 @@ const LogosContainer = styled(Container)`
   @media (min-width: ${breakpointMedium}) {
     .logo-container {
       ${ImageContainer} {
-        filter: grayscale(100%);
+        filter: ${({ hoveredLogo }) => hoveredLogo !== null && 'grayscale(100%)'};
         transition: all 0.15s ease-out;
       }
 

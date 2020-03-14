@@ -113,6 +113,7 @@ export const query = graphql`
               ... on PrismicProjectTemplateBody23ImageCaption {
                 slice_type
                 primary {
+                  layout
                   image {
                     alt
                     localFile {
@@ -160,6 +161,7 @@ export const query = graphql`
                   caption {
                     text
                   }
+                  caption_alignment
                 }
               }
               ... on PrismicProjectTemplateBodyStaggeredImages {

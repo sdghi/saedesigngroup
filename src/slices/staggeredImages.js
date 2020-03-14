@@ -6,7 +6,7 @@ import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 const StaggeredImages = ({ slice }) => {
   // Destructure items
-  const { caption, image_1, image_2 } = slice.primary
+  const { caption, image_1, image_2, reverse_images } = slice.primary
   // Destructure Image items
   const { fluid: imageOneSrc } = image_1.localFile.childImageSharp
   const { fluid: imageTwoSrc } = image_2.localFile.childImageSharp
@@ -28,16 +28,20 @@ const StaggeredImages = ({ slice }) => {
     }
   }, []);
 
+  console.log(reverse_images)
+
   return (
-    <StaggeredImageContainer ref={ref}>
+    <StaggeredImageContainer ref={ref} reverseImages={reverse_images}>
       <motion.div >
         <ImageContainer
           fluid={imageOneSrc}
           alt={image_1.alt}
           widthMd="60%"
-          margin="0 0 20px 0"
-          marginMd="0"
+          margin={reverse_images ? "0 0 20px auto" : "0 0 20px 0"}
+          marginMd={reverse_images ? "0 0 0 auto" : "0"}
           width="80%"
+          height="auto"
+          heightMd="auto"
         />
       </motion.div>
 
@@ -47,8 +51,10 @@ const StaggeredImages = ({ slice }) => {
           alt={image_2.alt}
           width="80%"
           widthMd="60%"
-          margin="-5% 0 0 auto"
-          marginMd="-5% 0 0 auto"
+          height="auto"
+          heightMd="auto"
+          margin={reverse_images ? "-5% auto 0 0" : "-5% 0 0 auto"}
+          marginMd={reverse_images ? "-5% auto 0 0" : "-5% 0 0 auto"}
         />
       </motion.div>
 
@@ -69,13 +75,15 @@ const StaggeredImageContainer = styled(Container)`
 
   @media (min-width: ${breakpointSmall}) {
     display: flex;
+    /* flex-direction: ${({ reverseImages }) => reverseImages ? 'column-reverse' : 'column'}; */
     flex-direction: column;
     position: relative;
 
     ${Paragraph} {
       position: absolute;
       top: 25%;
-      right: 5%;
+      right: ${({ reverseImages }) => reverseImages ? 'none' : '5%'};
+      left: ${({ reverseImages }) => reverseImages ? '5%' : 'none'};
       max-width: 258px;
       margin-top: 0;
     }
@@ -83,7 +91,8 @@ const StaggeredImageContainer = styled(Container)`
 
   @media (min-width: ${breakpointMedium}) {
     ${Paragraph} {
-      right: 20%;
+      right: ${({ reverseImages }) => reverseImages ? 'none' : '20%'};
+      left: ${({ reverseImages }) => reverseImages ? '15%' : 'none'};
     }
   }
 `

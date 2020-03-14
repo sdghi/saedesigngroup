@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { yellow } from "../variables"
 import { motion } from 'framer-motion'
 import AboutCard from '../components/about/aboutCard'
+import TransitionWrapper from '../components/transitionWrapper'
 
 export const query = graphql`
   {
@@ -40,27 +41,29 @@ const AboutPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="About" />
-      <AboutHero>
-        <motion.div
-          drag={isSelected ? false : true}
-          dragConstraints={{ top: -100, left: -150, right: 150, bottom: 100 }}
-          animate={{
-            x: isSelected && 0,
-            y: isSelected && 0
-          }}
-          dragElastic={0.3}
-          className="grid-container">
-          {people.map((person, i) => (
-            <AboutCard
-              key={i}
-              index={i + 1}
-              isSelected={isSelected}
-              setIsSelected={setIsSelected}
-              person={person} />
-          ))}
-        </motion.div>
-      </AboutHero>
+      <TransitionWrapper>
+        <SEO title="About" />
+        <AboutHero>
+          <motion.div
+            drag={isSelected ? false : true}
+            dragConstraints={{ top: -100, left: -150, right: 150, bottom: 100 }}
+            animate={{
+              x: isSelected && 0,
+              y: isSelected && 0
+            }}
+            dragElastic={0.3}
+            className="grid-container">
+            {people.map((person, i) => (
+              <AboutCard
+                key={i}
+                index={i + 1}
+                isSelected={isSelected}
+                setIsSelected={setIsSelected}
+                person={person} />
+            ))}
+          </motion.div>
+        </AboutHero>
+      </TransitionWrapper>
     </Layout>
   )
 }

@@ -53,7 +53,6 @@ const Project = ({ project, theme }) => {
           maxWidth="100%"
           fluid={hero_image.localFile.childImageSharp.fluid}
           alt={hero_image.alt}
-          fadeIn={false}
         />
       </Container>
       {/* This is the slices  */}

@@ -23,11 +23,11 @@ const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
             y: 'calc(50vh - 300px)',
             height: 600,
             width: 400,
-            transition: {
-                type: "spring",
-                duration: 0.1,
-                velocity: 2
-            }
+            // transition: {
+            //     type: "spring",
+            //     duration: 0.04,
+            //     velocity: 4
+            // }
         },
         unselected: {
             x: 0,

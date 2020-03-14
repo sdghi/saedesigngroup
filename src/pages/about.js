@@ -49,9 +49,6 @@ const AboutPage = ({ data }) => {
             x: isSelected && 0,
             y: isSelected && 0
           }}
-          transition={{
-            when: 'beforeChildren'
-          }}
           dragElastic={0.3}
           className="grid-container">
           {people.map((person, i) => (

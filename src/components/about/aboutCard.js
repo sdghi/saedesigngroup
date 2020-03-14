@@ -23,12 +23,19 @@ const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
             y: 'calc(50vh - 300px)',
             height: 600,
             width: 400,
+            transition: {
+                duration: 0.2
+            }
         },
         unselected: {
             x: 0,
             y: 0,
-            height: 300,
-            width: 300,
+            height: 400,
+            width: '100%',
+            transition: {
+                type: "tween",
+                duration: 0.4
+            }
         }
     }
 
@@ -64,12 +71,12 @@ export default AboutCard;
 
 const Card = styled(motion.div)`
     background: ${white};
-    height: 300px;
-    width: 300px;
     border-radius: 10px;
     display: grid;
     place-items: center;
     position: ${({ isSelected, index }) => isSelected === index ? 'absolute' : 'relative'};
     z-index: ${({ index, isSelected }) => isSelected === index ? '200' : '0'};
+    top: ${({ index, isSelected }) => isSelected === index && 0};
+    left: ${({ index, isSelected }) => isSelected === index && 0};
     user-select: none;
 `;

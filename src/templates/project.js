@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import RelatedProjects from "../components/projects/relatedProjects"
 import { myContext } from "../provider"
 import { ImageContainer, Container } from '../elements'
+import TransitionWrapper from '../components/transitionWrapper'
 // SLICES
 import TextSection from "../slices/textSection"
 import Testimonial from "../slices/testimonial"
@@ -77,13 +78,15 @@ export default props => {
 
   return (
     <Layout>
-      <SEO title={title} />
-      <Project project={doc.node} theme={doc.node.data.theme} />
-      <RelatedProjects
-        next={next}
-        previous={previous}
-        doubleNext={doubleNext}
-      />
+      <TransitionWrapper>
+        <SEO title={title} />
+        <Project project={doc.node} theme={doc.node.data.theme} />
+        <RelatedProjects
+          next={next}
+          previous={previous}
+          doubleNext={doubleNext}
+        />
+      </TransitionWrapper>
     </Layout>
   )
 }

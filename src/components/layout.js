@@ -6,6 +6,7 @@ import Header from "./header"
 import CustomCursor from "./customCursor"
 import { myContext } from "../provider"
 import Footer from "./footer"
+import { AnimatePresence } from 'framer-motion'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -64,7 +65,11 @@ const Layout = ({ children }) => {
         />
       )}
 
-      <main>{children}</main>
+      <main>
+        <AnimatePresence exitBeforeEnter >
+          {children}
+        </AnimatePresence>
+      </main>
       <Footer />
     </div>
   )

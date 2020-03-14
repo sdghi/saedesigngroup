@@ -6,6 +6,7 @@ import MauiMap from "../components/contact/mauiMap"
 import OahuMap from "../components/contact/oahuMap"
 import MapToggle from "../components/contact/mapToggle"
 import { myContext } from "../provider"
+import TransitionWrapper from '../components/transitionWrapper'
 
 const ContactPage = () => {
   const [showOahuMap, setShowOahuMap] = useState(true)
@@ -19,25 +20,27 @@ const ContactPage = () => {
 
   return (
     <Layout>
-      <SEO title="Contact" />
-      <MapContainer>
-        {showMapToggle &&
-          <MapToggle
-            setShowOahuMap={setShowOahuMap}
-            showOahuMap={showOahuMap}
-            showMapToggle={showMapToggle}
-            setShowMapToggle={setShowMapToggle}
-          />
-        }
-        <div>
-          {showOahuMap ? (
-            <OahuMap showOahuMap={showOahuMap} />
-          ) : (
-              <MauiMap showOahuMap={showOahuMap} />
-            )}
-        </div>
-      </MapContainer>
-    </Layout>
+      <TransitionWrapper>
+        <SEO title="Contact" />
+        <MapContainer>
+          {showMapToggle &&
+            <MapToggle
+              setShowOahuMap={setShowOahuMap}
+              showOahuMap={showOahuMap}
+              showMapToggle={showMapToggle}
+              setShowMapToggle={setShowMapToggle}
+            />
+          }
+          <div>
+            {showOahuMap ? (
+              <OahuMap showOahuMap={showOahuMap} />
+            ) : (
+                <MauiMap showOahuMap={showOahuMap} />
+              )}
+          </div>
+        </MapContainer>
+      </TransitionWrapper>
+    </Layout >
   )
 }
 

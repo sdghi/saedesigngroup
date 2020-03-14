@@ -23,17 +23,15 @@ const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
             y: 'calc(50vh - 300px)',
             height: 600,
             width: 400,
-            // transition: {
-            //     type: "spring",
-            //     duration: 0.04,
-            //     velocity: 4
-            // }
+            transition: {
+                duration: 0.2
+            }
         },
         unselected: {
             x: 0,
             y: 0,
-            height: 300,
-            width: 300,
+            height: 400,
+            width: '100%',
             transition: {
                 type: "tween",
                 duration: 0.4
@@ -73,8 +71,6 @@ export default AboutCard;
 
 const Card = styled(motion.div)`
     background: ${white};
-    height: 300px;
-    width: 300px;
     border-radius: 10px;
     display: grid;
     place-items: center;

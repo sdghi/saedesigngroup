@@ -77,11 +77,12 @@ const AboutHero = styled.section`
   position: static;
 
   .grid-container{
+    padding: 50px;
     height: 100vh;
     width: 100vw;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 50px;
+    grid-gap: 100px;
     place-items: center;
     position: static;
   }

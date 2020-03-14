@@ -28,8 +28,6 @@ const StaggeredImages = ({ slice }) => {
     }
   }, []);
 
-  console.log(reverse_images)
-
   return (
     <StaggeredImageContainer ref={ref} reverseImages={reverse_images}>
       <motion.div >
@@ -75,7 +73,6 @@ const StaggeredImageContainer = styled(Container)`
 
   @media (min-width: ${breakpointSmall}) {
     display: flex;
-    /* flex-direction: ${({ reverseImages }) => reverseImages ? 'column-reverse' : 'column'}; */
     flex-direction: column;
     position: relative;
 

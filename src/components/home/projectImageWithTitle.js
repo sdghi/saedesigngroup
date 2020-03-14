@@ -97,7 +97,7 @@ const ProjectImageWithTitle = ({
             // Adjust sizes of non grid according to cms
             // 70 and 100 are the biggest values that work before breaking the grid
             // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
-            widthMd={displayProjectsGrid ? "100%" : `${40 / projectSize}%`}
+            widthMd={displayProjectsGrid ? "100%" : `${60 * projectSize}%`}
             // Top, Left, Bottom and Right will be directly affected by their properties in the cms
             top={displayProjectsGrid ? "0" : top * 4}
             left={displayProjectsGrid ? "0" : left * 4}

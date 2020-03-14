@@ -12,6 +12,7 @@ import ProjectCategoryInfo from "../components/home/projectCategoryInfo"
 import MobileProjectsFilter from "../components/home/mobileProjectsFilter"
 import HomeHeroSection from '../components/home/homeHeroSection'
 import ProjectImageWithTitle from "../components/home/projectImageWithTitle"
+import TransitionWrapper from '../components/transitionWrapper'
 
 export const query = graphql`
   {
@@ -107,64 +108,66 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Home" />
-      <HomeHeroSection
-        setCursorElement={setCursorElement}
-        setStartScroll={setStartScroll}
-        setProjectCategoryFilter={setProjectCategoryFilter}
-        setShowLogos={setShowLogos}
-        setScrollWindowHeight={setScrollWindowHeight}
-      />
-
-      <ProjectsSection>
-        {/* Desktop project filter  */}
-        <ProjectsFilter
-          projectCategoryFilter={projectCategoryFilter}
+      <TransitionWrapper>
+        <SEO title="Home" />
+        <HomeHeroSection
+          setCursorElement={setCursorElement}
+          setStartScroll={setStartScroll}
           setProjectCategoryFilter={setProjectCategoryFilter}
-          setDisplayProjectsGrid={setDisplayProjectsGrid}
-          displayProjectsGrid={displayProjectsGrid}
           setShowLogos={setShowLogos}
-          showLogos={showLogos}
-          showMobile={false}
+          setScrollWindowHeight={setScrollWindowHeight}
         />
-        {/* Mobile project filter  */}
-        <MobileProjectsFilter
-          projectCategoryFilter={projectCategoryFilter}
-          setProjectCategoryFilter={setProjectCategoryFilter}
-          setDisplayProjectsGrid={setDisplayProjectsGrid}
-          displayProjectsGrid={displayProjectsGrid}
-          setShowLogos={setShowLogos}
-          showLogos={showLogos}
-          showMobile={true}
-        />
-        {showLogos && <Logos setCursorElement={setCursorElement} />}
 
-        {/* Show the project category info it isn't all  and logos aren't active */}
-        {projectCategoryFilter !== "all" && !showLogos && (
-          <ProjectCategoryInfo projectCategoryFilter={projectCategoryFilter} />
-        )}
+        <ProjectsSection>
+          {/* Desktop project filter  */}
+          <ProjectsFilter
+            projectCategoryFilter={projectCategoryFilter}
+            setProjectCategoryFilter={setProjectCategoryFilter}
+            setDisplayProjectsGrid={setDisplayProjectsGrid}
+            displayProjectsGrid={displayProjectsGrid}
+            setShowLogos={setShowLogos}
+            showLogos={showLogos}
+            showMobile={false}
+          />
+          {/* Mobile project filter  */}
+          <MobileProjectsFilter
+            projectCategoryFilter={projectCategoryFilter}
+            setProjectCategoryFilter={setProjectCategoryFilter}
+            setDisplayProjectsGrid={setDisplayProjectsGrid}
+            displayProjectsGrid={displayProjectsGrid}
+            setShowLogos={setShowLogos}
+            showLogos={showLogos}
+            showMobile={true}
+          />
+          {showLogos && <Logos setCursorElement={setCursorElement} />}
 
-        {!showLogos && (
-          <ProjectsContainer
-            display={displayProjectsGrid ? "grid" : "block"}
-            padding="0 5%"
-            paddingMd="0 15%"
-            ref={measuredRef}
-          >
-            {projects.map(project => (
-              <ProjectImageWithTitle
-                displayProjectsGrid={displayProjectsGrid}
-                key={project.node.uid}
-                project={project}
-                projectCategoryFilter={projectCategoryFilter}
-                setCursorElement={setCursorElement}
-                totalProjects={projects.length}
-                elTop={elTop}
-              />
-            ))}
-          </ProjectsContainer>
-        )}
-      </ProjectsSection>
+          {/* Show the project category info it isn't all  and logos aren't active */}
+          {projectCategoryFilter !== "all" && !showLogos && (
+            <ProjectCategoryInfo projectCategoryFilter={projectCategoryFilter} />
+          )}
+
+          {!showLogos && (
+            <ProjectsContainer
+              display={displayProjectsGrid ? "grid" : "block"}
+              padding="0 5%"
+              paddingMd="0 15%"
+              ref={measuredRef}
+            >
+              {projects.map(project => (
+                <ProjectImageWithTitle
+                  displayProjectsGrid={displayProjectsGrid}
+                  key={project.node.uid}
+                  project={project}
+                  projectCategoryFilter={projectCategoryFilter}
+                  setCursorElement={setCursorElement}
+                  totalProjects={projects.length}
+                  elTop={elTop}
+                />
+              ))}
+            </ProjectsContainer>
+          )}
+        </ProjectsSection>
+      </TransitionWrapper>
     </Layout>
   )
 }

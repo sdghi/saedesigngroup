@@ -45,7 +45,14 @@ const AboutPage = ({ data }) => {
       <AboutHero>
         <motion.div
           drag={isSelected ? false : true}
-          dragConstraints={{ top: -300, left: -400, right: 400, bottom: 300 }}
+          dragConstraints={{ top: -100, left: -150, right: 150, bottom: 100 }}
+          animate={{
+            x: isSelected && 0,
+            y: isSelected && 0
+          }}
+          transition={{
+            when: 'beforeChildren'
+          }}
           dragElastic={0.3}
           className="grid-container">
           {people.map((person, i) => (
@@ -80,16 +87,16 @@ const AboutHero = styled.section`
   overflow: hidden;
   display: grid;
   place-content: center;
-  position: relative;
+  position: static;
 
   .grid-container{
     height: 100vh;
     width: 100vw;
     display: grid;
-    border: 1px  solid red;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 50px;
     place-items: center;
+    position: static;
   }
 `;
 

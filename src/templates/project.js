@@ -170,6 +170,7 @@ export const query = graphql`
                   caption {
                     text
                   }
+                  reverse_images
                   image_1 {
                     alt
                     localFile {

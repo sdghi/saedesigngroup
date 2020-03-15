@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import RelatedProjects from "../components/projects/relatedProjects"
 import { myContext } from "../provider"
 import { ImageContainer, Container } from '../elements'
-import TransitionWrapper from '../components/transitionWrapper'
+import TransitionWrapper from '../components/wrappers/transitionWrapper'
 // SLICES
 import TextSection from "../slices/textSection"
 import Testimonial from "../slices/testimonial"

@@ -1,5 +1,5 @@
 import React from "react"
-import TransitionWrapper from '../components/transitionWrapper'
+import TransitionWrapper from '../components/wrappers/transitionWrapper'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 

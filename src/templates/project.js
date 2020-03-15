@@ -53,7 +53,6 @@ const Project = ({ project, theme }) => {
           maxWidth="100%"
           fluid={hero_image.localFile.childImageSharp.fluid}
           alt={hero_image.alt}
-          fadeIn={false}
         />
       </Container>
       {/* This is the slices  */}
@@ -114,6 +113,7 @@ export const query = graphql`
               ... on PrismicProjectTemplateBody23ImageCaption {
                 slice_type
                 primary {
+                  layout
                   image {
                     alt
                     localFile {
@@ -161,6 +161,7 @@ export const query = graphql`
                   caption {
                     text
                   }
+                  caption_alignment
                 }
               }
               ... on PrismicProjectTemplateBodyStaggeredImages {
@@ -169,6 +170,7 @@ export const query = graphql`
                   caption {
                     text
                   }
+                  reverse_images
                   image_1 {
                     alt
                     localFile {

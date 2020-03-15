@@ -4,12 +4,12 @@ import { breakpointMedium, grey } from "../variables"
 import styled from "styled-components"
 
 const ImageCaption = ({ slice }) => {
-  const { image, caption } = slice.primary
+  const { image, caption, layout } = slice.primary
 
   const { fluid: imageSrc } = image.localFile.childImageSharp
 
   return (
-    <TwoThirdContainer>
+    <TwoThirdContainer className={layout === 'Image Right Caption Left' && 'image-right'}>
       <ImageContainer fluid={imageSrc} alt={image.alt} />
       <Paragraph>{caption.text}</Paragraph>
     </TwoThirdContainer>
@@ -34,8 +34,22 @@ const TwoThirdContainer = styled(Container)`
 
     ${Paragraph} {
       max-width: 194px;
-      line-height: 22px;
+      font-size: 14px;
+      line-height: 26px;
       text-align: left;
+    }
+
+    &.image-right{
+      grid-template-columns: 1fr 2fr;
+      grid-template-areas: "paragraph image";
+      
+      ${Paragraph}{
+        grid-area: paragraph;
+      }
+
+      ${ImageContainer}{
+        grid-area: image;
+      }
     }
   }
 `

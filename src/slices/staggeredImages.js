@@ -30,8 +30,9 @@ const StaggeredImages = ({ slice }) => {
   }, []);
 
   return (
-    <ScrollWrapper>
-      <StaggeredImageContainer ref={ref} reverseImages={reverse_images}>
+
+    <StaggeredImageContainer ref={ref} reverseImages={reverse_images}>
+      <ScrollWrapper>
         <motion.div >
           <ImageContainer
             fluid={imageOneSrc}
@@ -62,8 +63,9 @@ const StaggeredImages = ({ slice }) => {
         {caption &&
           <Paragraph>{caption.text}</Paragraph>
         }
-      </StaggeredImageContainer>
-    </ScrollWrapper>
+      </ScrollWrapper>
+    </StaggeredImageContainer>
+
 
   )
 }

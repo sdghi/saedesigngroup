@@ -2,28 +2,31 @@ import React from "react"
 import styled from "styled-components"
 import { Container, Paragraph } from "../elements"
 import { lightGrey } from "../variables"
+import ScrollWrapper from '../components/wrappers/scrollWrapper'
 
 const Testimonial = ({ slice }) => {
   const testimonialContent = slice.primary.text.text
   const authorContent = slice.primary.author.text
 
   return (
-    <Container maxWidth="850px" width="90%" padding="0">
-      <QuoteMark>&#8220;</QuoteMark>
-      <Paragraph
-        fontSize="15px"
-        fontSizeMd="18px"
-        fontSizeLg="21px"
-        textAlign="center"
-        lineHeight="36px"
-      >
-        {testimonialContent}
-      </Paragraph>
-      <AuthorText fontSize="14px" textAlign="center">
-        - {authorContent}
-      </AuthorText>
-      <QuoteMark>&#8221;</QuoteMark>
-    </Container>
+    <ScrollWrapper>
+      <Container maxWidth="850px" width="90%" padding="0">
+        <QuoteMark>&#8220;</QuoteMark>
+        <Paragraph
+          fontSize="15px"
+          fontSizeMd="18px"
+          fontSizeLg="21px"
+          textAlign="center"
+          lineHeight="36px"
+        >
+          {testimonialContent}
+        </Paragraph>
+        <AuthorText fontSize="14px" textAlign="center">
+          - {authorContent}
+        </AuthorText>
+        <QuoteMark>&#8221;</QuoteMark>
+      </Container>
+    </ScrollWrapper>
   )
 }
 

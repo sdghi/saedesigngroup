@@ -12,7 +12,7 @@ import ProjectCategoryInfo from "../components/home/projectCategoryInfo"
 import MobileProjectsFilter from "../components/home/mobileProjectsFilter"
 import HomeHeroSection from '../components/home/homeHeroSection'
 import ProjectImageWithTitle from "../components/home/projectImageWithTitle"
-import TransitionWrapper from '../components/transitionWrapper'
+import TransitionWrapper from '../components/wrappers/transitionWrapper'
 
 export const query = graphql`
   {

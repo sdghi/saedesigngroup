@@ -30,6 +30,7 @@ const StaggeredImages = ({ slice }) => {
   }, []);
 
   return (
+
     <StaggeredImageContainer ref={ref} reverseImages={reverse_images}>
       <ScrollWrapper>
         <motion.div >
@@ -44,9 +45,8 @@ const StaggeredImages = ({ slice }) => {
             heightMd="auto"
           />
         </motion.div>
-      </ScrollWrapper>
 
-      <ScrollWrapper>
+
         <motion.div style={{ y }} >
           <ImageContainer
             fluid={imageTwoSrc}
@@ -59,15 +59,13 @@ const StaggeredImages = ({ slice }) => {
             marginMd={reverse_images ? "-5% auto 0 0" : "-5% 0 0 auto"}
           />
         </motion.div>
+
+        {caption &&
+          <Paragraph>{caption.text}</Paragraph>
+        }
       </ScrollWrapper>
-
-
-      {caption &&
-
-        <Paragraph>{caption.text}</Paragraph>
-
-      }
     </StaggeredImageContainer>
+
 
   )
 }

@@ -153,24 +153,27 @@ const IndexPage = ({ data }) => {
               paddingMd="0 15%"
               ref={measuredRef}
             >
+              {/* Desktop Tiles */}
               {projects.map(project => (
-                <>
-                  <ProjectImageWithTitle
-                    displayProjectsGrid={displayProjectsGrid}
-                    key={project.node.uid}
-                    project={project}
-                    projectCategoryFilter={projectCategoryFilter}
-                    setCursorElement={setCursorElement}
-                    totalProjects={projects.length}
-                    elTop={elTop}
-                  />
-                  <ProjectImageWithTitleMobile
-                    key={project.node.uid}
-                    project={project}
-                    projectCategoryFilter={projectCategoryFilter}
-                    totalProjects={projects.length}
-                  />
-                </>
+                <ProjectImageWithTitle
+                  displayProjectsGrid={displayProjectsGrid}
+                  key={project.node.uid}
+                  project={project}
+                  projectCategoryFilter={projectCategoryFilter}
+                  setCursorElement={setCursorElement}
+                  totalProjects={projects.length}
+                  elTop={elTop}
+                />
+
+              ))}
+              {/* Mobile Tiles */}
+              {projects.map(project => (
+                <ProjectImageWithTitleMobile
+                  key={`${project.node.uid}-mobile`}
+                  project={project}
+                  projectCategoryFilter={projectCategoryFilter}
+                  totalProjects={projects.length}
+                />
               ))}
             </ProjectsContainer>
           )}

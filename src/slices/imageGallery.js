@@ -3,6 +3,7 @@ import { Container, ImageContainer } from "../elements"
 import styled from "styled-components"
 import { myContext } from "../provider"
 import { grey, lightGrey } from "../variables"
+import ScrollWrapper from '../components/wrappers/scrollWrapper'
 
 const ImageGallery = ({ slice }) => {
   const items = slice.items
@@ -48,36 +49,38 @@ const ImageGallery = ({ slice }) => {
   }
 
   return (
-    <GalleryContainer margin="0 5% 20vh 5%" padding="0">
-      <SlideshowWrapper
-        onMouseMove={() => toggleSlideshowCursors()}
-        onMouseLeave={() => setCursorElement({ initial: "initial" })}
-        ref={slideshowRef}
-        length={slice.items.length}
-        onClick={() => handleSlideshowImage()}
-      >
-        {items.map((item, i) => (
-          <div key={i}>
-            {i === visibleImage && i < items.length && (
-              <ImageContainer
-                fluid={item.gallery_image.localFile.childImageSharp.fluid}
-                width="100%"
-              />
-            )}
-          </div>
-        ))}
-      </SlideshowWrapper>
-      <div className="counter">
-        {items.map((item, i) => (
-          <button
-            key={i}
-            onClick={() => setVisibleImage(i)}
-          >
-            <div className={i === visibleImage ? "item selected" : "item"}></div>
-          </button>
-        ))}
-      </div>
-    </GalleryContainer>
+    <ScrollWrapper>
+      <GalleryContainer margin="0 5% 20vh 5%" padding="0">
+        <SlideshowWrapper
+          onMouseMove={() => toggleSlideshowCursors()}
+          onMouseLeave={() => setCursorElement({ initial: "initial" })}
+          ref={slideshowRef}
+          length={slice.items.length}
+          onClick={() => handleSlideshowImage()}
+        >
+          {items.map((item, i) => (
+            <div key={i}>
+              {i === visibleImage && i < items.length && (
+                <ImageContainer
+                  fluid={item.gallery_image.localFile.childImageSharp.fluid}
+                  width="100%"
+                />
+              )}
+            </div>
+          ))}
+        </SlideshowWrapper>
+        <div className="counter">
+          {items.map((item, i) => (
+            <button
+              key={i}
+              onClick={() => setVisibleImage(i)}
+            >
+              <div className={i === visibleImage ? "item selected" : "item"}></div>
+            </button>
+          ))}
+        </div>
+      </GalleryContainer>
+    </ScrollWrapper>
   )
 }
 

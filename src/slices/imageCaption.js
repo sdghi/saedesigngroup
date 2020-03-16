@@ -2,6 +2,7 @@ import React from "react"
 import { Container, Paragraph, ImageContainer } from "../elements"
 import { breakpointMedium, grey } from "../variables"
 import styled from "styled-components"
+import ScrollWrapper from '../components/wrappers/scrollWrapper'
 
 const ImageCaption = ({ slice }) => {
   const { image, caption, layout } = slice.primary
@@ -9,10 +10,12 @@ const ImageCaption = ({ slice }) => {
   const { fluid: imageSrc } = image.localFile.childImageSharp
 
   return (
-    <TwoThirdContainer className={layout === 'Image Right Caption Left' && 'image-right'}>
-      <ImageContainer fluid={imageSrc} alt={image.alt} />
-      <Paragraph>{caption.text}</Paragraph>
-    </TwoThirdContainer>
+    <ScrollWrapper>
+      <TwoThirdContainer className={layout === 'Image Right Caption Left' && 'image-right'}>
+        <ImageContainer fluid={imageSrc} alt={image.alt} />
+        <Paragraph>{caption.text}</Paragraph>
+      </TwoThirdContainer>
+    </ScrollWrapper>
   )
 }
 

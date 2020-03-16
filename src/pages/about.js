@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { yellow } from "../variables"
 import { motion } from 'framer-motion'
 import AboutCard from '../components/about/aboutCard'
-import TransitionWrapper from '../components/transitionWrapper'
+import TransitionWrapper from '../components/wrappers/transitionWrapper'
 
 export const query = graphql`
   {

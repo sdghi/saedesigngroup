@@ -9,7 +9,7 @@ import MainMenuSection from '../components/services/mainMenuSection'
 import DesignAuditSection from '../components/services/designAuditSection'
 import WeDoItAllSection from '../components/services/weDoItAllSection'
 import MenuFooterSection from '../components/services/menuFooterSection'
-import TransitionWrapper from '../components/transitionWrapper'
+import TransitionWrapper from '../components/wrappers/transitionWrapper'
 
 export const query = graphql`
 {

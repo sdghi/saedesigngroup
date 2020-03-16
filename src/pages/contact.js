@@ -6,7 +6,7 @@ import MauiMap from "../components/contact/mauiMap"
 import OahuMap from "../components/contact/oahuMap"
 import MapToggle from "../components/contact/mapToggle"
 import { myContext } from "../provider"
-import TransitionWrapper from '../components/transitionWrapper'
+import TransitionWrapper from '../components/wrappers/transitionWrapper'
 
 const ContactPage = () => {
   const [showOahuMap, setShowOahuMap] = useState(true)

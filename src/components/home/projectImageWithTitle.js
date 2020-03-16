@@ -131,32 +131,17 @@ const ProjectImageWithTitle = ({
 export default ProjectImageWithTitle
 
 const ProjetContainer = styled(motion.div)`
-  position: relative;
-  margin: 0 auto 0 auto;
-  width: 100%;
-
-  h2 {
-    color: white;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 1.875rem;
-  }
-
-  ${ImageContainer} {
-    filter: brightness(0.95);
-  }
+  display: none !important;
 
   @media (min-width: ${breakpointSmall}) {
+    display: grid !important;
+    margin: 0 auto;
     z-index: ${props => props.placement};
     width: ${props => props.widthMd};
     /* Height auto will maintain the orientation of the image  */
     height: ${props => props.displayProjectsGrid ? '300px' : 'auto'};
     /* Default spacing between the project image with title  */
-    margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
+    margin-bottom: ${props => props.displayProjectsGrid ? "0px" : "50px"};
     /* Bottom will override the default spacing  */
     bottom: ${props => !props.displayProjectsGrid && `${props.bottom}em`};
     margin-top: ${props => `${props.top}em`};
@@ -173,5 +158,20 @@ const ProjetContainer = styled(motion.div)`
       ? "0px"
       : `calc(${props.gridColumn !== 3 &&
       props.gridColumn * props.columnIncrements}% )`};
+
+    h2 {
+        color: white;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 1.875rem;
+      }
+
+    ${ImageContainer} {
+      filter: brightness(0.95);
+    }
   }
 `

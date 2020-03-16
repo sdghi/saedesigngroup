@@ -9,7 +9,8 @@ const TransitionWrapper = ({ children }) => {
             exit={{ opacity: 0 }}
             transition={{
                 duration: 0.6,
-                type: 'spring'
+                type: 'spring',
+                damping: 150
             }}
         >
             {children}

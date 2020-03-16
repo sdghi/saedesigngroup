@@ -193,6 +193,7 @@ const ProjectsContainer = styled(Container)`
 `
 
 const ProjectsSection = styled.section`
+  padding-top: 50px;
   height: fit-content;
   position: relative;
   overflow: initial;

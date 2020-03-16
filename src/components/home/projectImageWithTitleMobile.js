@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { breakpointSmall } from "../../variables"
 import { ImageContainer } from "../../elements"
-import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 const ProjectImageWithTitleMobile = ({
     project,
@@ -60,7 +59,7 @@ const ProjectImageWithTitleMobile = ({
 
 export default ProjectImageWithTitleMobile
 
-const ProjetContainer = styled(motion.div)`
+const ProjetContainer = styled.div`
   position: relative;
   margin: 0 auto 0 auto;
   width: 100%;

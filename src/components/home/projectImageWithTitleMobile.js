@@ -39,25 +39,39 @@ const ProjectImageWithTitleMobile = ({
     return (
         <>
             {showProject && (
-                <Link to={`/${slug}`}>
-                    <ProjetContainer key={project.uid}>
-                        <ImageContainer
-                            width="100%"
-                            widthMd="100%"
-                            heightMd="100%"
-                            fluid={imageSrc}
-                            alt={imageAlt}
-                        />
-                        <h2>{projectName}</h2>
-                    </ProjetContainer>
-                </Link>
-            )}
+                <TileWrapper>
+                    <Link to={`/${slug}`}>
+                        <ProjetContainer key={`${project.uid}-mobile`}>
 
+                            <ImageContainer
+                                width="100%"
+                                widthMd="100%"
+                                heightMd="100%"
+                                fluid={imageSrc}
+                                alt={imageAlt}
+                            />
+                            <h2>{projectName}</h2>
+
+                        </ProjetContainer>
+                    </Link>
+
+                </TileWrapper>
+            )
+            }
         </>
     )
 }
 
 export default ProjectImageWithTitleMobile
+
+const TileWrapper = styled.div`
+  display: block;
+
+  @media (min-width: ${breakpointSmall}) {
+    display: none;
+    }
+`
+
 
 const ProjetContainer = styled.div`
   position: relative;
@@ -79,7 +93,4 @@ const ProjetContainer = styled.div`
     filter: brightness(0.95);
   }
 
-  @media (min-width: ${breakpointSmall}) {
-    display: none;
-  }
 `

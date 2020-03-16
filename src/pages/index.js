@@ -187,17 +187,13 @@ const ProjectsContainer = styled(Container)`
   grid-gap: 20px;
 
   @media (min-width: ${breakpointSmall}) {
-    display: ${props => props.display};
+    display: ${({ display }) => display};
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
 `
 
-
-
 const ProjectsSection = styled.section`
-  /* min-height: 100vh; */
   height: fit-content;
-  padding: 50px 0;
   position: relative;
   overflow: initial;
 

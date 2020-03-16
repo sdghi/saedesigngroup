@@ -113,7 +113,7 @@ const FilterContainer = styled.div`
   top: 9vh;
   padding: 0 20px;
   margin-bottom: 20px;
-  display: ${props => (props.showMobile === true ? "flex" : "none")};
+  display: ${({ showMobile }) => showMobile === true ? "flex" : "none"};
 
   .filter-categories {
     h3 {
@@ -159,7 +159,7 @@ const FilterContainer = styled.div`
   }
 
   @media (min-width: ${breakpointSmall}) {
-    display: ${props => (props.showMobile === true ? "none" : "flex")};
+    display: ${({ showMobile }) => showMobile === true ? "none" : "flex"};
     width: 100%;
 
     .display-btn-container {

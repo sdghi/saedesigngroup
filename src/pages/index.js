@@ -12,6 +12,7 @@ import ProjectCategoryInfo from "../components/home/projectCategoryInfo"
 import MobileProjectsFilter from "../components/home/mobileProjectsFilter"
 import HomeHeroSection from '../components/home/homeHeroSection'
 import ProjectImageWithTitle from "../components/home/projectImageWithTitle"
+import ProjectImageWithTitleMobile from '../components/home/projectImageWithTitleMobile'
 import TransitionWrapper from '../components/wrappers/transitionWrapper'
 
 export const query = graphql`
@@ -105,7 +106,6 @@ const IndexPage = ({ data }) => {
     }
   }, []);
 
-
   return (
     <Layout>
       <TransitionWrapper>
@@ -154,15 +154,23 @@ const IndexPage = ({ data }) => {
               ref={measuredRef}
             >
               {projects.map(project => (
-                <ProjectImageWithTitle
-                  displayProjectsGrid={displayProjectsGrid}
-                  key={project.node.uid}
-                  project={project}
-                  projectCategoryFilter={projectCategoryFilter}
-                  setCursorElement={setCursorElement}
-                  totalProjects={projects.length}
-                  elTop={elTop}
-                />
+                <>
+                  <ProjectImageWithTitle
+                    displayProjectsGrid={displayProjectsGrid}
+                    key={project.node.uid}
+                    project={project}
+                    projectCategoryFilter={projectCategoryFilter}
+                    setCursorElement={setCursorElement}
+                    totalProjects={projects.length}
+                    elTop={elTop}
+                  />
+                  <ProjectImageWithTitleMobile
+                    key={project.node.uid}
+                    project={project}
+                    projectCategoryFilter={projectCategoryFilter}
+                    totalProjects={projects.length}
+                  />
+                </>
               ))}
             </ProjectsContainer>
           )}
@@ -179,17 +187,14 @@ const ProjectsContainer = styled(Container)`
   grid-gap: 20px;
 
   @media (min-width: ${breakpointSmall}) {
-    display: ${props => props.display};
+    display: ${({ display }) => display};
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
 `
 
-
-
 const ProjectsSection = styled.section`
-  /* min-height: 100vh; */
+  padding-top: 50px;
   height: fit-content;
-  padding: 50px 0;
   position: relative;
   overflow: initial;
 

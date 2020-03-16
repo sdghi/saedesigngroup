@@ -131,47 +131,47 @@ const ProjectImageWithTitle = ({
 export default ProjectImageWithTitle
 
 const ProjetContainer = styled(motion.div)`
-  position: relative;
-  margin: 0 auto 0 auto;
-  width: 100%;
-
-  h2 {
-    color: white;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 1.875rem;
-  }
-
-  ${ImageContainer} {
-    filter: brightness(0.95);
-  }
+  display: none;
 
   @media (min-width: ${breakpointSmall}) {
-    z-index: ${props => props.placement};
-    width: ${props => props.widthMd};
+    display: grid;
+    margin: 0 auto;
+    z-index: ${({ placement }) => placement};
+    width: ${({ widthMd }) => widthMd};
     /* Height auto will maintain the orientation of the image  */
-    height: ${props => props.displayProjectsGrid ? '300px' : 'auto'};
+    height: ${({ displayProjectsGrid }) => displayProjectsGrid ? '300px' : 'auto'};
     /* Default spacing between the project image with title  */
-    margin-bottom: ${props => (props.displayProjectsGrid ? "0px" : "50px")};
+    margin-bottom: ${({ displayProjectsGrid }) => displayProjectsGrid ? "0px" : "50px"};
     /* Bottom will override the default spacing  */
-    bottom: ${props => !props.displayProjectsGrid && `${props.bottom}em`};
-    margin-top: ${props => `${props.top}em`};
+    bottom: ${({ displayProjectsGrid, bottom }) => !displayProjectsGrid && `${bottom}em`};
+    margin-top: ${({ top }) => `${top}em`};
     /* Keep thes values left and right or they will override  the grid snapping of margins below  */
-    left: ${props => `${props.left}%`};
-    right: ${props => `${props.right}%`};
+    left: ${({ left }) => `${left}%`};
+    right: ${({ right }) => `${right}%`};
     /* If the gridColumn is the maximum then make the margin right 0 so it snaps to the end  */
-    margin-right: ${props => props.gridColumn === 3 && 0};
+    margin-right: ${({ gridColumn }) => gridColumn === 3 && 0};
     /* If the gridColumn is not the maximum then give a margin left of the gridColumn * columnIncrements
       If it is the maximum then don't render a margin left so that it will snap to the margin right specified above
      */
-    margin-left: ${props =>
-    props.displayProjectsGrid
+    margin-left: ${({ displayProjectsGrid, gridColumn, columnIncrements }) =>
+    displayProjectsGrid
       ? "0px"
-      : `calc(${props.gridColumn !== 3 &&
-      props.gridColumn * props.columnIncrements}% )`};
+      : `calc(${gridColumn !== 3 &&
+      gridColumn * columnIncrements}% )`};
+
+    h2 {
+        color: white;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 1.875rem;
+      }
+
+    ${ImageContainer} {
+      filter: brightness(0.95);
+    }
   }
 `

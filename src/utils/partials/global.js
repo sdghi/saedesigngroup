@@ -2,7 +2,6 @@ import { createGlobalStyle } from "styled-components"
 import { breakpointMedium, pink, baseFont } from "../../variables"
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Oswald:500,600|Source+Sans+Pro:300,400,700,900&display=swap');
 
   html{
     box-sizing: border-box;

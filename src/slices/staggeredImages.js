@@ -2,7 +2,8 @@ import React, { useState, useCallback } from "react"
 import styled from "styled-components"
 import { Paragraph, Container, ImageContainer } from "../elements"
 import { breakpointSmall, breakpointMedium, grey } from "../variables"
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { motion, useViewportScroll, useTransform } from "framer-motion"
+import ScrollWrapper from '../components/wrappers/scrollWrapper'
 
 const StaggeredImages = ({ slice }) => {
   // Destructure items
@@ -30,34 +31,44 @@ const StaggeredImages = ({ slice }) => {
 
   return (
     <StaggeredImageContainer ref={ref} reverseImages={reverse_images}>
-      <motion.div >
-        <ImageContainer
-          fluid={imageOneSrc}
-          alt={image_1.alt}
-          widthMd="60%"
-          margin={reverse_images ? "0 0 20px auto" : "0 0 20px 0"}
-          marginMd={reverse_images ? "0 0 0 auto" : "0"}
-          width="80%"
-          height="auto"
-          heightMd="auto"
-        />
-      </motion.div>
+      <ScrollWrapper>
+        <motion.div >
+          <ImageContainer
+            fluid={imageOneSrc}
+            alt={image_1.alt}
+            widthMd="60%"
+            margin={reverse_images ? "0 0 20px auto" : "0 0 20px 0"}
+            marginMd={reverse_images ? "0 0 0 auto" : "0"}
+            width="80%"
+            height="auto"
+            heightMd="auto"
+          />
+        </motion.div>
+      </ScrollWrapper>
 
-      <motion.div style={{ y }} >
-        <ImageContainer
-          fluid={imageTwoSrc}
-          alt={image_2.alt}
-          width="80%"
-          widthMd="60%"
-          height="auto"
-          heightMd="auto"
-          margin={reverse_images ? "-5% auto 0 0" : "-5% 0 0 auto"}
-          marginMd={reverse_images ? "-5% auto 0 0" : "-5% 0 0 auto"}
-        />
-      </motion.div>
+      <ScrollWrapper>
+        <motion.div style={{ y }} >
+          <ImageContainer
+            fluid={imageTwoSrc}
+            alt={image_2.alt}
+            width="80%"
+            widthMd="60%"
+            height="auto"
+            heightMd="auto"
+            margin={reverse_images ? "-5% auto 0 0" : "-5% 0 0 auto"}
+            marginMd={reverse_images ? "-5% auto 0 0" : "-5% 0 0 auto"}
+          />
+        </motion.div>
+      </ScrollWrapper>
 
-      {caption && <Paragraph>{caption.text}</Paragraph>}
+
+      {caption &&
+
+        <Paragraph>{caption.text}</Paragraph>
+
+      }
     </StaggeredImageContainer>
+
   )
 }
 

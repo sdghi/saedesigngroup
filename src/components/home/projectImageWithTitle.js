@@ -131,10 +131,10 @@ const ProjectImageWithTitle = ({
 export default ProjectImageWithTitle
 
 const ProjetContainer = styled(motion.div)`
-  display: none;
+  display: none !important;
 
   @media (min-width: ${breakpointSmall}) {
-    display: grid;
+    display: grid !important;
     margin: 0 auto;
     z-index: ${({ placement }) => placement};
     width: ${({ widthMd }) => widthMd};

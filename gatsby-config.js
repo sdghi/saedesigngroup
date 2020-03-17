@@ -50,9 +50,13 @@ module.exports = {
             variants: [`300`, `400`, `700`, `900`],
           },
           {
+            family: `Lato`,
+            variants: [`400`, `700`],
+          },
+          {
             family: `Oswald`,
-            variants: [`500`, `600`]
-          }
+            variants: [`400`, `700`],
+          },
         ],
       },
     },

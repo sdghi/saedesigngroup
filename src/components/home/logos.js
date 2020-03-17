@@ -128,13 +128,13 @@ const LogosContainer = styled(Container)`
 
       &:hover {
         ${ImageContainer} {
-          transition: all 0.2s ease-in;
+          transition: all 0.5s ease-in-out;
           filter: grayscale(0);
         }
 
         .open-project-link {
           opacity: 1;
-          transition: all 0.3s ease-out;
+          transition: all 0.6s ease-out;
         }
       }
     }

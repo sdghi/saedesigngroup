@@ -31,7 +31,7 @@ const StaggeredImages = ({ slice }) => {
 
   return (
 
-    <StaggeredImageContainer ref={ref} reverseImages={reverse_images}>
+    <StaggeredImageContainer ref={ref} reverseImages={reverse_images} margin="0" marginMd="0">
       <ScrollWrapper>
         <motion.div >
           <ImageContainer
@@ -73,6 +73,7 @@ const StaggeredImages = ({ slice }) => {
 export default StaggeredImages
 
 const StaggeredImageContainer = styled(Container)`
+
   ${Paragraph} {
     margin-top: 100px;
     font-size: 14px;

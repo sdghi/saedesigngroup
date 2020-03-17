@@ -9,7 +9,7 @@ const TextSection = ({ slice, theme }) => {
 
   return (
     <ScrollWrapper>
-      <ContainerSection maxWidth="850px" padding="0">
+      <ContainerSection maxWidth="850px" paddingMd="0">
         <HeadingTwo
           fontSize="27px"
           fontSizeLg="34px"

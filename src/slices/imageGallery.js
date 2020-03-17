@@ -50,7 +50,7 @@ const ImageGallery = ({ slice }) => {
 
   return (
     <ScrollWrapper>
-      <GalleryContainer margin="0 5% 20vh 5%" padding="0">
+      <GalleryContainer margin="0 0 20vh 0" padding="0" paddingMd="0 5%">
         <SlideshowWrapper
           onMouseMove={() => toggleSlideshowCursors()}
           onMouseLeave={() => setCursorElement({ initial: "initial" })}

@@ -11,7 +11,10 @@ const ImageCaption = ({ slice }) => {
 
   return (
     <ScrollWrapper>
-      <TwoThirdContainer className={layout === 'Image Right Caption Left' && 'image-right'}>
+      <TwoThirdContainer
+        padding="0"
+
+        className={layout === 'Image Right Caption Left' && 'image-right'}>
         <ImageContainer fluid={imageSrc} alt={image.alt} />
         <Paragraph>{caption.text}</Paragraph>
       </TwoThirdContainer>
@@ -22,6 +25,7 @@ const ImageCaption = ({ slice }) => {
 export default ImageCaption
 
 const TwoThirdContainer = styled(Container)`
+
   ${Paragraph} {
     font-size: 12px;
     line-height: 18px;

@@ -75,7 +75,7 @@ const ProjectImageWithTitle = ({
   // Destructure the scroll Y value from useViewportScroll
   const { scrollY } = useViewportScroll()
 
-  const y = useTransform(scrollY, !displayProjectsGrid ? [elTop, elTop + (placementValue / projectSize * 3)] : [0, 0], [0, -1], {
+  const y = useTransform(scrollY, !displayProjectsGrid ? [elTop, elTop + (placementValue / projectSize * 5)] : [0, 0], [0, -1], {
     clamp: false
   });
 

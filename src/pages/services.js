@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { myContext } from "../provider"
 import styled from 'styled-components'
-import { altFont, breakpointSmall, breakpointTablet, breakpointLarge, breakpoint4k } from '../variables'
+import { oswaldMed, breakpointSmall, breakpointTablet, breakpointLarge, breakpoint4k } from '../variables'
 import MainMenuSection from '../components/services/mainMenuSection'
 import DesignAuditSection from '../components/services/designAuditSection'
 import WeDoItAllSection from '../components/services/weDoItAllSection'
@@ -95,7 +95,7 @@ const MenuContainer = styled.div`
   grid-gap: 30px;
 
   h2{
-    font-family: ${altFont};
+    font-family: ${oswaldMed};
     font-size: 30px;
     letter-spacing: 0.075em;
   }

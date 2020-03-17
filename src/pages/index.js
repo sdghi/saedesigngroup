@@ -150,6 +150,8 @@ const IndexPage = ({ data }) => {
             <ProjectsContainer
               display={displayProjectsGrid ? "grid" : "block"}
               padding="0 5%"
+              margin="0"
+              marginMd="0"
               paddingMd="0 15%"
               ref={measuredRef}
             >

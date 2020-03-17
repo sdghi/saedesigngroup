@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { dark_blue, light_blue, yellow, breakpointSmall, breakpointLarge, breakpoint4k } from '../../variables'
+import { motion } from 'framer-motion'
 
 const MainMenuSection = ({ mainMenu, add_a_side_of }) => {
+  const [showDescription, setShowDescription] = useState(false);
+
   return (
     <MainMenu className="menu-main">
       <img className="menu-of-services-header" src={"/menu-of-services.svg"} alt="menu of services" />
@@ -12,10 +15,15 @@ const MainMenuSection = ({ mainMenu, add_a_side_of }) => {
           <h2>{service.primary.title.text}</h2>
 
           {service.items.map((item, index) => (
-            <div key={index} className="service-item">
-              <h3 className="service-title">{item.feature_title.text}</h3>
-              <p>{item.feature_description.text}</p>
-            </div>
+            <motion.div key={index} className="service-item" positionTransition>
+              <h3
+                className="service-title"
+                onClick={() => setShowDescription(item.feature_title.text)}
+              >{item.feature_title.text}</h3>
+
+              {showDescription === item.feature_title.text && <p className="mobile">{item.feature_description.text}</p>}
+              <p className="desktop">{item.feature_description.text}</p>
+            </motion.div>
           ))}
         </div>
       ))}
@@ -41,6 +49,11 @@ const MainMenu = styled.section`
   place-content: center;
   grid-template-columns: 1fr;
   grid-gap: 20px;
+
+
+  .desktop{
+    display: none;
+  }
 
   .menu-of-services-header{
     position: absolute;
@@ -106,7 +119,7 @@ const MainMenu = styled.section`
     display: grid;
     grid-template-columns: 270px 270px;
     grid-template-rows: repeat(4, 220px);
-    grid-gap: 20px 60px ;
+    grid-gap: 60px 60px ;
     grid-template-areas: 
       "branding packaging"
       "branding marketing"
@@ -131,6 +144,14 @@ const MainMenu = styled.section`
 
       .digital{
         grid-area: digital;
+      }
+
+      .mobile{
+        display: none;
+      }
+
+      .desktop{
+        display: block;
       }
   }
 

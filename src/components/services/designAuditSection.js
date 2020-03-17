@@ -35,7 +35,7 @@ const DesignAudit = styled.section`
   .design-audit-header{
     position: absolute;
     top: -75px;
-    left: 25%;
+    left: 30%;
     height: 150px;
     width: 40%;
   }

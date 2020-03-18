@@ -132,12 +132,13 @@ const FilterContainer = styled.div`
         padding: 0;
         background: none;
         border: none;
-        font-weight: 900;
         line-height: 1.5;
         text-transform: uppercase;
         color: ${grey};
-        font-size: 15px;
-      letter-spacing: 0.1em;
+        letter-spacing: 0.1em;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 5px;
 
         &.selected {
           color: ${black};

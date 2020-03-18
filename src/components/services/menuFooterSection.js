@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { light_blue, dark_blue, pink, breakpointMedium, breakpointTablet, breakpoint4k, oswaldSemi } from '../../variables'
+import { light_blue, dark_blue, pink, breakpointMedium, breakpointTablet, breakpoint4k, oswald } from '../../variables'
 
 const MenuFooterSection = () => {
   return (
@@ -62,7 +62,7 @@ const MenuFooter = styled.div`
 
     h2{
       font-size: 46px;
-      font-family: ${oswaldSemi};
+      font-family: ${oswald};
 
       a{
         color: ${dark_blue};

@@ -89,7 +89,7 @@ export default ServicesPage
 
 const MenuContainer = styled.div`
   margin: 10vh auto 0 auto;
-  padding: 18.5px;
+  padding: 5px;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 30px;
@@ -116,6 +116,7 @@ const MenuContainer = styled.div`
     }
 
     @media(min-width: ${breakpointSmall}){
+      padding: 18.5px;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 0.5fr 0.5fr;
       width: 100%;

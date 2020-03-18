@@ -39,7 +39,7 @@ const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
 
     return (
         // <Tilt
-        //     style={isSelected && { position: 'absolute' }}
+        //     style={isSelected === index ? { position: 'absolute', zIndex: 200 } : { width: '100%', height: '400px' }}
         // >
         <Card
             variants={cardVariants}
@@ -59,8 +59,6 @@ const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
             }
         </Card>
         // </Tilt >
-
-
     )
 }
 

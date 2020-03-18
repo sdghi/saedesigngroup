@@ -28,7 +28,7 @@ export const query = graphql`
   }
 `
 // Comment me out once about content is populated
-const people = ['sae', 'arlyn', 'ian', 'louis', 'steve', 'leeann', 'david', 'judith', 'rachelle', 'marissa', 'kitty', 'patrick', 'leeann']
+const people = ['sae', 'arlyn', 'ian', 'sophie', 'louis', 'steve', 'leeann', 'david', 'judith', 'rachelle', 'marissa', 'kitty', 'patrick', 'leeann']
 
 const AboutPage = ({ data }) => {
   const { setCursorElement } = useContext(myContext)

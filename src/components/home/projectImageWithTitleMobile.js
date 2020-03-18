@@ -81,12 +81,13 @@ const ProjetContainer = styled.div`
   h2 {
     color: white;
     position: absolute;
-    bottom: 20px;
     left: 20px;
     margin: 0;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 1.875rem;
+    font-size: 1.325em;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    bottom: 14px
   }
 
   ${ImageContainer} {

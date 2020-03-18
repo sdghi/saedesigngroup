@@ -12,6 +12,8 @@ const ImageGallery = ({ slice }) => {
   const slideshowRef = useRef(null)
   const { xValue, setCursorElement } = useContext(myContext)
 
+  console.log(items);
+
   // TODO Go to next image every 5 seconds - useEffect
 
   const toggleSlideshowCursors = () => {
@@ -58,26 +60,26 @@ const ImageGallery = ({ slice }) => {
           length={slice.items.length}
           onClick={() => handleSlideshowImage()}
         >
-          {items.map((item, i) => (
+          {items.map((item, i) => item.gallery_image.localFile &&
             <div key={i}>
-              {i === visibleImage && i < items.length && (
+              {i === visibleImage && i < items.length &&
                 <ImageContainer
                   fluid={item.gallery_image.localFile.childImageSharp.fluid}
                   width="100%"
                 />
-              )}
+              }
             </div>
-          ))}
+          )}
         </SlideshowWrapper>
         <div className="counter">
-          {items.map((item, i) => (
+          {items.map((item, i) => item.gallery_image.localFile &&
             <button
               key={i}
               onClick={() => setVisibleImage(i)}
             >
               <div className={i === visibleImage ? "item selected" : "item"}></div>
             </button>
-          ))}
+          )}
         </div>
       </GalleryContainer>
     </ScrollWrapper>

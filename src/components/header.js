@@ -16,6 +16,7 @@ const Header = ({ setCursorElement }) => {
 
   return (
     <SiteHeader onMouseEnter={() => setCursorElement({ initial: "initial" })}>
+
       <Link to="/" className={`site-branding`}>
         <SiteBranding setNav={setNav} />
       </Link>
@@ -31,6 +32,7 @@ const Header = ({ setCursorElement }) => {
       >
         <h2>{isNavOpen ? "close" : "menu"}</h2>
       </ToggleBtn>
+
     </SiteHeader>
   )
 }
@@ -43,41 +45,13 @@ const SiteHeader = styled.header`
   left: 0;
   width: 100%;
   background: ${black};
+  padding: 0 20px;
   display: flex;
   align-items: center;
-  padding: 0 20px;
   justify-content: space-between;
 
   .site-branding {
-    height: 60%;
     width: fit-content;
-
-    &:hover {
-      #sdg-face {
-        animation: pulse 0.5s infinite;
-      }
-    }
-
-    svg {
-      height: 100%;
-      fill: ${pink};
-
-      &:hover {
-        fill: ${yellow};
-      }
-    }
-  }
-
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.04);
-    }
-    100% {
-      transform: scale(1);
-    }
   }
 `
 
@@ -89,6 +63,7 @@ const ToggleBtn = styled.div`
 
   h2 {
     font-size: 20px;
+    margin: 0;
   }
 
   @media (min-width: 768px) {

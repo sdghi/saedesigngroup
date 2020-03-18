@@ -194,6 +194,9 @@ const ProjectsContainer = styled(Container)`
   @media (min-width: ${breakpointSmall}) {
     display: ${({ display }) => display};
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    row-gap: 80px;
+    column-gap: 80px;
+    padding: 0 190px;
   }
 `
 

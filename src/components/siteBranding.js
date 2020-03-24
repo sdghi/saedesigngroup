@@ -70,7 +70,7 @@ const BrandingContainer = styled.div`
   align-items: center;
 
   svg{
-    width: 10%;
+    width: 12%;
     fill: ${pink};
   }
 

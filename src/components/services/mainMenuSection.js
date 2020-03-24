@@ -183,7 +183,7 @@ const MainMenu = styled.section`
       "sides sides sides";
 
       h2{
-      font-size: 36px;
+        font-size: 36px;
       }
 
     .service-item{

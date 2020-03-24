@@ -116,6 +116,7 @@ const MenuContainer = styled.div`
     }
 
     @media(min-width: ${breakpointSmall}){
+      margin: 15vh auto 0 auto;
       padding: 18.5px;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 0.5fr 0.5fr;
@@ -144,7 +145,6 @@ const MenuContainer = styled.div`
 
 
     @media(min-width: ${breakpointTablet}){
-      margin: 10vh auto 0 auto;
       grid-template-columns: 2fr 330px;
       grid-template-rows: 1fr 1fr 0.5fr;
       width: 100%;
@@ -157,7 +157,6 @@ const MenuContainer = styled.div`
     @media(min-width: ${breakpointLarge}){
       width: 90%;
       max-width: 1470px;
-      margin: 10vh auto 0 auto;
       grid-template-rows: 0.7fr 0.7fr 0.7fr 1fr;
       grid-template-areas: 
         "main audit"

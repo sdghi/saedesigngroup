@@ -46,7 +46,7 @@ const Project = ({ project, theme }) => {
       {/* This is the hero image  */}
       <Container padding="0">
         <ImageContainer
-          height="calc(100vh - 7vh)"
+          height="calc(50vh - 7vh)"
           width="100%"
           heightMd="calc(100vh - 7vh)"
           widthMd="100%"

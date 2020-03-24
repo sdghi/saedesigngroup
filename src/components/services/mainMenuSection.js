@@ -29,9 +29,12 @@ const MainMenuSection = ({ mainMenu, add_a_side_of }) => {
       ))}
       <div className="add-a-side-of">
         <h2>Add A Side Of</h2>
-        {add_a_side_of.map((side, index) => (
-          <p key={index}>{side.title.text}</p>
-        ))}
+        <ul>
+          {add_a_side_of.map((side, index) => (
+            <p key={index}>{side.title.text}</p>
+          ))}
+        </ul>
+
       </div>
     </MainMenu>
   )
@@ -171,8 +174,9 @@ const MainMenu = styled.section`
 
 
   @media(min-width: ${breakpoint4k}){
+    padding:80px 50px 50px 50px;
     grid-template-columns: repeat(3, 350px);
-    grid-template-rows: 0.75fr 0.75fr 0.5fr;
+    grid-template-rows: 0.75fr 500px 185px;
     grid-template-areas: 
       "branding packaging marketing"
       "branding print digital"
@@ -191,5 +195,28 @@ const MainMenu = styled.section`
         font-size: 17px;
       }
     }
+
+    .add-a-side-of{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px 0 60px 0;
+
+      h2{
+        text-align: center;
+        margin-bottom: 36px;  
+      }
+
+        ul{
+          display: flex;
+          justify-content: space-between;
+          width: 900px;
+
+          p{
+            font-size: 22px;
+          }
+        }
+      }
   }
 `;

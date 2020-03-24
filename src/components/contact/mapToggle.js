@@ -87,9 +87,9 @@ const MapToggleContainer = styled.div`
   margin: 10px;
   background: ${white};
   height: fit-content;
-  padding: 20px;
   width: fit-content;
   padding: 20px;
+  box-sizing: content-box;
   z-index: 100;
   position: absolute;
 

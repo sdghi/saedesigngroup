@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
+import { breakpointSmall, white } from '../variables'
 import Layout from "../components/layout"
 import styled from "styled-components"
 import SEO from "../components/seo"
@@ -23,6 +24,7 @@ const ContactPage = () => {
       <TransitionWrapper>
         <SEO title="Contact" />
         <MapContainer>
+          <button className="select-location-toggle" onClick={() => setShowMapToggle(true)}>Select Location</button>
           {showMapToggle &&
             <MapToggle
               setShowOahuMap={setShowOahuMap}
@@ -50,4 +52,19 @@ const MapContainer = styled.div`
   height: calc(100vh - 7vh);
   width: 100%;
   overflow: hidden;
+  position: relative;
+
+  .select-location-toggle{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 20;
+    padding: 20px 10px;
+    background: ${white};
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    outline: none;
+  }
+  
 `

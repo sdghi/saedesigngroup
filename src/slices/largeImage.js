@@ -23,7 +23,10 @@ const LargeImage = ({ slice }) => {
         {caption && (
           <Paragraph
             textAlign={caption_alignment ? caption_alignment : 'center'}
-            style={{ maxWidth: "1781.99px", margin: "20px auto 0 auto" }}
+            style={{
+              maxWidth: "1000px",
+              margin: caption_alignment === 'right' ? "20px 0 0 auto" : "20px auto 0 auto"
+            }}
             fontSize="14px"
             lineHeight="26px"
             color="#818386"

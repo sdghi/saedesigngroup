@@ -30,7 +30,7 @@ const TextSection = ({ slice, theme }) => {
           <Paragraph
             fontSize="14px"
             color={grey}
-            css="text-transform: uppercase; padding-top: 60px"
+            css="text-transform: uppercase; padding-top: 60px; letter-spacing: 0.1em;"
           >
             {bottom_sub_text.text}
           </Paragraph>

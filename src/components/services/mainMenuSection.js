@@ -57,9 +57,9 @@ const MainMenu = styled.section`
 
   .menu-of-services-header{
     position: absolute;
-    top: -100px;
+    top: -120px;
     width: 50%;
-    height: 200px;
+    height: 250px;
     left: 25%;
     z-index: 1;
   }
@@ -166,20 +166,21 @@ const MainMenu = styled.section`
       "branding print digital"
       "branding print digital"
       "branding print sides"
-      ". print sides "
+      ". print sides ";
   }
+
 
   @media(min-width: ${breakpoint4k}){
     grid-template-columns: repeat(3, 350px);
-    grid-template-rows: 150px 150px  1fr;
+    grid-template-rows: 0.75fr 0.75fr 0.5fr;
     grid-template-areas: 
       "branding packaging marketing"
       "branding print digital"
-      "sides sides sides"
+      "sides sides sides";
 
       h2{
       font-size: 36px;
-    }
+      }
 
     .service-item{
       .service-title{

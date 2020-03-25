@@ -12,8 +12,6 @@ const ImageGallery = ({ slice }) => {
   const slideshowRef = useRef(null)
   const { xValue, setCursorElement } = useContext(myContext)
 
-  console.log(items);
-
   // TODO Go to next image every 5 seconds - useEffect
 
   const toggleSlideshowCursors = () => {

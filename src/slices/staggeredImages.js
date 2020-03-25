@@ -31,9 +31,10 @@ const StaggeredImages = ({ slice }) => {
 
   return (
 
-    <StaggeredImageContainer ref={ref} reverseImages={reverse_images} margin="0" marginMd="0">
+    <StaggeredImageContainer ref={ref} reverseImages={reverse_images} margin="0 0 20vh 0" marginMd="0">
       <ScrollWrapper>
-        <motion.div >
+        {/* Desktop Images  */}
+        <motion.div className="desktop-image">
           <ImageContainer
             fluid={imageOneSrc}
             alt={image_1.alt}
@@ -47,7 +48,7 @@ const StaggeredImages = ({ slice }) => {
         </motion.div>
 
 
-        <motion.div style={{ y }} >
+        <motion.div style={{ y }} className="desktop-image">
           <ImageContainer
             fluid={imageTwoSrc}
             alt={image_2.alt}
@@ -59,6 +60,19 @@ const StaggeredImages = ({ slice }) => {
             marginMd={reverse_images ? "-5% auto 0 0" : "-5% 0 0 auto"}
           />
         </motion.div>
+
+        {/* Mobile Images  */}
+        <ImageContainer
+          fluid={imageOneSrc}
+          alt={image_1.alt}
+          width="100%"
+        />
+        <ImageContainer
+          fluid={imageTwoSrc}
+          alt={image_2.alt}
+          width="100%"
+          margin="20px 0 0 0"
+        />
 
         {caption &&
           <Paragraph>{caption.text}</Paragraph>
@@ -75,16 +89,23 @@ export default StaggeredImages
 const StaggeredImageContainer = styled(Container)`
 
   ${Paragraph} {
-    margin-top: 100px;
     font-size: 14px;
     line-height: 26px;
     color: ${grey};
+  }
+
+  .desktop-image{
+    display: none;
   }
 
   @media (min-width: ${breakpointSmall}) {
     display: flex;
     flex-direction: column;
     position: relative;
+
+    .desktop-image{
+    display: block;
+  }
 
     ${Paragraph} {
       position: absolute;

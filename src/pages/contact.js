@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
-import { breakpointSmall, white } from '../variables'
+import { white, black } from '../variables'
 import Layout from "../components/layout"
 import styled from "styled-components"
 import SEO from "../components/seo"
@@ -8,7 +8,7 @@ import OahuMap from "../components/contact/oahuMap"
 import MapToggle from "../components/contact/mapToggle"
 import { myContext } from "../provider"
 import TransitionWrapper from '../components/wrappers/transitionWrapper'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const ContactPage = () => {
   const [showOahuMap, setShowOahuMap] = useState(true)
@@ -45,6 +45,14 @@ const ContactPage = () => {
                 <MauiMap showOahuMap={showOahuMap} />
               )}
           </div>
+
+
+          <motion.a
+            href="mailto: info@saedesign.com"
+            className="contact-us-at"
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
+          >info@saedesign.com</motion.a>
         </MapContainer>
       </TransitionWrapper>
     </Layout >
@@ -72,4 +80,15 @@ const MapContainer = styled.div`
     outline: none;
   }
   
+
+  .contact-us-at{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 20px;
+    background: ${white};
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: ${black};
+  }
 `

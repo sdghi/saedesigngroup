@@ -66,12 +66,14 @@ const StaggeredImages = ({ slice }) => {
           fluid={imageOneSrc}
           alt={image_1.alt}
           width="100%"
+          className="mobile-image"
         />
         <ImageContainer
           fluid={imageTwoSrc}
           alt={image_2.alt}
           width="100%"
           margin="20px 0 0 0"
+          className="mobile-image"
         />
 
         {caption &&
@@ -104,8 +106,12 @@ const StaggeredImageContainer = styled(Container)`
     position: relative;
 
     .desktop-image{
-    display: block;
-  }
+      display: block;
+    }
+
+    .mobile-image{
+      display: none;
+    }
 
     ${Paragraph} {
       position: absolute;

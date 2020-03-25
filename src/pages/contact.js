@@ -8,6 +8,7 @@ import OahuMap from "../components/contact/oahuMap"
 import MapToggle from "../components/contact/mapToggle"
 import { myContext } from "../provider"
 import TransitionWrapper from '../components/wrappers/transitionWrapper'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const ContactPage = () => {
   const [showOahuMap, setShowOahuMap] = useState(true)
@@ -25,14 +26,18 @@ const ContactPage = () => {
         <SEO title="Contact" />
         <MapContainer>
           <button className="select-location-toggle" onClick={() => setShowMapToggle(true)}>Select Location</button>
-          {showMapToggle &&
-            <MapToggle
-              setShowOahuMap={setShowOahuMap}
-              showOahuMap={showOahuMap}
-              showMapToggle={showMapToggle}
-              setShowMapToggle={setShowMapToggle}
-            />
-          }
+          <AnimatePresence>
+            {showMapToggle &&
+              <MapToggle
+                setShowOahuMap={setShowOahuMap}
+                showOahuMap={showOahuMap}
+                showMapToggle={showMapToggle}
+                setShowMapToggle={setShowMapToggle}
+              />
+            }
+
+          </AnimatePresence>
+
           <div>
             {showOahuMap ? (
               <OahuMap showOahuMap={showOahuMap} />

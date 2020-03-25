@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import { white, black, pink } from "../../variables"
 import { myContext } from '../../provider';
+import { motion } from 'framer-motion'
 
 const MapToggle = ({
   setShowOahuMap,
@@ -11,14 +12,73 @@ const MapToggle = ({
 
   const { setCursorElement } = useContext(myContext);
 
-  return (
-    <MapToggleContainer className="select_container" >
-      <button onClick={() => setShowMapToggle(false)}>
-        <span className="x-icon"></span>
-      </button>
+  const containerVariants = {
+    initial: {
+      scale: 0,
+      transformOrigin: "top left",
+    },
+    open: {
+      scale: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+        staggerDirection: 1, // 1 is forwards and -1 is backwards this is optional 
+      }
+    },
+    exit: {
+      scale: 0,
+      transition: {
+        delay: 0.5,
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+        staggerDirection: -1, // 1 is forwards and -1 is backwards this is optional 
+      }
+    }
+  }
 
-      <h5>Choose Location</h5>
-      <div id="map_select">
+  const fadeVariants = {
+    open: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring"
+      }
+    },
+    closed: {
+      x: -10,
+      opacity: 0
+    }
+  }
+
+  return (
+    <MapToggleContainer
+      variants={containerVariants}
+      className="select_container"
+      initial="initial"
+      animate="open"
+      exit="exit"
+    >
+      <motion.button
+        variants={fadeVariants}
+        initial="closed"
+        open="open"
+        exit="closed"
+        onClick={() => setShowMapToggle(false)}>
+        <span className="x-icon"></span>
+      </motion.button>
+
+      <motion.h5
+        variants={fadeVariants}
+        initial="closed"
+        open="open"
+        exit="closed"
+      >Choose Location</motion.h5>
+      <motion.div
+        variants={fadeVariants}
+        initial="closed"
+        open="open"
+        exit="closed"
+        id="map_select">
         <div
           className="map_btns"
           onClick={() => {
@@ -56,26 +116,39 @@ const MapToggle = ({
             oahu
           </h1>
         </div>
-      </div>
+      </motion.div>
 
       {showOahuMap ? (
-        <div className="info" id="oahu_info" >
+        <motion.div
+          className="info"
+          id="oahu_info"
+          variants={fadeVariants}
+          initial="closed"
+          open="open"
+          exit="closed"
+        >
           <a href="tel:808-544-0002">(808) 544-0002</a>
           <br />
           <a href="https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513">
             555 South St Suite #108
             <br /> Honolulu, HI 96813
           </a>
-        </div>
+        </motion.div>
       ) : (
-          <div className="info" >
+          <motion.div
+            className="info"
+            variants={fadeVariants}
+            initial="closed"
+            open="open"
+            exit="closed"
+          >
             <a href="tel:808-249-2200">(808) 249-2200</a>
             <br />
             <a href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225">
               2261 Aupuni St # 101
             <br /> Wailuku, HI 96793
           </a>
-          </div>
+          </motion.div>
         )}
     </MapToggleContainer>
   )
@@ -83,7 +156,7 @@ const MapToggle = ({
 
 export default MapToggle
 
-const MapToggleContainer = styled.div`
+const MapToggleContainer = styled(motion.div)`
   margin: 10px;
   background: ${white};
   height: fit-content;
@@ -99,7 +172,7 @@ const MapToggleContainer = styled.div`
 
   button {
     position: absolute;
-    right: 20px;
+    left: 20px;
     top: 20px;
     background: none;
     border: none;

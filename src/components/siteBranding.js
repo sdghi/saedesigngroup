@@ -84,7 +84,8 @@ const BrandingContainer = styled.div`
   }
 
   &:hover{
-    svg{
+    svg,
+    #sdg-heading path{
       fill: ${yellow};
     }
 

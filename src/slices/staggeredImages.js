@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react"
+import React, { useState, useRef, useLayoutEffect } from "react"
 import styled from "styled-components"
 import { Paragraph, Container, ImageContainer } from "../elements"
 import { breakpointSmall, breakpointMedium, grey } from "../variables"
@@ -19,18 +19,19 @@ const StaggeredImages = ({ slice }) => {
   // Destructure the scroll Y value from useViewportScroll
   const { scrollY } = useViewportScroll()
 
-  const y = useTransform(scrollY, [elTop, elTop + 4], [0, -1], {
+  const ref = useRef();
+
+  useLayoutEffect(() => {
+    const element = ref.current;
+    setElTop(element.offsetHeight);
+  }, [ref, elTop]);
+
+  const y = useTransform(scrollY, [elTop, elTop + 11], [0, -1], {
     clamp: false
   });
 
-  const ref = useCallback(node => {
-    if (node !== null) {
-      setElTop(node.offsetTop)
-    }
-  }, []);
 
   return (
-
     <StaggeredImageContainer ref={ref} reverseImages={reverse_images} margin="0 0 20vh 0" marginMd="0">
       <ScrollWrapper>
         {/* Desktop Images  */}
@@ -40,7 +41,7 @@ const StaggeredImages = ({ slice }) => {
             alt={image_1.alt}
             widthMd="60%"
             margin={reverse_images ? "0 0 20px auto" : "0 0 20px 0"}
-            marginMd={reverse_images ? "0 0 0 auto" : "0"}
+            marginMd={reverse_images ? "5% 0 0 auto" : "5% 0 0 0"}
             width="80%"
             height="auto"
             heightMd="auto"
@@ -48,7 +49,7 @@ const StaggeredImages = ({ slice }) => {
         </motion.div>
 
 
-        <motion.div style={{ y }} className="desktop-image">
+        <motion.div style={ref && { y }} className="desktop-image">
           <ImageContainer
             fluid={imageTwoSrc}
             alt={image_2.alt}
@@ -56,7 +57,6 @@ const StaggeredImages = ({ slice }) => {
             widthMd="60%"
             height="auto"
             heightMd="auto"
-            margin={reverse_images ? "-5% auto 0 0" : "-5% 0 0 auto"}
             marginMd={reverse_images ? "-5% auto 0 0" : "-5% 0 0 auto"}
           />
         </motion.div>
@@ -80,7 +80,7 @@ const StaggeredImages = ({ slice }) => {
           <Paragraph>{caption.text}</Paragraph>
         }
       </ScrollWrapper>
-    </StaggeredImageContainer>
+    </StaggeredImageContainer >
 
 
   )
@@ -107,6 +107,10 @@ const StaggeredImageContainer = styled(Container)`
 
     .desktop-image{
       display: block;
+
+      ${ImageContainer}{
+        max-height: 100vh;
+      }
     }
 
     .mobile-image{

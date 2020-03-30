@@ -63,6 +63,8 @@ export default props => {
   const doc = props.data.allPrismicProjectTemplate.edges.slice(0, 1).pop()
   const title = doc.node.data.project_name.text
 
+
+
   const { next, previous, doubleNext } = props.pageContext
 
   if (!doc) return null
@@ -71,7 +73,7 @@ export default props => {
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
-  }, [setCursorElement])
+  }, [props.location.pathname])
 
   return (
     <>

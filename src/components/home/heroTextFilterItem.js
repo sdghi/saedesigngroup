@@ -47,6 +47,7 @@ const HeroTextFilterItem = ({
       }
       onMouseMove={() => handleMouseMove()}
       onMouseLeave={() => setCursorElement({ initial: "initial" })}
+      onMouseOut={() => setCursorElement({ initial: "initial" })}
       onClick={() => handleProjectFilter(filterValue)}
       onKeyDown={() => handleProjectFilter(filterValue)}
     >

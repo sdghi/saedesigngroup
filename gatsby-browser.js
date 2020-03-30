@@ -7,6 +7,7 @@ export const wrapRootElement = Provider
 const transitionDelay = 500;
 
 export const wrapPageElement = ({ element, props }) => {
+
     return <Layout {...props}>{element}</Layout>;
 };
 

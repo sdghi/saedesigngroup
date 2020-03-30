@@ -60,7 +60,8 @@ const Layout = ({ children, location }) => {
   // Disable the cursor until the user moves their mouse
   useEffect(() => {
     setShowCursor(false)
-  }, [setShowCursor])
+    setCursorElement({ initial: "initial" })
+  }, [setShowCursor, location.pathname,])
 
   const handleTrackCursor = e => {
     setShowCursor(true)

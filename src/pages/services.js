@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { myContext } from "../provider"
 import styled from 'styled-components'
@@ -9,7 +8,6 @@ import MainMenuSection from '../components/services/mainMenuSection'
 import DesignAuditSection from '../components/services/designAuditSection'
 import WeDoItAllSection from '../components/services/weDoItAllSection'
 import MenuFooterSection from '../components/services/menuFooterSection'
-import TransitionWrapper from '../components/wrappers/transitionWrapper'
 
 export const query = graphql`
 {
@@ -70,17 +68,15 @@ const ServicesPage = ({ data }) => {
   }, [setCursorElement])
 
   return (
-    <Layout>
-      <TransitionWrapper>
-        <SEO title="Services" />
-        <MenuContainer>
-          <MainMenuSection mainMenu={mainMenu} add_a_side_of={add_a_side_of} />
-          <DesignAuditSection design_audit={design_audit} />
-          <WeDoItAllSection we_do_it_all={we_do_it_all} />
-          <MenuFooterSection />
-        </MenuContainer>
-      </TransitionWrapper>
-    </Layout>
+    <>
+      <SEO title="Services" />
+      <MenuContainer>
+        <MainMenuSection mainMenu={mainMenu} add_a_side_of={add_a_side_of} />
+        <DesignAuditSection design_audit={design_audit} />
+        <WeDoItAllSection we_do_it_all={we_do_it_all} />
+        <MenuFooterSection />
+      </MenuContainer>
+    </>
   )
 }
 

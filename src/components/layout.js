@@ -6,9 +6,30 @@ import Header from "./header"
 import CustomCursor from "./customCursor"
 import { myContext } from "../provider"
 import Footer from "./footer"
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
-const Layout = ({ children }) => {
+const duration = 0.5
+
+const variants = {
+  initial: {
+    opacity: 0,
+  },
+  enter: {
+    opacity: 1,
+    transition: {
+      duration: duration,
+      delay: duration,
+      when: 'beforeChildren',
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: duration },
+  },
+}
+
+const Layout = ({ children, location }) => {
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -28,7 +49,7 @@ const Layout = ({ children }) => {
     setCursorElement,
   } = useContext(myContext)
 
-  const [showCursor, setShowCursor] = useState(false)
+  const [showCursor, setShowCursor] = useState(false);
 
   const trackMouse = e => {
     const { clientX, clientY } = e
@@ -39,7 +60,7 @@ const Layout = ({ children }) => {
   // Disable the cursor until the user moves their mouse
   useEffect(() => {
     setShowCursor(false)
-  }, [])
+  }, [setShowCursor])
 
   const handleTrackCursor = e => {
     setShowCursor(true)
@@ -65,11 +86,17 @@ const Layout = ({ children }) => {
         />
       )}
 
-      <main>
-        <AnimatePresence exitBeforeEnter >
+      <AnimatePresence>
+        <motion.main
+          key={location && location.pathname}
+          variants={variants}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+        >
           {children}
-        </AnimatePresence>
-      </main>
+        </motion.main>
+      </AnimatePresence>
       <Footer />
     </div>
   )

@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext, useCallback } from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import { breakpointSmall } from "../variables"
@@ -13,7 +12,6 @@ import MobileProjectsFilter from "../components/home/mobileProjectsFilter"
 import HomeHeroSection from '../components/home/homeHeroSection'
 import ProjectImageWithTitle from "../components/home/projectImageWithTitle"
 import ProjectImageWithTitleMobile from '../components/home/projectImageWithTitleMobile'
-import TransitionWrapper from '../components/wrappers/transitionWrapper'
 
 export const query = graphql`
   {
@@ -107,81 +105,79 @@ const IndexPage = ({ data }) => {
   }, []);
 
   return (
-    <Layout>
-      <TransitionWrapper>
-        <SEO title="Home" />
-        <HomeHeroSection
-          setCursorElement={setCursorElement}
-          setStartScroll={setStartScroll}
+    <>
+      <SEO title="Home" />
+      <HomeHeroSection
+        setCursorElement={setCursorElement}
+        setStartScroll={setStartScroll}
+        setProjectCategoryFilter={setProjectCategoryFilter}
+        setShowLogos={setShowLogos}
+        setScrollWindowHeight={setScrollWindowHeight}
+      />
+
+      <ProjectsSection>
+        {/* Desktop project filter  */}
+        <ProjectsFilter
+          projectCategoryFilter={projectCategoryFilter}
           setProjectCategoryFilter={setProjectCategoryFilter}
+          setDisplayProjectsGrid={setDisplayProjectsGrid}
+          displayProjectsGrid={displayProjectsGrid}
           setShowLogos={setShowLogos}
-          setScrollWindowHeight={setScrollWindowHeight}
+          showLogos={showLogos}
+          showMobile={false}
         />
+        {/* Mobile project filter  */}
+        <MobileProjectsFilter
+          projectCategoryFilter={projectCategoryFilter}
+          setProjectCategoryFilter={setProjectCategoryFilter}
+          setDisplayProjectsGrid={setDisplayProjectsGrid}
+          displayProjectsGrid={displayProjectsGrid}
+          setShowLogos={setShowLogos}
+          showLogos={showLogos}
+          showMobile={true}
+        />
+        {showLogos && <Logos setCursorElement={setCursorElement} />}
 
-        <ProjectsSection>
-          {/* Desktop project filter  */}
-          <ProjectsFilter
-            projectCategoryFilter={projectCategoryFilter}
-            setProjectCategoryFilter={setProjectCategoryFilter}
-            setDisplayProjectsGrid={setDisplayProjectsGrid}
-            displayProjectsGrid={displayProjectsGrid}
-            setShowLogos={setShowLogos}
-            showLogos={showLogos}
-            showMobile={false}
-          />
-          {/* Mobile project filter  */}
-          <MobileProjectsFilter
-            projectCategoryFilter={projectCategoryFilter}
-            setProjectCategoryFilter={setProjectCategoryFilter}
-            setDisplayProjectsGrid={setDisplayProjectsGrid}
-            displayProjectsGrid={displayProjectsGrid}
-            setShowLogos={setShowLogos}
-            showLogos={showLogos}
-            showMobile={true}
-          />
-          {showLogos && <Logos setCursorElement={setCursorElement} />}
+        {/* Show the project category info it isn't all  and logos aren't active */}
+        {projectCategoryFilter !== "all" && !showLogos && (
+          <ProjectCategoryInfo projectCategoryFilter={projectCategoryFilter} />
+        )}
 
-          {/* Show the project category info it isn't all  and logos aren't active */}
-          {projectCategoryFilter !== "all" && !showLogos && (
-            <ProjectCategoryInfo projectCategoryFilter={projectCategoryFilter} />
-          )}
+        {!showLogos && (
+          <ProjectsContainer
+            display={displayProjectsGrid ? "grid" : "block"}
+            padding="0 5%"
+            margin="0"
+            marginMd="0"
+            paddingMd="0 15%"
+            ref={measuredRef}
+          >
+            {/* Desktop Tiles */}
+            {projects.map(project => (
+              <ProjectImageWithTitle
+                displayProjectsGrid={displayProjectsGrid}
+                key={project.node.uid}
+                project={project}
+                projectCategoryFilter={projectCategoryFilter}
+                setCursorElement={setCursorElement}
+                totalProjects={projects.length}
+                elTop={elTop}
+              />
 
-          {!showLogos && (
-            <ProjectsContainer
-              display={displayProjectsGrid ? "grid" : "block"}
-              padding="0 5%"
-              margin="0"
-              marginMd="0"
-              paddingMd="0 15%"
-              ref={measuredRef}
-            >
-              {/* Desktop Tiles */}
-              {projects.map(project => (
-                <ProjectImageWithTitle
-                  displayProjectsGrid={displayProjectsGrid}
-                  key={project.node.uid}
-                  project={project}
-                  projectCategoryFilter={projectCategoryFilter}
-                  setCursorElement={setCursorElement}
-                  totalProjects={projects.length}
-                  elTop={elTop}
-                />
-
-              ))}
-              {/* Mobile Tiles */}
-              {projects.map(project => (
-                <ProjectImageWithTitleMobile
-                  key={`${project.node.uid}-mobile`}
-                  project={project}
-                  projectCategoryFilter={projectCategoryFilter}
-                  totalProjects={projects.length}
-                />
-              ))}
-            </ProjectsContainer>
-          )}
-        </ProjectsSection>
-      </TransitionWrapper>
-    </Layout>
+            ))}
+            {/* Mobile Tiles */}
+            {projects.map(project => (
+              <ProjectImageWithTitleMobile
+                key={`${project.node.uid}-mobile`}
+                project={project}
+                projectCategoryFilter={projectCategoryFilter}
+                totalProjects={projects.length}
+              />
+            ))}
+          </ProjectsContainer>
+        )}
+      </ProjectsSection>
+    </>
   )
 }
 

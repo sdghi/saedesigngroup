@@ -20,6 +20,8 @@ const MapToggle = ({
     open: {
       scale: 1,
       transition: {
+        delay: 0.5,
+        when: 'beforeChildren',
         staggerChildren: 0.1,
         delayChildren: 0.2,
         staggerDirection: 1, // 1 is forwards and -1 is backwards this is optional 

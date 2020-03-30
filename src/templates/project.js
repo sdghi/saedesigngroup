@@ -1,11 +1,9 @@
 import React, { useEffect, useContext } from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import RelatedProjects from "../components/projects/relatedProjects"
 import { myContext } from "../provider"
 import { ImageContainer, Container } from '../elements'
-import TransitionWrapper from '../components/wrappers/transitionWrapper'
 // SLICES
 import TextSection from "../slices/textSection"
 import Testimonial from "../slices/testimonial"
@@ -65,6 +63,8 @@ export default props => {
   const doc = props.data.allPrismicProjectTemplate.edges.slice(0, 1).pop()
   const title = doc.node.data.project_name.text
 
+
+
   const { next, previous, doubleNext } = props.pageContext
 
   if (!doc) return null
@@ -73,20 +73,18 @@ export default props => {
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
-  }, [setCursorElement])
+  }, [props.location.pathname])
 
   return (
-    <Layout>
-      <TransitionWrapper>
-        <SEO title={title} />
-        <Project project={doc.node} theme={doc.node.data.theme} />
-        <RelatedProjects
-          next={next}
-          previous={previous}
-          doubleNext={doubleNext}
-        />
-      </TransitionWrapper>
-    </Layout>
+    <>
+      <SEO title={title} />
+      <Project project={doc.node} theme={doc.node.data.theme} />
+      <RelatedProjects
+        next={next}
+        previous={previous}
+        doubleNext={doubleNext}
+      />
+    </>
   )
 }
 

@@ -20,7 +20,7 @@ const RelatedProjectCursor = ({ xValue, yValue, cursorContent }) => {
 export default RelatedProjectCursor
 
 const RelatedProjects = styled(Cursor)`
-  font-size: 51px;
+  font-size: 36px;
   font-weight: 700;
   color: ${white};
   text-align: center;

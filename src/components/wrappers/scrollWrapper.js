@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const variants = {
     initial: {
         opacity: 0,
-        y: 30
+        y: '5vh'
     },
     visible: {
         opacity: 1,

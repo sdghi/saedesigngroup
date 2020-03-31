@@ -12,7 +12,7 @@ const Header = ({ setCursorElement }) => {
 
   useEffect(() => {
     document.body.style.overflow = isNavOpen ? "hidden" : "visible"
-  })
+  }, [isNavOpen])
 
   return (
     <SiteHeader onMouseEnter={() => setCursorElement({ initial: "initial" })}>

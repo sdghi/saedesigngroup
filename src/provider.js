@@ -14,6 +14,7 @@ const Provider = props => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [totalFilterImages, setTotalFilterImages] = useState(0)
 
+
   return (
     <myContext.Provider
       value={{

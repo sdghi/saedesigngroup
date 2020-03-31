@@ -81,16 +81,6 @@ const RelatedWrapper = styled.div`
   overflow-x: auto;
   margin-bottom: 50px;
 
-  ::-webkit-scrollbar{
-    background: ${black};
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: ${pink};
-    border-radius: 15px;
-    width: 50px;
-  }
-
   a {
     margin-right: 30px;
   }

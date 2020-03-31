@@ -8,7 +8,10 @@ const variants = {
         opacity: 0
     },
     visible: {
-        opacity: 1
+        opacity: 1,
+        transition: {
+            duration: 0.8
+        }
     }
 }
 

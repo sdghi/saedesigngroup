@@ -63,7 +63,7 @@ export default props => {
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
-  }, [props.location.pathname])
+  }, [props.location.pathname, setCursorElement])
 
   return (
     <>

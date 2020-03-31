@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import RelatedProjects from "../components/projects/relatedProjects"
 import { myContext } from "../provider"
-import { ImageContainer, Container } from '../elements'
+import ProjectHero from '../components/projects/projectHero'
 // SLICES
 import TextSection from "../slices/textSection"
 import Testimonial from "../slices/testimonial"
@@ -42,18 +42,7 @@ const Project = ({ project, theme }) => {
   return (
     <div>
       {/* This is the hero image  */}
-      <Container padding="0">
-        <ImageContainer
-          height="calc(50vh - 7vh)"
-          width="100%"
-          heightMd="calc(100vh - 7vh)"
-          widthMd="100%"
-          maxWidth="100%"
-          fluid={hero_image.localFile.childImageSharp.fluid}
-          alt={hero_image.alt}
-          loading="eager"
-        />
-      </Container>
+      <ProjectHero heroImage={hero_image} />
       {/* This is the slices  */}
       <ProjectSlices slices={project.data.body} theme={theme} />
     </div>

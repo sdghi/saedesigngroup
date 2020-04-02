@@ -7,10 +7,12 @@ export const Container = styled.section`
   max-width: ${({ maxWidth }) => maxWidth};
   width: ${ ({ width }) => width};
   margin: ${ ({ margin }) => margin ? margin : "0 auto 20vh auto"};
+  height: ${({ height }) => height};
 
 @media(min-width: ${ breakpointSmall}) {
   padding: ${ ({ paddingMd, padding }) => paddingMd ? paddingMd : padding};
   margin: ${ ({ marginMd, margin }) => marginMd ? marginMd : margin};
+  height: ${({ heightMd, height }) => heightMd ? heightMd : height};
 }
 `
 

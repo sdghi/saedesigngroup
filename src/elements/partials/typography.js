@@ -26,6 +26,7 @@ export const HeadingTwo = styled.h2`
   margin-top: ${props => props.top};
   margin-bottom: ${props => props.bottom};
   color: ${props => props.color};
+  font-weight: ${props => props.fontWeight};
 
   @media (min-width: ${breakpointSmall}) {
     font-size: ${props => props.fontSizeMd};

@@ -3,27 +3,40 @@ import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import { myContext } from "../provider"
 import styled from 'styled-components'
-import { yellow } from "../variables"
+import { dark_blue } from "../variables"
 import { motion } from 'framer-motion'
+import AboutHero from '../components/about/aboutHero'
+import WeAreSection from '../components/about/weAreSection'
 import AboutCard from '../components/about/aboutCard'
 
 export const query = graphql`
   {
-    allPrismicAbout {
-      edges {
-        node {
-          data {
-            title {
+  allPrismicAbout{
+    edges{
+      node{
+        data{
+          title{
+            text
+          }
+          description{
+            html
+          }
+          we_are{
+            content{
               text
             }
-            page_description {
-              text
-            }
+          }
+          quote{
+            text
+          }
+          quote_author{
+            text
           }
         }
       }
     }
   }
+}
 `
 // Comment me out once about content is populated
 const people = ['sae', 'arlyn', 'ian', 'sophie', 'louis', 'steve', 'leeann', 'david', 'judith', 'rachelle', 'marissa', 'kitty', 'patrick', 'leeann']
@@ -31,6 +44,8 @@ const people = ['sae', 'arlyn', 'ian', 'sophie', 'louis', 'steve', 'leeann', 'da
 const AboutPage = ({ data }) => {
   const { setCursorElement } = useContext(myContext)
   const [isSelected, setIsSelected] = useState(null);
+
+  const { title, description, we_are } = data.allPrismicAbout.edges[0].node.data
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
@@ -40,7 +55,9 @@ const AboutPage = ({ data }) => {
   return (
     <>
       <SEO title="About" />
-      <AboutHero>
+      <AboutHero title={title} description={description} />
+      <WeAreSection weAre={we_are} />
+      <TeamContainer>
         <motion.div
           drag={isSelected ? false : true}
           dragConstraints={{ top: -100, left: -150, right: 150, bottom: 100 }}
@@ -59,21 +76,21 @@ const AboutPage = ({ data }) => {
               person={person} />
           ))}
         </motion.div>
-      </AboutHero>
+      </TeamContainer>
     </>
   )
 }
 
 export default AboutPage
 
-const AboutHero = styled.section`
-  height: calc(100vh - 7vh);
+const TeamContainer = styled.section`
+  height: calc(100vh);
   width: 100%;
-  background: ${yellow};
+  background: ${dark_blue};
   overflow: hidden;
   display: grid;
   place-content: center;
-  position: static;
+  position: relative;
 
   .grid-container{
     padding: 50px;

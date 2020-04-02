@@ -3,8 +3,6 @@ import { Container, Paragraph } from '../../elements'
 import styled from 'styled-components'
 
 const WeAreSection = ({ weAre }) => {
-    console.log('we are', weAre)
-
     return (
         <Container padding="60px 0" margin="0">
             <ContentContainer>

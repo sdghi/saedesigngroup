@@ -4,8 +4,6 @@ import { pink } from '../../variables'
 import styled from 'styled-components'
 
 const AboutQuote = ({ quote, quoteAuthor }) => {
-    console.log(quote)
-
     return (
         <Container padding="130px 0" margin="0">
             <QuoteContainer>

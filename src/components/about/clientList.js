@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Container, HeadingTwo } from '../../elements'
-import { grey, breakpointMedium } from '../../variables'
+import { grey } from '../../variables'
 import styled from 'styled-components'
+import { Waypoint } from 'react-waypoint'
 
 const ClientList = () => {
     const data = useStaticQuery(graphql`
@@ -29,19 +30,22 @@ const ClientList = () => {
     const [startMarquee, setStartMarquee] = useState(false)
 
     return (
-        <Container margin="0" padding="80px 0"
-            onMouseLeave={() => setStartMarquee(false)}
-            onMouseEnter={() => setStartMarquee(true)}>
-            <HeadingTwo fontSize="48px" textAlign="center">CLIENTS</HeadingTwo>
-            <MarqueeContainer startMarquee={startMarquee}>
-                <MarqueeContent>
-                    {clients.map(({ client }, i) => <span key={i}>{client.text}<span className="dot">&#183;</span></span>)}
-                </MarqueeContent>
-                <MarqueeContent className="second">
-                    {clients.map(({ client }, i) => <span key={i}>{client.text}<span className="dot">&#183;</span></span>)}
-                </MarqueeContent>
-            </MarqueeContainer>
-        </Container>
+        <Waypoint
+            onEnter={() => setStartMarquee(true)}
+            onLeave={() => setStartMarquee(false)}
+        >
+            <Container margin="0" padding="80px 0" css={{ overflow: 'hidden' }}>
+                <HeadingTwo fontSize="48px" textAlign="center">CLIENTS</HeadingTwo>
+                <MarqueeContainer startMarquee={startMarquee}>
+                    <MarqueeContent>
+                        {clients.map(({ client }, i) => <span key={i}>{client.text}<span className="dot">&#183;</span></span>)}
+                    </MarqueeContent>
+                    <MarqueeContent className="second">
+                        {clients.map(({ client }, i) => <span key={i}>{client.text}<span className="dot">&#183;</span></span>)}
+                    </MarqueeContent>
+                </MarqueeContainer>
+            </Container>
+        </Waypoint>
     )
 }
 
@@ -54,21 +58,17 @@ const MarqueeContainer = styled.div`
     width: fit-content;
     transform:  translate3d(calc(-25% + 10vw), 0, 0);
     animation: marquee 45s linear infinite;
+    animation-play-state: ${({ startMarquee }) => startMarquee ? 'play' : 'paused'};
 
-    @media(min-width: ${breakpointMedium}){
-        /* Uncomment if you want to have mouse enable the play state  */
-        animation-play-state: ${({ startMarquee }) => startMarquee ? 'play' : 'paused'};
-    }
+    @keyframes marquee {
+        0% {
+            transform:  translate3d(calc(-25% + 10vw), 0, 0);
+        }
 
-@keyframes marquee {
-    0% {
-        transform:  translate3d(calc(-25% + 10vw), 0, 0);
+        100% {
+            transform:  translate3d(calc(-50% + 10vw), 0, 0);
+        }
     }
-
-    100% {
-        transform:  translate3d(calc(-50% + 10vw), 0, 0);
-    }
-}
 `;
 
 const MarqueeContent = styled.div`

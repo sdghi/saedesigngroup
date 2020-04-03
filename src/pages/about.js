@@ -8,6 +8,7 @@ import WeAreSection from '../components/about/weAreSection'
 
 import AboutQuote from '../components/about/aboutQuote'
 import AboutTeam from '../components/about/aboutTeam'
+import ClientList from '../components/about/clientList'
 
 export const query = graphql`
   {
@@ -58,6 +59,7 @@ const AboutPage = ({ data }) => {
       <WeAreSection weAre={we_are} />
       <AboutTeam people={people} />
       <AboutQuote quote={quote} quoteAuthor={quote_author} />
+      <ClientList />
     </>
   )
 }

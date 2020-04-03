@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Container, HeadingTwo } from '../../elements'
-import { grey } from '../../variables'
+import { grey, breakpointMedium } from '../../variables'
 import styled from 'styled-components'
 
 const ClientList = () => {
@@ -54,7 +54,11 @@ const MarqueeContainer = styled.div`
     width: fit-content;
     transform:  translate3d(calc(-25% + 10vw), 0, 0);
     animation: marquee 45s linear infinite;
-    animation-play-state: ${({ startMarquee }) => startMarquee ? 'play' : 'paused'};
+
+    @media(min-width: ${breakpointMedium}){
+        /* Uncomment if you want to have mouse enable the play state  */
+        animation-play-state: ${({ startMarquee }) => startMarquee ? 'play' : 'paused'};
+    }
 
 @keyframes marquee {
     0% {

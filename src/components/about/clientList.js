@@ -34,7 +34,7 @@ const ClientList = () => {
             onEnter={() => setStartMarquee(true)}
             onLeave={() => setStartMarquee(false)}
         >
-            <Container margin="0" padding="80px 0" css={{ overflow: 'hidden' }}>
+            <Container margin="0" padding="0 0 80px 0" css={{ overflow: 'hidden' }}>
                 <HeadingTwo fontSize="48px" textAlign="center">CLIENTS</HeadingTwo>
                 <MarqueeContainer startMarquee={startMarquee}>
                     <MarqueeContent>

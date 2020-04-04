@@ -1,19 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white } from '../../variables'
-import Tilt from "react-tilt"
+import { white, pink } from '../../variables'
+import { HeadingTwo, Paragraph, ImageContainer } from '../../elements'
 import { motion } from 'framer-motion'
 
 
 const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
 
-    // Handle click
-    const handleClick = () => {
+    const selectPerson = () => {
         if (isSelected !== index) {
-            setIsSelected(index)  // If it isn't selected make it selected
+            setIsSelected(index)
         }
         else {
-            setIsSelected(null) // If it is selected close it by setting it to null
+            setIsSelected(null)
         }
     }
 
@@ -37,28 +36,38 @@ const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
     }
 
 
+    const { name, role, fun_fact, profile_picture } = person
+
+    const imageUrl = profile_picture.localFile.childImageSharp.fluid
+
+
     return (
-        // <Tilt
-        //     style={isSelected === index ? { position: 'absolute', zIndex: 200 } : { width: '100%', height: '400px' }}
-        // >
         <Card
             variants={cardVariants}
             animate={isSelected === index ? 'selected' : 'unselected'}
-            onClick={() => handleClick()}
+            onClick={() => selectPerson()}
             positionTransition
             key={index}
             isSelected={isSelected}
             index={index}
-            whileHover={{ scale: 1.1, rotate: '10deg' }}
+            whileHover={{ scale: 1.1 }}
         >
-            {person}
+            <div className="card-container">
+                <div className="profile-image-container">
+                    <ImageContainer fluid={imageUrl} objectFit="cover" height="100%" heightMd="100%" widthMd="100%" />
+                </div>
 
-            {
-                isSelected === index &&
-                <p>you can put a custom bio here or something</p>
-            }
+                <div className="bottom-container">
+                    <div className="info">
+                        <HeadingTwo fontSize="37px" textAlign="center" bottom="0">{name.text}</HeadingTwo>
+                        <Paragraph fontSize="18px" textAlign="center" fontWeight="300" margin="0" top="0">{role.text}</Paragraph>
+                    </div>
+                    <div className="fun-fact">
+                        <Paragraph top="0" bottom="0" textAlign="center" fontSize="12px" fontWeight="700"><strong>Fun Fact:</strong> {fun_fact.text}</Paragraph>
+                    </div>
+                </div>
+            </div>
         </Card>
-        // </Tilt >
     )
 }
 
@@ -66,14 +75,55 @@ export default AboutCard;
 
 const Card = styled(motion.div)`
     background: ${white};
-    border-radius: 10px;
-    display: grid;
-    place-items: center;
-    height: ${({ isSelected, index }) => isSelected === index ? '600px' : '400px'};
-    width: ${({ isSelected, index }) => isSelected === index ? '400px' : '100%'};
+    height: ${({ isSelected, index }) => isSelected === index ? '600px' : '484px'};
+    width: ${({ isSelected, index }) => isSelected === index ? '400px' : '347px'};
     position: ${({ isSelected, index }) => isSelected === index ? 'absolute' : 'relative'};
     z-index: ${({ index, isSelected }) => isSelected === index ? '200' : '0'};
     top: ${({ index, isSelected }) => isSelected === index && 0};
     left: ${({ index, isSelected }) => isSelected === index && 0};
     user-select: none;
+
+    .card-container{
+        padding: 22px 15px 18px 15px;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .profile-image-container{
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        padding: 22px 15px 18px 15px;
+        z-index: -1;
+        position: absolute;
+    }
+
+    .bottom-container{
+        position: absolute;
+        left: 15px;
+        bottom: 18px;
+        width: calc(100% - 30px);
+
+        ${HeadingTwo},
+        ${Paragraph}{
+            color: ${white};
+        }
+    }
+
+
+    .fun-fact{
+        padding: 14px 14px 11px 14px;
+        background: ${pink};
+
+        ${Paragraph}{
+            strong{
+                font-size: 18px;
+                text-transform: uppercase;
+                margin-right: 9px;
+            }
+        }
+    }
 `;

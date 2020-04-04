@@ -1,11 +1,47 @@
 import React, { useState } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { dark_blue } from "../../variables"
 import { motion } from 'framer-motion'
 import AboutCard from './aboutCard'
 
-const AboutTeam = ({ people }) => {
+const AboutTeam = () => {
     const [isSelected, setIsSelected] = useState(null);
+
+    const data = useStaticQuery(graphql`
+    {
+  allPrismicTeam{
+    edges{
+      node{
+        data{
+          member{
+            name{
+              text
+            }
+            role{
+              text
+            }
+            fun_fact{
+              text
+            }
+            profile_picture{
+              localFile{
+                childImageSharp{
+                  fluid(quality: 90){
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `)
+
+    const { member } = data.allPrismicTeam.edges[0].node.data
 
     return (
         <TeamContainer>
@@ -18,13 +54,14 @@ const AboutTeam = ({ people }) => {
                 }}
                 dragElastic={0.3}
                 className="grid-container">
-                {people.map((person, i) => (
+                {member.map((person, i) => (
                     <AboutCard
                         key={i}
                         index={i + 1}
                         isSelected={isSelected}
                         setIsSelected={setIsSelected}
-                        person={person} />
+                        person={person}
+                    />
                 ))}
             </motion.div>
         </TeamContainer>

@@ -39,8 +39,6 @@ export const query = graphql`
   }
 }
 `
-// Comment me out once about content is populated
-const people = ['sae', 'arlyn', 'ian', 'sophie', 'louis', 'steve', 'leeann', 'david', 'judith', 'rachelle', 'marissa', 'kitty', 'patrick', 'leeann']
 
 const AboutPage = ({ data }) => {
   const { setCursorElement } = useContext(myContext)
@@ -57,7 +55,7 @@ const AboutPage = ({ data }) => {
       <SEO title="About" />
       <AboutHero title={title} description={description} />
       <WeAreSection weAre={we_are} />
-      <AboutTeam people={people} />
+      <AboutTeam />
       <AboutQuote quote={quote} quoteAuthor={quote_author} />
       <ClientList />
     </>

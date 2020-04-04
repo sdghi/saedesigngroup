@@ -7,7 +7,7 @@ const WeAreSection = ({ weAre }) => {
         <Container padding="60px 0" margin="0">
             <ContentContainer>
                 {weAre.map((item, index) =>
-                    <Paragraph key={index} fontSize="36px" fontWeight="600">{item.content.text}</Paragraph>
+                    <Paragraph key={index} fontSize="36px" fontWeight="500">{item.content.text}</Paragraph>
                 )}
             </ContentContainer>
         </Container>

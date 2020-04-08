@@ -99,6 +99,9 @@ const Card = styled(motion.div)`
 
     .back{
         transform: rotateY(180deg);
+        background: red;
+        height: 100%;
+        width: 100%;
     }
 
     .card-container{

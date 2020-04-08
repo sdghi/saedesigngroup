@@ -89,8 +89,8 @@ export default AboutCard;
 
 const Card = styled(motion.div)`
     background: ${white};
-    height: ${({ isSelected, index }) => isSelected === index ? '600px' : '484px'};
-    width: ${({ isSelected, index }) => isSelected === index ? '400px' : '347px'};
+    height: ${({ isSelected, index }) => isSelected === index ? '544.5px' : '363px'};
+    width: ${({ isSelected, index }) => isSelected === index ? '390.4px' : '260.25px'};
     position: ${({ isSelected, index }) => isSelected === index ? 'absolute' : 'relative'};
     z-index: ${({ index, isSelected }) => isSelected === index ? '200' : '0'};
     top: ${({ index, isSelected }) => isSelected === index && 0};

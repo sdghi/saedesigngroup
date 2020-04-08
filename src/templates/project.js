@@ -146,10 +146,6 @@ export const query = graphql`
                       }
                     }
                   }
-                  caption {
-                    text
-                  }
-                  caption_alignment
                 }
               }
               ... on PrismicProjectTemplateBodyStaggeredImages {

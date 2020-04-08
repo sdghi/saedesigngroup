@@ -61,7 +61,7 @@ const Layout = ({ children, location }) => {
   useEffect(() => {
     setShowCursor(false)
     setCursorElement({ initial: "initial" })
-  }, [setShowCursor, location.pathname,])
+  }, [location.pathname])
 
   const handleTrackCursor = e => {
     setShowCursor(true)

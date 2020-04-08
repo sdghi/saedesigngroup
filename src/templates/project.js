@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useContext } from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import RelatedProjects from "../components/projects/relatedProjects"
@@ -36,13 +36,15 @@ const ProjectSlices = ({ slices, theme }) => {
   })
 }
 
-const Project = ({ project, theme }) => {
+const Project = ({ project, theme, location }) => {
   const { hero_image } = project.data;
+
+  const { setCursorElement } = useContext(myContext)
 
   return (
     <div>
       {/* This is the hero image  */}
-      <ProjectHero heroImage={hero_image} />
+      <ProjectHero heroImage={hero_image} setCursorElement={setCursorElement} />
       {/* This is the slices  */}
       <ProjectSlices slices={project.data.body} theme={theme} />
     </div>
@@ -58,12 +60,6 @@ export default props => {
   const { next, previous, doubleNext } = props.pageContext
 
   if (!doc) return null
-
-  const { setCursorElement } = useContext(myContext)
-
-  useEffect(() => {
-    setCursorElement({ initial: "initial" })
-  }, [props.location.pathname, setCursorElement])
 
   return (
     <>

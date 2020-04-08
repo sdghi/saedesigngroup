@@ -3,12 +3,12 @@ import { Container, ImageContainer } from '../../elements'
 import LoadingScreen from './loadingScreen'
 import styled from 'styled-components'
 
-const ProjectHero = ({ heroImage }) => {
+const ProjectHero = ({ heroImage, setCursorElement }) => {
 
     const [loadingScreen, showLoadingScreen] = useState(true)
 
     return (
-        <HeroContainer padding="0">
+        <HeroContainer padding="0" onMouseOver={() => setCursorElement({ initial: "initial" })}>
             <LoadingScreen loadingScreen={loadingScreen} />
             <ImageContainer
                 height="calc(50vh - 7vh)"

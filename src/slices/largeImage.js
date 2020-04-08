@@ -1,9 +1,9 @@
 import React from "react"
-import { Container, Paragraph, ImageContainer } from "../elements"
+import { Container, ImageContainer } from "../elements"
 import ScrollWrapper from '../components/wrappers/scrollWrapper'
 
 const LargeImage = ({ slice }) => {
-  const { image, caption, full_width, caption_alignment } = slice.primary
+  const { image, full_width } = slice.primary
 
   return (
     <ScrollWrapper>
@@ -20,20 +20,6 @@ const LargeImage = ({ slice }) => {
 
         />
 
-        {caption && (
-          <Paragraph
-            textAlign={caption_alignment ? caption_alignment : 'center'}
-            style={{
-              maxWidth: "1000px",
-              margin: caption_alignment === 'right' ? "20px 0 0 auto" : "20px auto 0 auto"
-            }}
-            fontSize="14px"
-            lineHeight="26px"
-            color="#818386"
-          >
-            {caption.text}
-          </Paragraph>
-        )}
       </Container>
     </ScrollWrapper>
   )

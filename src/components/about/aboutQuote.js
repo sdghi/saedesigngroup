@@ -20,6 +20,10 @@ const QuoteContainer = styled.div`
     max-width: 951px;
     margin: 0 auto;
 
+    p{
+        text-indent: -.4125em
+    }
+
     ${HeadingTwo}{
         color: ${pink};
     }

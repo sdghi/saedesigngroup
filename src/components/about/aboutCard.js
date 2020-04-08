@@ -20,14 +20,16 @@ const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
         selected: {
             x: 'calc(50vw - 200px)',
             y: 'calc(50vh - 300px)',
+            rotateY: '180deg',
             transition: {
                 type: 'spring',
-                duration: 0.1
+                duration: 0.1,
             }
         },
         unselected: {
             x: 0,
             y: 0,
+            rotateY: '0deg',
             transition: {
                 type: "tween",
                 duration: 0.4
@@ -53,19 +55,31 @@ const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
             whileHover={{ scale: 1.1 }}
         >
             <div className="card-container">
-                <div className="profile-image-container">
-                    <ImageContainer fluid={imageUrl} objectFit="cover" height="100%" heightMd="100%" widthMd="100%" />
-                </div>
+                {isSelected !== index &&
+                    <div className="front">
+                        <div className="profile-image-container">
+                            <ImageContainer fluid={imageUrl} objectFit="cover" height="100%" heightMd="100%" widthMd="100%" />
+                        </div>
 
-                <div className="bottom-container">
-                    <div className="info">
-                        <HeadingTwo fontSize="37px" textAlign="center" bottom="0">{name.text}</HeadingTwo>
-                        <Paragraph fontSize="18px" textAlign="center" fontWeight="300" margin="0" top="0">{role.text}</Paragraph>
+                        <div className="bottom-container">
+                            <div className="info">
+                                <HeadingTwo fontSize="37px" textAlign="center" bottom="0">{name.text}</HeadingTwo>
+                                <Paragraph fontSize="18px" textAlign="center" fontWeight="300" margin="0" top="0">{role.text}</Paragraph>
+                            </div>
+                            <div className="fun-fact">
+                                <Paragraph top="0" bottom="0" textAlign="center" fontSize="12px" fontWeight="700"><strong>Fun Fact:</strong> {fun_fact.text}</Paragraph>
+                            </div>
+                        </div>
                     </div>
-                    <div className="fun-fact">
-                        <Paragraph top="0" bottom="0" textAlign="center" fontSize="12px" fontWeight="700"><strong>Fun Fact:</strong> {fun_fact.text}</Paragraph>
-                    </div>
-                </div>
+                }
+
+                {isSelected === index &&
+                    <div className="back">back</div>
+                }
+
+
+
+
             </div>
         </Card>
     )
@@ -82,6 +96,10 @@ const Card = styled(motion.div)`
     top: ${({ index, isSelected }) => isSelected === index && 0};
     left: ${({ index, isSelected }) => isSelected === index && 0};
     user-select: none;
+
+    .back{
+        transform: rotateY(180deg);
+    }
 
     .card-container{
         padding: 22px 15px 18px 15px;

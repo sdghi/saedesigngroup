@@ -14,34 +14,42 @@ const WeAreSection = ({ weAre }) => {
                 setCount(count + 1)
             }
 
-        }, [1000])
+        }, [2000])
 
         return () => { clearInterval(countChange) }
     }, [count])
 
     const variants = {
-        hidden: {
-            // y: 50,
+        enter: {
+            y: -40,
             opacity: 0
         },
         visible: {
-            // y: 0,
-            opacity: 1
+            y: 0,
+            opacity: 1,
+            transition: {
+                delay: 0.8
+            }
+        },
+        exit: {
+            opacity: 0,
+            y: 20
         }
     }
 
     return (
         <Container padding="60px 0" margin="0">
             <ContentContainer>
-                <Paragraph fontSize="36px" fontWeight="500" >We are
+                <Paragraph fontSize="36px" fontWeight="700">We are &nbsp;
                 <AnimatePresence>
                         <motion.span
+                            className="we-are-text"
                             variants={variants}
-                            initial="hidden"
+                            initial="enter"
                             animate="visible"
-                            exit="hidden"
-                        // key={count}
-                        > {weAre[count].content.text}</motion.span>
+                            exit="exit"
+                            key={count}
+                        >{weAre[count].content.text}</motion.span>
                     </AnimatePresence>
                 </Paragraph>
             </ContentContainer>
@@ -55,6 +63,13 @@ const ContentContainer = styled.div`
     display: flex;
     align-items: center;
     max-width: 959px;
+    padding: 0 5%;
     min-height: 300px;
     margin: 0 auto;
+    position: relative;
+
+    .we-are-text{
+        position: absolute;
+        font-weight: 500;
+    }
 `;

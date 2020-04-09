@@ -6,9 +6,9 @@ import { motion } from 'framer-motion'
 import AboutCard from './aboutCard'
 
 const AboutTeam = () => {
-    const [isSelected, setIsSelected] = useState(null);
+  const [isSelected, setIsSelected] = useState(null);
 
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     {
   allPrismicTeam{
     edges{
@@ -41,31 +41,31 @@ const AboutTeam = () => {
 }
     `)
 
-    const { member } = data.allPrismicTeam.edges[0].node.data
+  const { member } = data.allPrismicTeam.edges[0].node.data
 
-    return (
-        <TeamContainer>
-            <motion.div
-                drag={isSelected ? false : true}
-                dragConstraints={{ top: -100, left: -150, right: 150, bottom: 100 }}
-                animate={{
-                    x: isSelected && 0,
-                    y: isSelected && 0
-                }}
-                dragElastic={0.3}
-                className="grid-container">
-                {member.map((person, i) => (
-                    <AboutCard
-                        key={i}
-                        index={i + 1}
-                        isSelected={isSelected}
-                        setIsSelected={setIsSelected}
-                        person={person}
-                    />
-                ))}
-            </motion.div>
-        </TeamContainer>
-    )
+  return (
+    <TeamContainer>
+      <motion.div
+        drag={isSelected ? false : true}
+        dragConstraints={{ top: -100, left: -150, right: 150, bottom: 100 }}
+        animate={{
+          x: isSelected && 0,
+          y: isSelected && 0
+        }}
+        dragElastic={0.3}
+        className="grid-container">
+        {member.map((person, i) => (
+          <AboutCard
+            key={i}
+            index={i + 1}
+            isSelected={isSelected}
+            setIsSelected={setIsSelected}
+            person={person}
+          />
+        ))}
+      </motion.div>
+    </TeamContainer>
+  )
 }
 
 export default AboutTeam
@@ -80,12 +80,13 @@ const TeamContainer = styled.section`
   position: relative;
 
   .grid-container{
-    padding: 50px;
+    padding: 5vh;
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-gap: 100px;
+    grid-template-columns: repeat(auto-fit, minmax(260.25px, 1fr));
+    grid-auto-rows: 363px;
+    grid-gap: 50px;
     place-items: center;
     position: static;
   }

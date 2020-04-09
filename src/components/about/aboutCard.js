@@ -76,10 +76,6 @@ const AboutCard = ({ index, isSelected, setIsSelected, person }) => {
                 {isSelected === index &&
                     <div className="back">back</div>
                 }
-
-
-
-
             </div>
         </Card>
     )

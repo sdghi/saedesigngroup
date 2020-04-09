@@ -21,7 +21,7 @@ const WeAreSection = ({ weAre }) => {
 
     const variants = {
         enter: {
-            y: -20,
+            y: -40,
             opacity: 0
         },
         visible: {
@@ -67,8 +67,6 @@ const ContentContainer = styled.div`
     min-height: 300px;
     margin: 0 auto;
     position: relative;
-
-
 
     .we-are-text{
         position: absolute;

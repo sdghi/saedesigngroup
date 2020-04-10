@@ -68,6 +68,7 @@ export default SiteBranding
 const BrandingContainer = styled.div`
   display: flex;
   align-items: center;
+  max-width: 500px;
 
   svg{
     width: 12%;

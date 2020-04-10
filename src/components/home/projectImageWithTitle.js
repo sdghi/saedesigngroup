@@ -18,7 +18,6 @@ const ProjectImageWithTitle = ({
   const [placementValue, setPlacementValue] = useState(0)
 
   const slug = project.node.uid
-  const categories = project.node.data.categories
   const projectName = project.node.data.project_name.text
   const imageSrc =
     project.node.data.featured_image.localFile.childImageSharp.fluid
@@ -55,19 +54,14 @@ const ProjectImageWithTitle = ({
     // handle the placement value if there is no placement it will go on the top
     placement ? setPlacementValue(parseInt(placement)) : setPlacementValue(1)
 
-    // Add Categories for filter
-    categories.map(category => {
-      // Show project if the category matches the project filter
-      // If it's all show all the projects
-      if (projectCategoryFilter.toLowerCase() === category.category.slug) {
-        setShowProject(true)
-      } else if (projectCategoryFilter === "all") {
-        setShowProject(true)
-      }
+    // If it's all show all the projects
+    if (projectCategoryFilter.toLowerCase() === slug) {
+      setShowProject(true)
+    } else if (projectCategoryFilter === "all") {
+      setShowProject(true)
+    }
 
-      return null
-    })
-  }, [projectCategoryFilter, categories, placement])
+  }, [projectCategoryFilter, placement, slug])
 
 
   // Handle Parallax
@@ -141,7 +135,6 @@ const TileWrapper = styled.div`
 `
 
 const ProjetContainer = styled(motion.div)`
-
   @media (min-width: ${breakpointSmall}) {
     margin: 0 auto;
     z-index: ${({ placement }) => placement};

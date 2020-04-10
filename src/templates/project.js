@@ -43,10 +43,9 @@ const Project = ({ project, theme, location }) => {
 
   return (
     <div>
-      {/* This is the hero image  */}
       <ProjectHero heroImage={hero_image} setCursorElement={setCursorElement} />
-      {/* This is the slices  */}
-      <ProjectSlices slices={project.data.body} theme={theme} />
+
+      {project.data.body && <ProjectSlices slices={project.data.body} theme={theme} />}
     </div>
   )
 }

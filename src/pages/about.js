@@ -7,7 +7,8 @@ import AboutHero from '../components/about/aboutHero'
 import WeAreSection from '../components/about/weAreSection'
 
 import AboutQuote from '../components/about/aboutQuote'
-import AboutTeam from '../components/about/aboutTeam'
+import Team from '../components/team/team'
+import TeamMobile from '../components/team/teamMobile'
 import ClientList from '../components/about/clientList'
 
 export const query = graphql`
@@ -55,7 +56,8 @@ const AboutPage = ({ data }) => {
       <SEO title="About" />
       <AboutHero title={title} description={description} />
       <WeAreSection weAre={we_are} />
-      <AboutTeam />
+      <Team />
+      <TeamMobile />
       <AboutQuote quote={quote} quoteAuthor={quote_author} />
       <ClientList />
     </>

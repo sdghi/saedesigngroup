@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import { dark_blue } from "../../variables"
+import { dark_blue, breakpointMedium } from "../../variables"
 import { motion } from 'framer-motion'
-import AboutCard from './aboutCard'
+import MemberCard from './memberCard'
 
-const AboutTeam = () => {
+const Team = () => {
   const [isSelected, setIsSelected] = useState(null);
 
   const data = useStaticQuery(graphql`
@@ -43,11 +43,13 @@ const AboutTeam = () => {
 
   const { member } = data.allPrismicTeam.edges[0].node.data
 
+  // TODO : Make drag onContraints the size of the team container
+
   return (
     <TeamContainer>
       <motion.div
         drag={isSelected ? false : true}
-        dragConstraints={{ top: -100, left: -150, right: 150, bottom: 100 }}
+        dragConstraints={{ top: -200, left: -200, right: 200, bottom: 200 }}
         animate={{
           x: isSelected && 0,
           y: isSelected && 0
@@ -55,7 +57,7 @@ const AboutTeam = () => {
         dragElastic={0.3}
         className="grid-container">
         {member.map((person, i) => (
-          <AboutCard
+          <MemberCard
             key={i}
             index={i + 1}
             isSelected={isSelected}
@@ -68,19 +70,19 @@ const AboutTeam = () => {
   )
 }
 
-export default AboutTeam
+export default Team
 
 const TeamContainer = styled.section`
   height: calc(100vh);
-  width: 100%;
+  width: 100vw;
   background: ${dark_blue};
   overflow: hidden;
-  display: grid;
+  display: none;
   place-content: center;
   position: relative;
 
   .grid-container{
-    padding: 5vh;
+    padding: 10vh;
     height: 100vh;
     width: 100vw;
     display: grid;
@@ -89,6 +91,10 @@ const TeamContainer = styled.section`
     grid-gap: 50px;
     place-items: center;
     position: static;
+  }
+
+  @media(min-width: ${breakpointMedium}){
+    display: grid;
   }
 `;
 

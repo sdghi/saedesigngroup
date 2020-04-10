@@ -63,7 +63,7 @@ export default TeamMobile;
 
 const TeamMobileContainer = styled.section`
     background: ${ dark_blue};
-    height: 100vh; 
+    height: 80vh; 
     width: 100%;
     position: relative;
 

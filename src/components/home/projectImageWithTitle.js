@@ -55,7 +55,6 @@ const ProjectImageWithTitle = ({
     // handle the placement value if there is no placement it will go on the top
     placement ? setPlacementValue(parseInt(placement)) : setPlacementValue(1)
 
-
     // Add Categories for filter
     categories.map(category => {
       // Show project if the category matches the project filter

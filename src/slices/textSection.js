@@ -1,12 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 import { Container, HeadingTwo, Paragraph } from "../elements"
-import { grey } from "../variables"
+import { grey, breakpointSmall } from "../variables"
 import ScrollWrapper from '../components/wrappers/scrollWrapper'
 
 const TextSection = ({ slice, theme }) => {
   const { heading, text, bottom_sub_text } = slice.primary
-
   return (
     <ScrollWrapper>
       <ContainerSection maxWidth="850px" paddingMd="0">
@@ -18,14 +17,9 @@ const TextSection = ({ slice, theme }) => {
         >
           {heading.text}
         </HeadingTwo>
-        <Paragraph
-          fontSize="15px"
-          lineHeight="30px"
-          fontSizeLg="18px"
-          lineHeightMd="32px"
-        >
-          {text.text}
-        </Paragraph>
+
+        <div className="content-container" dangerouslySetInnerHTML={{ __html: text.html }} />
+
         {bottom_sub_text && (
           <Paragraph
             fontSize="14px"
@@ -49,6 +43,13 @@ const ContainerSection = styled(Container)`
 
   p {
     margin: auto;
+    font-size: 15px;
+    line-height: 2;
+  }
+
+  @media(min-width: ${breakpointSmall}){
+    font-size: 18px;
+    line-height: 32px;
   }
 `
 

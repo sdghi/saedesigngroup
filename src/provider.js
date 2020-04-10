@@ -14,6 +14,8 @@ const Provider = props => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [totalFilterImages, setTotalFilterImages] = useState(0)
 
+  const [pageTheme, setPageTheme] = useState("Light");
+
 
   return (
     <myContext.Provider
@@ -30,6 +32,8 @@ const Provider = props => {
         setCurrentImageIndex,
         totalFilterImages,
         setTotalFilterImages,
+        pageTheme,
+        setPageTheme
       }}
     >
       {props.children}

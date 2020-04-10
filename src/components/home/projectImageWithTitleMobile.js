@@ -22,12 +22,18 @@ const ProjectImageWithTitleMobile = ({
         // Reset to false in case it changes
         setShowProject(false)
 
-        // If it's all show all the projects
-        if (projectCategoryFilter.toLowerCase() === slug) {
-            setShowProject(true)
-        } else if (projectCategoryFilter === "all") {
-            setShowProject(true)
-        }
+        // Add Categories for filter
+        categories.map(category => {
+            // Show project if the category matches the project filter
+            // If it's all show all the projects
+            if (category.category) {
+                if (projectCategoryFilter.toLowerCase() === category.category.slug) {
+                    setShowProject(true)
+                } else if (projectCategoryFilter === "all") {
+                    setShowProject(true)
+                }
+            }
+        })
     }, [projectCategoryFilter, categories])
 
     return (

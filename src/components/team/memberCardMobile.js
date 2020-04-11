@@ -46,7 +46,7 @@ const MemberCardMobile = ({ index, isSelected, setIsSelected, person }) => {
             isSelected={isSelected}
             index={index}
             drag="x"
-            onDragEnd={() => selectPerson()}
+            onDragEnd={selectPerson}
             dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
             dragElastic={0.2}
         >

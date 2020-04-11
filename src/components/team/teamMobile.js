@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { dark_blue, breakpointMedium } from "../../variables"
-import { motion } from 'framer-motion'
 import MemberCardMobile from './memberCardMobile'
 
 

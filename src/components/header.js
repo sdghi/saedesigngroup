@@ -3,12 +3,15 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { black, pink, yellow } from "../variables"
+import { useToggle } from '../hooks'
 // Components
 import SiteBranding from "./siteBranding"
 import Navigation from "./navigation"
 
 const Header = ({ setCursorElement }) => {
-  const [isNavOpen, setNav] = useState(false)
+  // const [isNavOpen, setNav] = useState(false)
+
+  const [isNavOpen, toggleNav] = useToggle();
 
   useEffect(() => {
     document.body.style.overflow = isNavOpen ? "hidden" : "visible"
@@ -18,17 +21,15 @@ const Header = ({ setCursorElement }) => {
     <SiteHeader onMouseEnter={() => setCursorElement({ initial: "initial" })}>
 
       <Link to="/" className={`site-branding`}>
-        <SiteBranding setNav={setNav} />
+        <SiteBranding toggleNav={toggleNav} isNavOpen={isNavOpen} />
       </Link>
       <Navigation
         isNavOpen={isNavOpen}
-        setNav={setNav}
+        toggleNav={toggleNav}
         setCursorElement={setCursorElement}
       />
       <ToggleBtn
-        onClick={() => {
-          setNav(!isNavOpen)
-        }}
+        onClick={toggleNav}
       >
         <h2>{isNavOpen ? "close" : "menu"}</h2>
       </ToggleBtn>

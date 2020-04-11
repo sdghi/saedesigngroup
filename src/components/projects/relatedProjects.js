@@ -1,16 +1,19 @@
-import React, { useContext } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { HeadingTwo } from "../../elements"
-import { breakpointSmall, black, pink } from "../../variables"
-import { useAppContext } from "../../provider"
+import { breakpointSmall, black } from "../../variables"
+import { useCursorChange } from '../../hooks'
 
 const RelatedProjects = ({ next, previous, doubleNext }) => {
   const { project_name: nextName } = next.data
   const { project_name: prevName } = previous.data
   const { project_name: doubleNextName } = doubleNext.data
 
-  const { setCursorElement } = useAppContext()
+  // const { setCursorElement } = useAppContext()
+  const [bindPrev] = useCursorChange({ related: prevName.text })
+  const [bindNext] = useCursorChange({ related: nextName.text })
+  const [bindDoubleNext] = useCursorChange({ related: doubleNextName.text })
 
   const {
     src: prevImage,
@@ -37,32 +40,21 @@ const RelatedProjects = ({ next, previous, doubleNext }) => {
       <RelatedWrapper>
         <Link
           to={`/${previous.uid}`}
-          onMouseEnter={() => setCursorElement({ related: prevName.text })}
-          onMouseLeave={() => {
-            setCursorElement({ initial: "initial" })
-          }}
+          {...bindPrev}
         >
           <img src={prevImage} alt={prevName.text} />
           <p>{prevName.text}</p>
         </Link>
         <Link
           to={`/${next.uid}`}
-          onMouseEnter={() => setCursorElement({ related: nextName.text })}
-          onMouseLeave={() => {
-            setCursorElement({ initial: "initial" })
-          }}
+          {...bindNext}
         >
           <img src={nextImage} alt={nextName.text} />
           <p>{nextName.text}</p>
         </Link>
         <Link
           to={`/${doubleNext.uid}`}
-          onMouseEnter={() =>
-            setCursorElement({ related: doubleNextName.text })
-          }
-          onMouseLeave={() => {
-            setCursorElement({ initial: "initial" })
-          }}
+          {...bindDoubleNext}
         >
           <img src={doubleNextImage} alt={doubleNextName.text} />
           <p>{doubleNextName.text}</p>

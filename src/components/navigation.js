@@ -55,11 +55,11 @@ const linkVariants = {
   }
 }
 
-const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
+const Navigation = ({ isNavOpen, setCursorElement, toggleNav }) => {
   const { scrollWindowHeight } = useAppContext()
 
   const handleNavClick = value => {
-    setNav(false)
+    toggleNav()
 
     // If the value is work since the initial value is ""
     if (value === "") {

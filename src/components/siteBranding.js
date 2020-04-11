@@ -2,7 +2,7 @@ import React from "react"
 import styled from 'styled-components'
 import { pink, yellow } from '../variables'
 
-const SiteBranding = ({ setNav }) => {
+const SiteBranding = ({ toggleNav, isNavOpen }) => {
   return (
     <BrandingContainer>
       <svg
@@ -12,7 +12,7 @@ const SiteBranding = ({ setNav }) => {
         x="0px"
         y="0px"
         viewBox="0 0 80 80"
-        onClick={() => setNav(false)}
+        onClick={isNavOpen ? toggleNav : undefined}
       >
         <g>
           <g>

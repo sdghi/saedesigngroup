@@ -1,16 +1,15 @@
 import React from "react"
 import styled from "styled-components"
 import { white, black, pink } from "../../variables"
-import { useAppContext } from '../../provider';
 import { motion } from 'framer-motion'
+import { useCursorChange } from '../../hooks'
 
 const MapToggle = ({
-  setShowOahuMap,
+  toggleOahuMap,
   showOahuMap,
-  setShowMapToggle,
+  toggleMap,
 }) => {
-
-  const { setCursorElement } = useAppContext();
+  const [bind] = useCursorChange({ selected: 'selected' })
 
   const containerVariants = {
     initial: {
@@ -24,7 +23,7 @@ const MapToggle = ({
         when: 'beforeChildren',
         staggerChildren: 0.1,
         delayChildren: 0.2,
-        staggerDirection: 1, // 1 is forwards and -1 is backwards this is optional 
+        staggerDirection: 1,
       }
     },
     exit: {
@@ -32,7 +31,7 @@ const MapToggle = ({
       transition: {
         staggerChildren: 0.1,
         delayChildren: 0.1,
-        staggerDirection: -1, // 1 is forwards and -1 is backwards this is optional 
+        staggerDirection: -1,
       }
     }
   }
@@ -51,6 +50,10 @@ const MapToggle = ({
     }
   }
 
+  const oahuGoogleMap = "https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513";
+
+  const mauiGoogleMap = "https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225";
+
   return (
     <MapToggleContainer
       variants={containerVariants}
@@ -64,7 +67,7 @@ const MapToggle = ({
         initial="closed"
         open="open"
         exit="closed"
-        onClick={() => setShowMapToggle(false)}>
+        onClick={toggleMap}>
         <span className="x-icon"></span>
       </motion.button>
 
@@ -74,6 +77,7 @@ const MapToggle = ({
         open="open"
         exit="closed"
       >Choose Location</motion.h5>
+
       <motion.div
         variants={fadeVariants}
         initial="closed"
@@ -82,14 +86,11 @@ const MapToggle = ({
         id="map_select">
         <div
           className="map_btns"
-          onClick={() => {
-            setShowOahuMap(false)
-          }}
-          onKeyDown={() => setShowOahuMap(false)}
+          onClick={showOahuMap && toggleOahuMap}
+          onKeyDown={showOahuMap && toggleOahuMap}
           role="button"
           tabIndex={0}
-          onMouseEnter={() => setCursorElement({ selected: 'selected' })}
-          onMouseLeave={() => setCursorElement({ initial: 'initial' })}
+          {...bind}
         >
           <h1
             className="uppercase"
@@ -101,14 +102,11 @@ const MapToggle = ({
         <span className="or">or</span>
         <div
           className="map_btns"
-          onClick={() => {
-            setShowOahuMap(true)
-          }}
-          onKeyDown={() => setShowOahuMap(true)}
+          onClick={!showOahuMap && toggleOahuMap}
+          onKeyDown={!showOahuMap && toggleOahuMap}
           role="button"
           tabIndex={0}
-          onMouseEnter={() => setCursorElement({ selected: 'selected' })}
-          onMouseLeave={() => setCursorElement({ initial: 'initial' })}
+          {...bind}
         >
           <h1
             style={!showOahuMap ? { color: "grey" } : { color: "black" }}
@@ -130,9 +128,9 @@ const MapToggle = ({
         >
           <a href="tel:808-544-0002">(808) 544-0002</a>
           <br />
-          <a href="https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513">
+          <a href={oahuGoogleMap}>
             555 South St Suite #108
-            <br /> Honolulu, HI 96813
+          <br /> Honolulu, HI 96813
           </a>
         </motion.div>
       ) : (
@@ -145,13 +143,13 @@ const MapToggle = ({
           >
             <a href="tel:808-249-2200">(808) 249-2200</a>
             <br />
-            <a href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225">
+            <a href={mauiGoogleMap}>
               2261 Aupuni St # 101
-            <br /> Wailuku, HI 96793
+              <br /> Wailuku, HI 96793
           </a>
-          </motion.div>
+          </motion.div >
         )}
-    </MapToggleContainer>
+    </MapToggleContainer >
   )
 }
 

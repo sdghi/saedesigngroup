@@ -3,16 +3,14 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { HeadingTwo } from "../../elements"
 import { breakpointSmall, black, pink } from "../../variables"
-import { myContext } from "../../provider"
+import { useAppContext } from "../../provider"
 
 const RelatedProjects = ({ next, previous, doubleNext }) => {
   const { project_name: nextName } = next.data
   const { project_name: prevName } = previous.data
   const { project_name: doubleNextName } = doubleNext.data
 
-  const context = useContext(myContext)
-
-  const { setCursorElement } = context
+  const { setCursorElement } = useAppContext()
 
   const {
     src: prevImage,

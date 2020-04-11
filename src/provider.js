@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 
 export const myContext = React.createContext()
 
@@ -41,4 +41,7 @@ const Provider = props => {
   )
 }
 
+export const useAppContext = () => { return useContext(myContext); }
+
 export default ({ element }) => <Provider>{element}</Provider>
+

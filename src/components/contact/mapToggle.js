@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 import { white, black, pink } from "../../variables"
-import { myContext } from '../../provider';
+import { useAppContext } from '../../provider';
 import { motion } from 'framer-motion'
 
 const MapToggle = ({
@@ -10,7 +10,7 @@ const MapToggle = ({
   setShowMapToggle,
 }) => {
 
-  const { setCursorElement } = useContext(myContext);
+  const { setCursorElement } = useAppContext();
 
   const containerVariants = {
     initial: {

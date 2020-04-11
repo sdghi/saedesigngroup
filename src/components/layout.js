@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { GlobalStyle } from "../utils"
 import Header from "./header"
 import CustomCursor from "./customCursor"
-import { myContext } from "../provider"
+import { useAppContext } from "../provider"
 import Footer from "./footer"
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -47,7 +47,7 @@ const Layout = ({ children, location }) => {
     setYValue,
     cursorElement,
     setCursorElement,
-  } = useContext(myContext)
+  } = useAppContext()
 
   const [showCursor, setShowCursor] = useState(false);
 

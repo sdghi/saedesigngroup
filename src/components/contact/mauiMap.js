@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
+import React from "react"
 import { motion } from 'framer-motion'
 import styled from "styled-components"
-import { myContext } from '../../provider'
+import { useAppContext } from '../../provider'
 
 const MauiSVG = styled(motion.svg)`
   position: relative;
@@ -133,7 +133,7 @@ const MauiSVG = styled(motion.svg)`
 `
 
 const MauiMap = () => {
-  const { setCursorElement } = useContext(myContext);
+  const { setCursorElement } = useAppContext();
 
   return (
     <MauiSVG

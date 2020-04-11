@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react"
-import { myContext } from "../../provider"
+import React, { useState } from "react"
+import { useAppContext } from "../../provider"
 
 const HeroTextFilterItem = ({
   setCursorElement,
@@ -18,7 +18,7 @@ const HeroTextFilterItem = ({
     setCursorElement({ initial: "initial" })
   }
 
-  const { setCurrentImageIndex, totalFilterImages } = useContext(myContext)
+  const { setCurrentImageIndex, totalFilterImages } = useAppContext()
 
   // ImgStep control how much the mouse will move before going to the next picture
   const [imgStep, setImgStep] = useState(0)

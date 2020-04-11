@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 import { breakpointSmall, breakpointMedium, black, grey } from "../../variables"
 import { useStaticQuery, graphql } from "gatsby"
-import { myContext } from '../../provider'
+import { useAppContext } from '../../provider'
 
 const ProjectsFilter = ({
   projectCategoryFilter,
@@ -35,7 +35,7 @@ const ProjectsFilter = ({
     setShowLogos(showLogo)
   }
 
-  const { setCursorElement } = useContext(myContext)
+  const { setCursorElement } = useAppContext()
 
   return (
     <FilterContainer showMobile={showMobile}>

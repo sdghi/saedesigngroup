@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 import { motion } from 'framer-motion'
-import { myContext } from '../../provider'
+import { useAppContext } from '../../provider'
 
 const OahuSVG = styled(motion.svg)`
   position: relative;
@@ -97,7 +97,7 @@ const OahuSVG = styled(motion.svg)`
 `
 
 const OahuMap = () => {
-  const { setCursorElement } = useContext(myContext)
+  const { setCursorElement } = useAppContext()
   return (
     <OahuSVG
       xmlns="http://www.w3.org/2000/svg"

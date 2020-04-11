@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { pink, yellow, black } from "../variables"
-import { myContext } from "../provider"
+import { useAppContext } from "../provider"
 import { motion } from 'framer-motion'
 
 const items = ["", "services", "about", "contact"]
@@ -55,11 +55,11 @@ const linkVariants = {
   }
 }
 
-const Navigation = ({ isNavOpen, setCursorElement, setNav }) => {
-  const { scrollWindowHeight } = useContext(myContext)
+const Navigation = ({ isNavOpen, setCursorElement, toggleNav }) => {
+  const { scrollWindowHeight } = useAppContext()
 
   const handleNavClick = value => {
-    setNav(false)
+    toggleNav()
 
     // If the value is work since the initial value is ""
     if (value === "") {

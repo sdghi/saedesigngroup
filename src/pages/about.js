@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
-import { myContext } from "../provider"
+import { useAppContext } from "../provider"
 
 import AboutHero from '../components/about/aboutHero'
 import WeAreSection from '../components/about/weAreSection'
@@ -42,7 +42,7 @@ export const query = graphql`
 `
 
 const AboutPage = ({ data }) => {
-  const { setCursorElement } = useContext(myContext)
+  const { setCursorElement } = useAppContext()
 
   const { title, description, we_are, quote, quote_author } = data.allPrismicAbout.edges[0].node.data
 

@@ -1,7 +1,7 @@
-import React, { useState, useRef, useContext } from "react"
+import React, { useState, useRef } from "react"
 import { Container, ImageContainer } from "../elements"
 import styled from "styled-components"
-import { myContext } from "../provider"
+import { useAppContext } from "../provider"
 import { grey, lightGrey } from "../variables"
 import ScrollWrapper from '../components/wrappers/scrollWrapper'
 
@@ -10,7 +10,7 @@ const ImageGallery = ({ slice }) => {
   const [visibleImage, setVisibleImage] = useState(0)
   const [nextImage, setNextImage] = useState(null)
   const slideshowRef = useRef(null)
-  const { xValue, setCursorElement } = useContext(myContext)
+  const { xValue, setCursorElement } = useAppContext()
 
   // TODO Go to next image every 5 seconds - useEffect
 

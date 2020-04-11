@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import RelatedProjects from "../components/projects/relatedProjects"
-import { myContext } from "../provider"
+import { useAppContext } from "../provider"
 import ProjectHero from '../components/projects/projectHero'
 // SLICES
 import TextSection from "../slices/textSection"
@@ -39,7 +39,7 @@ const ProjectSlices = ({ slices, theme }) => {
 const Project = ({ project, theme, location }) => {
   const { hero_image } = project.data;
 
-  const { setCursorElement } = useContext(myContext)
+  const { setCursorElement } = useAppContext()
 
   return (
     <div>

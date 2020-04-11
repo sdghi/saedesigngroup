@@ -86,8 +86,8 @@ const MapToggle = ({
         id="map_select">
         <div
           className="map_btns"
-          onClick={showOahuMap && toggleOahuMap}
-          onKeyDown={showOahuMap && toggleOahuMap}
+          onClick={showOahuMap ? toggleOahuMap : undefined}
+          onKeyDown={showOahuMap ? toggleOahuMap : undefined}
           role="button"
           tabIndex={0}
           {...bind}
@@ -102,8 +102,8 @@ const MapToggle = ({
         <span className="or">or</span>
         <div
           className="map_btns"
-          onClick={!showOahuMap && toggleOahuMap}
-          onKeyDown={!showOahuMap && toggleOahuMap}
+          onClick={!showOahuMap ? toggleOahuMap : undefined}
+          onKeyDown={!showOahuMap ? toggleOahuMap : undefined}
           role="button"
           tabIndex={0}
           {...bind}

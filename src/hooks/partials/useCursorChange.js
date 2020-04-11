@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useAppContext } from '../../provider'
 
 export const useCursorChange = (cursorValue) => {
@@ -9,7 +9,7 @@ export const useCursorChange = (cursorValue) => {
             onMouseOver: () => setCursorElement(cursorValue),
             onMouseLeave: () => setCursorElement({ initial: 'initial' })
         }
-    }, []);
+    }, [cursorValue, setCursorElement]);
 
     return [bind]
 }

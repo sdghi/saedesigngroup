@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import ProjectsFilter from "./projectsFilter"
 import styled from "styled-components"
 import { breakpointSmall } from "../../variables"
+import { useToggle } from '../../hooks'
 
 const MobileProjectFilter = ({
   projectCategoryFilter,
@@ -12,13 +13,13 @@ const MobileProjectFilter = ({
   showLogos,
   showMobile,
 }) => {
-  const [showFilters, setShowFilters] = useState(false)
+  const [showFilters, toggleFilters] = useToggle()
 
   return (
     <MobileContainer>
       <button
         className="show-filters-btn"
-        onClick={() => setShowFilters(!showFilters)}
+        onClick={toggleFilters}
       >
         {showFilters ? "close filters" : "view filters"}
       </button>

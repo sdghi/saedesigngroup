@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 
 export const myContext = React.createContext()
 
@@ -13,6 +13,8 @@ const Provider = props => {
   // For the hero text filter items
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [totalFilterImages, setTotalFilterImages] = useState(0)
+
+  const [pageTheme, setPageTheme] = useState("Light");
 
 
   return (
@@ -30,6 +32,8 @@ const Provider = props => {
         setCurrentImageIndex,
         totalFilterImages,
         setTotalFilterImages,
+        pageTheme,
+        setPageTheme
       }}
     >
       {props.children}
@@ -37,4 +41,7 @@ const Provider = props => {
   )
 }
 
+export const useAppContext = () => { return useContext(myContext); }
+
 export default ({ element }) => <Provider>{element}</Provider>
+

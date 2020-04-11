@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 import { motion } from 'framer-motion'
-import { myContext } from '../../provider'
+import { useCursorChange } from '../../hooks'
 
 const OahuSVG = styled(motion.svg)`
   position: relative;
@@ -97,7 +97,8 @@ const OahuSVG = styled(motion.svg)`
 `
 
 const OahuMap = () => {
-  const { setCursorElement } = useContext(myContext)
+  const [bind] = useCursorChange({ selected: 'selected' })
+
   return (
     <OahuSVG
       xmlns="http://www.w3.org/2000/svg"
@@ -1295,8 +1296,7 @@ const OahuMap = () => {
         <g id="Illustrations">
           <a
             href="https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513"
-            onMouseEnter={() => setCursorElement({ selected: 'selected' })}
-            onMouseLeave={() => setCursorElement({ initial: 'initial' })}
+            {...bind}
           >
             <path
               fill="#e14263"

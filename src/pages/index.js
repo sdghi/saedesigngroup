@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useContext, useCallback } from "react"
+import React, { useEffect, useState, useCallback } from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import { breakpointSmall } from "../variables"
 import { Container } from "../elements"
-import { myContext } from "../provider"
+import { useAppContext } from "../provider"
 import ProjectsFilter from "../components/home/projectsFilter"
 import Logos from "../components/home/logos"
 import ProjectCategoryInfo from "../components/home/projectCategoryInfo"
@@ -69,7 +69,7 @@ const IndexPage = ({ data }) => {
     setCursorElement,
     scrollWindowHeight,
     setScrollWindowHeight,
-  } = useContext(myContext)
+  } = useAppContext()
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })

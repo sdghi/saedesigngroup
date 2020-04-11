@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useEffect } from "react"
 import { white, black } from '../variables'
 import styled from "styled-components"
 import SEO from "../components/seo"
 import MauiMap from "../components/contact/mauiMap"
 import OahuMap from "../components/contact/oahuMap"
 import MapToggle from "../components/contact/mapToggle"
-import { myContext } from "../provider"
+import { useAppContext } from "../provider"
 import { AnimatePresence, motion } from 'framer-motion'
+import { useToggle } from '../hooks'
 
 const ContactPage = () => {
-  const [showOahuMap, setShowOahuMap] = useState(true)
-  const [showMapToggle, setShowMapToggle] = useState(true)
+  const [showOahuMap, toggleOahuMap] = useToggle()
+  const [showMapToggle, toggleMap] = useToggle(true)
 
-  const { setCursorElement } = useContext(myContext)
+  const { setCursorElement } = useAppContext()
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
@@ -22,14 +23,14 @@ const ContactPage = () => {
     <>
       <SEO title="Contact" />
       <MapContainer>
-        <button className="select-location-toggle" onClick={() => setShowMapToggle(true)}>Select Location</button>
+        <button className="select-location-toggle" onClick={toggleMap}>Select Location</button>
         <AnimatePresence>
           {showMapToggle &&
             <MapToggle
-              setShowOahuMap={setShowOahuMap}
               showOahuMap={showOahuMap}
+              toggleOahuMap={toggleOahuMap}
               showMapToggle={showMapToggle}
-              setShowMapToggle={setShowMapToggle}
+              toggleMap={toggleMap}
             />
           }
 

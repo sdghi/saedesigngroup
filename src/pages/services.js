@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
-import { myContext } from "../provider"
+import { useAppContext } from "../provider"
 import styled from 'styled-components'
 import { oswald, breakpointSmall, breakpointTablet, breakpointLarge, breakpoint4k } from '../variables'
 import MainMenuSection from '../components/services/mainMenuSection'
@@ -58,7 +58,7 @@ export const query = graphql`
 `
 
 const ServicesPage = ({ data }) => {
-  const { setCursorElement } = useContext(myContext)
+  const { setCursorElement } = useAppContext()
 
   const { body: mainMenu, add_a_side_of, design_audit, we_do_it_all } = data.allPrismicMenuOfServices.edges[0].node.data;
 

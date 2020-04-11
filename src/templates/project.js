@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import RelatedProjects from "../components/projects/relatedProjects"
-import { myContext } from "../provider"
+import { useAppContext } from "../provider"
 import ProjectHero from '../components/projects/projectHero'
 // SLICES
 import TextSection from "../slices/textSection"
@@ -39,7 +39,7 @@ const ProjectSlices = ({ slices, theme }) => {
 const Project = ({ project, theme, location }) => {
   const { hero_image } = project.data;
 
-  const { setCursorElement } = useContext(myContext)
+  const { setCursorElement } = useAppContext()
 
   return (
     <div>
@@ -54,6 +54,7 @@ export default props => {
   const doc = props.data.allPrismicProjectTemplate.edges.slice(0, 1).pop()
   const title = doc.node.data.project_name.text
 
+  console.log(doc.node.data)
 
 
   const { next, previous, doubleNext } = props.pageContext
@@ -79,6 +80,7 @@ export const query = graphql`
       edges {
         node {
           data {
+            theme
             project_name {
               text
             }
@@ -190,6 +192,7 @@ export const query = graphql`
                   }
                   text {
                     text
+                    html
                   }
                   bottom_sub_text {
                     text

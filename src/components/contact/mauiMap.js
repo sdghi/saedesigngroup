@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
+import React from "react"
 import { motion } from 'framer-motion'
 import styled from "styled-components"
-import { myContext } from '../../provider'
+import { useCursorChange } from '../../hooks'
 
 const MauiSVG = styled(motion.svg)`
   position: relative;
@@ -133,7 +133,7 @@ const MauiSVG = styled(motion.svg)`
 `
 
 const MauiMap = () => {
-  const { setCursorElement } = useContext(myContext);
+  const [bind] = useCursorChange({ selected: 'selected' });
 
   return (
     <MauiSVG
@@ -8119,8 +8119,7 @@ const MauiMap = () => {
           </g>
         </g>
         <a href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225"
-          onMouseEnter={() => setCursorElement({ selected: 'selected' })}
-          onMouseLeave={() => setCursorElement({ initial: 'initial' })}
+          {...bind}
         >
           <g id="Flag">
             <g>

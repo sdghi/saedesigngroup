@@ -4,12 +4,12 @@ import styled from "styled-components"
 import { breakpointSmall } from "../../variables"
 import { ImageContainer } from "../../elements"
 import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { useCursorChange } from '../../hooks'
 
 const ProjectImageWithTitle = ({
   project,
   projectCategoryFilter,
   displayProjectsGrid,
-  setCursorElement,
   elTop
 }) => {
   const [showProject, setShowProject] = useState(false)
@@ -81,6 +81,8 @@ const ProjectImageWithTitle = ({
     clamp: false
   });
 
+  const [bind] = useCursorChange(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })
+
 
 
   return (
@@ -95,8 +97,7 @@ const ProjectImageWithTitle = ({
               style={{ y }}
               key={project.uid}
               displayProjectsGrid={displayProjectsGrid}
-              onMouseEnter={() => setCursorElement(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })}
-              onMouseLeave={() => setCursorElement({ initial: "initial" })}
+              {...bind}
               // Adjust sizes of non grid according to cms
               // 70 and 100 are the biggest values that work before breaking the grid
               // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5

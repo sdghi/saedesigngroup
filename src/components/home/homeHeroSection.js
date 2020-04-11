@@ -3,13 +3,14 @@ import HeroTextFilterItem from "./heroTextFilterItem"
 import styled from 'styled-components'
 import { breakpointSmall, breakpointMedium, pink, yellow } from '../../variables'
 
-const HomeHeroSection = ({ setCursorElement, setStartScroll, setProjectCategoryFilter, setShowLogos, setScrollWindowHeight }) => {
+const HomeHeroSection = ({ setStartScroll, setProjectCategoryFilter, setShowLogos, setScrollWindowHeight }) => {
 
   const heroRef = useRef(null)
 
   useEffect(() => {
     setScrollWindowHeight(heroRef.current.offsetHeight)
   }, [setScrollWindowHeight])
+
 
   return (
     <HomeHero ref={heroRef} >
@@ -20,7 +21,6 @@ const HomeHeroSection = ({ setCursorElement, setStartScroll, setProjectCategoryF
           filterValue="branding"
           newCursorElement="branding"
           content="branding"
-          setCursorElement={setCursorElement}
           setStartScroll={setStartScroll}
           setProjectCategoryFilter={setProjectCategoryFilter}
           setShowLogos={setShowLogos}
@@ -30,7 +30,6 @@ const HomeHeroSection = ({ setCursorElement, setStartScroll, setProjectCategoryF
           filterValue="packaging"
           newCursorElement="packaging"
           content="packaging"
-          setCursorElement={setCursorElement}
           setStartScroll={setStartScroll}
           setProjectCategoryFilter={setProjectCategoryFilter}
           setShowLogos={setShowLogos}

@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Container, HeadingTwo } from '../../elements'
 import { grey } from '../../variables'
 import styled from 'styled-components'
 import { Waypoint } from 'react-waypoint'
+import { useToggle } from '../../hooks'
 
 const ClientList = () => {
     const data = useStaticQuery(graphql`
@@ -26,13 +27,12 @@ const ClientList = () => {
 
 
     const { clients } = data.allPrismicClientList.edges[0].node.data
-
-    const [startMarquee, setStartMarquee] = useState(false)
+    const [startMarquee, toggleMarquee] = useToggle()
 
     return (
         <Waypoint
-            onEnter={() => setStartMarquee(true)}
-            onLeave={() => setStartMarquee(false)}
+            onEnter={toggleMarquee}
+            onLeave={toggleMarquee}
         >
             <Container margin="0" padding="0 0 80px 0" css={{ overflow: 'hidden' }}>
                 <HeadingTwo fontSize="48px" textAlign="center">CLIENTS</HeadingTwo>

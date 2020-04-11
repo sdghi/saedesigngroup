@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { breakpointSmall, breakpointMedium, black, grey } from "../../variables"
 import { useStaticQuery, graphql } from "gatsby"
-import { useAppContext } from '../../provider'
+import { useCursorChange } from '../../hooks'
 
 const ProjectsFilter = ({
   projectCategoryFilter,
@@ -35,19 +35,17 @@ const ProjectsFilter = ({
     setShowLogos(showLogo)
   }
 
-  const { setCursorElement } = useAppContext()
+  const [bind] = useCursorChange({ selected: 'selected' });
 
   return (
     <FilterContainer showMobile={showMobile}>
       <div className="filter-categories">
-        {/* <h3>work</h3> */}
         <div>
           <button
             className={projectCategoryFilter === "all" ? "selected" : null}
             onClick={() => handleClickEvent("all")}
             onKeyDown={() => handleClickEvent("all")}
-            onMouseEnter={() => setCursorElement({ selected: 'selected' })}
-            onMouseLeave={() => setCursorElement({ initial: 'initial' })}
+            {...bind}
           >
             all
           </button>
@@ -63,8 +61,7 @@ const ProjectsFilter = ({
               key={index}
               onClick={() => handleClickEvent(category.node.data.category)}
               onKeyDown={() => handleClickEvent(category.node.data.category)}
-              onMouseEnter={() => setCursorElement({ selected: 'selected' })}
-              onMouseLeave={() => setCursorElement({ initial: 'initial' })}
+              {...bind}
             >
               {category.node.data.category}
             </button>
@@ -72,8 +69,7 @@ const ProjectsFilter = ({
           <button
             className={showLogos ? "selected" : null}
             onClick={() => handleClickEvent("", true)}
-            onMouseEnter={() => setCursorElement({ selected: 'selected' })}
-            onMouseLeave={() => setCursorElement({ initial: 'initial' })}
+            {...bind}
           >
             logos
           </button>
@@ -87,13 +83,11 @@ const ProjectsFilter = ({
               <GridBtn
                 displayProjectsGrid={displayProjectsGrid}
                 setDisplayProjectsGrid={setDisplayProjectsGrid}
-                setCursorElement={setCursorElement}
               />
 
               <StaggeredBtn
                 displayProjectsGrid={displayProjectsGrid}
                 setDisplayProjectsGrid={setDisplayProjectsGrid}
-                setCursorElement={setCursorElement}
               />
             </>
           }
@@ -184,7 +178,10 @@ const FilterContainer = styled.div`
 `
 
 // Grid Btn
-const GridBtn = ({ setDisplayProjectsGrid, displayProjectsGrid, setCursorElement }) => {
+const GridBtn = ({ setDisplayProjectsGrid, displayProjectsGrid }) => {
+
+  const [bind] = useCursorChange({ selected: 'selected' });
+
   return (
     <svg
       className={displayProjectsGrid ? "selected" : null}
@@ -193,8 +190,7 @@ const GridBtn = ({ setDisplayProjectsGrid, displayProjectsGrid, setCursorElement
       height="24"
       viewBox="0 0 24 24"
       onClick={() => setDisplayProjectsGrid(true)}
-      onMouseEnter={() => setCursorElement({ selected: 'selected' })}
-      onMouseLeave={() => setCursorElement({ initial: 'initial' })}
+      {...bind}
     >
       <path
         d="M4-185h6v6H4Zm9,0h6v6H13Zm9,0h6v6H22ZM4-176h6v6H4Zm9,0h6v6H13Zm9,0h6v6H22ZM4-167h6v6H4Zm9,0h6v6H13Zm9,0h6v6H22Z"
@@ -205,7 +201,10 @@ const GridBtn = ({ setDisplayProjectsGrid, displayProjectsGrid, setCursorElement
 }
 
 // Staggered Btn
-const StaggeredBtn = ({ setDisplayProjectsGrid, displayProjectsGrid, setCursorElement }) => {
+const StaggeredBtn = ({ setDisplayProjectsGrid, displayProjectsGrid }) => {
+
+  const [bind] = useCursorChange({ selected: 'selected' });
+
   return (
     <svg
       className={!displayProjectsGrid ? "selected" : null}
@@ -214,8 +213,7 @@ const StaggeredBtn = ({ setDisplayProjectsGrid, displayProjectsGrid, setCursorEl
       width="23.132"
       height="24"
       viewBox="0 0 23.132 24"
-      onMouseEnter={() => setCursorElement({ selected: 'selected' })}
-      onMouseLeave={() => setCursorElement({ initial: 'initial' })}
+      {...bind}
     >
       <g transform="translate(-4 -4)">
         <rect width="5.337" height="4.801" transform="translate(21.795 4)" />

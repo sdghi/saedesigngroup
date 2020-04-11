@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { useAppContext } from "../../provider"
+import { useCursorChange } from '../../hooks'
 
 const HeroTextFilterItem = ({
-  setCursorElement,
   filterValue,
   newCursorElement,
   content,
@@ -10,13 +10,18 @@ const HeroTextFilterItem = ({
   setProjectCategoryFilter,
   setShowLogos,
 }) => {
-  const handleProjectFilter = filterValue => {
+  const { setCursorElement } = useAppContext()
+
+
+  const handleProjectFilter = () => {
     setProjectCategoryFilter(filterValue)
     setStartScroll(true)
     setShowLogos(false)
     // Reset to initial cursor so images don't appear on scroll
     setCursorElement({ initial: "initial" })
   }
+
+  const [bind] = useCursorChange({ [newCursorElement]: newCursorElement })
 
   const { setCurrentImageIndex, totalFilterImages } = useAppContext()
 
@@ -33,7 +38,6 @@ const HeroTextFilterItem = ({
       // If it is the max index of pics then go back to 0
       setImgStep(0)
     }
-
     // Turn the imgStep into a flat value and set it to the img Index
     setCurrentImageIndex(Math.floor(imgStep / 20))
   }
@@ -42,14 +46,10 @@ const HeroTextFilterItem = ({
     <strong
       role="button"
       tabIndex={0}
-      onMouseEnter={() =>
-        setCursorElement({ [newCursorElement]: newCursorElement })
-      }
-      onMouseMove={() => handleMouseMove()}
-      onMouseLeave={() => setCursorElement({ initial: "initial" })}
-      onMouseOut={() => setCursorElement({ initial: "initial" })}
-      onClick={() => handleProjectFilter(filterValue)}
-      onKeyDown={() => handleProjectFilter(filterValue)}
+      {...bind}
+      onMouseMove={handleMouseMove}
+      onClick={handleProjectFilter}
+      onKeyDown={handleProjectFilter}
     >
       {content}
     </strong>

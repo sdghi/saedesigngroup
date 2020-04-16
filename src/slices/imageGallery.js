@@ -21,11 +21,11 @@ const ImageGallery = ({ slice }) => {
     // Get the current mouse position and see if it past the halfway point
     if (xValue > halfwayPoint) {
       // Set to next
-      setCursorElement({ related: "Next" })
+      setCursorElement({ related: "&#x2192;" })
       setNextImage(true)
     } else {
       // Set to prev
-      setCursorElement({ related: "Prev" })
+      setCursorElement({ related: "&#x2190;" })
       setNextImage(false)
     }
   }

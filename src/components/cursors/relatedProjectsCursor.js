@@ -11,9 +11,8 @@ const RelatedProjectCursor = ({ xValue, yValue, cursorContent }) => {
       height="200"
       width="200"
       zIndex="999999"
-    >
-      {cursorContent}
-    </RelatedProjects>
+      dangerouslySetInnerHTML={{ __html: cursorContent }}
+    />
   )
 }
 

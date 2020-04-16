@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
-import { useAppContext } from "../provider"
 import styled from 'styled-components'
 import { oswald, breakpointSmall, breakpointTablet, breakpointLarge, breakpoint4k } from '../variables'
 import MainMenuSection from '../components/services/mainMenuSection'

@@ -1,23 +1,16 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { white, black } from '../variables'
 import styled from "styled-components"
 import SEO from "../components/seo"
 import MauiMap from "../components/contact/mauiMap"
 import OahuMap from "../components/contact/oahuMap"
 import MapToggle from "../components/contact/mapToggle"
-import { useAppContext } from "../provider"
 import { AnimatePresence, motion } from 'framer-motion'
 import { useToggle } from '../hooks'
 
 const ContactPage = () => {
   const [showOahuMap, toggleOahuMap] = useToggle()
   const [showMapToggle, toggleMap] = useToggle(true)
-
-  const { setCursorElement } = useAppContext()
-
-  useEffect(() => {
-    setCursorElement({ initial: "initial" })
-  }, [setCursorElement])
 
   return (
     <>

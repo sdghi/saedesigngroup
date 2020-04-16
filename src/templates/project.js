@@ -53,10 +53,6 @@ const Project = ({ project, theme, location }) => {
 export default props => {
   const doc = props.data.allPrismicProjectTemplate.edges.slice(0, 1).pop()
   const title = doc.node.data.project_name.text
-
-  console.log(doc.node.data)
-
-
   const { next, previous, doubleNext } = props.pageContext
 
   if (!doc) return null

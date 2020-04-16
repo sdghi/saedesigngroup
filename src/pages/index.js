@@ -72,10 +72,6 @@ const IndexPage = ({ data }) => {
   } = useAppContext()
 
   useEffect(() => {
-    setCursorElement({ initial: "initial" })
-  }, [setCursorElement])
-
-  useEffect(() => {
 
     // If start scroll is true scroll down the height of the first section
     // Scroll down the window

@@ -1,14 +1,9 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
-import { useAppContext } from "../provider"
-
 import AboutHero from '../components/about/aboutHero'
 import WeAreSection from '../components/about/weAreSection'
-
 import AboutQuote from '../components/about/aboutQuote'
-import Team from '../components/team/team'
-import TeamMobile from '../components/team/teamMobile'
 import ClientList from '../components/about/clientList'
 
 export const query = graphql`
@@ -42,14 +37,8 @@ export const query = graphql`
 `
 
 const AboutPage = ({ data }) => {
-  const { setCursorElement } = useAppContext()
 
   const { title, description, we_are, quote, quote_author } = data.allPrismicAbout.edges[0].node.data
-
-  useEffect(() => {
-    setCursorElement({ initial: "initial" })
-  }, [setCursorElement])
-
 
   return (
     <>

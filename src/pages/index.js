@@ -10,6 +10,7 @@ import Logos from "../components/home/logos"
 import ProjectCategoryInfo from "../components/home/projectCategoryInfo"
 import MobileProjectsFilter from "../components/home/mobileProjectsFilter"
 import HomeHeroSection from '../components/home/homeHeroSection'
+import HomeHero from '../components/home/homeHero'
 import ProjectImageWithTitle from "../components/home/projectImageWithTitle"
 import ProjectImageWithTitleMobile from '../components/home/projectImageWithTitleMobile'
 
@@ -103,13 +104,14 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <SEO title="Home" />
-      <HomeHeroSection
+      {/* <HomeHeroSection
         setCursorElement={setCursorElement}
         setStartScroll={setStartScroll}
         setProjectCategoryFilter={setProjectCategoryFilter}
         setShowLogos={setShowLogos}
         setScrollWindowHeight={setScrollWindowHeight}
-      />
+      /> */}
+      <HomeHero />
 
       <ProjectsSection>
         {/* Desktop project filter  */}

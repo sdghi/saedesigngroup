@@ -156,7 +156,7 @@ const MapToggle = ({
 export default MapToggle
 
 const MapToggleContainer = styled(motion.div)`
-  margin: 100px 10px 0 10px;
+  margin: 80px 10px 0 10px;
   background: ${white};
   height: fit-content;
   width: fit-content;

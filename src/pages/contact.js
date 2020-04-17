@@ -59,7 +59,7 @@ const MapContainer = styled.div`
 
   .select-location-toggle{
     position: absolute;
-    top: 100px;
+    top: 80px;
     left: 10px; 
     z-index: 20;
     padding: 20px 10px;

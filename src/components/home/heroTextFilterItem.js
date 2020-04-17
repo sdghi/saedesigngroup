@@ -45,7 +45,7 @@ const HeroTextFilterItem = ({
 
   return (
     <strong
-      style={{ fontWeight: 600 }}
+      style={{ fontWeight: 500 }}
       role="button"
       tabIndex={0}
       {...bind}

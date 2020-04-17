@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
-import { black } from '../../variables'
+import { yellow } from '../../variables'
 
 const variants = {
     enter: {
@@ -48,7 +48,7 @@ const ScreenContainer = styled(motion.div)`
     position: absolute;
     top: 0;
     left: 0;
-    background: ${black};
+    background: ${yellow};
     color: white;
     font-size: 50px;
 `;

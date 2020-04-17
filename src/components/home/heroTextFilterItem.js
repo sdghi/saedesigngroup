@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useAppContext } from "../../provider"
 import { useCursorChange } from '../../hooks'
+import { HeadingTwo } from '../../elements'
 
 const HeroTextFilterItem = ({
   filterValue,
@@ -44,6 +45,7 @@ const HeroTextFilterItem = ({
 
   return (
     <strong
+      style={{ fontWeight: 600 }}
       role="button"
       tabIndex={0}
       {...bind}

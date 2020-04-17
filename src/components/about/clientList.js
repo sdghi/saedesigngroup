@@ -72,7 +72,7 @@ const MarqueeContainer = styled.div`
 `;
 
 const MarqueeContent = styled.div`
-    width: 7680px;
+    width: 7800px;
     text-align: right;
 
     &.second{
@@ -81,10 +81,12 @@ const MarqueeContent = styled.div`
 
     span{
         color: ${grey};
-        font-size: 19px;
+        font-size: 18px;
         font-weight: 300;
         margin-right: 4px;
         line-height: 1.5;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
 
         .dot{
             margin-left: 4px;

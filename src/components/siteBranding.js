@@ -1,10 +1,16 @@
 import React from "react"
 import styled from 'styled-components'
-import { pink, yellow } from '../variables'
+import { pink } from '../variables'
+import { useCursorChange } from '../hooks'
 
 const SiteBranding = ({ toggleNav, isNavOpen }) => {
+
+  const [bind] = useCursorChange({ selected: "selected" });
+
   return (
-    <BrandingContainer>
+    <BrandingContainer
+      {...bind}
+    >
       <svg
         version="1.1"
         id="Layer_1"
@@ -85,11 +91,6 @@ const BrandingContainer = styled.div`
   }
 
   &:hover{
-    svg,
-    #sdg-heading path{
-      fill: ${yellow};
-    }
-
     #sdg-face{
       transform: rotate(360deg);
     }

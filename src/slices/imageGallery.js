@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { Container, ImageContainer } from "../elements"
 import styled from "styled-components"
 import { useAppContext } from "../provider"
 import { grey, lightGrey } from "../variables"
 import ScrollWrapper from '../components/wrappers/scrollWrapper'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const ImageGallery = ({ slice }) => {
   const items = slice.items
@@ -21,11 +22,11 @@ const ImageGallery = ({ slice }) => {
     // Get the current mouse position and see if it past the halfway point
     if (xValue > halfwayPoint) {
       // Set to next
-      setCursorElement({ related: "Next" })
+      setCursorElement({ related: "&#x2192;" })
       setNextImage(true)
     } else {
       // Set to prev
-      setCursorElement({ related: "Prev" })
+      setCursorElement({ related: "&#x2190;" })
       setNextImage(false)
     }
   }
@@ -48,6 +49,19 @@ const ImageGallery = ({ slice }) => {
     }
   }
 
+  useEffect(() => {
+    const imageInterval = setInterval(() => {
+      if (visibleImage < items.length - 1) {
+        setVisibleImage(visibleImage + 1)
+      } else {
+        setVisibleImage(0)
+      }
+    }, 5000);
+
+    return () => clearInterval(imageInterval)
+
+  }, [visibleImage])
+
   return (
     <ScrollWrapper>
       <GalleryContainer margin="0 0 20vh 0" padding="0" paddingMd="0 5%">
@@ -68,6 +82,7 @@ const ImageGallery = ({ slice }) => {
               }
             </div>
           )}
+
         </SlideshowWrapper>
         <div className="counter">
           {items.map((item, i) => item.gallery_image.localFile &&
@@ -131,10 +146,6 @@ const GalleryContainer = styled(Container)`
 const SlideshowWrapper = styled.div`
   width: 100%;
   height: fit-content;
+  overflow: hidden;
   position: relative;
-
-  ${ImageContainer} {
-    position: absolute;
-    top: ${props => props.visible};
-  }
 `

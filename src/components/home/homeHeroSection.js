@@ -52,7 +52,7 @@ const HomeHero = styled.section`
   align-items: flex-start;
   background: ${yellow};
   position: relative;
-  padding: 150px 20px 0 20px;
+  padding: 50px 20px 0 100px;
 
   .scroll-cta{
     position: absolute;
@@ -93,7 +93,7 @@ const HeroText = styled.h1`
   font-size: 24px;
   width: fit-content;
   max-width: 1400px;
-  font-weight: 600;
+  font-weight: 500;
   color: ${pink};
 
   strong {

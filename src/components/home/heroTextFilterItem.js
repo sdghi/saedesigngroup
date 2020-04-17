@@ -24,7 +24,7 @@ const HeroTextFilterItem = ({
 
   const [bind] = useCursorChange({ [newCursorElement]: newCursorElement })
 
-  const { setCurrentImageIndex, totalFilterImages } = useAppContext()
+  const { setCurrentImageIndex, currentImageIndex, totalFilterImages } = useAppContext()
 
   // ImgStep control how much the mouse will move before going to the next picture
   const [imgStep, setImgStep] = useState(0)
@@ -41,6 +41,9 @@ const HeroTextFilterItem = ({
     }
     // Turn the imgStep into a flat value and set it to the img Index
     setCurrentImageIndex(Math.floor(imgStep / 20))
+
+
+    console.log('current image index', currentImageIndex)
   }
 
   return (

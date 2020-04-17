@@ -40,7 +40,7 @@ const LoadingScreen = ({ loadingScreen }) => {
 export default LoadingScreen;
 
 const ScreenContainer = styled(motion.div)`
-    height: 93vh;
+    height: 100vh;
     width: 100%;
     position: absolute;
     top: 0;

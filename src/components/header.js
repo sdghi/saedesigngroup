@@ -4,13 +4,12 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { black, pink, yellow } from "../variables"
 import { useToggle } from '../hooks'
+import { motion } from 'framer-motion'
 // Components
 import SiteBranding from "./siteBranding"
 import Navigation from "./navigation"
 
 const Header = ({ setCursorElement }) => {
-  // const [isNavOpen, setNav] = useState(false)
-
   const [isNavOpen, toggleNav] = useToggle();
 
   useEffect(() => {
@@ -31,7 +30,7 @@ const Header = ({ setCursorElement }) => {
       <ToggleBtn
         onClick={toggleNav}
       >
-        <h2>{isNavOpen ? "close" : "menu"}</h2>
+        <motion.h2 whileHover={{ scale: 1.2, rotate: 4 }}>{isNavOpen ? "close" : "menu"}</motion.h2>
       </ToggleBtn>
 
     </SiteHeader>
@@ -45,7 +44,7 @@ const SiteHeader = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  background: ${black};
+  background: transparent;
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -65,16 +64,6 @@ const ToggleBtn = styled.div`
   h2 {
     font-size: 20px;
     margin: 0;
-  }
-
-  @media (min-width: 768px) {
-    &:hover {
-      h2 {
-        color: ${yellow};
-        transform: scale(1.05) rotate(-4deg);
-        transition: all 0.01s ease-out;
-      }
-    }
   }
 `
 

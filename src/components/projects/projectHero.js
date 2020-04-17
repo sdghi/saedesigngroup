@@ -11,9 +11,9 @@ const ProjectHero = ({ heroImage, setCursorElement }) => {
         <HeroContainer padding="0" onMouseOver={() => setCursorElement({ initial: "initial" })}>
             <LoadingScreen loadingScreen={loadingScreen} />
             <ImageContainer
-                height="calc(50vh - 7vh)"
+                height="50vh"
                 width="100%"
-                heightMd="calc(100vh - 7vh)"
+                heightMd="70vh"
                 widthMd="100%"
                 maxWidth="100%"
                 fluid={heroImage.localFile.childImageSharp.fluid}

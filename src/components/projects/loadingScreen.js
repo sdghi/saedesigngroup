@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
-import { black } from '../../variables'
+import { yellow } from '../../variables'
 
 const variants = {
-    hidden: {
+    enter: {
         opacity: 0
     },
     visible: {
@@ -12,6 +12,9 @@ const variants = {
         transition: {
             duration: 0.8
         }
+    },
+    exit: {
+        x: '-100%'
     }
 }
 
@@ -25,9 +28,9 @@ const LoadingScreen = ({ loadingScreen }) => {
             {loadingScreen &&
                 <ScreenContainer
                     variants={variants}
-                    initial="hidden"
+                    initial="enter"
                     animate="visible"
-                    exit="hidden"
+                    exit="exit"
                 >
                     loading loading loading
                 </ScreenContainer>
@@ -45,8 +48,7 @@ const ScreenContainer = styled(motion.div)`
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 9999999999;
-    background: ${black};
+    background: ${yellow};
     color: white;
     font-size: 50px;
 `;

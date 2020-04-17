@@ -52,14 +52,14 @@ const ContactPage = () => {
 export default ContactPage
 
 const MapContainer = styled.div`
-  height: calc(100vh - 7vh);
+  height: 100vh;
   width: 100%;
   overflow: hidden;
   position: relative;
 
   .select-location-toggle{
     position: absolute;
-    top: 10px;
+    top: 100px;
     left: 10px; 
     z-index: 20;
     padding: 20px 10px;

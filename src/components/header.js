@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { black, pink, yellow } from "../variables"
+import { pink } from "../variables"
 import { useToggle } from '../hooks'
 import { motion } from 'framer-motion'
+import { useCursorChange } from '../hooks'
 // Components
 import SiteBranding from "./siteBranding"
 import Navigation from "./navigation"
@@ -16,9 +17,10 @@ const Header = ({ setCursorElement }) => {
     document.body.style.overflow = isNavOpen ? "hidden" : "visible"
   }, [isNavOpen])
 
+  const [bind] = useCursorChange({ selected: "selected" })
+
   return (
     <SiteHeader onMouseEnter={() => setCursorElement({ initial: "initial" })}>
-
       <Link to="/" className={`site-branding`}>
         <SiteBranding toggleNav={toggleNav} isNavOpen={isNavOpen} />
       </Link>
@@ -29,6 +31,7 @@ const Header = ({ setCursorElement }) => {
       />
       <ToggleBtn
         onClick={toggleNav}
+        {...bind}
       >
         <motion.h2 whileHover={{ scale: 1.2, rotate: 4 }}>{isNavOpen ? "close" : "menu"}</motion.h2>
       </ToggleBtn>

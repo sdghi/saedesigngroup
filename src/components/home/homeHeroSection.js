@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import HeroTextFilterItem from "./heroTextFilterItem"
 import styled from 'styled-components'
-import { breakpointSmall, breakpointMedium, pink, yellow } from '../../variables'
+import { breakpointSmall, breakpointMedium, breakpoint4k, pink, yellow } from '../../variables'
 
 const HomeHeroSection = ({ setStartScroll, setProjectCategoryFilter, setShowLogos, setScrollWindowHeight }) => {
 
@@ -45,12 +45,14 @@ export default HomeHeroSection
 
 
 const HomeHero = styled.section`
-  height: calc(100vh - 7vh);
+  height: 100vh;
   width: 100%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   background: ${yellow};
   position: relative;
+  padding: 150px 20px 0 20px;
 
   .scroll-cta{
     position: absolute;
@@ -89,12 +91,10 @@ const HomeHero = styled.section`
 
 const HeroText = styled.h1`
   font-size: 24px;
-  margin: 0 auto;
   width: fit-content;
   max-width: 1400px;
-  font-weight: 300;
+  font-weight: 600;
   color: ${pink};
-  padding: 0 20px;
 
   strong {
     position: relative;
@@ -103,10 +103,14 @@ const HeroText = styled.h1`
 
   @media (min-width: ${breakpointSmall}) {
     font-size: 64px;
-    padding: 0 50px;
   }
 
   @media (min-width: ${breakpointMedium}) {
-    font-size: 104px;
+    font-size: 70px;
+  }
+
+  @media (min-width: ${breakpoint4k}) {
+    font-size: 90px;
+    max-width: 2000px;
   }
 `

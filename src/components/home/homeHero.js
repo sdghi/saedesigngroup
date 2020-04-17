@@ -3,7 +3,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { Canvas, useFrame, extend, useThree } from 'react-three-fiber'
 import { useSpring, a } from 'react-spring/three'
 import * as THREE from 'three'
-import { useToggle } from '../../hooks'
 import { pink, yellow, light_blue } from '../../variables'
 import { HeadingTwo } from '../../elements'
 import styled from 'styled-components'
@@ -61,7 +60,7 @@ const HomeHero = () => {
                 }}
             >
                 <ambientLight intensity={0.8} />
-                <spotLight position={[5, 10, 5]} intensity={0.6} penumbra="1" />
+                <spotLight position={[5, 10, 5]} intensity={0.8} penumbra="1" />
                 <Controls />
                 <fog attach="fog" args={[yellow, 5, 15]} />
                 <Plane />

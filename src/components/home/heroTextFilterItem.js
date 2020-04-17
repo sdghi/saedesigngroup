@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { useAppContext } from "../../provider"
 import { useCursorChange } from '../../hooks'
-import { HeadingTwo } from '../../elements'
 
 const HeroTextFilterItem = ({
   filterValue,

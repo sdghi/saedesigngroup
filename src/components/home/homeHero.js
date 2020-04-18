@@ -1,18 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Canvas, useFrame, extend, useThree } from 'react-three-fiber'
-import { useSpring, a } from 'react-spring/three'
 import * as THREE from 'three'
-import { pink, yellow, light_blue } from '../../variables'
-import { HeadingTwo } from '../../elements'
 import styled from 'styled-components'
-
-const Plane = () => (
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -7, 0]} receiveShadow>
-        <planeBufferGeometry attach="geometry" args={[100, 100]} />
-        <meshPhysicalMaterial attach="material" color={yellow} />
-    </mesh>
-);
+import { yellow, pink } from '../../variables'
+import HeroMarquee from './heroMarquee'
 
 extend({ OrbitControls })
 
@@ -29,24 +22,32 @@ const Controls = () => {
             autoRotate
             ref={orbitRef}
             args={[camera, gl.domElement]}
-            maxPolarAngle={Math.PI / 3}
-            minPolarAngle={Math.PI / 3}
+            maxPolarAngle={Math.PI / 2.5}
+            minPolarAngle={Math.PI / 2.5}
         />
     )
 }
 
-const Sphere = () => {
 
-    return (
-        <a.mesh castShadow>
-            <sphereBufferGeometry attach="geometry" args={[2, 60, 60]} />
-            <meshPhysicalMaterial attach="material" color={light_blue} />
-        </a.mesh>
-    )
+const SDGFace = ({ rotation }) => {
+    const [model, setModel] = useState();
+
+    useEffect(() => {
+        new GLTFLoader().load('/sdg.gltf', setModel)
+    }, []);
+
+    return model ? <mesh
+        scale={[30, 30, 30]}
+        position={[0, -2.5, 0]}
+    // rotation={rotation}
+    >
+        <primitive object={model.scene} />
+    </mesh> : null;
 }
 
-
 const HomeHero = () => {
+    const [rotation, setRotation] = useState([0, 0, 0])
+
     return (
         <HeroContainer>
             <Canvas
@@ -58,15 +59,19 @@ const HomeHero = () => {
                     gl.shadowMap.enabled = true;
                     gl.shadowMap.type = THREE.PCFSoftShadowMap;
                 }}
+                onPointerMove={({ clientX, clientY }) => {
+                    setRotation([(clientX / window.innerWidth) * 90, (clientY / window.innerHeight * 90), 0])
+                }}
             >
-                <ambientLight intensity={0.8} />
+                <ambientLight intensity={1} />
                 <spotLight position={[5, 10, 5]} intensity={0.8} penumbra="1" />
                 <Controls />
+                <SDGFace rotation={rotation} />
                 <fog attach="fog" args={[yellow, 5, 15]} />
-                <Plane />
-                <Sphere />
             </Canvas>
-            <HeadingTwo fontSize="72px" color={pink}>Delightful Design By Good People</HeadingTwo>
+
+            <HeroMarquee />
+            <p className="scroll-cta">scroll down</p>
         </HeroContainer>
     )
 }
@@ -80,13 +85,7 @@ const HeroContainer = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    ${HeadingTwo}{
-        width: 90%;
-        max-width: 1500px;
-        margin: 0 auto;
-        text-align: center;
-    }
+    background: ${yellow};
 
     canvas{
         top: 0;
@@ -94,8 +93,44 @@ const HeroContainer = styled.section`
         position: absolute;
         height: 100vh;
         width: 100%;
-        background: ${yellow};
-        z-index: -1;
+        z-index: 1;
+        /* Uncomment once mouse works */
+        pointer-events: none;
+  }
+
+
+  .scroll-cta{
+    position: absolute;
+    /* height of the :after plus the added top px value  */
+    bottom: 45px;
+    right: 0;
+    writing-mode: vertical-lr;
+    font-weight: 700;
+
+    &:after{
+      content: '';
+      position: absolute;
+      top: calc(100% + 5px);
+      left: calc(50% - 3px);
+      width: 3px; 
+      height: 40px;
+      background: black;
+      animation: bob 2s ease-in-out infinite;
+      transform-origin: top;
+      background: ${pink};
+    }
+
+    @keyframes bob{
+     0%{
+        transform: scaleY(0);
+      }
+      50%{
+        transform: scaleY(1)
+      }
+      100%{
+        transform: scaleY(0);
+      }
+    }
   }
 
 `;

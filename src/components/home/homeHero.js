@@ -39,7 +39,8 @@ const SDGFace = ({ rotation }) => {
     return model ? <mesh
         scale={[30, 30, 30]}
         position={[0, -2.5, 0]}
-    // rotation={rotation}
+        worldToLocal
+        rotation={rotation}
     >
         <primitive object={model.scene} />
     </mesh> : null;
@@ -60,7 +61,7 @@ const HomeHero = () => {
                     gl.shadowMap.type = THREE.PCFSoftShadowMap;
                 }}
                 onPointerMove={({ clientX, clientY }) => {
-                    setRotation([(clientX / window.innerWidth) * 90, (clientY / window.innerHeight * 90), 0])
+                    setRotation([(clientX / window.innerWidth) * 20, (clientY / window.innerHeight * 20), 0])
                 }}
             >
                 <ambientLight intensity={1} />

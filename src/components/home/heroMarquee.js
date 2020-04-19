@@ -37,6 +37,7 @@ const Marquee = styled.div`
     overflow: hidden;
     z-index: 0;
     width: fit-content;
+    pointer-events: none;
 
     .inner{
         width: fit-content;

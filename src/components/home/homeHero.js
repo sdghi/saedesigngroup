@@ -1,49 +1,26 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import React, { useState, useEffect } from 'react'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { Canvas, useFrame, extend, useThree } from 'react-three-fiber'
+import { Canvas } from 'react-three-fiber'
 import * as THREE from 'three'
 import styled from 'styled-components'
 import { yellow, pink } from '../../variables'
 import HeroMarquee from './heroMarquee'
 
-extend({ OrbitControls })
-
-const Controls = () => {
-    const { camera, gl } = useThree();
-    const orbitRef = useRef();
-
-    useFrame(() => {
-        orbitRef.current.update()
-    })
-
-    return (
-        <orbitControls
-            autoRotate
-            ref={orbitRef}
-            args={[camera, gl.domElement]}
-            maxPolarAngle={Math.PI / 2.5}
-            minPolarAngle={Math.PI / 2.5}
-        />
-    )
-}
-
-
 const SDGFace = ({ rotation }) => {
     const [model, setModel] = useState();
 
     useEffect(() => {
-        new GLTFLoader().load('/sdg.gltf', setModel)
-    }, []);
+        new GLTFLoader().load('/sdg.gltf', setModel);
+    }, [rotation]);
 
-    return model ? <mesh
-        scale={[30, 30, 30]}
-        position={[0, -2.5, 0]}
-        worldToLocal
-        rotation={rotation}
-    >
-        <primitive object={model.scene} />
-    </mesh> : null;
+
+    return model ? <primitive
+        object={model.scene}
+        scale={[25, 25, 25]}
+        position={[0, -2.2, 0]}
+        rotation={[0.2, rotation[1] + 1, 0]}
+        center
+    /> : null
 }
 
 const HomeHero = () => {
@@ -61,12 +38,11 @@ const HomeHero = () => {
                     gl.shadowMap.type = THREE.PCFSoftShadowMap;
                 }}
                 onPointerMove={({ clientX, clientY }) => {
-                    setRotation([(clientX / window.innerWidth) * 20, (clientY / window.innerHeight * 20), 0])
+                    setRotation([(clientY / window.innerHeight * 1.5), (clientX / window.innerWidth * 1.5), 0])
                 }}
             >
                 <ambientLight intensity={1} />
                 <spotLight position={[5, 10, 5]} intensity={0.8} penumbra="1" />
-                <Controls />
                 <SDGFace rotation={rotation} />
                 <fog attach="fog" args={[yellow, 5, 15]} />
             </Canvas>
@@ -95,11 +71,8 @@ const HeroContainer = styled.section`
         height: 100vh;
         width: 100%;
         z-index: 1;
-        /* Uncomment once mouse works */
-        pointer-events: none;
   }
-
-
+  
   .scroll-cta{
     position: absolute;
     /* height of the :after plus the added top px value  */

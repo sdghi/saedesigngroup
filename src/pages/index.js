@@ -9,7 +9,6 @@ import ProjectsFilter from "../components/home/projectsFilter"
 import Logos from "../components/home/logos"
 import ProjectCategoryInfo from "../components/home/projectCategoryInfo"
 import MobileProjectsFilter from "../components/home/mobileProjectsFilter"
-import HomeHeroSection from '../components/home/homeHeroSection'
 import HomeHero from '../components/home/homeHero'
 import ProjectImageWithTitle from "../components/home/projectImageWithTitle"
 import ProjectImageWithTitleMobile from '../components/home/projectImageWithTitleMobile'

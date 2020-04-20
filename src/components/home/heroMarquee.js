@@ -46,6 +46,7 @@ const Marquee = styled.div`
         transform: translate3d(0, 0, 0);
         animation: marquee 10s linear infinite;
         animation-play-state: running;
+        will-change: transform;
 
         h2{
             font-size: 72px;

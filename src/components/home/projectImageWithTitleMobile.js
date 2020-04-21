@@ -11,9 +11,11 @@ const ProjectImageWithTitleMobile = ({
     const slug = project.node.uid
     const categories = project.node.data.categories
     const projectName = project.node.data.project_name.text
-    const imageSrc =
-        project.node.data.featured_image.localFile.childImageSharp.fluid
+    // const imageSrc =
+    //     project.node.data.featured_image.localFile.childImageSharp.fluid
     const imageAlt = project.node.data.featured_image.alt
+
+    const { featured_image_is_gif } = project.node.data
 
     const [showProject, setShowProject] = useState(false)
 
@@ -42,14 +44,19 @@ const ProjectImageWithTitleMobile = ({
                 <TileWrapper>
                     <Link to={`/${slug}`}>
                         <ProjetContainer key={`${project.uid}-mobile`}>
+                            {!featured_image_is_gif &&
+                                <ImageContainer
+                                    width="100%"
+                                    widthMd="100%"
+                                    heightMd="100%"
+                                    fluid={project.node.data.featured_image.localFile.childImageSharp.fluid}
+                                    alt={imageAlt}
+                                />
+                            }
+                            {featured_image_is_gif &&
+                                <img className="featured-image-gif" src={project.node.data.featured_image.url} alt={imageAlt} />
+                            }
 
-                            <ImageContainer
-                                width="100%"
-                                widthMd="100%"
-                                heightMd="100%"
-                                fluid={imageSrc}
-                                alt={imageAlt}
-                            />
                             <h2>{projectName}</h2>
 
                         </ProjetContainer>

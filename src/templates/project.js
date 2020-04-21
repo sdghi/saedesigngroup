@@ -95,8 +95,10 @@ export const query = graphql`
                 slice_type
                 primary {
                   layout
+                  image_is_gif
                   image {
                     alt
+                    url
                     localFile {
                       childImageSharp {
                         fluid(quality: 90, maxWidth: 1800) {
@@ -129,7 +131,9 @@ export const query = graphql`
                 slice_type
                 primary {
                   full_width
+                  image_is_gif
                   image {
+                    url
                     alt
                     localFile {
                       childImageSharp {

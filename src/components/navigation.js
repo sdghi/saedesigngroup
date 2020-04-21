@@ -108,12 +108,11 @@ const Navigation = ({ isNavOpen, setCursorElement, toggleNav }) => {
 }
 
 const Nav = styled(motion.nav)`
-  position: absolute;
+  position: fixed;
   z-index: 9999;
   height: 100vh;
   width: 100%;
   background: ${black};
-  z-index: -1;
   display: grid;
   place-items: center;
   top: 0;

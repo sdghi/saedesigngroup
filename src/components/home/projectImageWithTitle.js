@@ -20,8 +20,8 @@ const ProjectImageWithTitle = ({
   const slug = project.node.uid
   const categories = project.node.data.categories
   const projectName = project.node.data.project_name.text
-  const imageSrc =
-    project.node.data.featured_image.localFile.childImageSharp.fluid
+  // const imageSrc =
+  //   project.node.data.featured_image.localFile.childImageSharp.fluid
   const imageAlt = project.node.data.featured_image.alt
 
   const {
@@ -32,8 +32,10 @@ const ProjectImageWithTitle = ({
     bottom,
     size,
     is_case_study,
-    placement
+    placement,
+    featured_image_is_gif
   } = project.node.data
+
 
   // Handle rendering the sizes
   const renderSizes = () => {
@@ -115,14 +117,20 @@ const ProjectImageWithTitle = ({
               // IF COLUMNS OR THE WIDTH OF THE CONTAINER EVER CHANGES THEN THESE VALUES ALSO NEED TO CHANGE
               columnIncrements={70 / 4}
             >
+              {!featured_image_is_gif &&
+                <ImageContainer
+                  width="100%"
+                  widthMd="100%"
+                  heightMd="100%"
+                  fluid={project.node.data.featured_image.localFile.childImageSharp.fluid}
+                  alt={imageAlt}
+                />
+              }
+              {
+                featured_image_is_gif &&
 
-              <ImageContainer
-                width="100%"
-                widthMd="100%"
-                heightMd="100%"
-                fluid={imageSrc}
-                alt={imageAlt}
-              />
+                <img className="featured-image-gif" src={project.node.data.featured_image.url} alt={imageAlt} />
+              }
               <h2>{projectName}</h2>
 
             </ProjetContainer>
@@ -145,6 +153,11 @@ const TileWrapper = styled.div`
 `
 
 const ProjetContainer = styled(motion.div)`
+
+  .featured-image-gif{
+    height: 100%;
+    width: 100%; 
+  }
 
   @media (min-width: ${breakpointSmall}) {
     margin: 0 auto;

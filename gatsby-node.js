@@ -14,14 +14,10 @@ exports.createPages = async ({ graphql, actions }) => {
               project_name {
                 text
               }
+              featured_image_is_gif
               featured_image {
-                localFile {
-                  childImageSharp {
-                    fluid {
-                      src
-                    }
-                  }
-                }
+                url
+                alt
               }
             }
           }
@@ -32,14 +28,10 @@ exports.createPages = async ({ graphql, actions }) => {
               project_name {
                 text
               }
+              featured_image_is_gif
               featured_image {
-                localFile {
-                  childImageSharp {
-                    fluid {
-                      src
-                    }
-                  }
-                }
+                url
+                alt
               }
             }
           }
@@ -50,14 +42,10 @@ exports.createPages = async ({ graphql, actions }) => {
               project_name {
                 text
               }
+              featured_image_is_gif
               featured_image {
-                localFile {
-                  childImageSharp {
-                    fluid {
-                      src
-                    }
-                  }
-                }
+                url
+                alt
               }
             }
           }
@@ -75,16 +63,16 @@ exports.createPages = async ({ graphql, actions }) => {
         previous: edge.previous
           ? edge.previous
           : pages.data.allPrismicProjectTemplate.edges[
-              pages.data.allPrismicProjectTemplate.edges.length - 1
-            ].node,
+            pages.data.allPrismicProjectTemplate.edges.length - 1
+          ].node,
         next: edge.next
           ? edge.next
           : pages.data.allPrismicProjectTemplate.edges[0].node,
         doubleNext:
           i + 2 > pages.data.allPrismicProjectTemplate.edges.length - 1
             ? pages.data.allPrismicProjectTemplate.edges[
-                i - (pages.data.allPrismicProjectTemplate.edges.length - 1) + 2
-              ].node
+              i - (pages.data.allPrismicProjectTemplate.edges.length - 1) + 2
+            ].node
             : pages.data.allPrismicProjectTemplate.edges[i + 2].node,
       },
     })

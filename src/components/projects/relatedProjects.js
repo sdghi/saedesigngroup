@@ -15,17 +15,9 @@ const RelatedProjects = ({ next, previous, doubleNext }) => {
   const [bindNext] = useCursorChange({ related: nextName.text })
   const [bindDoubleNext] = useCursorChange({ related: doubleNextName.text })
 
-  const {
-    src: prevImage,
-  } = previous.data.featured_image.localFile.childImageSharp.fluid
-
-  const {
-    src: nextImage,
-  } = next.data.featured_image.localFile.childImageSharp.fluid
-
-  const {
-    src: doubleNextImage,
-  } = doubleNext.data.featured_image.localFile.childImageSharp.fluid
+  const prevImage = previous.data.featured_image.url;
+  const nextImage = next.data.featured_image.url;
+  const doubleNextImage = doubleNext.data.featured_image.url;
 
   return (
     <div>

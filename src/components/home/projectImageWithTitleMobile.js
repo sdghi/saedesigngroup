@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { breakpointSmall } from "../../variables"
+import { breakpointSmall, black } from "../../variables"
 import { ImageContainer } from "../../elements"
 
 const ProjectImageWithTitleMobile = ({
@@ -15,7 +15,7 @@ const ProjectImageWithTitleMobile = ({
     //     project.node.data.featured_image.localFile.childImageSharp.fluid
     const imageAlt = project.node.data.featured_image.alt
 
-    const { featured_image_is_gif } = project.node.data
+    const { featured_image_is_gif, image_background_light } = project.node.data
 
     const [showProject, setShowProject] = useState(false)
 
@@ -57,7 +57,7 @@ const ProjectImageWithTitleMobile = ({
                                 <img className="featured-image-gif" src={project.node.data.featured_image.url} alt={imageAlt} />
                             }
 
-                            <h2>{projectName}</h2>
+                            <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
 
                         </ProjetContainer>
                     </Link>
@@ -85,6 +85,10 @@ const ProjetContainer = styled.div`
   margin: 0 auto 0 auto;
   width: 100%;
 
+  .featured-image-gif{
+      width: 100%;
+  }
+
   h2 {
     color: white;
     position: absolute;
@@ -94,7 +98,11 @@ const ProjetContainer = styled.div`
     font-size: 1.325em;
     letter-spacing: 0.1em;
     font-weight: 500;
-    bottom: 14px
+    bottom: 14px;
+
+    &.dark-text{
+        color: ${black};
+      }
   }
 
   ${ImageContainer} {

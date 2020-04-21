@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { breakpointSmall } from "../../variables"
+import { breakpointSmall, black } from "../../variables"
 import { ImageContainer } from "../../elements"
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { useCursorChange } from '../../hooks'
@@ -33,7 +33,8 @@ const ProjectImageWithTitle = ({
     size,
     is_case_study,
     placement,
-    featured_image_is_gif
+    featured_image_is_gif,
+    image_background_light
   } = project.node.data
 
 
@@ -85,8 +86,6 @@ const ProjectImageWithTitle = ({
 
   const [bind] = useCursorChange(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })
 
-
-
   return (
     <>
       {showProject && (
@@ -131,7 +130,7 @@ const ProjectImageWithTitle = ({
 
                 <img className="featured-image-gif" src={project.node.data.featured_image.url} alt={imageAlt} />
               }
-              <h2>{projectName}</h2>
+              <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
 
             </ProjetContainer>
           </Link>
@@ -193,7 +192,11 @@ const ProjetContainer = styled(motion.div)`
       font-size: 1.325em;
       letter-spacing: 0.1em;
       font-weight: 500;
-      bottom: 14px
+      bottom: 14px;
+
+      &.dark-text{
+        color: ${black};
+      }
       }
 
     ${ImageContainer} {

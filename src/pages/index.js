@@ -40,6 +40,7 @@ export const query = graphql`
               }
             }
             featured_image_is_gif
+            image_background_light
             is_case_study
             placement
             grid_column

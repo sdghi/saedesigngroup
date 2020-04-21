@@ -9,13 +9,12 @@ const variants = {
     },
     visible: {
         opacity: 1,
-        y: 0,
         transition: {
             duration: 0.8
         }
     },
     exit: {
-        Y: '-100%',
+        opacity: 0,
         transition: {
             duration: 0.4
         }

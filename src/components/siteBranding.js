@@ -77,8 +77,7 @@ export default SiteBranding
 const BrandingContainer = styled.div`
   display: flex;
   align-items: center;
-  max-width: 500px;
-  width: 10%;
+  width: 200px;
   position: fixed;
   top: 10px;
   left: 20px;

@@ -116,7 +116,7 @@ Layout.propTypes = {
 
 const ToggleBtn = styled.div`
   position: fixed;
-  top: 27px;
+  top: 31px;
   right: 20px;
   z-index: 99999;
   font-weight: 600;

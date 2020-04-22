@@ -13,13 +13,9 @@ const SDGFace = ({ rotation }) => {
     useEffect(() => {
         if (rotation[1] <= 0.25) {
             setCurrentX(rotation[1] + 0.5 * -1);
-            console.log('less')
         } else {
             setCurrentX(rotation[1]);
-            console.log('more')
         }
-
-        console.log(rotation[1])
 
         new GLTFLoader().load('/sdg-coin-face.gltf', setModel);
     }, [rotation]);

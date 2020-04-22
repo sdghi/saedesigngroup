@@ -123,6 +123,7 @@ const ProjectImageWithTitle = ({
                   heightMd="100%"
                   fluid={project.node.data.featured_image.localFile.childImageSharp.fluid}
                   alt={imageAlt}
+                  loading="lazy"
                 />
               }
               {

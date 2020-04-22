@@ -10,7 +10,7 @@ const SDGFace = ({ rotation }) => {
     const [model, setModel] = useState();
 
     useEffect(() => {
-        new GLTFLoader().load('/sdg.gltf', setModel);
+        new GLTFLoader().load('/sdg-coin-face.gltf', setModel);
     }, [rotation]);
 
 
@@ -18,7 +18,7 @@ const SDGFace = ({ rotation }) => {
         object={model.scene}
         scale={[25, 25, 25]}
         position={[0, -2.2, 0]}
-        rotation={[0.2, rotation[1] + 1, 0]}
+        rotation={[0.2, rotation[1] - 2, 0]}
         center
     /> : null
 }

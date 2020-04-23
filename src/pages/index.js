@@ -6,6 +6,7 @@ import { breakpointSmall } from "../variables"
 import { Container } from "../elements"
 import { useAppContext } from "../provider"
 import ProjectsFilter from "../components/home/projectsFilter"
+import ProjectGridToggle from '../components/home/projectGridToggle'
 import Logos from "../components/home/logos"
 import ProjectCategoryInfo from "../components/home/projectCategoryInfo"
 import MobileProjectsFilter from "../components/home/mobileProjectsFilter"
@@ -124,6 +125,12 @@ const IndexPage = ({ data }) => {
           setShowLogos={setShowLogos}
           showLogos={showLogos}
           showMobile={false}
+        />
+        <ProjectGridToggle
+          showLogos={showLogos}
+          projectCategoryFilter={projectCategoryFilter}
+          setDisplayProjectsGrid={setDisplayProjectsGrid}
+          displayProjectsGrid={displayProjectsGrid}
         />
         {/* Mobile project filter  */}
         <MobileProjectsFilter

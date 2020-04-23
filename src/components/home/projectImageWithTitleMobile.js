@@ -53,9 +53,9 @@ const ProjectImageWithTitleMobile = ({
                                     alt={imageAlt}
                                 />
                             }
-                            {featured_image_is_gif &&
-                                <img className="featured-image-gif" src={project.node.data.featured_image.url} alt={imageAlt} />
-                            }
+                            {/* {featured_image_is_gif &&
+                                <img className="featured-image-gif" src={project.node.data.featured_image.url} alt={imageAlt} loading="lazy" />
+                            } */}
 
                             <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
 

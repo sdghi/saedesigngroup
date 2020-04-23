@@ -194,6 +194,9 @@ const ProjetContainer = styled(motion.div)`
       letter-spacing: 0.1em;
       font-weight: 500;
       bottom: 14px;
+      font-size: 1em;
+      opacity: 0;
+      transition: all .2s ease-out;
 
       &.dark-text{
         color: ${black};
@@ -202,6 +205,13 @@ const ProjetContainer = styled(motion.div)`
 
     ${ImageContainer} {
       filter: brightness(0.95);
+    }
+
+    &:hover{
+      h2{
+        opacity: 1;
+        transition: all .2s ease-in;
+      }
     }
   }
 `

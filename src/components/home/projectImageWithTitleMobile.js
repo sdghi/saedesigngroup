@@ -99,6 +99,7 @@ const ProjetContainer = styled.div`
     letter-spacing: 0.1em;
     font-weight: 500;
     bottom: 14px;
+    font-size: 1mm;
 
     &.dark-text{
         color: ${black};

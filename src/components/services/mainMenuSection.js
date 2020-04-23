@@ -129,6 +129,17 @@ const MainMenu = styled.section`
       "print digital"
       "print sides";
 
+      .menu-of-services-header {
+          width: 100%;
+          left: 0;
+      }
+
+      .service-item h3 {
+        letter-spacing: 0.1em;
+        font-size: 14px;
+      }
+
+
       .branding{
         grid-area: branding;
       }

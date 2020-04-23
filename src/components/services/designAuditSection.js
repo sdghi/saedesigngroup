@@ -27,17 +27,25 @@ export default DesignAuditSection;
 
 
 const DesignAudit = styled.section`
-  padding: 50px 20px 20px 20px;
   border: 4px solid ${pink};
   border-radius: 19.41px;
   position: relative;
+  padding: 30px 20px 20px;
 
   .design-audit-header{
     position: absolute;
     top: -75px;
-    left: 30%;
     height: 150px;
-    width: 40%;
+    width: 60%;
+    left: 20%;
+  }
+
+  h4{
+    padding: 0 10px;
+  }
+
+  .design-audit-content {
+    margin-top: 15px;
   }
 
   @media(min-width: ${breakpointMedium}){

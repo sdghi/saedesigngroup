@@ -16,10 +16,13 @@ const MainMenuSection = ({ mainMenu, add_a_side_of }) => {
 
           {service.items.map((item, index) => (
             <motion.div key={index} className="service-item" positionTransition>
-              <h3
-                className="service-title"
-                onClick={() => setShowDescription(item.feature_title.text)}
-              >{item.feature_title.text}</h3>
+              <div className="title-cluster">
+                <h3
+                  className="service-title"
+                  onClick={() => setShowDescription(item.feature_title.text)}
+                >{item.feature_title.text}</h3>
+                {item.feature_title.text.toLowerCase() === 'brand strategy' && <p className="stars">stars</p>}
+              </div>
 
               {showDescription === item.feature_title.text && <p className="mobile">{item.feature_description.text}</p>}
               <p className="desktop">{item.feature_description.text}</p>
@@ -89,6 +92,18 @@ const MainMenu = styled.section`
 
   .service-item{
     margin-bottom: 18px;
+
+    .title-cluster{
+      position: relative;
+      width: fit-content;
+
+      .stars{
+        position: absolute;
+        right: -10%;
+        top: 0;
+      }
+    }
+
 
     h3{
       color: ${dark_blue};

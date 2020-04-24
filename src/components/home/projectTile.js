@@ -51,11 +51,11 @@ const ProjectTile = ({
         renderSizes()
 
         // Add Categories for filter
-        categories.map(category => {
+        categories.map(({ category }) => {
             // Show project if the category matches the project filter
             // If it's all show all the projects
-            if (category.category) {
-                if (projectCategoryFilter.toLowerCase() === category.category.slug) {
+            if (category) {
+                if (projectCategoryFilter.toLowerCase() === category.slug) {
                     setShowProject(true)
                 } else if (projectCategoryFilter === "all") {
                     setShowProject(true)

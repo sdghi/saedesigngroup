@@ -23,11 +23,13 @@ export const query = graphql`
               text
             }
           }
-          quote{
-            text
-          }
-          quote_author{
-            text
+          quotes{
+            quote{
+              text
+            }
+            quote_author{
+              text
+            }
           }
         }
       }
@@ -38,14 +40,14 @@ export const query = graphql`
 
 const AboutPage = ({ data }) => {
 
-  const { title, description, we_are, quote, quote_author } = data.allPrismicAbout.edges[0].node.data
+  const { title, description, we_are, quotes } = data.allPrismicAbout.edges[0].node.data
 
   return (
     <>
       <SEO title="About" />
       <AboutHero title={title} description={description} />
       <WeAreSection weAre={we_are} />
-      <AboutQuote quote={quote} quoteAuthor={quote_author} />
+      <AboutQuote quotes={quotes} />
       <ClientList />
     </>
   )

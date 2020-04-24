@@ -36,6 +36,7 @@ const GridToggleContainer = styled.div`
     top: 50%;
     padding-left: 20px;
     height: 50px;
+    z-index: 100;
 `;
 
 // Grid Btn

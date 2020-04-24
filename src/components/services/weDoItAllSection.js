@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { dark_blue, light_blue, white } from '../../variables'
+import { dark_blue, light_blue, white, breakpoint4k } from '../../variables'
 import backgroundImage from '../../images/curved-bg.svg'
 
 const WeDoItAllSection = ({ we_do_it_all }) => {
@@ -66,6 +66,12 @@ const WeDoItAll = styled.section`
       font-weight: 700;
       letter-spacing: 0.07em;
       text-transform: uppercase;
+    }
+  }
+
+  @media(min-width: ${breakpoint4k}){
+    .we-do-it-all-container h4 {
+      font-size: 18px; 
     }
   }
 `;

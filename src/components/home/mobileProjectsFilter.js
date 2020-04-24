@@ -1,7 +1,7 @@
 import React from "react"
 import ProjectsFilter from "./projectsFilter"
 import styled from "styled-components"
-import { breakpointSmall } from "../../variables"
+import { breakpointSmall, white } from "../../variables"
 import { useToggle } from '../../hooks'
 
 const MobileProjectFilter = ({

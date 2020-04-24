@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { pink, dark_blue, breakpointMedium } from '../../variables'
+import { pink, dark_blue, breakpointMedium, breakpoint4k, breakpointSmall } from '../../variables'
 
 const DesignAuditSection = ({ design_audit }) => {
   return (
@@ -27,17 +27,25 @@ export default DesignAuditSection;
 
 
 const DesignAudit = styled.section`
-  padding: 50px 20px 20px 20px;
   border: 4px solid ${pink};
   border-radius: 19.41px;
   position: relative;
+  padding: 30px 20px 20px;
 
   .design-audit-header{
     position: absolute;
     top: -75px;
-    left: 30%;
     height: 150px;
-    width: 40%;
+    width: 60%;
+    left: 20%;
+  }
+
+  h4{
+    padding: 0 10px;
+  }
+
+  .design-audit-content {
+    margin-top: 15px;
   }
 
   @media(min-width: ${breakpointMedium}){
@@ -85,4 +93,30 @@ const DesignAudit = styled.section`
     }
   }
 
+  @media(min-width: ${breakpoint4k}){
+    .design-audit-header{
+      top: -78px;
+    }
+
+   img {
+      padding: 0 20px 20px;
+    }
+
+    h4{
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      margin: 15px 0;
+    }
+
+    .design-audit-content {
+      h3 {
+        font-size: 18px;
+      }
+      p{
+        font-size: 15px;
+      }
+    }
+
+  }
 `;

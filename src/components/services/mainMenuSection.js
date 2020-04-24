@@ -12,7 +12,7 @@ const MainMenuSection = ({ mainMenu, add_a_side_of }) => {
       {mainMenu.map(service => (
         // Adds the name of the feature as a classname to use as a grid area  
         <div key={service.id} className={service.primary.title.text.toLowerCase()}>
-          <h2>{service.primary.title.text}</h2>
+          <h2 id="service">{service.primary.title.text}</h2>
 
           {service.items.map((item, index) => (
             <motion.div key={index} className="service-item" positionTransition>
@@ -129,6 +129,17 @@ const MainMenu = styled.section`
       "print digital"
       "print sides";
 
+      .menu-of-services-header {
+          width: 100%;
+          left: 0;
+      }
+
+      .service-item h3 {
+        letter-spacing: 0.1em;
+        font-size: 14px;
+      }
+
+
       .branding{
         grid-area: branding;
       }
@@ -182,6 +193,15 @@ const MainMenu = styled.section`
       "branding print digital"
       "sides sides sides";
 
+      .menu-of-services-header{
+        height: 500px;
+        top: -243px;
+      }
+
+      #service{
+        font-size: 36px;
+      }
+
       h2{
         font-size: 36px;
       }
@@ -189,10 +209,12 @@ const MainMenu = styled.section`
     .service-item{
       .service-title{
         font-size: 19px;
+        letter-spacing: 0.1em;
       }
 
       p{
-        font-size: 17px;
+        font-size: 16px; 
+        line-height: 24px;
       }
     }
 
@@ -206,6 +228,7 @@ const MainMenu = styled.section`
       h2{
         text-align: center;
         margin-bottom: 36px;  
+        font-size: 28px; 
       }
 
         ul{

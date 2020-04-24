@@ -43,7 +43,7 @@ const ContainerSection = styled(Container)`
 
   p {
     margin: auto;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 2;
   }
 

@@ -21,7 +21,7 @@ const MainMenuSection = ({ mainMenu, add_a_side_of }) => {
                   className="service-title"
                   onClick={() => setShowDescription(item.feature_title.text)}
                 >{item.feature_title.text}</h3>
-                {item.feature_title.text.toLowerCase() === 'brand strategy' && <p className="stars">stars</p>}
+                {item.feature_title.text.toLowerCase() === 'brand strategy' && <img className="stars" src={"/stars.svg"} alt="stars" />}
               </div>
 
               {showDescription === item.feature_title.text && <p className="mobile">{item.feature_description.text}</p>}
@@ -100,7 +100,8 @@ const MainMenu = styled.section`
       .stars{
         position: absolute;
         right: -10%;
-        top: 0;
+        top: -10px;
+        height: 30px;
       }
     }
 

@@ -2,16 +2,14 @@ import React, { useEffect, useState, useCallback } from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import styled from "styled-components"
-import { breakpointSmall } from "../variables"
-import { Container } from "../elements"
 import { useAppContext } from "../provider"
 import ProjectsFilter from "../components/home/projectsFilter"
+import ProjectGridToggle from '../components/home/projectGridToggle'
 import Logos from "../components/home/logos"
 import ProjectCategoryInfo from "../components/home/projectCategoryInfo"
 import MobileProjectsFilter from "../components/home/mobileProjectsFilter"
 import HomeHero from '../components/home/homeHero'
-import ProjectImageWithTitle from "../components/home/projectImageWithTitle"
-import ProjectImageWithTitleMobile from '../components/home/projectImageWithTitleMobile'
+import ProjectsContainer from "../components/home/projectsContainer"
 
 export const query = graphql`
   {
@@ -105,13 +103,6 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <SEO title="Home" />
-      {/* <HomeHeroSection
-        setCursorElement={setCursorElement}
-        setStartScroll={setStartScroll}
-        setProjectCategoryFilter={setProjectCategoryFilter}
-        setShowLogos={setShowLogos}
-        setScrollWindowHeight={setScrollWindowHeight}
-      /> */}
       <HomeHero />
 
       <ProjectsSection>
@@ -125,6 +116,12 @@ const IndexPage = ({ data }) => {
           showLogos={showLogos}
           showMobile={false}
         />
+        <ProjectGridToggle
+          showLogos={showLogos}
+          projectCategoryFilter={projectCategoryFilter}
+          setDisplayProjectsGrid={setDisplayProjectsGrid}
+          displayProjectsGrid={displayProjectsGrid}
+        />
         {/* Mobile project filter  */}
         <MobileProjectsFilter
           projectCategoryFilter={projectCategoryFilter}
@@ -135,6 +132,8 @@ const IndexPage = ({ data }) => {
           showLogos={showLogos}
           showMobile={true}
         />
+
+
         {showLogos && <Logos setCursorElement={setCursorElement} />}
 
         {/* Show the project category info it isn't all  and logos aren't active */}
@@ -142,39 +141,16 @@ const IndexPage = ({ data }) => {
           <ProjectCategoryInfo projectCategoryFilter={projectCategoryFilter} />
         )}
 
-        {!showLogos && (
-          <ProjectsContainer
-            display={displayProjectsGrid ? "grid" : "block"}
-            padding="0 5%"
-            margin="0"
-            marginMd="0"
-            paddingMd="0 15%"
-            ref={measuredRef}
-          >
-            {/* Desktop Tiles */}
-            {projects.map(project => (
-              <ProjectImageWithTitle
-                displayProjectsGrid={displayProjectsGrid}
-                key={project.node.uid}
-                project={project}
-                projectCategoryFilter={projectCategoryFilter}
-                setCursorElement={setCursorElement}
-                totalProjects={projects.length}
-                elTop={elTop}
-              />
+        <ProjectsContainer
+          showLogos={showLogos}
+          displayProjectsGrid={displayProjectsGrid}
+          measuredRef={measuredRef}
+          projects={projects}
+          projectCategoryFilter={projectCategoryFilter}
+          elTop={elTop}
+          setCursorElement={setCursorElement}
+        />
 
-            ))}
-            {/* Mobile Tiles */}
-            {projects.map(project => (
-              <ProjectImageWithTitleMobile
-                key={`${project.node.uid}-mobile`}
-                project={project}
-                projectCategoryFilter={projectCategoryFilter}
-                totalProjects={projects.length}
-              />
-            ))}
-          </ProjectsContainer>
-        )}
       </ProjectsSection>
     </>
   )
@@ -182,21 +158,10 @@ const IndexPage = ({ data }) => {
 
 export default IndexPage
 
-const ProjectsContainer = styled(Container)`
-  display: grid;
-  grid-gap: 20px;
-
-  @media (min-width: ${breakpointSmall}) {
-    display: ${({ display }) => display};
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    row-gap: 80px;
-    column-gap: 80px;
-    padding: 0 190px;
-  }
-`
 
 const ProjectsSection = styled.section`
   padding-top: 50px;
+  min-height: 100vh;
   height: fit-content;
   position: relative;
   overflow: initial;

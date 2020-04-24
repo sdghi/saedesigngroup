@@ -1,14 +1,12 @@
 import React from "react"
 import styled from "styled-components"
-import { breakpointSmall, breakpointMedium, black, grey } from "../../variables"
+import { breakpointSmall, breakpointMedium, black, pink, yellow } from "../../variables"
 import { useStaticQuery, graphql } from "gatsby"
 import { useCursorChange } from '../../hooks'
 
 const ProjectsFilter = ({
   projectCategoryFilter,
   setProjectCategoryFilter,
-  setDisplayProjectsGrid,
-  displayProjectsGrid,
   setShowLogos,
   showLogos,
   showMobile,
@@ -33,6 +31,7 @@ const ProjectsFilter = ({
   const handleClickEvent = (value, showLogo = false) => {
     setProjectCategoryFilter(value)
     setShowLogos(showLogo)
+    console.log(showLogos, showLogo)
   }
 
   const [bind] = useCursorChange({ selected: 'selected' });
@@ -75,25 +74,6 @@ const ProjectsFilter = ({
           </button>
         </div>
       </div>
-      {!showLogos && (
-        <div className="display-btn-container">
-
-          {projectCategoryFilter === 'all' &&
-            <>
-              <GridBtn
-                displayProjectsGrid={displayProjectsGrid}
-                setDisplayProjectsGrid={setDisplayProjectsGrid}
-              />
-
-              <StaggeredBtn
-                displayProjectsGrid={displayProjectsGrid}
-                setDisplayProjectsGrid={setDisplayProjectsGrid}
-              />
-            </>
-          }
-
-        </div>
-      )}
     </FilterContainer>
   )
 }
@@ -104,6 +84,7 @@ const FilterContainer = styled.div`
   position: sticky;
   width: fit-content;
   justify-content: space-between;
+  z-index: 100;
   top: 9vh;
   padding: 0 20px;
   margin-bottom: 20px;
@@ -128,18 +109,18 @@ const FilterContainer = styled.div`
         border: none;
         line-height: 1.5;
         text-transform: uppercase;
-        color: ${grey};
+        color: ${black};
         letter-spacing: 0.1em;
         font-size: 13px;
         font-weight: 700;
         margin-bottom: 5px;
 
         &.selected {
-          color: ${black};
+          color: ${yellow};
         }
 
         &:hover{
-          color: ${black};
+          color: ${pink};
         }
 
         &:focus {
@@ -155,7 +136,6 @@ const FilterContainer = styled.div`
 
   @media (min-width: ${breakpointSmall}) {
     display: ${({ showMobile }) => showMobile === true ? "none" : "flex"};
-    width: 100%;
 
     .display-btn-container {
       display: grid;
@@ -163,67 +143,16 @@ const FilterContainer = styled.div`
       grid-gap: 20px;
 
       svg {
-        fill: ${grey};
+        fill: ${black};
 
         &.selected {
-          fill: ${black};
+          fill: ${pink};
         }
       }
     }
   }
 
   @media (min-width: ${breakpointMedium}) {
-    z-index: 0;
+    z-index: 100;
   }
 `
-
-// Grid Btn
-const GridBtn = ({ setDisplayProjectsGrid, displayProjectsGrid }) => {
-
-  const [bind] = useCursorChange({ selected: 'selected' });
-
-  return (
-    <svg
-      className={displayProjectsGrid ? "selected" : null}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      onClick={() => setDisplayProjectsGrid(true)}
-      {...bind}
-    >
-      <path
-        d="M4-185h6v6H4Zm9,0h6v6H13Zm9,0h6v6H22ZM4-176h6v6H4Zm9,0h6v6H13Zm9,0h6v6H22ZM4-167h6v6H4Zm9,0h6v6H13Zm9,0h6v6H22Z"
-        transform="translate(-4 185)"
-      />
-    </svg>
-  )
-}
-
-// Staggered Btn
-const StaggeredBtn = ({ setDisplayProjectsGrid, displayProjectsGrid }) => {
-
-  const [bind] = useCursorChange({ selected: 'selected' });
-
-  return (
-    <svg
-      className={!displayProjectsGrid ? "selected" : null}
-      onClick={() => setDisplayProjectsGrid(false)}
-      xmlns="http://www.w3.org/2000/svg"
-      width="23.132"
-      height="24"
-      viewBox="0 0 23.132 24"
-      {...bind}
-    >
-      <g transform="translate(-4 -4)">
-        <rect width="5.337" height="4.801" transform="translate(21.795 4)" />
-        <rect width="15" height="9.526" transform="translate(4 8.801)" />
-        <rect
-          width="11.132"
-          height="7.227"
-          transform="translate(12.785 20.773)"
-        />
-      </g>
-    </svg>
-  )
-}

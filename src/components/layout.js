@@ -51,7 +51,6 @@ const Layout = ({ children, location }) => {
   useEffect(() => {
     setShowCursor(false)
     setCursorElement({ initial: "initial" })
-    document.body.style.overflow = isNavOpen ? "hidden" : "visible"
 
     return () => setCursorElement({ initial: "initial" })
   }, [location.pathname, isNavOpen])
@@ -73,11 +72,14 @@ const Layout = ({ children, location }) => {
       <GlobalStyle />
       <SiteBranding />
 
-      <Navigation
-        isNavOpen={isNavOpen}
-        toggleNav={toggleNav}
-        setCursorElement={setCursorElement}
-      />
+      <AnimatePresence>
+        {isNavOpen &&
+          <Navigation
+            isNavOpen={isNavOpen}
+            toggleNav={toggleNav}
+            setCursorElement={setCursorElement}
+          />}
+      </AnimatePresence>
 
       <ToggleBtn
         onClick={toggleNav}

@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { breakpointSmall } from '../../variables'
 import { Container } from '../../elements'
-import ProjectImageWithTitle from "./projectImageWithTitle"
-import ProjectImageWithTitleMobile from './projectImageWithTitleMobile'
 import ProjectTile from './projectTile'
 
 const ProjectsContainer = ({
@@ -51,5 +49,6 @@ const AllProjects = styled(Container)`
     display: ${({ display }) => display};
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-gap: 80px;
+    overflow-x: hidden;
   }
 `

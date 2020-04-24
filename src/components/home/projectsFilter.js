@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { breakpointSmall, breakpointMedium, black, pink, grey, yellow } from "../../variables"
+import { breakpointSmall, breakpointMedium, black, pink, yellow } from "../../variables"
 import { useStaticQuery, graphql } from "gatsby"
 import { useCursorChange } from '../../hooks'
 

@@ -132,6 +132,8 @@ const IndexPage = ({ data }) => {
           showLogos={showLogos}
           showMobile={true}
         />
+
+
         {showLogos && <Logos setCursorElement={setCursorElement} />}
 
         {/* Show the project category info it isn't all  and logos aren't active */}

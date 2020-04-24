@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Container, ImageContainer } from '../../elements'
+import { AnimatePresence } from 'framer-motion'
 import LoadingScreen from './loadingScreen'
 import styled from 'styled-components'
 
@@ -9,7 +10,10 @@ const ProjectHero = ({ heroImage, setCursorElement }) => {
 
     return (
         <HeroContainer padding="0" onMouseOver={() => setCursorElement({ initial: "initial" })}>
-            <LoadingScreen loadingScreen={loadingScreen} />
+            <AnimatePresence>
+                {loadingScreen && <LoadingScreen />}
+            </AnimatePresence>
+
             <ImageContainer
                 height="50vh"
                 width="100%"

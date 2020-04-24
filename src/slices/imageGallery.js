@@ -62,6 +62,15 @@ const ImageGallery = ({ slice }) => {
 
   }, [visibleImage])
 
+  const galleryVariants = {
+    hidden: {
+      opacity: 0
+    },
+    visible: {
+      opacity: 1
+    }
+  }
+
   return (
     <ScrollWrapper>
       <GalleryContainer margin="0 0 20vh 0" padding="0" paddingMd="0 5%">
@@ -72,16 +81,14 @@ const ImageGallery = ({ slice }) => {
           length={slice.items.length}
           onClick={() => handleSlideshowImage()}
         >
-          {items.map((item, i) => item.gallery_image.localFile &&
-            <div key={i}>
-              {i === visibleImage && i < items.length &&
-                <ImageContainer
-                  fluid={item.gallery_image.localFile.childImageSharp.fluid}
-                  width="100%"
-                />
-              }
-            </div>
-          )}
+          <AnimatePresence exitBeforeEnter>
+            <motion.div key={visibleImage} variants={galleryVariants} initial="hidden" animate="visible" exit="hidden">
+              <ImageContainer
+                fluid={items[visibleImage].gallery_image.localFile.childImageSharp.fluid}
+                width="100%"
+              />
+            </motion.div>
+          </AnimatePresence>
 
         </SlideshowWrapper>
         <div className="counter">

@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { yellow } from '../../variables'
+import { useScrollFreeze } from '../../hooks'
 
 const variants = {
     enter: {
@@ -16,29 +17,23 @@ const variants = {
     exit: {
         opacity: 0,
         transition: {
-            duration: 0.4
+            duration: 1,
         }
     }
 }
 
-const LoadingScreen = ({ loadingScreen }) => {
-    useEffect(() => {
-        document.body.style.overflow = loadingScreen ? "hidden" : "visible"
-    }, [loadingScreen])
+const LoadingScreen = () => {
+    useScrollFreeze();
 
     return (
-        <AnimatePresence>
-            {loadingScreen &&
-                <ScreenContainer
-                    variants={variants}
-                    initial="enter"
-                    animate="visible"
-                    exit="exit"
-                >
-                    loading loading loading
-                </ScreenContainer>
-            }
-        </AnimatePresence>
+        <ScreenContainer
+            variants={variants}
+            initial="enter"
+            animate="visible"
+            exit="exit"
+        >
+            More than T Shirts :)
+        </ScreenContainer>
 
     )
 }
@@ -51,7 +46,10 @@ const ScreenContainer = styled(motion.div)`
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 99;
     background: ${yellow};
     color: white;
     font-size: 50px;
+    display: grid;
+    place-items: center;
 `;

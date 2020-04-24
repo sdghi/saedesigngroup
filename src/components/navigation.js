@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { pink, yellow, black } from "../variables"
 import { useAppContext } from "../provider"
 import { motion } from 'framer-motion'
+import { useScrollFreeze } from '../hooks'
 
 const items = ["", "services", "about", "contact"]
 
@@ -58,6 +59,8 @@ const linkVariants = {
 const Navigation = ({ isNavOpen, setCursorElement, toggleNav }) => {
   const { scrollWindowHeight } = useAppContext()
 
+  useScrollFreeze()
+
   const handleNavClick = value => {
     toggleNav()
 
@@ -78,7 +81,8 @@ const Navigation = ({ isNavOpen, setCursorElement, toggleNav }) => {
     <Nav
       variants={navVariants}
       initial="closed"
-      animate={isNavOpen ? 'open' : 'closed'}
+      animate="open"
+      exit="closed"
     >
       <motion.ul variants={ulVariants}>
         {items.map((item, index) => (

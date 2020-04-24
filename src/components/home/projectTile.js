@@ -9,13 +9,10 @@ import { useCursorChange } from '../../hooks'
 const ProjectTile = ({
     project,
     projectCategoryFilter,
-    displayProjectsGrid,
-    elTop
+    displayProjectsGrid
 }) => {
     const [showProject, setShowProject] = useState(false)
     const [projectSize, setProjectSize] = useState(false)
-
-    const [placementValue, setPlacementValue] = useState(0)
 
     const slug = project.node.uid
     const categories = project.node.data.categories
@@ -52,9 +49,6 @@ const ProjectTile = ({
         // Reset to false in case it changes
         setShowProject(false)
         renderSizes()
-
-        // handle the placement value if there is no placement it will go on the top
-        placement ? setPlacementValue(parseInt(placement)) : setPlacementValue(1)
 
         // Add Categories for filter
         categories.map(category => {

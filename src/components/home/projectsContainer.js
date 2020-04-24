@@ -31,7 +31,6 @@ const ProjectsContainer = ({
                     projectCategoryFilter={projectCategoryFilter}
                     setCursorElement={setCursorElement}
                     totalProjects={projects.length}
-                    elTop={elTop}
                 />
 
             ))}

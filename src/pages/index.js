@@ -161,6 +161,7 @@ export default IndexPage
 
 const ProjectsSection = styled.section`
   padding-top: 50px;
+  min-height: 100vh;
   height: fit-content;
   position: relative;
   overflow: initial;

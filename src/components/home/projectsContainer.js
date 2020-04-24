@@ -13,8 +13,9 @@ const ProjectsContainer = ({
     elTop,
     setCursorElement
 }) => {
+    if (showLogos) return null
 
-    if (!showLogos) return (
+    return (
         <AllProjects
             display={displayProjectsGrid ? "grid" : "block"}
             padding="0 5%"

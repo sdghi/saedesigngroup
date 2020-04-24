@@ -31,6 +31,7 @@ const ProjectsFilter = ({
   const handleClickEvent = (value, showLogo = false) => {
     setProjectCategoryFilter(value)
     setShowLogos(showLogo)
+    console.log(showLogos, showLogo)
   }
 
   const [bind] = useCursorChange({ selected: 'selected' });

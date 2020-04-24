@@ -1,5 +1,6 @@
 import React from 'react'
 import { useCursorChange } from '../../hooks'
+import { breakpointSmall } from '../../variables'
 import styled from 'styled-components'
 
 const ProjectGridToggle = ({ showLogos, projectCategoryFilter, displayProjectsGrid, setDisplayProjectsGrid }) => {
@@ -32,11 +33,16 @@ const ProjectGridToggle = ({ showLogos, projectCategoryFilter, displayProjectsGr
 export default ProjectGridToggle
 
 const GridToggleContainer = styled.div`
-    position: sticky;
-    top: 50%;
-    padding-left: 20px;
-    height: 50px;
-    z-index: 100;
+    display: none;
+
+    @media(min-width: ${breakpointSmall}){
+        display: block;
+        position: sticky;
+        top: 50%;
+        padding-left: 20px;
+        height: 50px;
+        z-index: 100;   
+    }
 `;
 
 // Grid Btn

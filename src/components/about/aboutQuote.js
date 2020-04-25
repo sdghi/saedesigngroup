@@ -14,9 +14,9 @@ const AboutQuote = ({ quotes }) => {
             } else {
                 setCurrent(current + 1)
             }
-        }, 3000);
+        }, 5000);
         return () => clearInterval(handleQuoteChange);
-    }, [current])
+    }, [current, quotes.length])
 
     const quoteVariants = {
         hidden: {
@@ -28,20 +28,25 @@ const AboutQuote = ({ quotes }) => {
     }
 
     return (
-        <Container padding="130px 0" margin="0" height="100vh">
+        <QuoteContainer padding="50px 0" margin="0" height="100vh">
             <AnimatePresence exitBeforeEnter>
-                <QuoteContainer variants={quoteVariants} key={current} initial="hidden" animate="visible" exit="hidden">
+                <Quote variants={quoteVariants} key={current} initial="hidden" animate="visible" exit="hidden">
                     <Paragraph fontSizeMd="40px" lineHeight="1.6">&quot;{quotes[current].quote.text}&quot;</Paragraph>
                     <HeadingTwo fontSize="41px" fontWeight="400" textAlign="right">- {quotes[current].quote_author.text}</HeadingTwo>
-                </QuoteContainer>
+                </Quote>
             </AnimatePresence>
-        </Container>
+        </QuoteContainer>
     )
 }
 
 export default AboutQuote
 
-const QuoteContainer = styled(motion.div)`
+const QuoteContainer = styled(Container)`
+    display: grid;
+    place-items: center;
+`;
+
+const Quote = styled(motion.div)`
     max-width: 951px;
     margin: 0 auto;
 

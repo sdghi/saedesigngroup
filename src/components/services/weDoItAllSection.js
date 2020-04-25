@@ -70,8 +70,13 @@ const WeDoItAll = styled.section`
   }
 
   @media(min-width: ${breakpoint4k}){
-    .we-do-it-all-container h4 {
+    .we-do-it-all-container {
+      height: 80%;
+      padding-top: 50px;
+
+      h4 {
       font-size: 18px; 
+      }
     }
   }
 `;

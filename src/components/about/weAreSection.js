@@ -17,7 +17,7 @@ const WeAreSection = ({ weAre }) => {
         }, [2000])
 
         return () => { clearInterval(countChange) }
-    }, [count])
+    }, [count, weAre.length])
 
     const variants = {
         enter: {
@@ -26,10 +26,7 @@ const WeAreSection = ({ weAre }) => {
         },
         visible: {
             y: 0,
-            opacity: 1,
-            transition: {
-                delay: 0.8
-            }
+            opacity: 1
         },
         exit: {
             opacity: 0,
@@ -38,10 +35,10 @@ const WeAreSection = ({ weAre }) => {
     }
 
     return (
-        <Container padding="60px 0" margin="0">
+        <Container margin="0">
             <ContentContainer>
-                <Paragraph fontSize="36px" fontWeight="700">We are &nbsp;
-                <AnimatePresence>
+                <Paragraph fontSize="48px" fontWeight="700">We are &nbsp;
+                <AnimatePresence exitBeforeEnter>
                         <motion.span
                             className="we-are-text"
                             variants={variants}
@@ -62,11 +59,10 @@ export default WeAreSection
 const ContentContainer = styled.div`
     display: flex;
     align-items: center;
-    max-width: 959px;
-    padding: 0 5%;
-    min-height: 300px;
+    max-width: 1200px;
     margin: 0 auto;
     position: relative;
+    padding-bottom: 20px;
 
     .we-are-text{
         position: absolute;

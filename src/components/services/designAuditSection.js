@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { pink, dark_blue, breakpointMedium, breakpoint4k, breakpointSmall } from '../../variables'
+import { pink, dark_blue, breakpointMedium, breakpoint4k } from '../../variables'
 
 const DesignAuditSection = ({ design_audit }) => {
   return (

@@ -60,7 +60,7 @@ const ImageGallery = ({ slice }) => {
 
     return () => clearInterval(imageInterval)
 
-  }, [visibleImage])
+  }, [visibleImage, items.length])
 
   const galleryVariants = {
     hidden: {

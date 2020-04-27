@@ -10,7 +10,7 @@ const ProjectHero = ({ heroImage, setCursorElement }) => {
 
     return (
         <HeroContainer padding="0" onMouseOver={() => setCursorElement({ initial: "initial" })}>
-            <AnimatePresence>
+            <AnimatePresence >
                 {loadingScreen && <LoadingScreen />}
             </AnimatePresence>
 

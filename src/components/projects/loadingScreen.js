@@ -4,20 +4,37 @@ import { motion } from 'framer-motion'
 import { yellow } from '../../variables'
 import { useScrollFreeze } from '../../hooks'
 
-const variants = {
+const screenVariants = {
     enter: {
         opacity: 0
     },
     visible: {
         opacity: 1,
         transition: {
-            duration: 0.8
-        }
+            duration: 1,
+        },
     },
     exit: {
         opacity: 0,
         transition: {
-            duration: 1,
+            when: "afterChildren"
+        }
+    }
+}
+
+const textVariants = {
+    hidden: {
+        opacity: 0,
+        y: 100,
+        transition: {
+            duration: 0.5
+        }
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            delay: 0.8
         }
     }
 }
@@ -27,12 +44,14 @@ const LoadingScreen = () => {
 
     return (
         <ScreenContainer
-            variants={variants}
+            variants={screenVariants}
             initial="enter"
             animate="visible"
             exit="exit"
         >
-            More than T Shirts :)
+            <motion.h3 variants={textVariants} initial="hidden" animate="visible" exit="hidden">
+                More than T Shirts :)
+            </motion.h3>
         </ScreenContainer>
 
     )

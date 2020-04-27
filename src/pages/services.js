@@ -105,8 +105,8 @@ const MenuContainer = styled.div`
     }
 
     @media(min-width: ${breakpointSmall}){
-      margin: 15vh auto 0 auto;
-      padding: 18.5px;
+      margin: 0 auto;
+      padding: 15vh 18.5px 18.5px 18.5px;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 0.5fr 0.5fr;
       width: 100%;

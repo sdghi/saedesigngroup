@@ -8,25 +8,16 @@ import HeroMarquee from './heroMarquee'
 
 const SDGFace = ({ rotation }) => {
     const [model, setModel] = useState();
-    const [currentX, setCurrentX] = useState(rotation[1]);
 
     useEffect(() => {
-        if (rotation[1] <= 0.25) {
-            setCurrentX(rotation[1] + 0.5 * -1);
-        } else {
-            setCurrentX(rotation[1]);
-        }
-
         new GLTFLoader().load('/sdg-coin-face.gltf', setModel);
     }, [rotation]);
 
 
     return model ? <primitive
         object={model.scene}
-        scale={[25, 25, 25]}
-        position={[0, -2.2, 0]}
-        rotation={[0.2, currentX, 0]}
-        center
+        scale={[30, 30, 30]}
+        rotation={rotation}
     /> : null
 }
 
@@ -45,7 +36,7 @@ const HomeHero = () => {
                     gl.shadowMap.type = THREE.PCFSoftShadowMap;
                 }}
                 onPointerMove={({ clientX, clientY }) => {
-                    setRotation([(clientY / window.innerHeight * 1.5), (clientX / window.innerWidth / 2), 0])
+                    setRotation([(clientY / window.innerHeight / 2), (clientX / window.innerWidth / 2 - 0.3), 0])
                 }}
             >
                 <ambientLight intensity={1} />

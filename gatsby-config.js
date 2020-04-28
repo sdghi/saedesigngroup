@@ -23,11 +23,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `saedesigngroup`,
+        short_name: `SDG`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#EED36C`,
+        theme_color: `#EED36C`,
         display: `minimal-ui`,
         // Add Icon here
         icon: `src/images/sdg-icon.svg`, // This path is relative to the root of the site.
@@ -48,9 +48,15 @@ module.exports = {
           families: [`Source Sans Pro:300,400,700,900`]
         }
       }
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/`]
+      }
+
+    },
   ],
 }

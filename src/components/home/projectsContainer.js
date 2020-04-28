@@ -23,6 +23,7 @@ const ProjectsContainer = ({
             marginMd="0"
             paddingMd={displayProjectsGrid ? '0 10%' : '0'}
             ref={measuredRef}
+            displayProjectsGrid={displayProjectsGrid}
         >
             {projects.map(project => (
                 <ProjectTile
@@ -46,9 +47,9 @@ const AllProjects = styled(Container)`
   grid-gap: 20px;
 
   @media (min-width: ${breakpointSmall}) {
-    display: ${({ display }) => display};
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-gap: 80px;
     overflow-x: hidden;
+    display: grid;
+    grid-template-columns: ${({ displayProjectsGrid }) => displayProjectsGrid ? 'repeat(auto-fill, minmax(350px, 1fr))' : '1fr 1fr'} ; 
+    grid-gap: ${({ displayProjectsGrid }) => displayProjectsGrid ? '80px' : '0px'} ;
   }
 `

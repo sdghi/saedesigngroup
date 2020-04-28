@@ -1,8 +1,9 @@
 import styled from "styled-components"
+import { motion } from 'framer-motion'
 import { breakpointSmall } from "../../variables"
 import Img from "gatsby-image/withIEPolyfill"
 
-export const Container = styled.section`
+export const Container = styled(motion.section)`
   padding: ${({ padding }) => padding ? padding : "0 5%"};
   max-width: ${({ maxWidth }) => maxWidth};
   width: ${ ({ width }) => width};

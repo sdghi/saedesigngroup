@@ -64,9 +64,9 @@ const MainMenu = styled.section`
   .menu-of-services-header{
     position: absolute;
     top: -120px;
-    width: 50%;
+    width: 80%;
     height: 250px;
-    left: 25%;
+    left: 10%;
     z-index: 1;
   }
 

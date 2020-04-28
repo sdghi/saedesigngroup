@@ -4,17 +4,13 @@ import { motion } from 'framer-motion';
 
 const variants = {
     initial: {
-        opacity: 0,
-        y: '2vh'
+        opacity: 0
     },
     visible: {
         opacity: 1,
-        y: 0,
         transition: {
-            delay: 0.1,
-            type: 'spring',
-            damping: 200,
-            ease: [0.17, 0.67, 0.83, 0.67]
+            delay: 0.2,
+            ease: 'linear'
         }
     }
 }
@@ -23,10 +19,7 @@ const ScrollWrapper = ({ children }) => {
     const [isVisible, setVisible] = useState(false)
 
     return (
-        <Waypoint
-            topOffset='100px'
-            onEnter={() => setVisible(true)}
-        >
+        <Waypoint onEnter={() => setVisible(true)}>
             <motion.div
                 variants={variants}
                 initial="initial"

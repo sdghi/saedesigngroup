@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { useAppContext } from '../../provider'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Canvas } from 'react-three-fiber'
 import * as THREE from 'three'
@@ -6,26 +7,19 @@ import styled from 'styled-components'
 import { yellow, pink } from '../../variables'
 import HeroMarquee from './heroMarquee'
 
-const SDGFace = ({ rotation }) => {
-    const [model, setModel] = useState();
-
-    useEffect(() => {
-        new GLTFLoader().load('/sdg-coin-face.gltf', setModel);
-    }, [rotation]);
-
-
-    return model ? <primitive
-        object={model.scene}
-        scale={[30, 30, 30]}
-        rotation={rotation}
-    /> : null
-}
 
 const HomeHero = () => {
+    const heroRef = useRef();
     const [rotation, setRotation] = useState([0, 0, 0])
 
+    const { setScrollWindowHeight } = useAppContext();
+
+    useEffect(() => {
+        setScrollWindowHeight(heroRef.current.offsetHeight);
+    }, [heroRef])
+
     return (
-        <HeroContainer>
+        <HeroContainer ref={heroRef}>
             <Canvas
                 style={{ position: "absolute" }}
                 camera={{
@@ -49,6 +43,21 @@ const HomeHero = () => {
             <p className="scroll-cta">scroll down</p>
         </HeroContainer>
     )
+}
+
+const SDGFace = ({ rotation }) => {
+    const [model, setModel] = useState();
+
+    useEffect(() => {
+        new GLTFLoader().load('/sdg-coin-face.gltf', setModel);
+    }, [rotation]);
+
+
+    return model ? <primitive
+        object={model.scene}
+        scale={[30, 30, 30]}
+        rotation={rotation}
+    /> : null
 }
 
 export default HomeHero

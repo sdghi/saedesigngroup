@@ -22,16 +22,16 @@ const MapToggle = ({
         delay: 0.5,
         when: 'beforeChildren',
         staggerChildren: 0.1,
-        delayChildren: 0.2,
         staggerDirection: 1,
       }
     },
     exit: {
       scale: 0,
       transition: {
+        delay: 0.5,
         staggerChildren: 0.1,
-        delayChildren: 0.1,
-        staggerDirection: -1,
+        staggerDirection: 1,
+        when: 'afterChildren'
       }
     }
   }
@@ -45,8 +45,8 @@ const MapToggle = ({
       }
     },
     closed: {
-      x: -10,
-      opacity: 0
+      opacity: 0,
+      x: -10
     }
   }
 
@@ -208,6 +208,7 @@ const MapToggleContainer = styled(motion.div)`
     place-items: center;
     grid-gap: 10px;
     grid-template-columns: 2fr 0.5fr 2fr;
+    opacity: 1;
 
     h1 {
       font-size: 3rem;

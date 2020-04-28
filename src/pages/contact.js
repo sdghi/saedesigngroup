@@ -17,7 +17,8 @@ const ContactPage = () => {
       <SEO title="Contact" />
       <MapContainer>
         <button className="select-location-toggle" onClick={toggleMap}>Select Location</button>
-        <AnimatePresence>
+
+        <AnimatePresence exitBeforeEnter>
           {showMapToggle &&
             <MapToggle
               showOahuMap={showOahuMap}

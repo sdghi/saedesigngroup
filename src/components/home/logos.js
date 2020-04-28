@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { Container, ImageContainer } from "../../elements"
+import { motion } from 'framer-motion'
 import { breakpointSmall, breakpointMedium, pink } from "../../variables"
 import styled from "styled-components"
 
@@ -42,12 +43,17 @@ const Logos = ({ setCursorElement }) => {
 
   const [hoveredLogo, setHoveredLogo] = useState(null)
 
-  useEffect(() => {
-    console.log('hovered', hoveredLogo)
-  }, [hoveredLogo])
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    }
+  };
 
   return (
-    <LogosContainer padding="0 5%" paddingMd="0 15%" hoveredLogo={hoveredLogo}>
+    <LogosContainer padding="0 5%" paddingMd="0 15%" hoveredLogo={hoveredLogo} variants={containerVariants} initial="hidden" animate="visible">
       {logosData.map(logo => (
         <div
           className="logo-container"

@@ -5,6 +5,7 @@ import { pink, yellow, black } from "../variables"
 import { useAppContext } from "../provider"
 import { motion } from 'framer-motion'
 import { useScrollFreeze } from '../hooks'
+import 'scroll-behavior-polyfill'
 
 const items = ["", "services", "about", "contact"]
 

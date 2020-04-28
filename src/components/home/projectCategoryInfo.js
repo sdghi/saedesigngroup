@@ -2,6 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { breakpointSmall, breakpointMedium } from "../../variables"
 import styled from "styled-components"
+import { AnimatePresence, motion } from 'framer-motion'
 
 const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
   const data = useStaticQuery(graphql`
@@ -27,29 +28,43 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
     }
   `)
 
+  const variants = {
+    hidden: {
+      opacity: 0,
+      y: -20
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: "circOut",
+        duration: 0.3
+      }
+    }
+  }
+
   return (
     <>
       {data.allPrismicCategory.edges.map(item => {
         const id = item.node.id
         const { category, description, logos } = item.node.data
 
-        if (projectCategoryFilter.toLowerCase() === category.toLowerCase()) {
-          return (
-            <CategoryInfo key={id}>
-              <h2>{category}</h2>
-              <p>{description.text}</p>
+        if (projectCategoryFilter.toLowerCase() === category.toLowerCase()) return (
+          <CategoryInfo key={id}>
+            <h2>{category}</h2>
+            <p>{description.text}</p>
+            <AnimatePresence>
               {logos.length > 1 && (
-                <div className="hotel-logos">
+                <motion.div className="hotel-logos" variants={variants} initial="hidden" animate="visible" exit="hidden">
                   {logos.map((logo, i) => (
                     <img key={i} src={logo.logo.url} alt={logo.logo.alt} />
                   ))}
-                </div>
+                </motion.div>
               )}
-            </CategoryInfo>
-          )
-        }
+            </AnimatePresence>
+          </CategoryInfo>
+        )
 
-        return null
       })}
     </>
   )
@@ -57,7 +72,7 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
 
 export default ProjectCategoryInfo
 
-const CategoryInfo = styled.div`
+const CategoryInfo = styled(motion.div)`
   text-align: center;
   margin-bottom: 112px;
   width: 100%;

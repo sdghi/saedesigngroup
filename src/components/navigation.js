@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { pink, yellow, black } from "../variables"
@@ -56,26 +56,29 @@ const linkVariants = {
   }
 }
 
-const Navigation = ({ isNavOpen, setCursorElement, toggleNav }) => {
+const Navigation = ({ setCursorElement, toggleNav }) => {
   const { scrollWindowHeight } = useAppContext()
+  const [isWork, setIsWork] = useState(false)
 
   useScrollFreeze()
 
   const handleNavClick = value => {
     toggleNav()
-
     // If the value is work since the initial value is ""
     if (value === "") {
       // Set slight delay for the scroll animation
-      setTimeout(() => {
-        // Scroll down the window
-        window.scroll({
-          top: scrollWindowHeight,
-          behavior: "smooth",
-        })
-      }, 500)
+      setIsWork(true)
     }
   }
+
+  useEffect(() => {
+    isWork && setTimeout(() => {
+      window.scroll({
+        top: scrollWindowHeight,
+        behavior: "smooth",
+      })
+    }, 800)
+  }, [scrollWindowHeight, isWork])
 
   return (
     <Nav

@@ -37,7 +37,9 @@ export const query = graphql`
                 }
               }
             }
-            featured_image_is_gif
+            featured_image_video{
+              url
+            }
             image_background_light
             is_case_study
             placement

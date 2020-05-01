@@ -6,7 +6,7 @@
   "author": "sdghi",
   "dependencies": {
     "framer-motion": "^1.9.0",
-    "gatsby": "^2.19.7",
+    "gatsby": "^2.21.9",
     "gatsby-image": "^2.3.4",
     "gatsby-plugin-manifest": "^2.2.39",
     "gatsby-plugin-offline": "^3.0.32",

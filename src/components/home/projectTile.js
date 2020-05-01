@@ -28,10 +28,9 @@ const ProjectTile = ({
         size,
         is_case_study,
         placement,
-        featured_image_is_gif,
-        image_background_light
+        image_background_light,
+        featured_image_video
     } = project.node.data
-
 
     // Handle rendering the sizes
     const renderSizes = () => {
@@ -94,7 +93,7 @@ const ProjectTile = ({
                     columnIncrements={100 / 4}
                 >
                     <Link to={`/${slug}`}>
-                        {!featured_image_is_gif &&
+                        {!featured_image_video.url &&
                             <ImageContainer
                                 width="100%"
                                 widthMd="100%"
@@ -104,10 +103,8 @@ const ProjectTile = ({
                                 loading="lazy"
                             />
                         }
-                        {
-                            featured_image_is_gif &&
-
-                            <img className="featured-image-gif" src={project.node.data.featured_image.url} alt={imageAlt} />
+                        {featured_image_video.url &&
+                            <video className="featured-image-gif" src={featured_image_video.url} autoPlay loop muted playsInline />
                         }
                         <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
                     </Link>

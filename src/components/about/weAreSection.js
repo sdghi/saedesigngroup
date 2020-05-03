@@ -66,6 +66,5 @@ const ContentContainer = styled.div`
 
     .we-are-text{
         position: absolute;
-        font-weight: 500;
     }
 `;

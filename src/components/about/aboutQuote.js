@@ -7,16 +7,17 @@ import { pink } from '../../variables'
 const AboutQuote = ({ quotes }) => {
     const [current, setCurrent] = useState(0)
 
-    useEffect(() => {
-        const handleQuoteChange = setInterval(() => {
-            if (current === quotes.length - 1) {
-                setCurrent(0)
-            } else {
-                setCurrent(current + 1)
-            }
-        }, 5000);
-        return () => clearInterval(handleQuoteChange);
-    }, [current, quotes.length])
+    // Uncomment to enable the animation for the quotes 
+    // useEffect(() => {
+    //     const handleQuoteChange = setInterval(() => {
+    //         if (current === quotes.length - 1) {
+    //             setCurrent(0)
+    //         } else {
+    //             setCurrent(current + 1)
+    //         }
+    //     }, 5000);
+    //     return () => clearInterval(handleQuoteChange);
+    // }, [current, quotes.length])
 
     const quoteVariants = {
         hidden: {

@@ -95,7 +95,6 @@ export const query = graphql`
                 slice_type
                 primary {
                   layout
-                  image_is_gif
                   image {
                     alt
                     url
@@ -131,7 +130,6 @@ export const query = graphql`
                 slice_type
                 primary {
                   full_width
-                  image_is_gif
                   image {
                     url
                     alt

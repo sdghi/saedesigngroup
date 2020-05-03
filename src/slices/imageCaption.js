@@ -5,15 +5,14 @@ import styled from "styled-components"
 import ScrollWrapper from '../components/wrappers/scrollWrapper'
 
 const ImageCaption = ({ slice }) => {
-  const { image, caption, layout, image_is_gif } = slice.primary
+  const { image, caption, layout } = slice.primary
 
   return (
     <ScrollWrapper>
       <TwoThirdContainer
         padding="0"
         className={layout === 'Image Right Caption Left' && 'image-right'}>
-        {!image_is_gif && <ImageContainer fluid={image.localFile.childImageSharp.fluid} alt={image.alt} />}
-        {image_is_gif && <img className="gif-image-container" src={image.url} alt={image.alt} />}
+        <ImageContainer fluid={image.localFile.childImageSharp.fluid} alt={image.alt} />
         <Paragraph>{caption.text}</Paragraph>
       </TwoThirdContainer>
     </ScrollWrapper>

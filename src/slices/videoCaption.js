@@ -1,25 +1,30 @@
 import React from "react"
-import { Container, Paragraph, ImageContainer } from "../elements"
+import { Container, Paragraph } from "../elements"
 import { breakpointMedium, grey } from "../variables"
 import styled from "styled-components"
 import ScrollWrapper from '../components/wrappers/scrollWrapper'
 
-const ImageCaption = ({ slice }) => {
-  const { image, caption, layout } = slice.primary
+const VideoCaption = ({ slice }) => {
+    const { link, caption, layout } = slice.primary
 
-  return (
-    <ScrollWrapper>
-      <TwoThirdContainer
-        padding="0"
-        className={layout === 'Image Right Caption Left' && 'image-right'}>
-        <ImageContainer fluid={image.localFile.childImageSharp.fluid} alt={image.alt} />
-        <Paragraph>{caption.text}</Paragraph>
-      </TwoThirdContainer>
-    </ScrollWrapper>
-  )
+    return (
+        <ScrollWrapper>
+            <TwoThirdContainer
+                padding="0"
+                className={layout === 'Image Right Caption Left' && 'image-right'}>
+                <Video src={link.url} autoPlay muted loop playsInline />
+                <Paragraph>{caption.text}</Paragraph>
+            </TwoThirdContainer>
+        </ScrollWrapper>
+    )
 }
 
-export default ImageCaption
+export default VideoCaption
+
+const Video = styled.video`
+    height: 500px;
+    width: 100%;
+`;
 
 const TwoThirdContainer = styled(Container)`
 
@@ -51,8 +56,7 @@ const TwoThirdContainer = styled(Container)`
         grid-area: paragraph;
       }
 
-      .gif-image-container,
-      ${ImageContainer}{
+      ${Video}{
         grid-area: image;
       }
     }

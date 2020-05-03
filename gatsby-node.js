@@ -4,54 +4,60 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const pages = await graphql(`
-    {
-      allPrismicProjectTemplate {
-        edges {
-          node {
-            id
-            uid
-            data {
-              project_name {
-                text
-              }
-              featured_image_is_gif
-              featured_image {
-                url
-                alt
-              }
+  {
+    allPrismicProjectTemplate {
+      edges {
+        node {
+          id
+          uid
+          data {
+            project_name {
+              text
+            }
+            featured_image_video{
+              url
+            }
+            featured_image {
+              url
+              alt
             }
           }
-          next {
-            uid
-            id
-            data {
-              project_name {
-                text
-              }
-              featured_image_is_gif
-              featured_image {
-                url
-                alt
-              }
+        }
+        next {
+          uid
+          id
+          data {
+            project_name {
+              text
+            }
+            featured_image_video{
+              url
+            }
+            featured_image {
+              url
+              alt
             }
           }
-          previous {
-            uid
-            id
-            data {
-              project_name {
-                text
-              }
-              featured_image_is_gif
-              featured_image {
-                url
-                alt
-              }
+        }
+        previous {
+          uid
+          id
+          data {
+            project_name {
+              text
+            }
+            featured_image_video{
+              url
+            }
+            featured_image {
+              url
+              alt
             }
           }
         }
       }
     }
+  }
   `)
 
   pages.data.allPrismicProjectTemplate.edges.forEach((edge, i) => {

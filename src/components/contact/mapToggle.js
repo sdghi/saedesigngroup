@@ -160,13 +160,16 @@ const MapToggleContainer = styled(motion.div)`
   background: ${white};
   height: fit-content;
   width: fit-content;
-  padding: 20px;
+  padding: 18px 32px 30px;
   box-sizing: content-box;
   z-index: 100;
   position: absolute;
 
   h5 {
     text-align: center;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
   }
 
   button {
@@ -220,6 +223,7 @@ const MapToggleContainer = styled(motion.div)`
     margin-top: 30px;
 
     a {
+      font-size: 18px;
       color: ${black};
     }
   }

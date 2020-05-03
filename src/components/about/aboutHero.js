@@ -8,7 +8,6 @@ const AboutHero = ({ title, description, weAre }) => {
     return (
         <HeroContainer height="93vh" margin="0" >
             <WeAreSection weAre={weAre} />
-            {/* <HeadingTwo fontWeight="300" fontSizeMd="124px" textAlign="center" css={{ margin: 0 }}>{title.text}</HeadingTwo> */}
             <HeroContent dangerouslySetInnerHTML={{ __html: description.html }} />
         </HeroContainer>
     )
@@ -29,7 +28,7 @@ const HeroContent = styled.div`
     margin: 0 auto;
 
     p{
-        font-weight: 300;
+        font-weight: 400;
         line-height: 1.5;
     }
 

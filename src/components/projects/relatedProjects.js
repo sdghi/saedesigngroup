@@ -19,6 +19,10 @@ const RelatedProjects = ({ next, previous, doubleNext }) => {
   const nextImage = next.data.featured_image.url;
   const doubleNextImage = doubleNext.data.featured_image.url;
 
+  const { featured_image_video: nextVideo } = next.data;
+  const { featured_image_video: prevVideo } = previous.data;
+  const { featured_image_video: doubleNextVideo } = doubleNext.data;
+
   return (
     <div>
       <HeadingTwo
@@ -34,21 +38,30 @@ const RelatedProjects = ({ next, previous, doubleNext }) => {
           to={`/${previous.uid}`}
           {...bindPrev}
         >
-          <img src={prevImage} alt={prevName.text} />
+          {prevVideo.url ?
+            <video src={prevVideo.url} autoPlay loop muted playsInline /> :
+            <img src={prevImage} alt={prevName.text} />
+          }
           <p>{prevName.text}</p>
         </Link>
         <Link
           to={`/${next.uid}`}
           {...bindNext}
         >
-          <img src={nextImage} alt={nextName.text} />
+          {nextVideo.url ?
+            <video src={nextVideo.url} autoPlay loop muted playsInline /> :
+            <img src={nextImage} alt={nextName.text} />
+          }
           <p>{nextName.text}</p>
         </Link>
         <Link
           to={`/${doubleNext.uid}`}
           {...bindDoubleNext}
         >
-          <img src={doubleNextImage} alt={doubleNextName.text} />
+          {doubleNextVideo.url ?
+            <video src={doubleNextVideo.url} autoPlay loop muted playsInline /> :
+            <img src={doubleNextImage} alt={doubleNextName.text} />
+          }
           <p>{doubleNextName.text}</p>
         </Link>
       </RelatedWrapper>
@@ -67,7 +80,8 @@ const RelatedWrapper = styled.div`
     margin-right: 30px;
   }
 
-  img {
+  img ,
+  video{
     height: 280px;
     object-fit: cover;
     width: 280px;
@@ -90,9 +104,12 @@ const RelatedWrapper = styled.div`
 
     a {
       margin-right: 0;
+      position: relative;
+      width: 100%;
     }
 
-    img {
+    img,
+    video {
       width: 100%;
       height: 330px;
     }

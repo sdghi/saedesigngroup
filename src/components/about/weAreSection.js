@@ -14,7 +14,7 @@ const WeAreSection = ({ weAre }) => {
                 setCount(count + 1)
             }
 
-        }, [2000])
+        }, [2200])
 
         return () => { clearInterval(countChange) }
     }, [count, weAre.length])
@@ -66,6 +66,5 @@ const ContentContainer = styled.div`
 
     .we-are-text{
         position: absolute;
-        font-weight: 500;
     }
 `;

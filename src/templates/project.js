@@ -11,9 +11,12 @@ import LargeImage from "../slices/largeImage"
 import ImageCaption from "../slices/imageCaption"
 import ImageGallery from "../slices/imageGallery"
 import StaggeredImages from "../slices/staggeredImages"
+import LargeGifVideo from '../slices/largeGifVideo'
+import VideoCaption from '../slices/videoCaption'
 
 const ProjectSlices = ({ slices, theme }) => {
   return slices.map((slice, index) => {
+
     const res = (() => {
       switch (slice.slice_type) {
         case "text_section":
@@ -28,6 +31,10 @@ const ProjectSlices = ({ slices, theme }) => {
           return <ImageGallery key={index} slice={slice} theme={theme} />
         case "staggered_images":
           return <StaggeredImages key={index} slice={slice} theme={theme} />
+        case "2_3_video___caption":
+          return <VideoCaption key={index} slice={slice} theme={theme} />
+        case "large_gif_video":
+          return <LargeGifVideo key={index} slice={slice} theme={theme} />
         default:
           return
       }
@@ -111,6 +118,27 @@ export const query = graphql`
                   }
                 }
               }
+              ... on PrismicProjectTemplateBody23VideoCaption{
+              slice_type
+              primary{
+                layout
+                link{
+                  url
+                }
+                caption{
+                  text
+                }
+              }
+            }
+            ... on PrismicProjectTemplateBodyLargeGifVideo{
+              slice_type
+              primary{
+                link{
+                  url
+                }
+                full_width
+              }
+            }
               ... on PrismicProjectTemplateBodyImageGallery {
                 slice_type
                 items {

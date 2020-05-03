@@ -1,5 +1,4 @@
 import React from "react"
-import styled from 'styled-components'
 import { Container, ImageContainer } from "../elements"
 import ScrollWrapper from '../components/wrappers/scrollWrapper'
 

@@ -145,10 +145,12 @@ const IndexPage = ({ data }) => {
 
         <ProjectsContainer
           showLogos={showLogos}
+          setShowLogos={setShowLogos}
           displayProjectsGrid={displayProjectsGrid}
           measuredRef={measuredRef}
           projects={projects}
           projectCategoryFilter={projectCategoryFilter}
+          setProjectCategoryFilter={setProjectCategoryFilter}
           elTop={elTop}
           setCursorElement={setCursorElement}
         />

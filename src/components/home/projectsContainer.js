@@ -10,8 +10,9 @@ const ProjectsContainer = ({
     measuredRef,
     projects,
     projectCategoryFilter,
-    elTop,
-    setCursorElement
+    setProjectCategoryFilter,
+    setCursorElement,
+    setShowLogos
 }) => {
     if (showLogos) return null
 
@@ -33,6 +34,8 @@ const ProjectsContainer = ({
                     projectCategoryFilter={projectCategoryFilter}
                     setCursorElement={setCursorElement}
                     totalProjects={projects.length}
+                    setShowLogos={setShowLogos}
+                    setProjectCategoryFilter={setProjectCategoryFilter}
                 />
 
             ))}

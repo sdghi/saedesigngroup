@@ -9,7 +9,9 @@ import { useCursorChange } from '../../hooks'
 const ProjectTile = ({
     project,
     projectCategoryFilter,
-    displayProjectsGrid
+    displayProjectsGrid,
+    setProjectCategoryFilter,
+    setShowLogos
 }) => {
     const [showProject, setShowProject] = useState(false)
     const [projectSize, setProjectSize] = useState(false)
@@ -68,6 +70,12 @@ const ProjectTile = ({
 
     const [bind] = useCursorChange(is_case_study ? { caseStudy: 'caseStudy' } : { selected: "selected" })
 
+    const handleLogoSelection = () => {
+        setShowLogos(true);
+        setProjectCategoryFilter("");
+    }
+
+
     return (
         <>
             {showProject && (
@@ -92,22 +100,42 @@ const ProjectTile = ({
                     // IF COLUMNS OR THE WIDTH OF THE CONTAINER EVER CHANGES THEN THESE VALUES ALSO NEED TO CHANGE
                     columnIncrements={100 / 4}
                 >
-                    <Link to={`/${slug}`}>
-                        {!featured_image_video.url &&
-                            <ImageContainer
-                                width="100%"
-                                widthMd="100%"
-                                heightMd="100%"
-                                fluid={project.node.data.featured_image.localFile.childImageSharp.fluid}
-                                alt={imageAlt}
-                                loading="lazy"
-                            />
-                        }
-                        {featured_image_video.url &&
-                            <video className="featured-image-gif" src={featured_image_video.url} autoPlay loop muted playsInline />
-                        }
-                        <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
-                    </Link>
+                    {slug === 'logo-selection' &&
+                        <div onClick={handleLogoSelection}>
+                            {!featured_image_video.url &&
+                                <ImageContainer
+                                    width="100%"
+                                    widthMd="100%"
+                                    heightMd="100%"
+                                    fluid={project.node.data.featured_image.localFile.childImageSharp.fluid}
+                                    alt={imageAlt}
+                                    loading="lazy"
+                                />
+                            }
+                            {featured_image_video.url &&
+                                <video className="featured-image-gif" src={featured_image_video.url} autoPlay loop muted playsInline />
+                            }
+                            <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
+                        </div>}
+                    {slug !== 'logo-selection' &&
+                        <Link to={`/${slug}`}>
+                            {!featured_image_video.url &&
+                                <ImageContainer
+                                    width="100%"
+                                    widthMd="100%"
+                                    heightMd="100%"
+                                    fluid={project.node.data.featured_image.localFile.childImageSharp.fluid}
+                                    alt={imageAlt}
+                                    loading="lazy"
+                                />
+                            }
+                            {featured_image_video.url &&
+                                <video className="featured-image-gif" src={featured_image_video.url} autoPlay loop muted playsInline />
+                            }
+                            <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
+                        </Link>
+
+                    }
                 </TileContent>
             )
             }

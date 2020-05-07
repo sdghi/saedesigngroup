@@ -4,6 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Canvas } from 'react-three-fiber'
 import * as THREE from 'three'
 import styled from 'styled-components'
+import { useWindowWidth } from '../../hooks'
 import { yellow, pink } from '../../variables'
 import HeroMarquee from './heroMarquee'
 
@@ -17,6 +18,7 @@ const HomeHero = () => {
     useEffect(() => {
         setScrollWindowHeight(heroRef.current.offsetHeight);
     }, [heroRef])
+
 
     return (
         <HeroContainer ref={heroRef}>
@@ -47,15 +49,27 @@ const HomeHero = () => {
 
 const SDGFace = ({ rotation }) => {
     const [model, setModel] = useState();
+    const modelRef = useRef()
+    const [scale, setScale] = useState([])
 
+    const windowWidth = useWindowWidth();
     useEffect(() => {
         new GLTFLoader().load('/sdg-coin-face.gltf', setModel);
     }, [rotation]);
 
+    useEffect(() => {
+        if (windowWidth < 768) {
+            setScale([window.innerWidth / 20, window.innerWidth / 20, window.innerWidth / 20])
+        } else {
+            setScale([window.innerWidth / 50, window.innerWidth / 50, window.innerWidth / 50])
+        }
+    }, [windowWidth])
+
 
     return model ? <primitive
+        ref={modelRef}
         object={model.scene}
-        scale={[35, 35, 35]}
+        scale={scale}
         rotation={rotation}
     /> : null
 }

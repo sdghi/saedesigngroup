@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pages = await graphql(`
   {
-    allPrismicProjectTemplate {
+    allPrismicProjectTemplate(filter: {uid: {ne: "logo-selection"}}) {
       edges {
         node {
           id
@@ -14,7 +14,7 @@ exports.createPages = async ({ graphql, actions }) => {
             project_name {
               text
             }
-            featured_image_video{
+            featured_image_video {
               url
             }
             featured_image {
@@ -30,7 +30,7 @@ exports.createPages = async ({ graphql, actions }) => {
             project_name {
               text
             }
-            featured_image_video{
+            featured_image_video {
               url
             }
             featured_image {
@@ -46,7 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
             project_name {
               text
             }
-            featured_image_video{
+            featured_image_video {
               url
             }
             featured_image {

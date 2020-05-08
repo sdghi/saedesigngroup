@@ -13,7 +13,7 @@ const ImageCaption = ({ slice }) => {
         padding="0"
         className={layout === 'Image Right Caption Left' && 'image-right'}>
         <ImageContainer fluid={image.localFile.childImageSharp.fluid} alt={image.alt} />
-        <Paragraph>{caption.text}</Paragraph>
+        <div className="caption" dangerouslySetInnerHTML={{ __html: caption.html }}></div>
       </TwoThirdContainer>
     </ScrollWrapper>
   )
@@ -23,7 +23,7 @@ export default ImageCaption
 
 const TwoThirdContainer = styled(Container)`
 
-  ${Paragraph} {
+  .caption {
     font-size: 12px;
     line-height: 18px;
     color: ${grey};

@@ -35,9 +35,9 @@ const WeAreSection = ({ weAre }) => {
     }
 
     return (
-        <Container margin="0">
+        <Container margin="0" padding="0">
             <ContentContainer>
-                <Paragraph fontSize="48px" fontWeight="700">We are &nbsp;
+                <Paragraph fontSize="1.4rem" fontSizeMd="48px" fontWeight="700">We are &nbsp;
                 <AnimatePresence exitBeforeEnter>
                         <motion.span
                             className="we-are-text"

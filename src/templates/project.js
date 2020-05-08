@@ -115,6 +115,7 @@ export const query = graphql`
                   }
                   caption {
                     text
+                    html
                   }
                 }
               }
@@ -127,6 +128,7 @@ export const query = graphql`
                 }
                 caption{
                   text
+                  html
                 }
               }
             }
@@ -176,6 +178,7 @@ export const query = graphql`
                 primary {
                   caption {
                     text
+                    html
                   }
                   reverse_images
                   image_1 {

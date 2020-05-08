@@ -136,7 +136,7 @@ const StaggeredImageContainer = styled(Container)`
 
     .caption {
       position: relative;
-      top: -200px;
+      top: -300px;
       right: ${({ reverseImages }) => reverseImages ? 'none' : '5%'};
       left: ${({ reverseImages }) => reverseImages ? '5%' : 'none'};
       max-width: 258px;

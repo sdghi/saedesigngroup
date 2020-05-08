@@ -5,18 +5,18 @@ import styled from "styled-components"
 import ScrollWrapper from '../components/wrappers/scrollWrapper'
 
 const VideoCaption = ({ slice }) => {
-    const { link, caption, layout } = slice.primary
+  const { link, caption, layout } = slice.primary
 
-    return (
-        <ScrollWrapper>
-            <TwoThirdContainer
-                padding="0"
-                className={layout === 'Image Right Caption Left' && 'image-right'}>
-                <Video src={link.url} autoPlay muted loop playsInline />
-                <Paragraph>{caption.text}</Paragraph>
-            </TwoThirdContainer>
-        </ScrollWrapper>
-    )
+  return (
+    <ScrollWrapper>
+      <TwoThirdContainer
+        padding="0"
+        className={layout === 'Image Right Caption Left' && 'image-right'}>
+        <Video src={link.url} autoPlay muted loop playsInline />
+        <div className="caption" dangerouslySetInnerHTML={{ __html: caption.html }}></div>
+      </TwoThirdContainer>
+    </ScrollWrapper>
+  )
 }
 
 export default VideoCaption
@@ -28,7 +28,7 @@ const Video = styled.video`
 
 const TwoThirdContainer = styled(Container)`
 
-  ${Paragraph} {
+  .caption {
     font-size: 12px;
     line-height: 18px;
     color: ${grey};
@@ -41,7 +41,7 @@ const TwoThirdContainer = styled(Container)`
     padding: 0;
     place-items: center;
 
-    ${Paragraph} {
+    .caption {
       max-width: 194px;
       font-size: 14px;
       line-height: 26px;
@@ -52,7 +52,7 @@ const TwoThirdContainer = styled(Container)`
       grid-template-columns: 1fr 2fr;
       grid-template-areas: "paragraph image";
       
-      ${Paragraph}{
+      .caption{
         grid-area: paragraph;
       }
 

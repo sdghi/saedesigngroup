@@ -51,7 +51,7 @@ const StaggeredImages = ({ slice }) => {
 
         <motion.div style={ref && { y }} className="desktop-image">
           {caption &&
-            <Paragraph className="desktop-caption">{caption.text}</Paragraph>
+            <div className="desktop-caption caption" dangerouslySetInnerHTML={{ __html: caption.html }}></div>
           }
           <ImageContainer
             fluid={imageTwoSrc}
@@ -80,7 +80,7 @@ const StaggeredImages = ({ slice }) => {
         />
 
         {caption &&
-          <Paragraph className="mobile-caption">{caption.text}</Paragraph>
+          <div className="mobile-caption caption" dangerouslySetInnerHTML={{ __html: caption.html }}></div>
         }
       </ScrollWrapper>
     </StaggeredImageContainer >
@@ -93,15 +93,17 @@ export default StaggeredImages
 
 const StaggeredImageContainer = styled(Container)`
 
-  ${Paragraph} {
-    font-size: 14px;
+  .caption{
+      display: none;
+      font-size: 14px;
     line-height: 26px;
     color: ${grey};
+    }
 
-    &.desktop-caption{
+    .desktop-caption{
       display: none;
     }
-  }
+
 
   .desktop-image{
     display: none;
@@ -112,15 +114,13 @@ const StaggeredImageContainer = styled(Container)`
     flex-direction: column;
     position: relative;
 
-    ${Paragraph}{
-      &.mobile-caption{
+    .mobile-caption{
         display: none;
       }
 
-      &.desktop-caption{
+      .desktop-caption{
         display: block;
       }
-    }
 
     .desktop-image{
       display: block;
@@ -134,7 +134,7 @@ const StaggeredImageContainer = styled(Container)`
       display: none;
     }
 
-    ${Paragraph} {
+    .caption {
       position: relative;
       top: -200px;
       right: ${({ reverseImages }) => reverseImages ? 'none' : '5%'};
@@ -145,7 +145,7 @@ const StaggeredImageContainer = styled(Container)`
   }
 
   @media (min-width: ${breakpointMedium}) {
-    ${Paragraph} {
+    .caption{
       right: ${({ reverseImages }) => reverseImages ? 'none' : '20%'};
       left: ${({ reverseImages }) => reverseImages ? '15%' : 'none'};
     }

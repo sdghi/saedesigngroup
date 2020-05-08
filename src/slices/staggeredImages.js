@@ -26,7 +26,7 @@ const StaggeredImages = ({ slice }) => {
     setElTop(element.offsetHeight);
   }, [ref, elTop]);
 
-  const y = useTransform(scrollY, [elTop, elTop + 11], [0, -1], {
+  const y = useTransform(scrollY, [elTop, elTop + 10], [0, -1], {
     clamp: false
   });
 
@@ -41,7 +41,7 @@ const StaggeredImages = ({ slice }) => {
             alt={image_1.alt}
             widthMd="60%"
             margin={reverse_images ? "0 0 20px auto" : "0 0 20px 0"}
-            marginMd={reverse_images ? "5% 0 0 auto" : "5% 0 0 0"}
+            marginMd={reverse_images ? "0 0 0 auto" : "0"}
             width="80%"
             height="auto"
             heightMd="auto"
@@ -50,6 +50,9 @@ const StaggeredImages = ({ slice }) => {
 
 
         <motion.div style={ref && { y }} className="desktop-image">
+          {caption &&
+            <Paragraph className="desktop-caption">{caption.text}</Paragraph>
+          }
           <ImageContainer
             fluid={imageTwoSrc}
             alt={image_2.alt}
@@ -57,7 +60,7 @@ const StaggeredImages = ({ slice }) => {
             widthMd="60%"
             height="auto"
             heightMd="auto"
-            marginMd={reverse_images ? "-5% auto 0 0" : "-5% 0 0 auto"}
+            marginMd={reverse_images ? "-10% auto 0 0" : "-10% 0 0 auto"}
           />
         </motion.div>
 
@@ -77,7 +80,7 @@ const StaggeredImages = ({ slice }) => {
         />
 
         {caption &&
-          <Paragraph>{caption.text}</Paragraph>
+          <Paragraph className="mobile-caption">{caption.text}</Paragraph>
         }
       </ScrollWrapper>
     </StaggeredImageContainer >
@@ -94,6 +97,10 @@ const StaggeredImageContainer = styled(Container)`
     font-size: 14px;
     line-height: 26px;
     color: ${grey};
+
+    &.desktop-caption{
+      display: none;
+    }
   }
 
   .desktop-image{
@@ -104,6 +111,16 @@ const StaggeredImageContainer = styled(Container)`
     display: flex;
     flex-direction: column;
     position: relative;
+
+    ${Paragraph}{
+      &.mobile-caption{
+        display: none;
+      }
+
+      &.desktop-caption{
+        display: block;
+      }
+    }
 
     .desktop-image{
       display: block;
@@ -118,8 +135,8 @@ const StaggeredImageContainer = styled(Container)`
     }
 
     ${Paragraph} {
-      position: absolute;
-      top: 25%;
+      position: relative;
+      top: -200px;
       right: ${({ reverseImages }) => reverseImages ? 'none' : '5%'};
       left: ${({ reverseImages }) => reverseImages ? '5%' : 'none'};
       max-width: 258px;

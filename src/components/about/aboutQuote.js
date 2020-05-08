@@ -29,11 +29,11 @@ const AboutQuote = ({ quotes }) => {
     }
 
     return (
-        <QuoteContainer padding="50px 0" margin="0" height="100vh">
+        <QuoteContainer paddingMd="50px 0" margin="0" height="100vh">
             <AnimatePresence exitBeforeEnter>
                 <Quote variants={quoteVariants} key={current} initial="hidden" animate="visible" exit="hidden">
                     <Paragraph fontSizeMd="40px" lineHeight="1.6"><q>{quotes[current].quote.text}</q></Paragraph>
-                    <HeadingTwo fontSize="41px" fontWeight="400" textAlign="right">- {quotes[current].quote_author.text}</HeadingTwo>
+                    <HeadingTwo fontSize="1.2rem" fontSizeMd="41px" fontWeight="400" textAlign="right">- {quotes[current].quote_author.text}</HeadingTwo>
                 </Quote>
             </AnimatePresence>
         </QuoteContainer>

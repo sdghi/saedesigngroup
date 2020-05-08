@@ -19,6 +19,8 @@ const HomeHero = () => {
         setScrollWindowHeight(heroRef.current.offsetHeight);
     }, [heroRef])
 
+    const windowWidth = useWindowWidth()
+
 
     return (
         <HeroContainer ref={heroRef}>
@@ -32,12 +34,12 @@ const HomeHero = () => {
                     gl.shadowMap.type = THREE.PCFSoftShadowMap;
                 }}
                 onPointerMove={({ clientX, clientY }) => {
-                    setRotation([(clientY / window.innerHeight / 2.5), (clientX / window.innerWidth / 2 - 0.3), 0])
+                    windowWidth > 768 && setRotation([(clientY / window.innerHeight / 2.5), (clientX / window.innerWidth / 2 - 0.3), 0])
                 }}
             >
                 <ambientLight intensity={1} />
                 <spotLight position={[5, 10, 5]} intensity={0.8} penumbra="1" />
-                <SDGFace rotation={rotation} />
+                <SDGFace rotation={rotation} windowWidth={windowWidth} />
                 <fog attach="fog" args={[yellow, 5, 15]} />
             </Canvas>
 
@@ -47,12 +49,11 @@ const HomeHero = () => {
     )
 }
 
-const SDGFace = ({ rotation }) => {
+const SDGFace = ({ rotation, windowWidth }) => {
     const [model, setModel] = useState();
     const modelRef = useRef()
     const [scale, setScale] = useState([])
 
-    const windowWidth = useWindowWidth();
     useEffect(() => {
         new GLTFLoader().load('/sdg-coin-face.gltf', setModel);
     }, [rotation]);
@@ -61,7 +62,7 @@ const SDGFace = ({ rotation }) => {
         if (windowWidth < 768) {
             setScale([window.innerWidth / 20, window.innerWidth / 20, window.innerWidth / 20])
         } else {
-            setScale([window.innerWidth / 50, window.innerWidth / 50, window.innerWidth / 50])
+            setScale([window.innerWidth / 60, window.innerWidth / 60, window.innerWidth / 60])
         }
     }, [windowWidth])
 

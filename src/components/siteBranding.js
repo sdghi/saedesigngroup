@@ -45,7 +45,7 @@ const BrandingContainer = styled.div`
   position: fixed;
   top: 23px;
   left: 20px;
-  z-index: 99999;
+  z-index: 999;
 
   svg{
     width: 100%;

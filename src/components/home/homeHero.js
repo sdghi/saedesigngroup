@@ -55,14 +55,14 @@ const SDGFace = ({ rotation, windowWidth }) => {
     const [scale, setScale] = useState([])
 
     useEffect(() => {
-        new GLTFLoader().load('/sdg-coin-face.gltf', setModel);
+        new GLTFLoader().load('/sdg-face.gltf', setModel);
     }, [rotation]);
 
     useEffect(() => {
         if (windowWidth < 768) {
             setScale([window.innerWidth / 20, window.innerWidth / 20, window.innerWidth / 20])
         } else {
-            setScale([window.innerWidth / 60, window.innerWidth / 60, window.innerWidth / 60])
+            setScale([window.innerWidth / 40, window.innerWidth / 40, window.innerWidth / 40])
         }
     }, [windowWidth])
 

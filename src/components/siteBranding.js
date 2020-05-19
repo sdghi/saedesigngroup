@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from 'styled-components'
-import { pink } from '../variables'
+import { pink, breakpointSmall } from '../variables'
 import { useCursorChange } from '../hooks'
 
 const SiteBranding = ({ toggleNav, isNavOpen }) => {
@@ -45,7 +45,7 @@ const BrandingContainer = styled.div`
   position: fixed;
   top: 23px;
   left: 20px;
-  z-index: 99999;
+  z-index: 999;
 
   svg{
     width: 100%;
@@ -62,6 +62,7 @@ const BrandingContainer = styled.div`
   }
 
   #sdg-heading{
+    display: block;
     width: 200%;
   }
 

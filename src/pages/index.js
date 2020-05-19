@@ -102,11 +102,12 @@ const IndexPage = ({ data }) => {
     }
   }, []);
 
+  const { model } = useAppContext();
+
   return (
     <>
       <SEO title="Home" />
       <HomeHero />
-
       <ProjectsSection>
         {/* Desktop project filter  */}
         <ProjectsFilter

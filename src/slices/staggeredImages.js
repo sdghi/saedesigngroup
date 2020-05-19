@@ -92,12 +92,10 @@ const StaggeredImages = ({ slice }) => {
 export default StaggeredImages
 
 const StaggeredImageContainer = styled(Container)`
-
   .caption{
-      display: none;
       font-size: 14px;
-    line-height: 26px;
-    color: ${grey};
+      line-height: 26px;
+      color: ${grey};
     }
 
     .desktop-caption{
@@ -136,9 +134,10 @@ const StaggeredImageContainer = styled(Container)`
 
     .caption {
       position: relative;
-      top: -300px;
-      right: ${({ reverseImages }) => reverseImages ? 'none' : '5%'};
-      left: ${({ reverseImages }) => reverseImages ? '5%' : 'none'};
+      top: -140px;
+      right: ${({ reverseImages }) => reverseImages ? 'none' : '2.5%'};
+      left: ${({ reverseImages }) => reverseImages ? '2.5%' : 'none'};
+      margin-left: ${({ reverseImages }) => reverseImages ? '0' : 'auto'};
       max-width: 258px;
       margin-top: 0;
     }
@@ -146,8 +145,9 @@ const StaggeredImageContainer = styled(Container)`
 
   @media (min-width: ${breakpointMedium}) {
     .caption{
-      right: ${({ reverseImages }) => reverseImages ? 'none' : '20%'};
-      left: ${({ reverseImages }) => reverseImages ? '15%' : 'none'};
+      top: -300px;
+      right: ${({ reverseImages }) => reverseImages ? 'none' : '10%'};
+      left: ${({ reverseImages }) => reverseImages ? '10%' : 'none'};
     }
   }
 `

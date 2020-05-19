@@ -13,6 +13,8 @@ const Provider = props => {
   // For the hero text filter items
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [totalFilterImages, setTotalFilterImages] = useState(0)
+  // For Hero 3d models
+  const [model, setModel] = useState();
 
   const [pageTheme, setPageTheme] = useState("Light");
 
@@ -33,7 +35,9 @@ const Provider = props => {
         totalFilterImages,
         setTotalFilterImages,
         pageTheme,
-        setPageTheme
+        setPageTheme,
+        model,
+        setModel
       }}
     >
       {props.children}

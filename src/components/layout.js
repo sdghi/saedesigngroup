@@ -39,7 +39,7 @@ const Layout = ({ children, location }) => {
     setXValue,
     setYValue,
     cursorElement,
-    setCursorElement,
+    setCursorElement
   } = useAppContext()
 
   const [showCursor, setShowCursor] = useState(false);
@@ -70,23 +70,6 @@ const Layout = ({ children, location }) => {
   return (
     <div onMouseMove={e => { handleTrackCursor(e) }}>
       <GlobalStyle />
-      <SiteBranding />
-
-      <AnimatePresence>
-        {isNavOpen &&
-          <Navigation
-            isNavOpen={isNavOpen}
-            toggleNav={toggleNav}
-            setCursorElement={setCursorElement}
-          />}
-      </AnimatePresence>
-
-      <ToggleBtn
-        onClick={toggleNav}
-        {...bind}
-      >
-        <motion.h2 whileHover={{ scale: 1.2, rotate: 4 }}>{isNavOpen ? "close" : "menu"}</motion.h2>
-      </ToggleBtn>
 
       {showCursor && (
         <CustomCursor
@@ -97,6 +80,17 @@ const Layout = ({ children, location }) => {
       )}
 
       <AnimatePresence>
+        {isNavOpen &&
+          <Navigation
+            isNavOpen={isNavOpen}
+            toggleNav={toggleNav}
+            setCursorElement={setCursorElement}
+          />}
+      </AnimatePresence>
+
+
+
+      <AnimatePresence>
         <motion.main
           key={location && location.pathname}
           variants={variants}
@@ -104,6 +98,14 @@ const Layout = ({ children, location }) => {
           animate="enter"
           exit="exit"
         >
+          <SiteBranding />
+          <ToggleBtn
+            onClick={toggleNav}
+            {...bind}
+          >
+            <motion.h2 whileHover={{ scale: 1.2, rotate: 4 }}>{isNavOpen ? "close" : "menu"}</motion.h2>
+          </ToggleBtn>
+
           {children}
         </motion.main>
       </AnimatePresence>

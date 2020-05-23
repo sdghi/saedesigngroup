@@ -6,11 +6,11 @@ import styled from 'styled-components'
 
 const ProjectHero = ({ heroImage, setCursorElement }) => {
 
-    const [loadingScreen, showLoadingScreen] = useState(true)
+    const [loadingScreen, showLoadingScreen,] = useState(true);
 
     return (
         <HeroContainer padding="0" onMouseOver={() => setCursorElement({ initial: "initial" })}>
-            <AnimatePresence >
+            <AnimatePresence>
                 {loadingScreen && <LoadingScreen />}
             </AnimatePresence>
 
@@ -23,7 +23,7 @@ const ProjectHero = ({ heroImage, setCursorElement }) => {
                 fluid={heroImage.localFile.childImageSharp.fluid}
                 alt={heroImage.alt}
                 loading="eager"
-                onLoad={() => showLoadingScreen(false)}
+                onLoad={() => { showLoadingScreen(false); console.log('cancel loading screen') }}
             />
         </HeroContainer>
     )

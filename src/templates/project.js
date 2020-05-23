@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import RelatedProjects from "../components/projects/relatedProjects"
@@ -13,6 +13,7 @@ import ImageGallery from "../slices/imageGallery"
 import StaggeredImages from "../slices/staggeredImages"
 import LargeGifVideo from '../slices/largeGifVideo'
 import VideoCaption from '../slices/videoCaption'
+import { AnimatePresence } from "framer-motion"
 
 const ProjectSlices = ({ slices, theme }) => {
   return slices.map((slice, index) => {

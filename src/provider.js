@@ -18,7 +18,6 @@ const Provider = props => {
 
   const [pageTheme, setPageTheme] = useState("Light");
 
-
   return (
     <myContext.Provider
       value={{

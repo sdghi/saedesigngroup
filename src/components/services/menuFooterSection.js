@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { light_blue, dark_blue, pink, breakpointMedium, breakpointTablet, breakpoint4k, oswald } from '../../variables'
+import { Link } from 'gatsby'
+import { light_blue, dark_blue, pink, breakpointMedium, breakpointTablet, breakpoint4k, oswald, darkYellow, black } from '../../variables'
+import { HeadingTwo } from '../../elements'
 
 const MenuFooterSection = () => {
   return (
@@ -9,19 +11,13 @@ const MenuFooterSection = () => {
         <h3 className="footer-cta">WHO YOU GOING CALL?</h3>
         <hr />
         <div className="footer-main">
-          <div className="phone-number">
-            <h2><a href="tel:808-249-2200">808-249-2200</a></h2>
-            <h4>SERVING ALL ISLANDS & BEYOND</h4>
+          <div className="quote-info">
+            <HeadingTwo fontSize="24px" fontSizeMd="26px" color={light_blue}>for Quotes & more info:</HeadingTwo>
+            <p>Tell us about your project and needs. Let’s get to know each other a little better. Then we’ll create a proposal made specifically for you. And if you like where things are going, maybe we could start  a relationship…</p>
           </div>
-          <div className="address">
-            <div>
-              <h4>MAUI OFFICE</h4>
-              <a href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225">2261 Aupuni St # 101, Wailuku, Hi 96793</a>
-            </div>
-            <div>
-              <h4>‘OAHU OFFICE</h4>
-              <a href="https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513">555 South Street #108, Honolulu, Hi 96813</a>
-            </div>
+          <div className="contact-info">
+            <Link to="/contact">Contact Us</Link>
+            <span>contact info / locations / map</span>
           </div>
         </div>
         <hr />
@@ -51,49 +47,56 @@ const MenuFooter = styled.div`
   }
 
   .footer-cta{
-    font-size: 40px;
+    font-size: 30px;
     color: ${pink};
     text-align: center;
-  }
-
-  .phone-number{
-    text-align: center;
-    margin-bottom: 14px;
-
-    h2{
-      font-size: 46px;
-      font-family: ${oswald};
-
-      a{
-        color: ${dark_blue};
-      }
-    }
-
-    h4{
-      font-size: 17px;
-      color: ${pink};
-      letter-spacing: 0.2rem;
-    }
-  }
-
-  .address{
-    text-align: center;
-
-    div{
-      margin-bottom: 14px;
-
-      a{
-        color: ${dark_blue};
-
-        &:hover{
-          color: ${pink};
-        }
-      }
-    }
+    margin-bottom: 20px;
+    letter-spacing: 0.04em;
   }
 
   .footer-main{
-    padding: 21px 0;
+    padding: 21px 15px;
+
+    a{
+      width: 100%;
+      background: ${darkYellow};
+      border-radius: 10px;
+      text-align: center;
+      padding: 11px 0;
+      font-size: 26px;
+      font-weight: 600;
+      margin-top: 15px;
+      margin-bottom: 13.4px;
+      color: ${black};
+    }
+
+    ${HeadingTwo},
+    a{
+    text-transform: uppercase;
+    font-family: ${oswald};
+    font-weight: 600;
+  }
+
+  .quote-info{
+    p{
+      font-size: 15px;
+      line-height: 1.5333
+    }
+  }
+
+    .contact-info{
+      display: flex;
+      flex-direction: column;
+
+      span{
+        margin: 0 auto;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 11px;
+        color: ${pink};
+        letter-spacing: 0.09em;
+      }
+    }
   }
 
   .right{
@@ -114,57 +117,32 @@ const MenuFooter = styled.div`
     }
   
     .footer-cta{ 
-      font-size: 56px;
+      font-size: 35px;
     }
 
     .footer-main{
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 425px 1fr;
+      grid-gap: 50px;
+      align-items: center;
 
-      .phone-number{
-        text-align: left;
-
-        h2{
-          font-size: 64px;
-
-          &:hover{
-            a{
-              color: ${light_blue};
-            }
-          }
-        }
-        h4{
-          font-size: 24px;
-        }
-      }
-
-      .address{
-        text-align: left;
+      a{
+        margin-top: 0;
       }
     }
   }
 
-  @media(min-width: ${breakpointMedium}){
-    .footer-cta{
-      font-size: 50px;
-    }
-  }
 
   @media(min-width: ${breakpoint4k}){
     .footer-cta{
-      font-size: 36px;
+      margin-bottom: 14px;
     }
-
+  
     .footer-main{
       display: block;
 
-      .phone-number{
-        text-align: center;
-      }
-
-      .address{
-        display: flex;
-        padding: 15px 20px 0 20px;
+      a{
+        margin-top: 12px;
       }
     }
   }

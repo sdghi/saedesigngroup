@@ -5,6 +5,7 @@ export const lightGrey = "#E0E1E3"
 export const dark_blue = "#0c363c"
 export const pink = "#EA3056"
 export const yellow = "#EED36C"
+export const darkYellow = '#EABC4E'
 export const brown = "#c6944c"
 export const light_blue = "#84c9b8"
 export const loadingContentColor = "#f1f2f6"

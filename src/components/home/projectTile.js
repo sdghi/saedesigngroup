@@ -20,7 +20,6 @@ const ProjectTile = ({
     const categories = project.node.data.categories
     const projectName = project.node.data.project_name.text
     const imageAlt = project.node.data.featured_image.alt
-
     const {
         grid_column,
         top,
@@ -51,6 +50,7 @@ const ProjectTile = ({
         setShowProject(false)
         renderSizes()
 
+
         // Add Categories for filter
         categories.map(({ category }) => {
             // Show project if the category matches the project filter
@@ -61,8 +61,14 @@ const ProjectTile = ({
                 } else if (projectCategoryFilter === "all") {
                     setShowProject(true)
                 }
+            } if (!category) {
+                // Edge case is user doesn't input a category for a project
+                if (projectCategoryFilter === 'all') {
+                    setShowProject(true)
+                } else {
+                    setShowProject(false)
+                }
             }
-
 
             return null
         })
@@ -75,71 +81,67 @@ const ProjectTile = ({
         setProjectCategoryFilter("");
     }
 
+    if (!showProject) return null;
 
     return (
-        <>
-            {showProject && (
-                <TileContent
-                    key={project.uid}
-                    displayProjectsGrid={displayProjectsGrid}
-                    {...bind}
-                    // Adjust sizes of non grid according to cms
-                    // 70 and 100 are the biggest values that work before breaking the grid
-                    // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
-                    widthMd={displayProjectsGrid ? "100%" : `${70 * projectSize}%`}
-                    // Top, Left, Bottom and Right will be directly affected by their properties in the cms
-                    top={displayProjectsGrid ? "0" : top}
-                    left={displayProjectsGrid ? "0" : left}
-                    right={displayProjectsGrid ? "0" : right}
-                    bottom={displayProjectsGrid ? "0" : bottom}
-                    placement={placement ? placement : 1}
-                    // Subtract 1 so that if its the 1st column it will start at margin 0
-                    gridColumn={grid_column - 1}
-                    // Total width of allProjectsContainer / total number of columns
-                    // Container is 100% wide with 4 columns
-                    // IF COLUMNS OR THE WIDTH OF THE CONTAINER EVER CHANGES THEN THESE VALUES ALSO NEED TO CHANGE
-                    columnIncrements={100 / 4}
-                >
-                    {slug === 'logo-selection' &&
-                        <div onClick={handleLogoSelection}>
-                            {!featured_image_video.url &&
-                                <ImageContainer
-                                    width="100%"
-                                    widthMd="100%"
-                                    heightMd="100%"
-                                    fluid={project.node.data.featured_image.localFile.childImageSharp.fluid}
-                                    alt={imageAlt}
-                                    loading="lazy"
-                                />
-                            }
-                            {featured_image_video.url &&
-                                <video className="featured-image-gif" src={featured_image_video.url} autoPlay loop muted playsInline />
-                            }
-                            <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
-                        </div>}
-                    {slug !== 'logo-selection' &&
-                        <Link to={`/${slug}`}>
-                            {!featured_image_video.url &&
-                                <ImageContainer
-                                    width="100%"
-                                    widthMd="100%"
-                                    heightMd="100%"
-                                    fluid={project.node.data.featured_image.localFile.childImageSharp.fluid}
-                                    alt={imageAlt}
-                                    loading="lazy"
-                                />
-                            }
-                            {featured_image_video.url &&
-                                <video className="featured-image-gif" src={featured_image_video.url} autoPlay loop muted playsInline />
-                            }
-                            <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
-                        </Link>
-
+        <TileContent
+            key={project.uid}
+            displayProjectsGrid={displayProjectsGrid}
+            {...bind}
+            // Adjust sizes of non grid according to cms
+            // 70 and 100 are the biggest values that work before breaking the grid
+            // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
+            widthMd={displayProjectsGrid ? "100%" : `${70 * projectSize}%`}
+            // Top, Left, Bottom and Right will be directly affected by their properties in the cms
+            top={displayProjectsGrid ? "0" : top}
+            left={displayProjectsGrid ? "0" : left}
+            right={displayProjectsGrid ? "0" : right}
+            bottom={displayProjectsGrid ? "0" : bottom}
+            placement={placement ? placement : 1}
+            // Subtract 1 so that if its the 1st column it will start at margin 0
+            gridColumn={grid_column - 1}
+            // Total width of allProjectsContainer / total number of columns
+            // Container is 100% wide with 4 columns
+            // IF COLUMNS OR THE WIDTH OF THE CONTAINER EVER CHANGES THEN THESE VALUES ALSO NEED TO CHANGE
+            columnIncrements={100 / 4}
+        >
+            {slug === 'logo-selection' &&
+                <div onClick={handleLogoSelection}>
+                    {!featured_image_video.url &&
+                        <ImageContainer
+                            width="100%"
+                            widthMd="100%"
+                            heightMd="100%"
+                            fluid={project.node.data.featured_image.localFile.childImageSharp.fluid}
+                            alt={imageAlt}
+                            loading="lazy"
+                        />
                     }
-                </TileContent>
-            )
+                    {featured_image_video.url &&
+                        <video className="featured-image-gif" src={featured_image_video.url} autoPlay loop muted playsInline />
+                    }
+                    <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
+                </div>}
+            {slug !== 'logo-selection' &&
+                <Link to={`/${slug}`}>
+                    {!featured_image_video.url &&
+                        <ImageContainer
+                            width="100%"
+                            widthMd="100%"
+                            heightMd="100%"
+                            fluid={project.node.data.featured_image.localFile.childImageSharp.fluid}
+                            alt={imageAlt}
+                            loading="lazy"
+                        />
+                    }
+                    {featured_image_video.url &&
+                        <video className="featured-image-gif" src={featured_image_video.url} autoPlay loop muted playsInline />
+                    }
+                    <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
+                </Link>
+
             }
-        </>
+        </TileContent>
     )
 }
 
@@ -149,6 +151,9 @@ const TileContent = styled(motion.div)`
     position: relative;
 
   .featured-image-gif{
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 100%; 
   }

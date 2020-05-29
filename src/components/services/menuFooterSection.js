@@ -16,8 +16,15 @@ const MenuFooterSection = () => {
             <p>Tell us about your project and needs. Let’s get to know each other a little better. Then we’ll create a proposal made specifically for you. And if you like where things are going, maybe we could start  a relationship…</p>
           </div>
           <div className="contact-info">
-            <Link to="/contact">Contact Us</Link>
-            <span>contact info / locations / map</span>
+            <a href="tel:808-249-2200"><strong>P:</strong> 808-249-2200</a>
+            <a href="mailto: info@saedesign.com"><strong>E:</strong> info@saedesigngroup.com</a>
+
+            <div className="button-collection">
+              <a href="tel:808-249-2200">Call</a>
+              <a href="mailto: info@saedesign.com">Email</a>
+            </div>
+
+            {/* <span>contact info / locations / map</span> */}
           </div>
         </div>
         <hr />
@@ -57,21 +64,50 @@ const MenuFooter = styled.div`
   .footer-main{
     padding: 21px 15px;
 
-    a{
+    .contact-info{
+      display: flex;
+      flex-direction: column;
+      margin-top: 12.2px;
+
+      a{
+        color: ${black};
+
+        &:hover{
+          color: ${pink};
+        }
+      }
+    }
+
+    .button-collection{
+      margin-top: 12.7px;
       width: 100%;
-      background: ${darkYellow};
-      border-radius: 10px;
-      text-align: center;
-      padding: 11px 0;
-      font-size: 26px;
-      font-weight: 600;
-      margin-top: 15px;
-      margin-bottom: 13.4px;
-      color: ${black};
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 4px;
+
+      a{
+        background: ${darkYellow};
+        width: 100%;
+        font-size: 26px;
+        padding: 12px 0;
+        color: ${black};
+        text-align: center;
+        border-radius: 0 10px 10px 0;
+        font-weight: 600;
+
+        &:first-of-type{
+          border-radius: 10px 0 0 10px;
+        }
+
+        &:hover{
+          color: ${black};
+          background: ${light_blue};
+        }
+      }
     }
 
     ${HeadingTwo},
-    a{
+    .button-collection a{
     text-transform: uppercase;
     font-family: ${oswald};
     font-weight: 600;
@@ -83,20 +119,6 @@ const MenuFooter = styled.div`
       line-height: 1.5333
     }
   }
-
-    .contact-info{
-      display: flex;
-      flex-direction: column;
-
-      span{
-        margin: 0 auto;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 11px;
-        color: ${pink};
-        letter-spacing: 0.09em;
-      }
-    }
   }
 
   .right{
@@ -125,6 +147,10 @@ const MenuFooter = styled.div`
       grid-template-columns: 425px 1fr;
       grid-gap: 50px;
       align-items: center;
+
+      .contact-info{
+        margin-top: 0;
+      }
 
       a{
         margin-top: 0;

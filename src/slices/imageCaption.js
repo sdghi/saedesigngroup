@@ -27,7 +27,7 @@ const TwoThirdContainer = styled(Container)`
     font-size: 12px;
     line-height: 18px;
     color: ${grey};
-    text-align: center;
+    max-width: 194px;
   }
 
   @media (min-width: ${breakpointMedium}) {

@@ -5,8 +5,8 @@ import { pink, dark_blue, breakpointMedium, breakpoint4k } from '../../variables
 const DesignAuditSection = ({ design_audit }) => {
   return (
     <DesignAudit className="design-audit">
-      <img className="design-audit-header" src={"/new-item.svg"} alt="new item" />
-      <img src={"/design-audit.svg"} alt="design audit" />
+      <img className="header-new-item" src={"/new-item.svg"} alt="new item" />
+      <img className="header-design-audit" src={"/design-audit.svg"} alt="design audit" />
       <hr />
       <h4>IT MAY BE TIME TO LOOK AT YOUR
 BRAND WITH A CRITICAL EYE </h4>
@@ -32,12 +32,17 @@ const DesignAudit = styled.section`
   position: relative;
   padding: 30px 20px 20px;
 
-  .design-audit-header{
+  .header-new-item{
     position: absolute;
     top: -75px;
     height: 150px;
     width: 60%;
     left: 20%;
+  }
+
+  .header-design-audit {
+    width: 90%;
+    margin: 20px 5%;
   }
 
   h4{
@@ -49,7 +54,7 @@ const DesignAudit = styled.section`
   }
 
   @media(min-width: ${breakpointMedium}){
-    .design-audit-header{
+    .header-new-item{
     top: -75px;
     left: 15%;
     height: 150px;
@@ -94,7 +99,7 @@ const DesignAudit = styled.section`
   }
 
   @media(min-width: ${breakpoint4k}){
-    .design-audit-header{
+    .header-new-item{
       top: -78px;
     }
 

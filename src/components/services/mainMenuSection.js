@@ -99,9 +99,10 @@ const MainMenu = styled.section`
 
       .stars{
         position: absolute;
-        right: -10%;
-        top: -10px;
-        height: 30px;
+        left: -11%;
+        top: -12px;
+        height: 20px;
+        transform: rotate(90deg);
       }
     }
 
@@ -130,6 +131,10 @@ const MainMenu = styled.section`
       color: ${dark_blue};
       font-size: 17px;
       font-weight: 500;
+    }
+
+    ul{
+      margin-top: 10px;
     }
   }
 

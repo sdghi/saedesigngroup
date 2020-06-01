@@ -12,7 +12,7 @@ const WeDoItAllSection = ({ we_do_it_all }) => {
       </div>
       <div className="we-do-it-all-container">
         {we_do_it_all.map((item, index) => (
-          <h4 key={index}>{item.industries.text}</h4>
+          <h4 className="industry" key={index}>{item.industries.text}</h4>
         ))}
       </div>
     </WeDoItAll>
@@ -47,7 +47,8 @@ const WeDoItAll = styled.section`
     h4{
       font-weight: 700;
       color: ${white};
-      font-size: 21px;
+      font-size: 15px;
+      letter-spacing: .07em;
     }
   }
 
@@ -58,14 +59,14 @@ const WeDoItAll = styled.section`
     height: fit-content;
     background-size: cover;
 
-    h4{
+    .industry{
       margin: 0;
-      line-height: 1.75;
       text-align: center;
-      font-size: 17px;
       font-weight: 700;
       letter-spacing: 0.07em;
       text-transform: uppercase;
+      font-size: 16px;
+      line-height: 2;
     }
   }
 
@@ -73,10 +74,6 @@ const WeDoItAll = styled.section`
     .we-do-it-all-container {
       height: 80%;
       padding-top: 50px;
-
-      h4 {
-      font-size: 18px; 
-      }
     }
   }
 `;

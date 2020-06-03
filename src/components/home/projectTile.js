@@ -212,7 +212,7 @@ const TileContent = styled(motion.div)`
             gridColumn * columnIncrements}% )`};
 
     .featured-image-gif{
-        height: ${({ displayProjectsGrid }) => displayProjectsGrid ? '300px' : 'auto'};
+        height: ${({ displayProjectsGrid }) => displayProjectsGrid ? '300px' : '100%'};
     }
 
     h2 {

@@ -99,8 +99,8 @@ const MainMenu = styled.section`
 
       .stars{
         position: absolute;
-        left: -11%;
-        top: -12px;
+        left: -17%;
+        top: -9px;
         height: 20px;
         transform: rotate(90deg);
       }

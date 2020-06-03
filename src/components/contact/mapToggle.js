@@ -174,10 +174,12 @@ const MapToggleContainer = styled(motion.div)`
 
   button {
     position: absolute;
-    left: 20px;
-    top: 20px;
+    left: 0px;
+    top: 0px;
     background: none;
     border: none;
+    border: 1px solid red;
+    padding: 20px;
 
     &:focus {
       outline: none;
@@ -185,8 +187,8 @@ const MapToggleContainer = styled(motion.div)`
 
     .x-icon {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: calc(50% - 7.5px);
+      left: calc(50% - 1px);
       height: 15px;
       width: 2px;
       background: ${black};

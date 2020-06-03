@@ -88,6 +88,7 @@ const ContactInfo = styled.div`
   svg{
     height: 100%;
     width: 100%;
+    fill: ${black};
 
     &:hover{
       fill: ${pink};

@@ -118,7 +118,9 @@ const ProjectTile = ({
                         />
                     }
                     {featured_image_video.url &&
-                        <video className="featured-image-gif" src={featured_image_video.url} autoPlay loop muted playsInline />
+                        <div className="featured-image-gif">
+                            <video src={featured_image_video.url} autoPlay loop muted playsInline />
+                        </div>
                     }
                     <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
                 </div>}
@@ -135,7 +137,9 @@ const ProjectTile = ({
                         />
                     }
                     {featured_image_video.url &&
-                        <video className="featured-image-gif" src={featured_image_video.url} autoPlay loop muted playsInline />
+                        <div className="featured-image-gif">
+                            <video src={featured_image_video.url} autoPlay loop muted playsInline />
+                        </div>
                     }
                     <h2 className={image_background_light ? 'dark-text' : undefined}>{projectName}</h2>
                 </Link>
@@ -151,11 +155,14 @@ const TileContent = styled(motion.div)`
     position: relative;
 
   .featured-image-gif{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
+    height: 300px;
     width: 100%; 
+
+    video{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
   }
 
   h2 {
@@ -204,6 +211,10 @@ const TileContent = styled(motion.div)`
             : `calc(${gridColumn !== 3 &&
             gridColumn * columnIncrements}% )`};
 
+    .featured-image-gif{
+        height: ${({ displayProjectsGrid }) => displayProjectsGrid ? '300px' : 'auto'};
+    }
+
     h2 {
       color: white;
       position: absolute;
@@ -226,6 +237,8 @@ const TileContent = styled(motion.div)`
     ${ImageContainer} {
       filter: brightness(0.95);
     }
+
+
 
     &:hover{
       h2{

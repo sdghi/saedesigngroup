@@ -7,7 +7,6 @@ import { pink, breakpoint4k } from '../../variables'
 const AboutQuote = ({ quotes }) => {
     const [current, setCurrent] = useState(0)
 
-    // Uncomment to enable the animation for the quotes 
     useEffect(() => {
         const handleQuoteChange = setInterval(() => {
             if (current === quotes.length - 1) {
@@ -29,7 +28,7 @@ const AboutQuote = ({ quotes }) => {
     }
 
     return (
-        <QuoteContainer paddingMd="50px 0" margin="0" height="100vh">
+        <QuoteContainer paddingMd="50px 0" margin="0">
             <ClientsHeader fontSize="48px">Take it from our clients</ClientsHeader>
             <AnimatePresence exitBeforeEnter>
                 <Quote variants={quoteVariants} key={current} initial="hidden" animate="visible" exit="hidden">
@@ -44,9 +43,8 @@ const AboutQuote = ({ quotes }) => {
 export default AboutQuote
 
 const ClientsHeader = styled(HeadingTwo)`
- position: absolute;
+ padding-top: 10vh;
  text-align: center;
- top: 15%;
 
  @media(min-width: ${breakpoint4k}){
      top: 30%;
@@ -55,15 +53,14 @@ const ClientsHeader = styled(HeadingTwo)`
 
 const QuoteContainer = styled(Container)`
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 `;
 
 const Quote = styled(motion.div)`
     max-width: 951px;
+    width: 90%;
     margin: 0 auto;
+    padding-bottom: 10vh;
+    height: 50vh;
 
     p{
         text-indent: -.4125em

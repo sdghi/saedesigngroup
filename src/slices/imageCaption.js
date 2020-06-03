@@ -27,7 +27,9 @@ const TwoThirdContainer = styled(Container)`
     font-size: 12px;
     line-height: 18px;
     color: ${grey};
-    max-width: 194px;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
   }
 
   @media (min-width: ${breakpointMedium}) {
@@ -35,6 +37,11 @@ const TwoThirdContainer = styled(Container)`
     grid-template-columns: 2fr 1fr;
     padding: 0;
     place-items: center;
+
+    .caption{
+      text-align: left;
+      max-width: 194px;
+    }
 
     ${Paragraph} {
       max-width: 194px;

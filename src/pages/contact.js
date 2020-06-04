@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { white, black } from '../variables'
 import styled from "styled-components"
 import SEO from "../components/seo"
@@ -11,6 +11,10 @@ import { useToggle } from '../hooks'
 const ContactPage = () => {
   const [showOahuMap, toggleOahuMap] = useToggle()
   const [showMapToggle, toggleMap] = useToggle(true)
+
+  useEffect(() => {
+    console.log(showMapToggle)
+  }, [showMapToggle])
 
   return (
     <>

@@ -19,7 +19,6 @@ const MapToggle = ({
     open: {
       scale: 1,
       transition: {
-        delay: 0.5,
         when: 'beforeChildren',
         staggerChildren: 0.1,
         staggerDirection: 1,
@@ -28,7 +27,6 @@ const MapToggle = ({
     exit: {
       scale: 0,
       transition: {
-        delay: 0.5,
         staggerChildren: 0.1,
         staggerDirection: 1,
         when: 'afterChildren'
@@ -178,7 +176,6 @@ const MapToggleContainer = styled(motion.div)`
     top: 0px;
     background: none;
     border: none;
-    border: 1px solid red;
     padding: 20px;
 
     &:focus {

@@ -21,14 +21,9 @@ const ProjectTile = ({
   const projectName = project.node.data.project_name.text
   const imageAlt = project.node.data.featured_image.alt
   const {
-    grid_column,
     top,
-    left,
-    right,
-    bottom,
     size,
     is_case_study,
-    placement,
     image_background_light,
     featured_image_video,
   } = project.node.data
@@ -36,11 +31,11 @@ const ProjectTile = ({
   // Handle rendering the sizes
   const renderSizes = () => {
     if (size === "Small") {
-      setProjectSize(0.6)
+      setProjectSize(0.35)
     } else if (size === "Medium") {
-      setProjectSize(0.8)
+      setProjectSize(0.45)
     } else if (size === "Large") {
-      setProjectSize(1)
+      setProjectSize(0.7)
     }
   }
 
@@ -71,7 +66,7 @@ const ProjectTile = ({
 
       return null
     })
-  }, [projectCategoryFilter, categories, placement])
+  }, [projectCategoryFilter, categories])
 
   const [bind] = useCursorChange(
     is_case_study ? { caseStudy: "caseStudy" } : { selected: "selected" }
@@ -92,19 +87,9 @@ const ProjectTile = ({
       // Adjust sizes of non grid according to cms
       // 70 and 100 are the biggest values that work before breaking the grid
       // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
-      widthMd={displayProjectsGrid ? "100%" : `${70 * projectSize}%`}
-      // Top, Left, Bottom and Right will be directly affected by their properties in the cms
+      widthMd={displayProjectsGrid ? "100%" : `${100 * projectSize}%`}
+      // Top and Bottom will be directly affected by their properties in the cms
       top={displayProjectsGrid ? "0" : top}
-      left={displayProjectsGrid ? "0" : left}
-      right={displayProjectsGrid ? "0" : right}
-      bottom={displayProjectsGrid ? "0" : bottom}
-      placement={placement ? placement : 1}
-      // Subtract 1 so that if its the 1st column it will start at margin 0
-      gridColumn={grid_column - 1}
-      // Total width of allProjectsContainer / total number of columns
-      // Container is 100% wide with 4 columns
-      // IF COLUMNS OR THE WIDTH OF THE CONTAINER EVER CHANGES THEN THESE VALUES ALSO NEED TO CHANGE
-      columnIncrements={100 / 4}
     >
       {slug === "logo-selection" && (
         <div onClick={handleLogoSelection}>
@@ -208,31 +193,14 @@ const TileContent = styled(motion.div)`
   }
 
   @media (min-width: ${breakpointSmall}) {
-    margin: 0 auto;
-    z-index: ${({ placement }) => placement};
+    margin: ${({ displayProjectsGrid }) =>
+      displayProjectsGrid ? "0px" : "50px auto"};
     width: ${({ widthMd }) => widthMd};
     /* Height auto will maintain the orientation of the image  */
     height: ${({ displayProjectsGrid }) =>
       displayProjectsGrid ? "300px" : "auto"};
-    /* Default spacing between the project image with title  */
-    margin-bottom: ${({ displayProjectsGrid }) =>
-      displayProjectsGrid ? "0px" : "50px"};
-    /* Bottom will override the default spacing  */
-    bottom: ${({ displayProjectsGrid, bottom }) =>
-      !displayProjectsGrid && `${bottom}em`};
-    margin-top: ${({ top }) => `${top}em`};
-    /* Keep thes values left and right or they will override  the grid snapping of margins below  */
-    left: ${({ left }) => `${left}%`};
-    right: ${({ right }) => `${right}%`};
-    /* If the gridColumn is the maximum then make the margin right 0 so it snaps to the end  */
-    margin-right: ${({ gridColumn }) => gridColumn === 3 && 0};
-    /* If the gridColumn is not the maximum then give a margin left of the gridColumn * columnIncrements
-      If it is the maximum then don't render a margin left so that it will snap to the margin right specified above
-     */
-    margin-left: ${({ displayProjectsGrid, gridColumn, columnIncrements }) =>
-      displayProjectsGrid
-        ? "0px"
-        : `calc(${gridColumn !== 3 && gridColumn * columnIncrements}% )`};
+    margin-top: ${({ displayProjectsGrid, top }) =>
+      !displayProjectsGrid && `${top * 2}em`};
 
     .featured-image-gif {
       height: ${({ displayProjectsGrid }) =>

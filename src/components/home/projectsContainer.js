@@ -52,6 +52,7 @@ const AllProjects = styled(Container)`
     overflow-x: hidden;
     display: ${({ displayProjectsGrid }) =>
       displayProjectsGrid ? "grid" : "flex"};
+    align-items: center;
     grid-template-columns: ${({ displayProjectsGrid }) =>
       displayProjectsGrid && "repeat(auto-fill, minmax(350px, 1fr))"};
     grid-gap: ${({ displayProjectsGrid }) =>

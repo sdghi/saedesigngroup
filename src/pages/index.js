@@ -44,13 +44,8 @@ export const query = graphql`
             }
             image_background_light
             is_case_study
-            placement
-            grid_column
             size
             top
-            left
-            bottom
-            right
           }
         }
       }

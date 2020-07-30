@@ -200,7 +200,7 @@ const TileContent = styled(motion.div)`
     height: ${({ displayProjectsGrid }) =>
       displayProjectsGrid ? "300px" : "auto"};
     margin-top: ${({ displayProjectsGrid, top }) =>
-      !displayProjectsGrid && `${top * 2}em`};
+      !displayProjectsGrid && `${top * 4}vw`};
 
     .featured-image-gif {
       height: ${({ displayProjectsGrid }) =>

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { Container, ImageContainer } from "../../elements"
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion"
 import { breakpointSmall, breakpointMedium, pink } from "../../variables"
 import styled from "styled-components"
 
@@ -49,17 +49,24 @@ const Logos = ({ setCursorElement }) => {
     },
     visible: {
       opacity: 1,
-    }
-  };
+    },
+  }
 
   return (
-    <LogosContainer padding="0 5%" paddingMd="0 15%" hoveredLogo={hoveredLogo} variants={containerVariants} initial="hidden" animate="visible">
+    <LogosContainer
+      padding="0 5%"
+      paddingMd="0 15%"
+      hoveredLogo={hoveredLogo}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {logosData.map(logo => (
-        <div
+        <motion.div
           className="logo-container"
           key={logo.id}
-          onMouseEnter={() => setHoveredLogo(logo.id)}
-          onMouseLeave={() => setHoveredLogo(null)}
+          onHoverStart={() => setHoveredLogo(logo.id)}
+          onHoverEnd={() => setHoveredLogo(null)}
         >
           <ImageContainer
             alt={logo.primary.logo_image.alt}
@@ -73,10 +80,13 @@ const Logos = ({ setCursorElement }) => {
               onMouseEnter={() => setCursorElement({ selected: "selected" })}
               onMouseLeave={() => setCursorElement({ initial: "initial" })}
             >
-              <button className="full-project-btn">full project <img src="viewproject_icon.svg" alt="full project" /> </button>
+              <button className="full-project-btn">
+                full project{" "}
+                <img src="viewproject_icon.svg" alt="full project" />{" "}
+              </button>
             </Link>
           )}
-        </div>
+        </motion.div>
       ))}
     </LogosContainer>
   )
@@ -98,7 +108,7 @@ const LogosContainer = styled(Container)`
     }
   }
 
-  .full-project-btn{
+  .full-project-btn {
     display: flex;
     align-items: center;
     height: 20px;
@@ -110,7 +120,7 @@ const LogosContainer = styled(Container)`
     font-weight: 700;
     color: ${pink};
 
-    img{
+    img {
       margin-left: 5px;
       height: 10px;
     }
@@ -123,7 +133,8 @@ const LogosContainer = styled(Container)`
   @media (min-width: ${breakpointMedium}) {
     .logo-container {
       ${ImageContainer} {
-        filter: ${({ hoveredLogo }) => hoveredLogo !== null && 'grayscale(100%)'};
+        filter: ${({ hoveredLogo }) =>
+          hoveredLogo !== null && "grayscale(100%)"};
         transition: all 0.15s ease-out;
       }
 

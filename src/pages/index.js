@@ -4,16 +4,18 @@ import SEO from "../components/seo"
 import styled from "styled-components"
 import { useAppContext } from "../provider"
 import ProjectsFilter from "../components/home/projectsFilter"
-import ProjectGridToggle from '../components/home/projectGridToggle'
+import ProjectGridToggle from "../components/home/projectGridToggle"
 import Logos from "../components/home/logos"
 import ProjectCategoryInfo from "../components/home/projectCategoryInfo"
 import MobileProjectsFilter from "../components/home/mobileProjectsFilter"
-import HomeHero from '../components/home/homeHero'
+import HomeHero from "../components/home/homeHero"
 import ProjectsContainer from "../components/home/projectsContainer"
 
 export const query = graphql`
   {
-    allPrismicProjectTemplate(sort: {fields: first_publication_date, order: DESC}) {
+    allPrismicProjectTemplate(
+      sort: { fields: first_publication_date, order: DESC }
+    ) {
       edges {
         node {
           uid
@@ -37,7 +39,7 @@ export const query = graphql`
                 }
               }
             }
-            featured_image_video{
+            featured_image_video {
               url
             }
             image_background_light
@@ -74,7 +76,6 @@ const IndexPage = ({ data }) => {
   } = useAppContext()
 
   useEffect(() => {
-
     // If start scroll is true scroll down the height of the first section
     // Scroll down the window
     startScroll &&
@@ -87,22 +88,25 @@ const IndexPage = ({ data }) => {
     setStartScroll(false)
 
     // If projectCategoryFilter !== 'all' set projects to display grid
-    if (projectCategoryFilter !== 'all') {
+    if (projectCategoryFilter !== "all") {
       setDisplayProjectsGrid(true)
     }
-    if (projectCategoryFilter === 'all') {
+    if (projectCategoryFilter === "all") {
       setDisplayProjectsGrid(false)
     }
-  }, [scrollWindowHeight, setScrollWindowHeight, startScroll, projectCategoryFilter])
+  }, [
+    scrollWindowHeight,
+    setScrollWindowHeight,
+    startScroll,
+    projectCategoryFilter,
+  ])
 
   // Handle Parallax
   const measuredRef = useCallback(node => {
     if (node !== null) {
       setElTop(node.offsetTop)
     }
-  }, []);
-
-  const { model } = useAppContext();
+  }, [])
 
   return (
     <>
@@ -136,7 +140,6 @@ const IndexPage = ({ data }) => {
           showMobile={true}
         />
 
-
         {showLogos && <Logos setCursorElement={setCursorElement} />}
 
         {/* Show the project category info it isn't all  and logos aren't active */}
@@ -155,14 +158,12 @@ const IndexPage = ({ data }) => {
           elTop={elTop}
           setCursorElement={setCursorElement}
         />
-
       </ProjectsSection>
     </>
   )
 }
 
 export default IndexPage
-
 
 const ProjectsSection = styled.section`
   padding-top: 50px;

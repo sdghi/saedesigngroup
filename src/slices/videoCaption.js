@@ -1,8 +1,8 @@
 import React from "react"
-import { Container, Paragraph } from "../elements"
+import { Container } from "../elements"
 import { breakpointMedium, grey } from "../variables"
 import styled from "styled-components"
-import ScrollWrapper from '../components/wrappers/scrollWrapper'
+import ScrollWrapper from "../components/wrappers/scrollWrapper"
 
 const VideoCaption = ({ slice }) => {
   const { link, caption, layout } = slice.primary
@@ -11,9 +11,13 @@ const VideoCaption = ({ slice }) => {
     <ScrollWrapper>
       <TwoThirdContainer
         padding="0"
-        className={layout === 'Image Right Caption Left' && 'image-right'}>
+        className={layout === "Image Right Caption Left" && "image-right"}
+      >
         <Video src={link.url} autoPlay muted loop playsInline />
-        <div className="caption" dangerouslySetInnerHTML={{ __html: caption.html }}></div>
+        <div
+          className="caption"
+          dangerouslySetInnerHTML={{ __html: caption.html }}
+        ></div>
       </TwoThirdContainer>
     </ScrollWrapper>
   )
@@ -22,12 +26,11 @@ const VideoCaption = ({ slice }) => {
 export default VideoCaption
 
 const Video = styled.video`
-    height: 500px;
-    width: 100%;
-`;
+  height: 500px;
+  width: 100%;
+`
 
 const TwoThirdContainer = styled(Container)`
-
   .caption {
     font-size: 12px;
     line-height: 18px;
@@ -48,15 +51,15 @@ const TwoThirdContainer = styled(Container)`
       text-align: left;
     }
 
-    &.image-right{
+    &.image-right {
       grid-template-columns: 1fr 2fr;
       grid-template-areas: "paragraph image";
-      
-      .caption{
+
+      .caption {
         grid-area: paragraph;
       }
 
-      ${Video}{
+      ${Video} {
         grid-area: image;
       }
     }

@@ -1,9 +1,9 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import RelatedProjects from "../components/projects/relatedProjects"
 import { useAppContext } from "../provider"
-import ProjectHero from '../components/projects/projectHero'
+import ProjectHero from "../components/projects/projectHero"
 // SLICES
 import TextSection from "../slices/textSection"
 import Testimonial from "../slices/testimonial"
@@ -11,13 +11,11 @@ import LargeImage from "../slices/largeImage"
 import ImageCaption from "../slices/imageCaption"
 import ImageGallery from "../slices/imageGallery"
 import StaggeredImages from "../slices/staggeredImages"
-import LargeGifVideo from '../slices/largeGifVideo'
-import VideoCaption from '../slices/videoCaption'
-import { AnimatePresence } from "framer-motion"
+import LargeGifVideo from "../slices/largeGifVideo"
+import VideoCaption from "../slices/videoCaption"
 
 const ProjectSlices = ({ slices, theme }) => {
   return slices.map((slice, index) => {
-
     const res = (() => {
       switch (slice.slice_type) {
         case "text_section":
@@ -45,7 +43,7 @@ const ProjectSlices = ({ slices, theme }) => {
 }
 
 const Project = ({ project, theme, location }) => {
-  const { hero_image } = project.data;
+  const { hero_image } = project.data
 
   const { setCursorElement } = useAppContext()
 
@@ -53,7 +51,9 @@ const Project = ({ project, theme, location }) => {
     <div>
       <ProjectHero heroImage={hero_image} setCursorElement={setCursorElement} />
 
-      {project.data.body && <ProjectSlices slices={project.data.body} theme={theme} />}
+      {project.data.body && (
+        <ProjectSlices slices={project.data.body} theme={theme} />
+      )}
     </div>
   )
 }
@@ -89,15 +89,15 @@ export const query = graphql`
               text
             }
             hero_image {
-            alt
-            localFile {
-              childImageSharp {
-                fluid(quality: 90, maxWidth: 1800) {
-                  src
+              alt
+              localFile {
+                childImageSharp {
+                  fluid(quality: 90, maxWidth: 1800) {
+                    src
+                  }
                 }
               }
             }
-          }
             body {
               ... on PrismicProjectTemplateBody23ImageCaption {
                 slice_type
@@ -120,28 +120,28 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicProjectTemplateBody23VideoCaption{
-              slice_type
-              primary{
-                layout
-                link{
-                  url
-                }
-                caption{
-                  text
-                  html
+              ... on PrismicProjectTemplateBody23VideoCaption {
+                slice_type
+                primary {
+                  layout
+                  link {
+                    url
+                  }
+                  caption {
+                    text
+                    html
+                  }
                 }
               }
-            }
-            ... on PrismicProjectTemplateBodyLargeGifVideo{
-              slice_type
-              primary{
-                link{
-                  url
+              ... on PrismicProjectTemplateBodyLargeGifVideo {
+                slice_type
+                primary {
+                  link {
+                    url
+                  }
+                  full_width
                 }
-                full_width
               }
-            }
               ... on PrismicProjectTemplateBodyImageGallery {
                 slice_type
                 items {

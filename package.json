@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "sdghi",
   "dependencies": {
-    "framer-motion": "^2.3.0",
+    "framer-motion": "^2.5.1",
     "gatsby": "^2.21.9",
     "gatsby-image": "^2.3.4",
     "gatsby-plugin-manifest": "^2.2.39",

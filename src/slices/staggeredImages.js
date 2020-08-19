@@ -24,7 +24,7 @@ const StaggeredImages = ({ slice }) => {
   useLayoutEffect(() => {
     const element = ref.current
     setElTop(element.offsetHeight)
-  }, [ref, elTop])
+  }, [ref])
 
   const y = useTransform(scrollY, [elTop, elTop + 10], [0, -1], {
     clamp: false,
@@ -32,7 +32,6 @@ const StaggeredImages = ({ slice }) => {
 
   return (
     <StaggeredImageContainer
-      ref={ref}
       reverseImages={reverse_images}
       margin="0 0 20vh 0"
       marginMd="0"
@@ -52,7 +51,7 @@ const StaggeredImages = ({ slice }) => {
           />
         </motion.div>
 
-        <motion.div style={ref && { y }} className="desktop-image">
+        <motion.div ref={ref} style={ref && { y }} className="desktop-image">
           {caption && (
             <div
               className="desktop-caption caption"

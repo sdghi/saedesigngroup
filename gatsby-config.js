@@ -42,21 +42,35 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-web-font-loader`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        google: {
-          families: [`Source Sans Pro:300,400,700,900`, `Oswald:600,700`]
-        }
-      }
+        fonts: {
+          google: [
+            {
+              family: "Source Sans Pro",
+              variants: ["300", "400", "700", "900"],
+              fontDisplay: "swap",
+            },
+            {
+              family: "Oswald",
+              variants: ["600", "700"],
+              fontDisplay: "swap",
+            },
+          ],
+        },
+        formats: ["woff2", "woff"],
+        useMinify: true,
+        usePreload: true,
+        usePreconnect: false,
+      },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     {
       resolve: `gatsby-plugin-offline`,
       options: {
-        precachePages: [`/`]
-      }
-
+        precachePages: [`/`],
+      },
     },
   ],
 }

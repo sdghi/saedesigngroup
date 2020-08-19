@@ -3,16 +3,6 @@ import { breakpointMedium, pink, baseFont } from "../../variables"
 
 export const GlobalStyle = createGlobalStyle`
 
-@font-face {
-  font-family: "Oswald Medium";
-  src: url('../../../static/Oswald-Medium.ttf')   format("ttf");
-}
-
-@font-face {
-  font-family: "Oswald SemiBold";
-  src: url('../../../static/Oswald-SemiBold.ttf')   format("ttf");
-}
-
   html{
     box-sizing: border-box;
     font-family: ${baseFont};

@@ -84,9 +84,6 @@ const ProjectTile = ({
       key={project.uid}
       displayProjectsGrid={displayProjectsGrid}
       {...bind}
-      // Adjust sizes of non grid according to cms
-      // 70 and 100 are the biggest values that work before breaking the grid
-      // Sizes have to be a value between 0.5 and 1? ex XL : 1, L: 0.8, M:0.6, S: 0.5
       widthMd={displayProjectsGrid ? "100%" : `${100 * projectSize}%`}
       // Top and Bottom will be directly affected by their properties in the cms
       top={displayProjectsGrid ? "0" : top}

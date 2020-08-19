@@ -51,7 +51,7 @@ const StaggeredImages = ({ slice }) => {
           />
         </motion.div>
 
-        <motion.div ref={ref} style={ref && { y }} className="desktop-image">
+        <motion.div ref={ref} style={{ y }} className="desktop-image">
           {caption && (
             <div
               className="desktop-caption caption"

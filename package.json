@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "sdghi",
   "dependencies": {
-    "framer-motion": "^1.9.0",
+    "framer-motion": "^2.3.0",
     "gatsby": "^2.21.9",
     "gatsby-image": "^2.3.4",
     "gatsby-plugin-manifest": "^2.2.39",
@@ -14,6 +14,7 @@
     "gatsby-plugin-sharp": "^2.4.3",
     "gatsby-plugin-styled-components": "^3.1.19",
     "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-plugin-webfonts": "^1.1.3",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-source-prismic": "^2.3.0-alpha.3",
     "gatsby-transformer-sharp": "^2.3.13",

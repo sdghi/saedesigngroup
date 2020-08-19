@@ -1,9 +1,9 @@
 import React, { useState, useRef, useLayoutEffect } from "react"
 import styled from "styled-components"
-import { Paragraph, Container, ImageContainer } from "../elements"
+import { Container, ImageContainer } from "../elements"
 import { breakpointSmall, breakpointMedium, grey } from "../variables"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
-import ScrollWrapper from '../components/wrappers/scrollWrapper'
+import ScrollWrapper from "../components/wrappers/scrollWrapper"
 
 const StaggeredImages = ({ slice }) => {
   // Destructure items
@@ -19,20 +19,24 @@ const StaggeredImages = ({ slice }) => {
   // Destructure the scroll Y value from useViewportScroll
   const { scrollY } = useViewportScroll()
 
-  const ref = useRef();
+  const ref = useRef()
 
   useLayoutEffect(() => {
-    const element = ref.current;
-    setElTop(element.offsetHeight);
-  }, [ref, elTop]);
+    const element = ref.current
+    setElTop(element.offsetHeight)
+  }, [ref, elTop])
 
   const y = useTransform(scrollY, [elTop, elTop + 10], [0, -1], {
-    clamp: false
-  });
-
+    clamp: false,
+  })
 
   return (
-    <StaggeredImageContainer ref={ref} reverseImages={reverse_images} margin="0 0 20vh 0" marginMd="0">
+    <StaggeredImageContainer
+      ref={ref}
+      reverseImages={reverse_images}
+      margin="0 0 20vh 0"
+      marginMd="0"
+    >
       <ScrollWrapper>
         {/* Desktop Images  */}
         <motion.div className="desktop-image">
@@ -48,11 +52,13 @@ const StaggeredImages = ({ slice }) => {
           />
         </motion.div>
 
-
         <motion.div style={ref && { y }} className="desktop-image">
-          {caption &&
-            <div className="desktop-caption caption" dangerouslySetInnerHTML={{ __html: caption.html }}></div>
-          }
+          {caption && (
+            <div
+              className="desktop-caption caption"
+              dangerouslySetInnerHTML={{ __html: caption.html }}
+            ></div>
+          )}
           <ImageContainer
             fluid={imageTwoSrc}
             alt={image_2.alt}
@@ -79,31 +85,31 @@ const StaggeredImages = ({ slice }) => {
           className="mobile-image"
         />
 
-        {caption &&
-          <div className="mobile-caption caption" dangerouslySetInnerHTML={{ __html: caption.html }}></div>
-        }
+        {caption && (
+          <div
+            className="mobile-caption caption"
+            dangerouslySetInnerHTML={{ __html: caption.html }}
+          ></div>
+        )}
       </ScrollWrapper>
-    </StaggeredImageContainer >
-
-
+    </StaggeredImageContainer>
   )
 }
 
 export default StaggeredImages
 
 const StaggeredImageContainer = styled(Container)`
-  .caption{
-      font-size: 14px;
-      line-height: 26px;
-      color: ${grey};
-    }
+  .caption {
+    font-size: 14px;
+    line-height: 26px;
+    color: ${grey};
+  }
 
-    .desktop-caption{
-      display: none;
-    }
+  .desktop-caption {
+    display: none;
+  }
 
-
-  .desktop-image{
+  .desktop-image {
     display: none;
   }
 
@@ -112,42 +118,42 @@ const StaggeredImageContainer = styled(Container)`
     flex-direction: column;
     position: relative;
 
-    .mobile-caption{
-        display: none;
-      }
+    .mobile-caption {
+      display: none;
+    }
 
-      .desktop-caption{
-        display: block;
-      }
+    .desktop-caption {
+      display: block;
+    }
 
-    .desktop-image{
+    .desktop-image {
       display: block;
 
-      ${ImageContainer}{
+      ${ImageContainer} {
         max-height: 100vh;
       }
     }
 
-    .mobile-image{
+    .mobile-image {
       display: none;
     }
 
     .caption {
       position: relative;
       top: -140px;
-      right: ${({ reverseImages }) => reverseImages ? 'none' : '2.5%'};
-      left: ${({ reverseImages }) => reverseImages ? '2.5%' : 'none'};
-      margin-left: ${({ reverseImages }) => reverseImages ? '0' : 'auto'};
+      right: ${({ reverseImages }) => (reverseImages ? "none" : "2.5%")};
+      left: ${({ reverseImages }) => (reverseImages ? "2.5%" : "none")};
+      margin-left: ${({ reverseImages }) => (reverseImages ? "0" : "auto")};
       max-width: 258px;
       margin-top: 0;
     }
   }
 
   @media (min-width: ${breakpointMedium}) {
-    .caption{
+    .caption {
       top: -300px;
-      right: ${({ reverseImages }) => reverseImages ? 'none' : '10%'};
-      left: ${({ reverseImages }) => reverseImages ? '10%' : 'none'};
+      right: ${({ reverseImages }) => (reverseImages ? "none" : "10%")};
+      left: ${({ reverseImages }) => (reverseImages ? "10%" : "none")};
     }
   }
 `

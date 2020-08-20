@@ -35,7 +35,7 @@ const ProjectTile = ({
     } else if (size === "Medium") {
       setProjectSize(0.45)
     } else if (size === "Large") {
-      setProjectSize(0.7)
+      setProjectSize(0.55)
     }
   }
 

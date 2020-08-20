@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react"
-import { AnimatePresence, motion } from 'framer-motion'
-import styled from 'styled-components'
+import { AnimatePresence, motion } from "framer-motion"
+import styled from "styled-components"
 import PropTypes from "prop-types"
-import { pink } from '../variables'
+import { pink } from "../variables"
 import { useAppContext } from "../provider"
-import { useToggle, useCursorChange } from '../hooks'
+import { useToggle, useCursorChange, useMousePosition } from "../hooks"
 import { GlobalStyle } from "../utils"
 import Footer from "./footer"
 import CustomCursor from "./customCursor"
-import SiteBranding from './siteBranding'
-import Navigation from './navigation'
+import SiteBranding from "./siteBranding"
+import Navigation from "./navigation"
 
 const duration = 0.5
 
@@ -22,7 +22,7 @@ const variants = {
     transition: {
       duration: duration,
       delay: duration,
-      when: 'beforeChildren',
+      when: "beforeChildren",
     },
   },
   exit: {
@@ -32,63 +32,45 @@ const variants = {
 }
 
 const Layout = ({ children, location }) => {
+  const { cursorElement, setCursorElement } = useAppContext()
 
-  const {
-    xValue,
-    yValue,
-    setXValue,
-    setYValue,
-    cursorElement,
-    setCursorElement
-  } = useAppContext()
+  const [showCursor, setShowCursor] = useState(false)
+  const [isNavOpen, toggleNav] = useToggle()
+  const [bind] = useCursorChange({ selected: "selected" })
 
-  const [showCursor, setShowCursor] = useState(false);
-  const [isNavOpen, toggleNav] = useToggle();
-  const [bind] = useCursorChange({ selected: "selected" });
+  const [x, y] = useMousePosition()
 
-
-  // Disable the cursor until the user moves their mouse
   useEffect(() => {
-    setShowCursor(false)
     setCursorElement({ initial: "initial" })
-
     return () => setCursorElement({ initial: "initial" })
   }, [location.pathname, isNavOpen])
 
-
-  const trackMouse = e => {
-    const { clientX, clientY } = e
-    setYValue(clientY)
-    setXValue(clientX)
-  }
-
-  const handleTrackCursor = e => {
-    setShowCursor(true)
-    trackMouse(e)
-  }
+  /*  Keep this useEffect separate or the x, y change will always setSetCursorElement back
+  to initial every time the mouse moves */
+  useEffect(() => {
+    // Disable the cursor until the user moves their mouse
+    if ((!!x, !!y)) {
+      setShowCursor(true)
+    }
+  }, [x, y])
 
   return (
-    <div onMouseMove={e => { handleTrackCursor(e) }}>
+    <div>
       <GlobalStyle />
 
       {showCursor && (
-        <CustomCursor
-          xValue={xValue}
-          yValue={yValue}
-          cursorElement={cursorElement}
-        />
+        <CustomCursor xValue={x} yValue={y} cursorElement={cursorElement} />
       )}
 
       <AnimatePresence>
-        {isNavOpen &&
+        {isNavOpen && (
           <Navigation
             isNavOpen={isNavOpen}
             toggleNav={toggleNav}
             setCursorElement={setCursorElement}
-          />}
+          />
+        )}
       </AnimatePresence>
-
-
 
       <AnimatePresence>
         <motion.main
@@ -99,11 +81,10 @@ const Layout = ({ children, location }) => {
           exit="exit"
         >
           <SiteBranding />
-          <ToggleBtn
-            onClick={toggleNav}
-            {...bind}
-          >
-            <motion.h2 whileHover={{ scale: 1.2, rotate: 4 }}>{isNavOpen ? "close" : "menu"}</motion.h2>
+          <ToggleBtn onClick={toggleNav} {...bind}>
+            <motion.h2 whileHover={{ scale: 1.2, rotate: 4 }}>
+              {isNavOpen ? "close" : "menu"}
+            </motion.h2>
           </ToggleBtn>
 
           {children}
@@ -135,7 +116,3 @@ const ToggleBtn = styled.div`
 `
 
 export default Layout
-
-
-
-

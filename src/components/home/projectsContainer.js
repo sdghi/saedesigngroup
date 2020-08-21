@@ -47,14 +47,14 @@ export default ProjectsContainer
 const AllProjects = styled(Container)`
   display: grid;
   grid-gap: 20px;
+  grid-template-columns: ${({ displayProjectsGrid }) =>
+    displayProjectsGrid && "repeat(auto-fill, minmax(250px, 1fr))"};
 
   @media (min-width: ${breakpointSmall}) {
     overflow-x: hidden;
     display: ${({ displayProjectsGrid }) =>
       displayProjectsGrid ? "grid" : "flex"};
     align-items: center;
-    grid-template-columns: ${({ displayProjectsGrid }) =>
-      displayProjectsGrid && "repeat(auto-fill, minmax(350px, 1fr))"};
     grid-gap: ${({ displayProjectsGrid }) =>
       displayProjectsGrid ? "80px" : "0px"};
     grid-auto-flow: row;

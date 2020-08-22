@@ -3,8 +3,8 @@ import { Container, ImageContainer } from "../elements"
 import styled from "styled-components"
 import { useAppContext } from "../provider"
 import { grey, lightGrey } from "../variables"
-import ScrollWrapper from '../components/wrappers/scrollWrapper'
-import { AnimatePresence, motion } from 'framer-motion'
+import ScrollWrapper from "../components/wrappers/scrollWrapper"
+import { AnimatePresence, motion } from "framer-motion"
 
 const ImageGallery = ({ slice }) => {
   const items = slice.items
@@ -56,19 +56,18 @@ const ImageGallery = ({ slice }) => {
       } else {
         setVisibleImage(0)
       }
-    }, 5000);
+    }, 5000)
 
     return () => clearInterval(imageInterval)
-
   }, [visibleImage, items.length])
 
   const galleryVariants = {
     hidden: {
-      opacity: 0
+      opacity: 0,
     },
     visible: {
-      opacity: 1
-    }
+      opacity: 1,
+    },
   }
 
   return (
@@ -82,23 +81,30 @@ const ImageGallery = ({ slice }) => {
           onClick={() => handleSlideshowImage()}
         >
           <AnimatePresence exitBeforeEnter>
-            <motion.div key={visibleImage} variants={galleryVariants} initial="hidden" animate="visible" exit="hidden">
+            <motion.div
+              key={visibleImage}
+              variants={galleryVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+            >
               <ImageContainer
-                fluid={items[visibleImage].gallery_image.localFile.childImageSharp.fluid}
+                fluid={items[visibleImage].gallery_image.fluid}
                 width="100%"
               />
             </motion.div>
           </AnimatePresence>
-
         </SlideshowWrapper>
         <div className="counter">
-          {items.map((item, i) => item.gallery_image.localFile &&
-            <button
-              key={i}
-              onClick={() => setVisibleImage(i)}
-            >
-              <div className={i === visibleImage ? "item selected" : "item"}></div>
-            </button>
+          {items.map(
+            (item, i) =>
+              item.gallery_image.fluid && (
+                <button key={i} onClick={() => setVisibleImage(i)}>
+                  <div
+                    className={i === visibleImage ? "item selected" : "item"}
+                  ></div>
+                </button>
+              )
           )}
         </div>
       </GalleryContainer>
@@ -117,21 +123,20 @@ const GalleryContainer = styled(Container)`
     /* margin is 52 but minus the 20px padding top  */
     margin: 32px auto 0 auto;
 
-    button{
+    button {
       border: none;
       background: none;
       height: fit-content;
       padding: 20px 0;
-      
 
-      &:focus{
+      &:focus {
         outline: none;
       }
 
-      &:hover{
-        .item{
+      &:hover {
+        .item {
           background: ${grey};
-        transition: all 0.2s ease-in;
+          transition: all 0.2s ease-in;
         }
       }
     }

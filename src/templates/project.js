@@ -90,12 +90,8 @@ export const query = graphql`
             }
             hero_image {
               alt
-              localFile {
-                childImageSharp {
-                  fluid(quality: 90, maxWidth: 1200) {
-                    src
-                  }
-                }
+              fluid(maxWidth: 1200) {
+                ...GatsbyPrismicImageFluid
               }
             }
             body {
@@ -106,12 +102,8 @@ export const query = graphql`
                   image {
                     alt
                     url
-                    localFile {
-                      childImageSharp {
-                        fluid(quality: 90, maxWidth: 1200) {
-                          ...GatsbyImageSharpFluid_withWebp
-                        }
-                      }
+                    fluid(maxWidth: 1200) {
+                      ...GatsbyPrismicImageFluid
                     }
                   }
                   caption {
@@ -147,12 +139,8 @@ export const query = graphql`
                 items {
                   gallery_image {
                     alt
-                    localFile {
-                      childImageSharp {
-                        fluid(quality: 90, maxWidth: 1200) {
-                          ...GatsbyImageSharpFluid_withWebp
-                        }
-                      }
+                    fluid(maxWidth: 1200) {
+                      ...GatsbyPrismicImageFluid
                     }
                   }
                 }
@@ -164,12 +152,8 @@ export const query = graphql`
                   image {
                     url
                     alt
-                    localFile {
-                      childImageSharp {
-                        fluid(quality: 90, maxWidth: 1200) {
-                          ...GatsbyImageSharpFluid_withWebp
-                        }
-                      }
+                    fluid(maxWidth: 1200) {
+                      ...GatsbyPrismicImageFluid
                     }
                   }
                 }
@@ -184,22 +168,15 @@ export const query = graphql`
                   reverse_images
                   image_1 {
                     alt
-                    localFile {
-                      childImageSharp {
-                        fluid(quality: 90, maxWidth: 1200) {
-                          ...GatsbyImageSharpFluid_withWebp
-                        }
-                      }
+                    fluid(maxWidth: 1200) {
+                      ...GatsbyPrismicImageFluid
                     }
                   }
                   image_2 {
-                    localFile {
-                      childImageSharp {
-                        fluid(quality: 90, maxWidth: 1200) {
-                          ...GatsbyImageSharpFluid_withWebp
-                        }
-                      }
+                    fluid(maxWidth: 1200) {
+                      ...GatsbyPrismicImageFluid
                     }
+                    alt
                   }
                 }
               }

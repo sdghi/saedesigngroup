@@ -1,0 +1,114 @@
+{
+  "Main": {
+    "page_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Page Name",
+        "placeholder": "Page Name"
+      }
+    },
+    "add_a_side_of": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "title": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+              "label": "Title",
+              "placeholder": "Title"
+            }
+          }
+        },
+        "label": "Add A Side Of"
+      }
+    },
+    "design_audit": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "title": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+              "label": "Title",
+              "placeholder": "Title"
+            }
+          },
+          "description": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+              "label": "Description",
+              "placeholder": "Description"
+            }
+          }
+        },
+        "label": "Design Audit"
+      }
+    },
+    "we_do_it_all": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "industries": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+              "label": "Industries",
+              "placeholder": "industries"
+            }
+          }
+        },
+        "label": "We Do It All"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "main_menu_item": []
+        },
+        "choices": {
+          "main_menu_item": {
+            "type": "Slice",
+            "fieldset": "Main Menu Item",
+            "description": "Items that will go inside the main section of the menu",
+            "icon": "restaurant_menu",
+            "display": "list",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "Title",
+                  "placeholder": "Title"
+                }
+              }
+            },
+            "repeat": {
+              "feature_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "Feature Title",
+                  "placeholder": "Feature Title"
+                }
+              },
+              "feature_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label": "Feature Description",
+                  "placeholder": "Feature Description"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

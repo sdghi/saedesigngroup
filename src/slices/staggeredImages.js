@@ -9,9 +9,8 @@ const StaggeredImages = ({ slice }) => {
   // Destructure items
   const { caption, image_1, image_2, reverse_images } = slice.primary
   // Destructure Image items
-  const { fluid: imageOneSrc } = image_1.localFile.childImageSharp
-  const { fluid: imageTwoSrc } = image_2.localFile.childImageSharp
-
+  const { fluid: imageOneSrc } = image_1
+  const { fluid: imageTwoSrc } = image_2
   // Handle Parallax
   // Set the element top
   const [elTop, setElTop] = useState(0)

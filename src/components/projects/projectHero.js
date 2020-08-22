@@ -15,9 +15,8 @@ const ProjectHero = ({ heroImage, setCursorElement }) => {
         heightMd="70vh"
         widthMd="100%"
         maxWidth="100%"
-        fluid={heroImage.localFile.childImageSharp.fluid}
+        fluid={heroImage.fluid}
         alt={heroImage.alt}
-        loading="eager"
       />
     </HeroContainer>
   )

@@ -2,7 +2,7 @@ import React from "react"
 import { Container, Paragraph, ImageContainer } from "../elements"
 import { breakpointMedium, grey } from "../variables"
 import styled from "styled-components"
-import ScrollWrapper from '../components/wrappers/scrollWrapper'
+import ScrollWrapper from "../components/wrappers/scrollWrapper"
 
 const ImageCaption = ({ slice }) => {
   const { image, caption, layout } = slice.primary
@@ -11,9 +11,13 @@ const ImageCaption = ({ slice }) => {
     <ScrollWrapper>
       <TwoThirdContainer
         padding="0"
-        className={layout === 'Image Right Caption Left' && 'image-right'}>
-        <ImageContainer fluid={image.localFile.childImageSharp.fluid} alt={image.alt} />
-        <div className="caption" dangerouslySetInnerHTML={{ __html: caption.html }}></div>
+        className={layout === "Image Right Caption Left" && "image-right"}
+      >
+        <ImageContainer fluid={image.fluid} alt={image.alt} />
+        <div
+          className="caption"
+          dangerouslySetInnerHTML={{ __html: caption.html }}
+        ></div>
       </TwoThirdContainer>
     </ScrollWrapper>
   )
@@ -22,7 +26,6 @@ const ImageCaption = ({ slice }) => {
 export default ImageCaption
 
 const TwoThirdContainer = styled(Container)`
-
   .caption {
     font-size: 12px;
     line-height: 18px;
@@ -38,7 +41,7 @@ const TwoThirdContainer = styled(Container)`
     padding: 0;
     place-items: center;
 
-    .caption{
+    .caption {
       text-align: left;
       max-width: 194px;
     }
@@ -50,16 +53,16 @@ const TwoThirdContainer = styled(Container)`
       text-align: left;
     }
 
-    &.image-right{
+    &.image-right {
       grid-template-columns: 1fr 2fr;
       grid-template-areas: "paragraph image";
-      
-      ${Paragraph}{
+
+      ${Paragraph} {
         grid-area: paragraph;
       }
 
       .gif-image-container,
-      ${ImageContainer}{
+      ${ImageContainer} {
         grid-area: image;
       }
     }

@@ -31,12 +31,8 @@ export const query = graphql`
             featured_image {
               alt
               url
-              localFile {
-                childImageSharp {
-                  fluid(quality: 90, maxHeight: 500, maxWidth: 500) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
+              fluid(maxHeight: 500, maxWidth: 500) {
+                ...GatsbyPrismicImageFluid
               }
             }
             featured_image_video {

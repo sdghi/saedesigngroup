@@ -1,0 +1,52 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Title",
+        "placeholder": "Title"
+      }
+    },
+    "member": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "profile_picture": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Profile Picture"
+            }
+          },
+          "name": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+              "label": "Name",
+              "placeholder": "Name"
+            }
+          },
+          "role": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+              "label": "Role",
+              "placeholder": "Role"
+            }
+          },
+          "fun_fact": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+              "label": "Fun Fact",
+              "placeholder": "Fun Fact"
+            }
+          }
+        },
+        "label": "Member"
+      }
+    }
+  }
+}

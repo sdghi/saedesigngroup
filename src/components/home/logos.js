@@ -6,40 +6,40 @@ import { breakpointSmall, breakpointMedium, pink } from "../../variables"
 import styled from "styled-components"
 
 const Logos = ({ setCursorElement }) => {
-  const data = useStaticQuery(graphql`
-    {
-      allPrismicLogos {
-        edges {
-          node {
-            data {
-              body {
-                primary {
-                  title {
-                    text
-                  }
-                  logo_image {
-                    alt
-                    localFile {
-                      childImageSharp {
-                        fluid(quality: 90) {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                  }
-                  link_to_project {
-                    uid
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   {
+  //     allPrismicLogos {
+  //       edges {
+  //         node {
+  //           data {
+  //             body {
+  //               primary {
+  //                 title {
+  //                   text
+  //                 }
+  //                 logo_image {
+  //                   alt
+  //                   localFile {
+  //                     childImageSharp {
+  //                       fluid(quality: 90) {
+  //                         ...GatsbyImageSharpFluid
+  //                       }
+  //                     }
+  //                   }
+  //                 }
+  //                 link_to_project {
+  //                   uid
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
-  const logosData = data.allPrismicLogos.edges[0].node.data.body
+  // const logosData = data.allPrismicLogos.edges[0].node.data.body
 
   const [hoveredLogo, setHoveredLogo] = useState(null)
 
@@ -61,7 +61,8 @@ const Logos = ({ setCursorElement }) => {
       initial="hidden"
       animate="visible"
     >
-      {logosData.map(logo => (
+      <h3>logos</h3>
+      {/* {logosData.map(logo => (
         <motion.div
           className="logo-container"
           key={logo.id}
@@ -87,7 +88,7 @@ const Logos = ({ setCursorElement }) => {
             </Link>
           )}
         </motion.div>
-      ))}
+      ))} */}
     </LogosContainer>
   )
 }

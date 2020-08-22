@@ -39,6 +39,16 @@ module.exports = {
         repositoryName: `saedesign`,
         accessToken: `${process.env.API_KEY}`,
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
+        schemas: {
+          about: require("./schemas/about.json"),
+          category: require("./schemas/category.json"),
+          category_cursor: require("./schemas/category_cursor.json"),
+          client_list: require("./schemas/client_list.json"),
+          logos: require("./schemas/logos.json"),
+          menu_of_services: require("./schemas/menu_of_services.json"),
+          project_template: require("./schemas/project_template.json"),
+          team: require("./schemas/team.json"),
+        },
       },
     },
     {

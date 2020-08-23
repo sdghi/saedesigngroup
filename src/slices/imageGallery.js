@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react"
 import { Container, ImageContainer } from "../elements"
 import styled from "styled-components"
 import { useAppContext } from "../provider"
+import { useMousePosition } from "../hooks"
 import { grey, lightGrey } from "../variables"
 import ScrollWrapper from "../components/wrappers/scrollWrapper"
 import { AnimatePresence, motion } from "framer-motion"
@@ -11,16 +12,16 @@ const ImageGallery = ({ slice }) => {
   const [visibleImage, setVisibleImage] = useState(0)
   const [nextImage, setNextImage] = useState(null)
   const slideshowRef = useRef(null)
-  const { xValue, setCursorElement } = useAppContext()
+  const { setCursorElement } = useAppContext()
 
-  // TODO Go to next image every 5 seconds - useEffect
+  const [x] = useMousePosition()
 
   const toggleSlideshowCursors = () => {
     // Get the total width of container and get halfway point
     const halfwayPoint = slideshowRef.current.clientWidth / 2
 
     // Get the current mouse position and see if it past the halfway point
-    if (xValue > halfwayPoint) {
+    if (x > halfwayPoint) {
       // Set to next
       setCursorElement({ related: "&#x2192;" })
       setNextImage(true)

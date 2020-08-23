@@ -1,0 +1,75 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug",
+        "placeholder": "slug"
+      }
+    },
+    "page_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Page Name",
+        "placeholder": "Page Name"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Title",
+        "placeholder": "Page title goes here"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Description",
+        "placeholder": "Description goes here"
+      }
+    },
+    "we_are": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "content": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+              "label": "Content",
+              "placeholder": "Example: We are casual (like Aloha Friday)"
+            }
+          }
+        },
+        "label": "We Are"
+      }
+    },
+    "quotes": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "quote": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+              "label": "Quote",
+              "placeholder": "Quote"
+            }
+          },
+          "quote_author": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+              "label": "Quote Author",
+              "placeholder": "Quote Author"
+            }
+          }
+        },
+        "label": "Quotes"
+      }
+    }
+  }
+}

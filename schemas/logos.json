@@ -1,0 +1,56 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Title",
+        "placeholder": "title"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "logo": []
+        },
+        "choices": {
+          "logo": {
+            "type": "Slice",
+            "fieldset": "Logo",
+            "description": "Logo slice",
+            "icon": "face",
+            "display": "grid",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "Title",
+                  "placeholder": "title"
+                }
+              },
+              "logo_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Logo Image"
+                }
+              },
+              "link_to_project": {
+                "type": "Link",
+                "config": {
+                  "label": "Link to project",
+                  "placeholder": "link to project"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  }
+}

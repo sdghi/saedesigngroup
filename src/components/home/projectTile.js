@@ -95,9 +95,7 @@ const ProjectTile = ({
               width="100%"
               widthMd="100%"
               heightMd="100%"
-              fluid={
-                project.node.data.featured_image.localFile.childImageSharp.fluid
-              }
+              fluid={project.node.data.featured_image.fluid}
               alt={imageAlt}
               loading="lazy"
             />
@@ -125,9 +123,7 @@ const ProjectTile = ({
               width="100%"
               widthMd="100%"
               heightMd="100%"
-              fluid={
-                project.node.data.featured_image.localFile.childImageSharp.fluid
-              }
+              fluid={project.node.data.featured_image.fluid}
               alt={imageAlt}
               loading="lazy"
             />

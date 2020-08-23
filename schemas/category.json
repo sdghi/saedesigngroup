@@ -1,0 +1,34 @@
+{
+  "Main": {
+    "category": {
+      "type": "Text",
+      "config": {
+        "label": "Category",
+        "placeholder": "category"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Description"
+      }
+    },
+    "logos": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "logo": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Logo"
+            }
+          }
+        },
+        "label": "Logos"
+      }
+    }
+  }
+}

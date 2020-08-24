@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   @media(min-width: ${breakpointMedium}){
     *, *:before, *:after{
       /* Globally disables the cursor  */
-      cursor: none;
+      /* cursor: none; */
     }
   }
 

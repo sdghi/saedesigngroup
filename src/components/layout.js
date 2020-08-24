@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useLayoutEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import styled from "styled-components"
 import PropTypes from "prop-types"
@@ -34,33 +34,19 @@ const variants = {
 const Layout = ({ children, location }) => {
   const { cursorElement, setCursorElement } = useAppContext()
 
-  const [showCursor, setShowCursor] = useState(false)
   const [isNavOpen, toggleNav] = useToggle()
   const [bind] = useCursorChange({ selected: "selected" })
-
-  const [x, y] = useMousePosition()
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
     return () => setCursorElement({ initial: "initial" })
   }, [location.pathname, isNavOpen])
 
-  /*  Keep this useEffect separate or the x, y change will always setSetCursorElement back
-  to initial every time the mouse moves */
-  useEffect(() => {
-    // Disable the cursor until the user moves their mouse
-    if ((!!x, !!y)) {
-      setShowCursor(true)
-    }
-  }, [x, y])
-
   return (
     <div>
       <GlobalStyle />
 
-      {showCursor && (
-        <CustomCursor xValue={x} yValue={y} cursorElement={cursorElement} />
-      )}
+      <CustomCursor cursorElement={cursorElement} />
 
       <AnimatePresence>
         {isNavOpen && (

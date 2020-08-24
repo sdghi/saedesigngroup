@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useLayoutEffect, useState } from "react"
+import { useMousePosition } from "../hooks"
 import InitialCursor from "./cursors/initialCursor"
 import BrandingCursor from "./cursors/brandingCursor"
 import PackagingCursor from "./cursors/packagingCursor"
@@ -8,38 +9,54 @@ import AboutCursor from "./cursors/aboutCursor"
 import ContactCursor from "./cursors/contactCursor"
 import RelatedProjectCursor from "./cursors/relatedProjectsCursor"
 import SelectedCursor from "./cursors/selectedCursor"
-import CaseStudyCursor from './cursors/caseStudyCursor'
+import CaseStudyCursor from "./cursors/caseStudyCursor"
 
 const CustomCursor = ({ xValue, yValue, cursorElement }) => {
-  switch (Object.keys(cursorElement)[0]) {
-    case "initial":
-      return <InitialCursor xValue={xValue} yValue={yValue} />
-    case "branding":
-      return <BrandingCursor xValue={xValue} yValue={yValue} />
-    case "packaging":
-      return <PackagingCursor xValue={xValue} yValue={yValue} />
-    case "work":
-      return <WorkCursor xValue={xValue} yValue={yValue} />
-    case "services":
-      return <ServicesCursor xValue={xValue} yValue={yValue} />
-    case "about":
-      return <AboutCursor xValue={xValue} yValue={yValue} />
-    case "contact":
-      return <ContactCursor xValue={xValue} yValue={yValue} />
-    case "selected":
-      return <SelectedCursor xValue={xValue} yValue={yValue} />
-    case "related":
-      return (
-        <RelatedProjectCursor
-          xValue={xValue}
-          yValue={yValue}
-          cursorContent={Object.values(cursorElement)[0]}
-        />
-      )
-    case 'caseStudy':
-      return <CaseStudyCursor xValue={xValue} yValue={yValue} />
-    default:
-      return null
+  const [showCursor, setShowCursor] = useState(false)
+  const [x, y] = useMousePosition()
+
+  /*  Keep this useEffect separate or the x, y change will always setSetCursorElement back
+  to initial every time the mouse moves */
+  useLayoutEffect(() => {
+    // Disable the cursor until the user moves their mouse
+    if ((!!x, !!y)) {
+      setShowCursor(true)
+    }
+  }, [x, y])
+
+  if (showCursor) {
+    switch (Object.keys(cursorElement)[0]) {
+      case "initial":
+        return <InitialCursor xValue={x} yValue={y} />
+      case "branding":
+        return <BrandingCursor xValue={x} yValue={y} />
+      case "packaging":
+        return <PackagingCursor xValue={x} yValue={y} />
+      case "work":
+        return <WorkCursor xValue={x} yValue={y} />
+      case "services":
+        return <ServicesCursor xValue={x} yValue={y} />
+      case "about":
+        return <AboutCursor xValue={x} yValue={y} />
+      case "contact":
+        return <ContactCursor xValue={x} yValue={y} />
+      case "selected":
+        return <SelectedCursor xValue={x} yValue={y} />
+      case "related":
+        return (
+          <RelatedProjectCursor
+            xValue={x}
+            yValue={y}
+            cursorContent={Object.values(cursorElement)[0]}
+          />
+        )
+      case "caseStudy":
+        return <CaseStudyCursor xValue={x} yValue={y} />
+      default:
+        return null
+    }
+  } else {
+    return null
   }
 }
 

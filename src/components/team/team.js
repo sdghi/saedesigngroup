@@ -1,35 +1,34 @@
-import React, { useState } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
-import { dark_blue, breakpointMedium } from "../../variables"
-import { motion } from 'framer-motion'
-import MemberCard from './memberCard'
+import React, { useState } from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
+import { dark_blue, white, yellow } from "../../variables"
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion"
+import MemberCard from "./memberCard"
 
 const Team = () => {
-  const [isSelected, setIsSelected] = useState(null);
+  const [isSelected, setIsSelected] = useState(null)
 
   const data = useStaticQuery(graphql`
     {
-  allPrismicTeam{
-    edges{
-      node{
-        data{
-          member{
-            name{
-              text
-            }
-            role{
-              text
-            }
-            fun_fact{
-              text
-            }
-            profile_picture{
-              localFile{
-                childImageSharp{
-                  fluid(quality: 90){
-                    ...GatsbyImageSharpFluid
+      allPrismicTeam {
+        edges {
+          node {
+            data {
+              member {
+                name {
+                  text
+                }
+                role {
+                  text
+                }
+                fun_fact {
+                  text
+                }
+                profile_picture {
+                  fluid(maxWidth: 500) {
+                    ...GatsbyPrismicImageFluid
                   }
+                  alt
                 }
               }
             }
@@ -37,64 +36,95 @@ const Team = () => {
         }
       }
     }
-  }
-}
-    `)
+  `)
 
   const { member } = data.allPrismicTeam.edges[0].node.data
 
-  // TODO : Make drag onContraints the size of the team container
-
   return (
     <TeamContainer>
-      <motion.div
-        drag={isSelected ? false : true}
-        dragConstraints={{ top: -200, left: -200, right: 200, bottom: 200 }}
-        animate={{
-          x: isSelected && 0,
-          y: isSelected && 0
-        }}
-        dragElastic={0.3}
-        className="grid-container">
-        {member.map((person, i) => (
-          <MemberCard
-            key={i}
-            index={i + 1}
-            isSelected={isSelected}
-            setIsSelected={setIsSelected}
-            person={person}
-          />
-        ))}
-      </motion.div>
+      <AnimateSharedLayout type="crossfade">
+        <motion.div className="grid-container">
+          {member.map((person, i) => (
+            <MemberCard
+              key={i}
+              index={i}
+              isSelected={isSelected}
+              setIsSelected={setIsSelected}
+              person={person}
+            />
+          ))}
+        </motion.div>
+
+        <AnimatePresence>
+          {isSelected && (
+            <Selected
+              member={member}
+              setIsSelected={setIsSelected}
+              isSelected={isSelected}
+            />
+          )}
+        </AnimatePresence>
+      </AnimateSharedLayout>
     </TeamContainer>
   )
 }
 
 export default Team
 
+const Selected = ({ isSelected, setIsSelected, member }) => {
+  const selectedMember = member.find(({ name }) => name.text === isSelected)
+
+  function resetCard() {
+    setIsSelected(null)
+  }
+  return (
+    <SelectedCard
+      layoutId={isSelected}
+      onTap={resetCard}
+      animate={{
+        rotateY: 180,
+      }}
+      exit={{
+        rotateY: 180,
+      }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="content-inner">{selectedMember.name.text}</div>
+    </SelectedCard>
+  )
+}
+
+const SelectedCard = styled(motion.div)`
+  --height: 50vh;
+  --width: 400px;
+  padding: 20px;
+  background: ${white};
+  position: absolute;
+  height: var(--height);
+  width: var(--width);
+  top: calc(50% - (var(--height) / 2));
+  left: calc(50% - var(--width) / 2);
+  z-index: 50;
+
+  .content-inner {
+    height: 100%;
+    width: 100%;
+    background: ${yellow};
+    transform: rotateY(180deg);
+  }
+`
+
 const TeamContainer = styled.section`
-  height: calc(100vh);
-  width: 100vw;
   background: ${dark_blue};
-  overflow: hidden;
-  display: none;
-  place-content: center;
   position: relative;
+  width: 100%;
 
-  .grid-container{
+  .grid-container {
     padding: 10vh;
-    height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260.25px, 1fr));
-    grid-auto-rows: 363px;
+    grid-template-columns: repeat(auto-fill, 250px);
     grid-gap: 50px;
-    place-items: center;
-    position: static;
+    place-content: center;
   }
-
-  @media(min-width: ${breakpointMedium}){
-    display: grid;
-  }
-`;
-
+`

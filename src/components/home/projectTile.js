@@ -31,11 +31,11 @@ const ProjectTile = ({
   // Handle rendering the sizes
   const renderSizes = () => {
     if (size === "Small") {
-      setProjectSize(0.35)
+      setProjectSize(0.4)
     } else if (size === "Medium") {
-      setProjectSize(0.45)
-    } else if (size === "Large") {
       setProjectSize(0.55)
+    } else if (size === "Large") {
+      setProjectSize(0.65)
     }
   }
 
@@ -83,13 +83,14 @@ const ProjectTile = ({
     <TileContent
       key={project.uid}
       displayProjectsGrid={displayProjectsGrid}
+      layout
       {...bind}
       widthMd={displayProjectsGrid ? "100%" : `${100 * projectSize}%`}
       // Top and Bottom will be directly affected by their properties in the cms
       top={displayProjectsGrid ? "0" : top}
     >
       {slug === "logo-selection" && (
-        <div onClick={handleLogoSelection}>
+        <motion.div onClick={handleLogoSelection} layout>
           {!featured_image_video.url && (
             <ImageContainer
               width="100%"
@@ -114,7 +115,7 @@ const ProjectTile = ({
           <h2 className={image_background_light ? "dark-text" : undefined}>
             {projectName}
           </h2>
-        </div>
+        </motion.div>
       )}
       {slug !== "logo-selection" && (
         <Link to={`/${slug}`}>

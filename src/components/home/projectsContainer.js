@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { AnimateSharedLayout } from "framer-motion"
 import { breakpointSmall } from "../../variables"
 import { Container } from "../../elements"
 import ProjectTile from "./projectTile"
@@ -19,9 +20,8 @@ const ProjectsContainer = ({
   return (
     <AllProjects
       display={displayProjectsGrid ? "grid" : "block"}
-      padding="0 5%"
-      margin="0"
-      marginMd="0"
+      margin="0 auto"
+      marginMd="0 auto"
       paddingMd={displayProjectsGrid ? "0 10%" : "0"}
       ref={measuredRef}
       displayProjectsGrid={displayProjectsGrid}
@@ -47,8 +47,11 @@ export default ProjectsContainer
 const AllProjects = styled(Container)`
   display: grid;
   grid-gap: 20px;
+  width: 95%;
+  max-width: 1800px;
+  margin: 0 auto;
   grid-template-columns: ${({ displayProjectsGrid }) =>
-    displayProjectsGrid && "repeat(auto-fill, minmax(250px, 1fr))"};
+    displayProjectsGrid && "repeat(auto-fill, minmax(280px, 1fr))"};
 
   @media (min-width: ${breakpointSmall}) {
     overflow-x: hidden;

@@ -148,7 +148,6 @@ const StaggeredImageContainer = styled(Container)`
 
   @media (min-width: ${breakpointMedium}) {
     .caption {
-      top: -300px;
       right: ${({ reverseImages }) => (reverseImages ? "none" : "10%")};
       left: ${({ reverseImages }) => (reverseImages ? "10%" : "none")};
     }

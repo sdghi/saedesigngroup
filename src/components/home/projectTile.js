@@ -31,7 +31,7 @@ const ProjectTile = ({
   // Handle rendering the sizes
   const renderSizes = () => {
     if (size === "Small") {
-      setProjectSize(0.35)
+      setProjectSize(0.4)
     } else if (size === "Medium") {
       setProjectSize(0.55)
     } else if (size === "Large") {

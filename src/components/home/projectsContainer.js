@@ -51,7 +51,7 @@ const AllProjects = styled(Container)`
   max-width: 1800px;
   margin: 0 auto;
   grid-template-columns: ${({ displayProjectsGrid }) =>
-    displayProjectsGrid && "repeat(auto-fill, minmax(250px, 1fr))"};
+    displayProjectsGrid && "repeat(auto-fill, minmax(280px, 1fr))"};
 
   @media (min-width: ${breakpointSmall}) {
     overflow-x: hidden;

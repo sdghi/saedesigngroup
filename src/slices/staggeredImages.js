@@ -25,7 +25,7 @@ const StaggeredImages = ({ slice }) => {
     setElTop(element.offsetHeight)
   }, [ref])
 
-  const y = useTransform(scrollY, [elTop, elTop + 10], [0, -1], {
+  const y = useTransform(scrollY, [elTop, elTop + 20], [0, -1], {
     clamp: false,
   })
 
@@ -42,7 +42,6 @@ const StaggeredImages = ({ slice }) => {
             fluid={imageOneSrc}
             alt={image_1.alt}
             widthMd="60%"
-            margin={reverse_images ? "0 0 20px auto" : "0 0 20px 0"}
             marginMd={reverse_images ? "0 0 0 auto" : "0"}
             width="80%"
             height="auto"
@@ -64,7 +63,7 @@ const StaggeredImages = ({ slice }) => {
             widthMd="60%"
             height="auto"
             heightMd="auto"
-            marginMd={reverse_images ? "-10% auto 0 0" : "-10% 0 0 auto"}
+            marginMd={reverse_images ? "0 auto 0 0" : "0 0 0 auto"}
           />
         </motion.div>
 

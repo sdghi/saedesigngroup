@@ -1,15 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 import { white, black, pink } from "../../variables"
-import { motion } from 'framer-motion'
-import { useCursorChange } from '../../hooks'
+import { motion } from "framer-motion"
+import { useCursorChange } from "../../hooks"
 
-const MapToggle = ({
-  toggleOahuMap,
-  showOahuMap,
-  toggleMap,
-}) => {
-  const [bind] = useCursorChange({ selected: 'selected' })
+const MapToggle = ({ toggleOahuMap, showOahuMap, toggleMap }) => {
+  const [bind] = useCursorChange({ selected: "selected" })
 
   const containerVariants = {
     initial: {
@@ -19,19 +15,19 @@ const MapToggle = ({
     open: {
       scale: 1,
       transition: {
-        when: 'beforeChildren',
+        when: "beforeChildren",
         staggerChildren: 0.1,
         staggerDirection: 1,
-      }
+      },
     },
     exit: {
       scale: 0,
       transition: {
         staggerChildren: 0.1,
         staggerDirection: 1,
-        when: 'afterChildren'
-      }
-    }
+        when: "afterChildren",
+      },
+    },
   }
 
   const fadeVariants = {
@@ -39,18 +35,20 @@ const MapToggle = ({
       opacity: 1,
       x: 0,
       transition: {
-        type: "spring"
-      }
+        type: "spring",
+      },
     },
     closed: {
       opacity: 0,
-      x: -10
-    }
+      x: -10,
+    },
   }
 
-  const oahuGoogleMap = "https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513";
+  const oahuGoogleMap =
+    "https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513"
 
-  const mauiGoogleMap = "https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225";
+  const mauiGoogleMap =
+    "https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225"
 
   return (
     <MapToggleContainer
@@ -65,7 +63,8 @@ const MapToggle = ({
         initial="closed"
         open="open"
         exit="closed"
-        onClick={toggleMap}>
+        onClick={toggleMap}
+      >
         <span className="x-icon"></span>
       </motion.button>
 
@@ -74,14 +73,17 @@ const MapToggle = ({
         initial="closed"
         open="open"
         exit="closed"
-      >Choose Location</motion.h5>
+      >
+        Choose Location
+      </motion.h5>
 
       <motion.div
         variants={fadeVariants}
         initial="closed"
         open="open"
         exit="closed"
-        id="map_select">
+        id="map_select"
+      >
         <div
           className="map_btns"
           onClick={showOahuMap ? toggleOahuMap : undefined}
@@ -128,26 +130,26 @@ const MapToggle = ({
           <br />
           <a href={oahuGoogleMap}>
             555 South St Suite #108
-          <br /> Honolulu, HI 96813
+            <br /> Honolulu, HI 96813
           </a>
         </motion.div>
       ) : (
-          <motion.div
-            className="info"
-            variants={fadeVariants}
-            initial="closed"
-            open="open"
-            exit="closed"
-          >
-            <a href="tel:808-249-2200">(808) 249-2200</a>
-            <br />
-            <a href={mauiGoogleMap}>
-              2261 Aupuni St # 101
-              <br /> Wailuku, HI 96793
+        <motion.div
+          className="info"
+          variants={fadeVariants}
+          initial="closed"
+          open="open"
+          exit="closed"
+        >
+          <a href="tel:808-249-2200">(808) 249-2200</a>
+          <br />
+          <a href={mauiGoogleMap}>
+            2261 Aupuni St # 101
+            <br /> Wailuku, HI 96793
           </a>
-          </motion.div >
-        )}
-    </MapToggleContainer >
+        </motion.div>
+      )}
+    </MapToggleContainer>
   )
 }
 

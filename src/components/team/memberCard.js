@@ -56,7 +56,9 @@ const MemberCard = ({ index, isSelected, setIsSelected, person }) => {
                 fontSize="12px"
                 fontWeight="700"
               >
-                <strong>Fun Fact:</strong> {fun_fact.text}
+                <strong>Fun Fact:</strong>
+                <br />
+                {fun_fact.text}
               </Paragraph>
             </div>
           </div>

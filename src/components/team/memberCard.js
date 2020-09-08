@@ -1,12 +1,12 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import { HeadingTwo, Paragraph, ImageContainer } from "../../elements"
 import { white, pink } from "../../variables"
 
-const MemberCard = ({ index, isSelected, setIsSelected, person }) => {
+const MemberCard = ({ index, handleSelect, person }) => {
   const selectPerson = () => {
-    !isSelected && setIsSelected(person.name.text)
+    handleSelect(person.name.text)
   }
 
   const { name, role, fun_fact, profile_picture } = person
@@ -15,7 +15,7 @@ const MemberCard = ({ index, isSelected, setIsSelected, person }) => {
 
   return (
     <ProfileCard
-      onClick={() => selectPerson()}
+      onClick={selectPerson}
       key={index}
       index={index}
       whileHover={{ scale: 1.1 }}

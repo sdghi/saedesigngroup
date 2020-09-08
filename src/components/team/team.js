@@ -1,13 +1,12 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import { useToggle } from "../../hooks"
 import { dark_blue, white, yellow } from "../../variables"
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion"
 import MemberCard from "./memberCard"
 
 const Team = () => {
-  const [isSelected, setIsSelected] = useState(null)
-
   const data = useStaticQuery(graphql`
     {
       allPrismicTeam {
@@ -40,6 +39,16 @@ const Team = () => {
 
   const { member } = data.allPrismicTeam.edges[0].node.data
 
+  const [isSelected, setIsSelected] = useState(null)
+  const [canSelect, toggleCanSelect] = useToggle(true)
+
+  function handleSelect(id) {
+    if (!isSelected && canSelect) {
+      setIsSelected(id)
+      toggleCanSelect()
+    }
+  }
+
   return (
     <TeamContainer>
       <AnimateSharedLayout type="crossfade">
@@ -48,14 +57,14 @@ const Team = () => {
             <MemberCard
               key={i}
               index={i}
-              isSelected={isSelected}
-              setIsSelected={setIsSelected}
+              handleSelect={handleSelect}
               person={person}
             />
           ))}
         </motion.div>
 
-        <AnimatePresence>
+        {/* Don't allow for selection until the animation has exited prevents jumpy double selection bug  */}
+        <AnimatePresence onExitComplete={toggleCanSelect}>
           {isSelected && (
             <Selected
               member={member}
@@ -77,17 +86,20 @@ const Selected = ({ isSelected, setIsSelected, member }) => {
   function resetCard() {
     setIsSelected(null)
   }
+
   return (
     <SelectedCard
       layoutId={isSelected}
       onTap={resetCard}
       animate={{
         rotateY: 180,
+        transition: {
+          duration: 0.5,
+        },
       }}
       exit={{
         rotateY: 180,
       }}
-      transition={{ duration: 0.5 }}
     >
       <div className="content-inner">{selectedMember.name.text}</div>
     </SelectedCard>

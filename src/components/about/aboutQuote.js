@@ -70,7 +70,6 @@ const Quote = styled(motion.div)`
   width: 90%;
   margin: 0 auto;
   padding-bottom: 10vh;
-  height: 50vh;
 
   p {
     text-indent: -0.4125em;

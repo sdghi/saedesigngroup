@@ -22,7 +22,7 @@ const HomeHero = () => {
 
   return (
     <HeroContainer ref={heroRef}>
-      <Canvas
+      {/* <Canvas
         style={{ position: "absolute" }}
         camera={{
           position: [0, 0, 5],
@@ -49,7 +49,7 @@ const HomeHero = () => {
           setModel={setModel}
         />
         <fog attach="fog" args={[yellow, 5, 15]} />
-      </Canvas>
+      </Canvas> */}
 
       <HeroMarquee />
       <p className="scroll-cta">scroll down</p>

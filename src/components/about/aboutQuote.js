@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion"
 import styled from "styled-components"
 import { Container, Paragraph, HeadingTwo } from "../../elements"
 import { pink, breakpoint4k } from "../../variables"
@@ -28,7 +28,7 @@ const AboutQuote = ({ quotes }) => {
   }
 
   return (
-    <QuoteContainer paddingMd="50px 0" margin="0">
+    <QuoteContainer paddingMd="50px 0" margin="0" layout>
       <ClientsHeader fontSize="48px">Take it from our clients</ClientsHeader>
       <AnimatePresence exitBeforeEnter>
         <Quote

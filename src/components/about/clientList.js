@@ -79,7 +79,7 @@ const MarqueeContainer = styled.div`
   .marquee-inner {
     width: calc(7800px * 4);
     transform: translate3d(calc(-40% + 10vw), 0, 0);
-    animation: marquee 50s linear infinite;
+    animation: marquee 60s linear infinite;
     display: flex;
     animation-play-state: ${({ startMarquee }) =>
       startMarquee ? "play" : "paused"};

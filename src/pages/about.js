@@ -51,7 +51,7 @@ const AboutPage = ({ data }) => {
     <>
       <SEO title="About" />
       <AboutHero title={title} description={description} weAre={we_are} />
-      <Team />
+      {/* <Team /> */}
       <AboutQuote quotes={quotes} />
       <ClientList />
     </>

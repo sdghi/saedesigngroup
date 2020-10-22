@@ -6,40 +6,38 @@ import { breakpointSmall, breakpointMedium, pink } from "../../variables"
 import styled from "styled-components"
 
 const Logos = ({ setCursorElement }) => {
-  // const data = useStaticQuery(graphql`
-  //   {
-  //     allPrismicLogos {
-  //       edges {
-  //         node {
-  //           data {
-  //             body {
-  //               primary {
-  //                 title {
-  //                   text
-  //                 }
-  //                 logo_image {
-  //                   alt
-  //                   localFile {
-  //                     childImageSharp {
-  //                       fluid(quality: 90) {
-  //                         ...GatsbyImageSharpFluid
-  //                       }
-  //                     }
-  //                   }
-  //                 }
-  //                 link_to_project {
-  //                   uid
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+  const data = useStaticQuery(graphql`
+    {
+      allPrismicLogos {
+        edges {
+          node {
+            data {
+              body {
+                ... on PrismicLogosBodyLogo {
+                  primary {
+                    title {
+                      text
+                    }
+                    logo_image {
+                      alt
+                      fluid {
+                        ...GatsbyPrismicImageFluid
+                      }
+                    }
+                    link_to_project {
+                      uid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
-  // const logosData = data.allPrismicLogos.edges[0].node.data.body
+  const logosData = data.allPrismicLogos.edges[0].node.data.body
 
   const [hoveredLogo, setHoveredLogo] = useState(null)
 
@@ -61,8 +59,7 @@ const Logos = ({ setCursorElement }) => {
       initial="hidden"
       animate="visible"
     >
-      <h3>logos</h3>
-      {/* {logosData.map(logo => (
+      {logosData.map(logo => (
         <motion.div
           className="logo-container"
           key={logo.id}
@@ -71,7 +68,7 @@ const Logos = ({ setCursorElement }) => {
         >
           <ImageContainer
             alt={logo.primary.logo_image.alt}
-            fluid={logo.primary.logo_image.localFile.childImageSharp.fluid}
+            fluid={logo.primary.logo_image.fluid}
             heightMd="300px"
           />
           {logo.primary.link_to_project && (
@@ -88,7 +85,7 @@ const Logos = ({ setCursorElement }) => {
             </Link>
           )}
         </motion.div>
-      ))} */}
+      ))}
     </LogosContainer>
   )
 }

@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { AnimateSharedLayout } from "framer-motion"
 import { breakpointSmall } from "../../variables"
 import { Container } from "../../elements"
 import ProjectTile from "./projectTile"

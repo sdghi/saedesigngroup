@@ -114,12 +114,14 @@ const IndexPage = ({ data }) => {
           showLogos={showLogos}
           showMobile={false}
         />
-        <ProjectGridToggle
+
+        {/* Uncomment once projects non-grid layout is finished */}
+        {/* <ProjectGridToggle
           showLogos={showLogos}
           projectCategoryFilter={projectCategoryFilter}
           setDisplayProjectsGrid={setDisplayProjectsGrid}
           displayProjectsGrid={displayProjectsGrid}
-        />
+        /> */}
         {/* Mobile project filter  */}
         <MobileProjectsFilter
           projectCategoryFilter={projectCategoryFilter}
@@ -141,7 +143,8 @@ const IndexPage = ({ data }) => {
         <ProjectsContainer
           showLogos={showLogos}
           setShowLogos={setShowLogos}
-          displayProjectsGrid={displayProjectsGrid}
+          // Set back to displayProjectsGrid once feature is completed
+          displayProjectsGrid={true}
           measuredRef={measuredRef}
           projects={projects}
           projectCategoryFilter={projectCategoryFilter}

@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { breakpointSmall, breakpointMedium } from "../../variables"
 import styled from "styled-components"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 
 const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
   const data = useStaticQuery(graphql`
@@ -28,21 +28,6 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
     }
   `)
 
-  const variants = {
-    hidden: {
-      opacity: 0,
-      y: -20,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: "circOut",
-        duration: 0.3,
-      },
-    },
-  }
-
   return (
     <>
       {data.allPrismicCategory.edges.map(item => {
@@ -54,21 +39,13 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
             <CategoryInfo key={id}>
               <h2>{category}</h2>
               <p>{description.text}</p>
-              <AnimatePresence>
-                {logos.length > 1 && (
-                  <motion.div
-                    className="hotel-logos"
-                    variants={variants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="hidden"
-                  >
-                    {logos.map((logo, i) => (
-                      <img key={i} src={logo.logo.url} alt={logo.logo.alt} />
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {logos.length > 1 && (
+                <motion.div className="hotel-logos">
+                  {logos.map((logo, i) => (
+                    <img key={i} src={logo.logo.url} alt={logo.logo.alt} />
+                  ))}
+                </motion.div>
+              )}
             </CategoryInfo>
           )
       })}

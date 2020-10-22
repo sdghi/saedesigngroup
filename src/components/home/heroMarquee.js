@@ -1,66 +1,55 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
 const HeroMarquee = () => {
-    return (
-        <Marquee>
-            <div className="inner">
-                <h2>Delightful&nbsp;</h2>
-                <h2>Design&nbsp;</h2>
-                <h2>By&nbsp;</h2>
-                <h2>Good&nbsp;</h2>
-                <h2>People&nbsp;</h2>
-                <h2>Delightful&nbsp;</h2>
-                <h2>Design&nbsp;</h2>
-                <h2>By&nbsp;</h2>
-                <h2>Good&nbsp;</h2>
-                <h2>People&nbsp;</h2>
-                <h2>Delightful&nbsp;</h2>
-                <h2>Design&nbsp;</h2>
-                <h2>By&nbsp;</h2>
-                <h2>Good&nbsp;</h2>
-                <h2>People&nbsp;</h2>
-                <h2>Delightful&nbsp;</h2>
-                <h2>Design&nbsp;</h2>
-                <h2>By&nbsp;</h2>
-                <h2>Good&nbsp;</h2>
-                <h2>People&nbsp;</h2>
-            </div>
-        </Marquee>
-    )
+  return (
+    <>
+      <Marquee>
+        <div className="inner" aria-hidden="true">
+          <div>Delightful&nbsp;Design&nbsp;By&nbsp;Good&nbsp;People</div>
+          <div>Delightful&nbsp;Design&nbsp;By&nbsp;Good&nbsp;People</div>
+          <div>Delightful&nbsp;Design&nbsp;By&nbsp;Good&nbsp;People</div>
+          <div>Delightful&nbsp;Design&nbsp;By&nbsp;Good&nbsp;People</div>
+          <div>Delightful&nbsp;Design&nbsp;By&nbsp;Good&nbsp;People</div>
+          <div>Delightful&nbsp;Design&nbsp;By&nbsp;Good&nbsp;People</div>
+          <div>Delightful&nbsp;Design&nbsp;By&nbsp;Good&nbsp;People</div>
+          <div>Delightful&nbsp;Design&nbsp;By&nbsp;Good&nbsp;People</div>
+        </div>
+      </Marquee>
+    </>
+  )
 }
 
 export default HeroMarquee
 
 const Marquee = styled.div`
+  width: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  position: relative;
+
+  .inner {
     position: relative;
-    overflow: hidden;
-    z-index: 0;
+    animation: marquee 20s linear infinite both;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 20px;
     width: fit-content;
-    pointer-events: none;
 
-    .inner{
-        width: fit-content;
-        display: flex;
-        position: relative;
-        transform: translate3d(0, 0, 0);
-        animation: marquee 10s linear infinite;
-        animation-play-state: running;
-        will-change: transform;
+    div {
+      font-size: 72px;
+      font-weight: 700;
+    }
+  }
 
-        h2{
-            font-size: 72px;
-            width: 100%;
-        }
+  @keyframes marquee {
+    0% {
+      transform: translate3d(calc(-25% + 20vw), 0, 0);
     }
 
-    @keyframes marquee {
-        0% {
-            transform: translate3d(calc(-25% + 20vw), 0, 0);
-        }
-
-        100% {
-            transform: translate3d(calc(-50% + 20vw), 0, 0);
-        }
+    100% {
+      transform: translate3d(calc(-50% + 20vw), 0, 0);
     }
-`;
+  }
+`

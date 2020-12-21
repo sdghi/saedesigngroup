@@ -6,11 +6,12 @@ import MauiMap from "../components/contact/mauiMap"
 import OahuMap from "../components/contact/oahuMap"
 import MapToggle from "../components/contact/mapToggle"
 import { AnimatePresence, motion } from "framer-motion"
-import { useToggle } from "../hooks"
+import { useToggle, useCursorChange } from "../hooks"
 
 const ContactPage = () => {
   const [showOahuMap, toggleOahuMap] = useToggle()
   const [showMapToggle, toggleMap] = useToggle(true)
+  const [bind] = useCursorChange({ selected: "selected" })
 
   return (
     <>
@@ -44,6 +45,7 @@ const ContactPage = () => {
           className="contact-us-at"
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1, transition: { delay: 0.8 } }}
+          {...bind}
         >
           info@saedesign.com
         </motion.a>

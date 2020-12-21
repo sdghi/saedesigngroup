@@ -13,6 +13,13 @@ import { motion } from "framer-motion"
 const MainMenuSection = ({ mainMenu, add_a_side_of }) => {
   const [showDescription, setShowDescription] = useState(false)
 
+  function handleDescriptionToggle(text) {
+    if (showDescription === text) {
+      return setShowDescription(null)
+    }
+    return setShowDescription(text)
+  }
+
   return (
     <MainMenu className="menu-main">
       <img
@@ -26,14 +33,35 @@ const MainMenuSection = ({ mainMenu, add_a_side_of }) => {
           <h2 id="service">{service.primary.title.text}</h2>
 
           {service.items.map((item, index) => (
-            <div key={index} className="service-item">
+            <div key={index} className="service-item desktop">
               <div className="title-cluster">
-                <motion.h3
-                  className="service-title"
-                  onTap={() => setShowDescription(item.feature_title.text)}
-                >
+                <motion.h3 className="service-title">
                   {item.feature_title.text}
                 </motion.h3>
+                {item.feature_title.text.toLowerCase() === "brand strategy" && (
+                  <img className="stars" src={"/stars.svg"} alt="stars" />
+                )}
+              </div>
+              <p>{item.feature_description.text}</p>
+            </div>
+          ))}
+
+          {service.items.map((item, index) => (
+            <div key={index} className="service-item mobile">
+              <div className="title-cluster">
+                <button
+                  className="btn_reset"
+                  onClick={() =>
+                    handleDescriptionToggle(item.feature_title.text)
+                  }
+                  aria-expanded={
+                    showDescription === item.feature_title.text ? true : false
+                  }
+                >
+                  <motion.h3 className="service-title">
+                    {item.feature_title.text}
+                  </motion.h3>
+                </button>
                 {item.feature_title.text.toLowerCase() === "brand strategy" && (
                   <img className="stars" src={"/stars.svg"} alt="stars" />
                 )}
@@ -42,7 +70,6 @@ const MainMenuSection = ({ mainMenu, add_a_side_of }) => {
               {showDescription === item.feature_title.text && (
                 <p className="mobile">{item.feature_description.text}</p>
               )}
-              <p className="desktop">{item.feature_description.text}</p>
             </div>
           ))}
         </div>

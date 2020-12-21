@@ -40,7 +40,12 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
               <h2>{category}</h2>
               <p>{description.text}</p>
               {logos.length > 1 && (
-                <motion.div className="hotel-logos">
+                <motion.div
+                  className="hotel-logos"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
                   {logos.map((logo, i) => (
                     <img key={i} src={logo.logo.url} alt={logo.logo.alt} />
                   ))}

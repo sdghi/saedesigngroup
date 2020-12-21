@@ -49,4 +49,20 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
   }
 
+  .btn_reset{
+    border: 0;
+    background: transparent;
+    padding: 0;
+  }
+
+  .visually-hidden{
+    clip: rect(0 0 0 0); 
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap; 
+    width: 1px;
+  }
+
 `

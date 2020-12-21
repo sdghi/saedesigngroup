@@ -2,58 +2,82 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { breakpointSmall, breakpointMedium, black, pink } from "../variables"
+import { useCursorChange } from "../hooks"
 
 const Footer = () => {
+  const [bind] = useCursorChange({ selected: "selected" })
+
   return (
     <FooterContent>
       <Link to="/contact">
-        <img src={"/contact-us.svg"} alt="contact us call to action" />
+        <img
+          src={"/contact-us.svg"}
+          alt="contact us call to action"
+          {...bind}
+        />
+        <span className="visually-hidden">Contact us</span>
       </Link>
       <ContactInfo>
-        <a href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225">
+        <a
+          href="https://www.google.com/maps/place/Sae+Design/@20.88517,-156.507419,17z/data=!3m1!4b1!4m5!3m4!1s0x7954d3695222c4ef:0xed333bfc689c52db!8m2!3d20.885165!4d-156.505225"
+          {...bind}
+        >
           Maui
           <br /> 2261 Aupuni Street #101 Wailuku, HI 96793
-        </a>{" "}
+        </a>
         <br />
-        <a href="tel:808-249-2200">808.249.2200</a>
+        <a href="tel:808-249-2200" {...bind}>
+          808.249.2200
+        </a>
       </ContactInfo>
       <ContactInfo>
-        <a href="https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513">
+        <a
+          href="https://www.google.com/maps/place/555+South+St+%23+108,+Honolulu,+HI+96813/@21.3010374,-157.8602161,19.86z/data=!4m5!3m4!1s0x7c006e0bd43706f7:0x8fb115c33548023e!8m2!3d21.301411!4d-157.8602513"
+          {...bind}
+        >
           Oahu <br /> 555 South Street #108 Honolulu, HI 96813
-        </a>{" "}
+        </a>
         <br />
-        <a href="tel:808-544-0002">808.544.0002</a>
+        <a href="tel:808-544-0002" {...bind}>
+          808.544.0002
+        </a>
       </ContactInfo>
       <ContactInfo className="center">
-        <a href="mailto: info@saedesign.com">info@saedesign.com</a>
+        <a href="mailto: info@saedesign.com" {...bind}>
+          info@saedesign.com
+        </a>
         <span>
           <a
             href="https://www.instagram.com/saedesignhi/?hl=en"
             title="instagram"
           >
+            <span className="visually-hidden">Instagram</span>
             <svg
               id="Layer_1"
               data-name="Layer 1"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
+              {...bind}
             >
               <title>SD_icon</title>
               <path d="M10,5.32A4.65,4.65,0,1,0,14.65,10,4.66,4.66,0,0,0,10,5.32Zm0,7.62a3,3,0,1,1,3-3A3,3,0,0,1,10,12.94Z" />
               <circle cx="14.83" cy="5.21" r="1.05" />
               <path d="M17.55,2.49A5.19,5.19,0,0,0,13.74,1H6.26A5,5,0,0,0,1,6.26V13.7a5.24,5.24,0,0,0,1.52,3.88A5.28,5.28,0,0,0,6.3,19h7.4a5.34,5.34,0,0,0,3.81-1.42A5.18,5.18,0,0,0,19,13.74V6.26A5.21,5.21,0,0,0,17.55,2.49Zm-.22,11.25a3.53,3.53,0,0,1-1,2.65,3.77,3.77,0,0,1-2.65.94H6.3a3.77,3.77,0,0,1-2.65-.94,3.67,3.67,0,0,1-1-2.69V6.26a3.64,3.64,0,0,1,1-2.65A3.72,3.72,0,0,1,6.3,2.67h7.47a3.63,3.63,0,0,1,2.65,1,3.72,3.72,0,0,1,1,2.61v7.48Z" />
             </svg>
-          </a>{" "}
-          |{" "}
+          </a>
+          |
           <a
             href="https://saemin.saedesign.com"
             className="saemin-link"
             title="saemin"
           >
+            <span className="visually-hidden">Saemin</span>
             <svg
               id="Layer_1"
               data-name="Layer 1"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
+              {...bind}
             >
               <title>SD_icon</title>
               <path d="M18,8.43A8.17,8.17,0,0,1,2,8.43H18M20,6.6H0a10,10,0,1,0,20,0Z" />

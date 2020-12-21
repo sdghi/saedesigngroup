@@ -11,7 +11,7 @@ import RelatedProjectCursor from "./cursors/relatedProjectsCursor"
 import SelectedCursor from "./cursors/selectedCursor"
 import CaseStudyCursor from "./cursors/caseStudyCursor"
 
-const CustomCursor = ({ xValue, yValue, cursorElement }) => {
+const CustomCursor = ({ cursorElement }) => {
   const [showCursor, setShowCursor] = useState(false)
   const [x, y] = useMousePosition()
 

@@ -49,4 +49,10 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
   }
 
+  .btn_reset{
+    border: 0;
+    background: transparent;
+    padding: 0;
+  }
+
 `

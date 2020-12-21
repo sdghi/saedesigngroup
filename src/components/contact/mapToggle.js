@@ -7,29 +7,6 @@ import { useCursorChange } from "../../hooks"
 const MapToggle = ({ toggleOahuMap, showOahuMap, toggleMap }) => {
   const [bind] = useCursorChange({ selected: "selected" })
 
-  const containerVariants = {
-    initial: {
-      scale: 0,
-      transformOrigin: "top left",
-    },
-    open: {
-      scale: 1,
-      transition: {
-        when: "beforeChildren",
-        staggerChildren: 0.1,
-        staggerDirection: 1,
-      },
-    },
-    exit: {
-      scale: 0,
-      transition: {
-        staggerChildren: 0.1,
-        staggerDirection: 1,
-        when: "afterChildren",
-      },
-    },
-  }
-
   const fadeVariants = {
     open: {
       opacity: 1,
@@ -52,98 +29,58 @@ const MapToggle = ({ toggleOahuMap, showOahuMap, toggleMap }) => {
 
   return (
     <MapToggleContainer
-      variants={containerVariants}
+      variants={fadeVariants}
       className="select_container"
-      initial="initial"
+      initial="closed"
       animate="open"
-      exit="exit"
+      exit="closed"
     >
-      <motion.button
-        variants={fadeVariants}
-        initial="closed"
-        open="open"
-        exit="closed"
-        onClick={toggleMap}
-      >
+      <motion.button className="close-menu" onClick={toggleMap}>
         <span className="x-icon"></span>
+        <span className="visually-hidden">Close Menu</span>
       </motion.button>
 
-      <motion.h5
-        variants={fadeVariants}
-        initial="closed"
-        open="open"
-        exit="closed"
-      >
-        Choose Location
-      </motion.h5>
+      <motion.h5>Choose Location</motion.h5>
 
-      <motion.div
-        variants={fadeVariants}
-        initial="closed"
-        open="open"
-        exit="closed"
-        id="map_select"
-      >
-        <div
-          className="map_btns"
-          onClick={showOahuMap ? toggleOahuMap : undefined}
-          onKeyDown={showOahuMap ? toggleOahuMap : undefined}
-          role="button"
-          tabIndex={0}
+      <motion.div id="map_select">
+        <button
+          className="btn-reset option-btn"
+          style={!showOahuMap ? { color: "black" } : { color: "grey" }}
+          onClick={toggleOahuMap}
           {...bind}
         >
-          <h1
-            className="uppercase"
-            style={!showOahuMap ? { color: "black" } : { color: "grey" }}
-          >
-            maui
-          </h1>
-        </div>
+          maui
+        </button>
+
         <span className="or">or</span>
-        <div
-          className="map_btns"
-          onClick={!showOahuMap ? toggleOahuMap : undefined}
-          onKeyDown={!showOahuMap ? toggleOahuMap : undefined}
-          role="button"
-          tabIndex={0}
+        <button
+          style={!showOahuMap ? { color: "grey" } : { color: "black" }}
+          className="btn-reset option-btn"
+          onClick={toggleOahuMap}
           {...bind}
         >
-          <h1
-            style={!showOahuMap ? { color: "grey" } : { color: "black" }}
-            className="uppercase"
-          >
-            oahu
-          </h1>
-        </div>
+          oahu
+        </button>
       </motion.div>
 
       {showOahuMap ? (
-        <motion.div
-          className="info"
-          id="oahu_info"
-          variants={fadeVariants}
-          initial="closed"
-          open="open"
-          exit="closed"
-        >
-          <a href="tel:808-544-0002">(808) 544-0002</a>
+        <motion.div className="info" id="oahu_info">
+          <a href="tel:808-544-0002" {...bind}>
+            (808) 544-0002
+          </a>
           <br />
-          <a href={oahuGoogleMap}>
+          <a href={oahuGoogleMap} {...bind}>
             555 South St Suite #108
             <br /> Honolulu, HI 96813
           </a>
         </motion.div>
       ) : (
-        <motion.div
-          className="info"
-          variants={fadeVariants}
-          initial="closed"
-          open="open"
-          exit="closed"
-        >
-          <a href="tel:808-249-2200">(808) 249-2200</a>
+        <motion.div className="info">
+          <a href="tel:808-249-2200" {...bind}>
+            (808) 249-2200
+          </a>
           <br />
-          <a href={mauiGoogleMap}>
+          <a href={mauiGoogleMap} {...bind}>
             2261 Aupuni St # 101
             <br /> Wailuku, HI 96793
           </a>
@@ -181,7 +118,7 @@ const MapToggleContainer = styled(motion.div)`
     padding: 20px;
 
     &:focus {
-      outline: none;
+      outline: 0;
     }
 
     .x-icon {
@@ -214,9 +151,12 @@ const MapToggleContainer = styled(motion.div)`
     grid-template-columns: 2fr 0.5fr 2fr;
     opacity: 1;
 
-    h1 {
+    .option-btn {
       font-size: 3rem;
       margin: 0;
+      position: relative;
+      padding: 0;
+      font-weight: 700;
     }
   }
 
@@ -238,12 +178,12 @@ const MapToggleContainer = styled(motion.div)`
     width: fit-content;
     padding: 30px;
 
-    h5 {
-      margin: 0;
+    .close-menu {
+      display: none;
     }
 
-    button {
-      display: none;
+    h5 {
+      margin: 0;
     }
 
     .info {

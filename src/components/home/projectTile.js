@@ -83,14 +83,16 @@ const ProjectTile = ({
     <TileContent
       key={project.uid}
       displayProjectsGrid={displayProjectsGrid}
-      layout
       {...bind}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       widthMd={displayProjectsGrid ? "100%" : `${100 * projectSize}%`}
       // Top and Bottom will be directly affected by their properties in the cms
       top={displayProjectsGrid ? "0" : top}
     >
       {slug === "logo-selection" && (
-        <motion.div onClick={handleLogoSelection} layout>
+        <motion.div onClick={handleLogoSelection}>
           {!featured_image_video.url && (
             <ImageContainer
               width="100%"

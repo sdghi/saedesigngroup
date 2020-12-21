@@ -58,6 +58,7 @@ const Logos = ({ setCursorElement }) => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      exit="hidden"
     >
       {logosData.map(logo => (
         <motion.div

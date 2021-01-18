@@ -85,7 +85,8 @@ const OahuMap = () => {
       <motion.g
         drag
         dragConstraints={{ top: -300, left: -300, right: 300, bottom: 300 }}
-        transition={{ dampness: 200 }}
+        dragMomentum={false}
+        dragElastic={0.1}
       >
         <g id="Land__x26__Water">
           <path className="st1" d="M0 0h4104v4320H0z" />

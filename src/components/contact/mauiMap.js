@@ -113,7 +113,8 @@ const MauiMap = () => {
         className="map-contents"
         drag
         dragConstraints={{ top: -300, left: -400, right: 400, bottom: 300 }}
-        transition={{ dampness: 200 }}
+        dragMomentum={false}
+        dragElastic={0.1}
       >
         <g id="Land_and_Water">
           <path id="Water" className="st0" d="M3207 0h2087v2169H3207z" />

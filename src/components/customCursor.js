@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useMousePosition } from "../hooks"
 import InitialCursor from "./cursors/initialCursor"
 import BrandingCursor from "./cursors/brandingCursor"
@@ -17,7 +17,7 @@ const CustomCursor = ({ cursorElement }) => {
 
   /*  Keep this useEffect separate or the x, y change will always setSetCursorElement back
   to initial every time the mouse moves */
-  useLayoutEffect(() => {
+  useEffect(() => {
     // Disable the cursor until the user moves their mouse
     if ((!!x, !!y)) {
       setShowCursor(true)

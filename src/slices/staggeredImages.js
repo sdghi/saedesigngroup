@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import { Container, ImageContainer } from "../elements"
 import { breakpointSmall, breakpointMedium, grey } from "../variables"
@@ -20,7 +20,7 @@ const StaggeredImages = ({ slice }) => {
 
   const ref = useRef()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const element = ref.current
     setElTop(element.offsetHeight)
   }, [ref])

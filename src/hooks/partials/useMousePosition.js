@@ -1,9 +1,9 @@
-import { useState, useLayoutEffect } from "react"
+import { useState, useEffect } from "react"
 
 export const useMousePosition = () => {
   const [coordinates, setCoordinates] = useState([0, 0])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.addEventListener("mousemove", e => {
       setCoordinates([e.clientX, e.clientY])
     })

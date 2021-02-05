@@ -60,10 +60,10 @@ const Logos = ({ setCursorElement }) => {
       animate="visible"
       exit="hidden"
     >
-      {logosData.map(logo => (
+      {logosData.map((logo, i) => (
         <motion.div
           className="logo-container"
-          key={logo.id}
+          key={i}
           onHoverStart={() => setHoveredLogo(logo.id)}
           onHoverEnd={() => setHoveredLogo(null)}
         >
@@ -72,7 +72,7 @@ const Logos = ({ setCursorElement }) => {
             fluid={logo.primary.logo_image.fluid}
             heightMd="300px"
           />
-          {logo.primary.link_to_project && (
+          {logo.primary.link_to_project.uid && (
             <Link
               to={logo.primary.link_to_project.uid}
               className="open-project-link"

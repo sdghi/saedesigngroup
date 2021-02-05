@@ -13,11 +13,10 @@ export const Cursor = styled.div.attrs(props => ({
   },
 }))`
   position: fixed;
-  display: none;
   place-items: center;
   pointer-events: none;
 
-  @media (min-width: ${breakpointMedium}) {
-    display: grid;
+  @media (hover: none) {
+    display: none;
   }
 `

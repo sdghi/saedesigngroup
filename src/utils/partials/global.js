@@ -10,19 +10,13 @@ export const GlobalStyle = createGlobalStyle`
 
   *, *:before, *:after{
     box-sizing:inherit;
+    cursor: none;
   }
 
-  @media(min-width: ${breakpointMedium}){
-    *, *:before, *:after{
-      /* Globally disables the cursor  */
-      cursor: none;
-    }
-  }
 
   body{
     margin: 0;
     padding: 0;
-  
   }
 
   a {

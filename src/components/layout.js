@@ -11,26 +11,6 @@ import CustomCursor from "./customCursor"
 import SiteBranding from "./siteBranding"
 import Navigation from "./navigation"
 
-const duration = 0.5
-
-const variants = {
-  initial: {
-    opacity: 0,
-  },
-  enter: {
-    opacity: 1,
-    transition: {
-      duration: duration,
-      delay: duration,
-      when: "beforeChildren",
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: duration },
-  },
-}
-
 const Layout = ({ children, location }) => {
   const { cursorElement, setCursorElement } = useAppContext()
 
@@ -58,24 +38,17 @@ const Layout = ({ children, location }) => {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        <motion.main
-          key={location && location.pathname}
-          variants={variants}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-        >
-          <SiteBranding />
-          <ToggleBtn onClick={toggleNav} {...bind}>
-            <motion.h2 whileHover={{ scale: 1.2, rotate: 4 }}>
-              {isNavOpen ? "close" : "menu"}
-            </motion.h2>
-          </ToggleBtn>
+      <main key={location && location.pathname}>
+        <SiteBranding />
+        <ToggleBtn onClick={toggleNav} {...bind}>
+          <motion.h2 whileHover={{ scale: 1.2, rotate: 4 }}>
+            {isNavOpen ? "close" : "menu"}
+          </motion.h2>
+        </ToggleBtn>
 
-          {children}
-        </motion.main>
-      </AnimatePresence>
+        {children}
+      </main>
+
       <Footer />
     </div>
   )

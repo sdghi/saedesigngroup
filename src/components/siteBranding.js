@@ -9,12 +9,12 @@ const SiteBranding = ({ toggleNav, isNavOpen }) => {
 
   return (
     <Link to="/">
-      <BrandingContainer {...bind}>
+      <h1 className="visually-hidden">Sae Design Group</h1>
+      <BrandingContainer {...bind} onClick={isNavOpen ? toggleNav : undefined}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           id="sdg-face"
           viewBox="0 0 41.56 41.56"
-          onClick={isNavOpen ? toggleNav : undefined}
         >
           <g id="Layer_2" data-name="Layer 2">
             <path
@@ -153,10 +153,8 @@ const BrandingContainer = styled.div`
   display: flex;
   align-items: center;
   width: 200px;
-  position: fixed;
-  top: 23px;
-  left: 20px;
-  z-index: 999;
+  position: relative;
+  z-index: 9999;
 
   svg {
     width: 100%;

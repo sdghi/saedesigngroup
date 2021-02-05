@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { breakpointMedium } from "../../variables"
 
 export const Cursor = styled.div.attrs(props => ({
   style: {

@@ -1,21 +1,19 @@
 import React, { useEffect } from "react"
-import { AnimatePresence, motion } from "framer-motion"
-import styled from "styled-components"
+import { AnimatePresence } from "framer-motion"
+import Header from "../components/header"
 import PropTypes from "prop-types"
-import { pink } from "../variables"
 import { useAppContext } from "../provider"
-import { useToggle, useCursorChange } from "../hooks"
+import { useToggle } from "../hooks"
 import { GlobalStyle } from "../utils"
 import Footer from "./footer"
 import CustomCursor from "./customCursor"
-import SiteBranding from "./siteBranding"
+
 import Navigation from "./navigation"
 
 const Layout = ({ children, location }) => {
   const { cursorElement, setCursorElement } = useAppContext()
 
   const [isNavOpen, toggleNav] = useToggle()
-  const [bind] = useCursorChange({ selected: "selected" })
 
   useEffect(() => {
     setCursorElement({ initial: "initial" })
@@ -38,16 +36,9 @@ const Layout = ({ children, location }) => {
         )}
       </AnimatePresence>
 
-      <main key={location && location.pathname}>
-        <SiteBranding />
-        <ToggleBtn onClick={toggleNav} {...bind}>
-          <motion.h2 whileHover={{ scale: 1.2, rotate: 4 }}>
-            {isNavOpen ? "close" : "menu"}
-          </motion.h2>
-        </ToggleBtn>
+      <Header isNavOpen={isNavOpen} toggleNav={toggleNav} />
 
-        {children}
-      </main>
+      <main key={location && location.pathname}>{children}</main>
 
       <Footer />
     </div>
@@ -57,21 +48,5 @@ const Layout = ({ children, location }) => {
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
-
-const ToggleBtn = styled.div`
-  position: fixed;
-  top: 31px;
-  right: 20px;
-  z-index: 99999;
-  font-weight: 600;
-  color: ${pink};
-  transition: all 0.01s ease-in;
-  user-select: none;
-
-  h2 {
-    font-size: 20px;
-    margin: 0;
-  }
-`
 
 export default Layout

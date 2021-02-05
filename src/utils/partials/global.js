@@ -10,13 +10,13 @@ export const GlobalStyle = createGlobalStyle`
 
   *, *:before, *:after{
     box-sizing:inherit;
+    cursor: none;
   }
 
 
   body{
     margin: 0;
     padding: 0;
-    cursor: none;
   }
 
   a {

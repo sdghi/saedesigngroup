@@ -12,17 +12,11 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing:inherit;
   }
 
-  @media(min-width: ${breakpointMedium}){
-    *, *:before, *:after{
-      /* Globally disables the cursor  */
-      cursor: none;
-    }
-  }
 
   body{
     margin: 0;
     padding: 0;
-  
+    cursor: none;
   }
 
   a {

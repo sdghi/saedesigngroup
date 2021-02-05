@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components"
-import { breakpointMedium, pink, baseFont } from "../../variables"
+import { pink, baseFont } from "../../variables"
 
 export const GlobalStyle = createGlobalStyle`
 

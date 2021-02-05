@@ -9,6 +9,7 @@ const SiteBranding = ({ toggleNav, isNavOpen }) => {
 
   return (
     <Link to="/">
+      <h1 className="visually-hidden">Sae Design Group</h1>
       <BrandingContainer {...bind}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -47,7 +47,7 @@ const TwoThirdContainer = styled(Container)`
     .caption {
       max-width: 194px;
       font-size: 14px;
-      line-height: 26px;
+      line-height: 22px;
       text-align: left;
     }
 

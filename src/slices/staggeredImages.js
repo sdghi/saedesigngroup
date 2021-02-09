@@ -97,8 +97,8 @@ export default StaggeredImages
 
 const StaggeredImageContainer = styled(Container)`
   .caption {
-    font-size: 14px;
-    line-height: 26px;
+    font-size: 15px;
+    line-height: 22px;
     color: ${grey};
   }
 

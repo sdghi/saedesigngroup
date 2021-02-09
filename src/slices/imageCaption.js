@@ -48,8 +48,8 @@ const TwoThirdContainer = styled(Container)`
 
     ${Paragraph} {
       max-width: 194px;
-      font-size: 14px;
-      line-height: 26px;
+      font-size: 15px;
+      line-height: 22px;
       text-align: left;
     }
 

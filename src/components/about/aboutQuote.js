@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import styled from "styled-components"
 import { Container, Paragraph, HeadingTwo } from "../../elements"
 import { pink, breakpoint4k } from "../../variables"

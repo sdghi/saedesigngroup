@@ -39,25 +39,13 @@ const ClientList = () => {
             <MarqueeContent>
               {clients.map(({ client }, i) => (
                 <span key={i}>
-                  {client.text}
+                  <span className="client">{client.text}</span>
                   <span className="dot">&#183;</span>
                 </span>
               ))}
               {clients.map(({ client }, i) => (
                 <span key={i}>
-                  {client.text}
-                  <span className="dot">&#183;</span>
-                </span>
-              ))}
-              {clients.map(({ client }, i) => (
-                <span key={i}>
-                  {client.text}
-                  <span className="dot">&#183;</span>
-                </span>
-              ))}
-              {clients.map(({ client }, i) => (
-                <span key={i}>
-                  {client.text}
+                  <span className="client">{client.text}</span>
                   <span className="dot">&#183;</span>
                 </span>
               ))}
@@ -76,10 +64,13 @@ const MarqueeContainer = styled.div`
   width: fit-content;
   position: relative;
 
+  .client:hover {
+    color: red;
+  }
+
   .marquee-inner {
     width: calc(7800px * 4);
-    transform: translate3d(calc(-40% + 10vw), 0, 0);
-    animation: marquee 60s linear infinite;
+    animation: marquee 140s linear infinite both;
     display: flex;
     animation-play-state: ${({ startMarquee }) =>
       startMarquee ? "play" : "paused"};

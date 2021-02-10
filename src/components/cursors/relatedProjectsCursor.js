@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react"
 import { Cursor } from "../../elements"
 import styled from "styled-components"
-import { white, pink } from "../../variables"
+import { black, white, pink } from "../../variables"
 
 const RelatedProjectCursor = ({ xValue, yValue, cursorContent }) => {
   const relatedRef = useRef(null)
@@ -46,6 +46,7 @@ const RelatedProjects = styled(Cursor)`
   line-height: 1;
   color: ${white};
   background-color: ${pink};
+  border: 3px solid ${black};
 
   p {
     margin: 0;

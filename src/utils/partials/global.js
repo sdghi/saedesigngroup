@@ -43,6 +43,10 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
   }
 
+  button:focus{
+    outline-color: ${pink};
+  }
+
   .btn_reset{
     border: 0;
     background: transparent;

@@ -46,7 +46,7 @@ const RelatedProjects = styled(Cursor)`
   line-height: 1;
   color: ${white};
   background-color: ${pink};
-  border: 3px solid ${black};
+  border: 2px solid ${black};
 
   p {
     margin: 0;

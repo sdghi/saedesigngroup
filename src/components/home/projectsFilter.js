@@ -1,12 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import {
-  breakpointSmall,
-  breakpointMedium,
-  black,
-  pink,
-  yellow,
-} from "../../variables"
+import { breakpointSmall, breakpointMedium, black, pink } from "../../variables"
 import { useStaticQuery, graphql } from "gatsby"
 import { useCursorChange } from "../../hooks"
 
@@ -41,6 +35,10 @@ const ProjectsFilter = ({
 
   const [bind] = useCursorChange({ selected: "selected" })
 
+  const filteredCategories = categories.filter(
+    category => category.node.data.category !== "Logos"
+  )
+
   return (
     <FilterContainer showMobile={showMobile}>
       <div className="filter-categories">
@@ -54,7 +52,7 @@ const ProjectsFilter = ({
             all
           </button>
 
-          {categories.map((category, index) => (
+          {filteredCategories.map((category, index) => (
             <button
               className={
                 projectCategoryFilter.toLowerCase() ===
@@ -72,7 +70,7 @@ const ProjectsFilter = ({
           ))}
           <button
             className={showLogos ? "selected" : null}
-            onClick={() => handleClickEvent("", true)}
+            onClick={() => handleClickEvent("Logos", true)}
             {...bind}
           >
             logos

@@ -90,7 +90,6 @@ const FilterContainer = styled.div`
   z-index: 100;
   top: 9vh;
   padding: 0 20px;
-  margin-bottom: 20px;
   display: ${({ showMobile }) => (showMobile === true ? "flex" : "none")};
 
   .filter-categories {

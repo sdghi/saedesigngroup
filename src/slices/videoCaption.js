@@ -32,8 +32,8 @@ const Video = styled.video`
 
 const TwoThirdContainer = styled(Container)`
   .caption {
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 15px;
+    line-height: 22px;
     color: ${grey};
     text-align: center;
   }
@@ -46,8 +46,6 @@ const TwoThirdContainer = styled(Container)`
 
     .caption {
       max-width: 194px;
-      font-size: 14px;
-      line-height: 22px;
       text-align: left;
     }
 

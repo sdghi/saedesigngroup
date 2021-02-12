@@ -13,7 +13,7 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
             data {
               category
               description {
-                text
+                html
               }
               logos {
                 logo {
@@ -38,7 +38,7 @@ const ProjectCategoryInfo = ({ projectCategoryFilter }) => {
           return (
             <CategoryInfo key={id}>
               <h2>{category}</h2>
-              <p>{description.text}</p>
+              <div dangerouslySetInnerHTML={{ __html: description.html }}></div>
               {logos.length > 1 && (
                 <motion.div
                   className="hotel-logos"
@@ -72,9 +72,16 @@ const CategoryInfo = styled(motion.div)`
 
   p {
     font-size: 18px;
+    line-height: 1.5;
     font-weight: 300;
-    max-width: 550px;
+    width: 90%;
+    max-width: 700px;
     margin: 0 auto;
+  }
+
+  strong {
+    display: inline-block;
+    margin-top: 10px;
   }
 
   .hotel-logos {

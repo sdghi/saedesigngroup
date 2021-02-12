@@ -133,12 +133,12 @@ const IndexPage = ({ data }) => {
           showMobile={true}
         />
 
-        {showLogos && <Logos setCursorElement={setCursorElement} />}
-
-        {/* Show the project category info it isn't all  and logos aren't active */}
-        {projectCategoryFilter !== "all" && !showLogos && (
+        {/* Show the project category info it isn't all  */}
+        {projectCategoryFilter !== "all" && (
           <ProjectCategoryInfo projectCategoryFilter={projectCategoryFilter} />
         )}
+
+        {showLogos && <Logos setCursorElement={setCursorElement} />}
 
         <ProjectsContainer
           showLogos={showLogos}

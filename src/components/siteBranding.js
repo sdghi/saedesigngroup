@@ -152,7 +152,7 @@ export default SiteBranding
 const BrandingContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 200px;
+  width: 220px;
   position: relative;
   z-index: 9999;
 
@@ -164,7 +164,7 @@ const BrandingContainer = styled.div`
   #sdg-face {
     transition: all 0.2s ease-out;
     transform-origin: center;
-    width: 100px;
+    width: 115px;
     margin-right: 5px;
 
     .cls-1 {

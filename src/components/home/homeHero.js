@@ -36,5 +36,4 @@ const Video = styled.video`
   height: 100%;
   width: 100%;
   object-fit: contain;
-  filter: brightness(0.9);
 `

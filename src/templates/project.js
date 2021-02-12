@@ -149,6 +149,9 @@ export const query = graphql`
                 slice_type
                 primary {
                   full_width
+                  caption {
+                    text
+                  }
                   image {
                     url
                     alt

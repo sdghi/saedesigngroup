@@ -1,8 +1,14 @@
 import React from "react"
 import styled from "styled-components"
-import { breakpointSmall, breakpointMedium, black, pink, yellow } from "../../variables"
+import {
+  breakpointSmall,
+  breakpointMedium,
+  black,
+  pink,
+  yellow,
+} from "../../variables"
 import { useStaticQuery, graphql } from "gatsby"
-import { useCursorChange } from '../../hooks'
+import { useCursorChange } from "../../hooks"
 
 const ProjectsFilter = ({
   projectCategoryFilter,
@@ -33,7 +39,7 @@ const ProjectsFilter = ({
     setShowLogos(showLogo)
   }
 
-  const [bind] = useCursorChange({ selected: 'selected' });
+  const [bind] = useCursorChange({ selected: "selected" })
 
   return (
     <FilterContainer showMobile={showMobile}>
@@ -52,7 +58,7 @@ const ProjectsFilter = ({
             <button
               className={
                 projectCategoryFilter.toLowerCase() ===
-                  category.node.data.category.toLowerCase()
+                category.node.data.category.toLowerCase()
                   ? "selected"
                   : null
               }
@@ -87,7 +93,7 @@ const FilterContainer = styled.div`
   top: 9vh;
   padding: 0 20px;
   margin-bottom: 20px;
-  display: ${({ showMobile }) => showMobile === true ? "flex" : "none"};
+  display: ${({ showMobile }) => (showMobile === true ? "flex" : "none")};
 
   .filter-categories {
     h3 {
@@ -110,15 +116,15 @@ const FilterContainer = styled.div`
         text-transform: uppercase;
         color: ${black};
         letter-spacing: 0.1em;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 700;
         margin-bottom: 5px;
 
         &.selected {
-          color: ${yellow};
+          color: ${pink};
         }
 
-        &:hover{
+        &:hover {
           color: ${pink};
         }
 
@@ -134,7 +140,7 @@ const FilterContainer = styled.div`
   }
 
   @media (min-width: ${breakpointSmall}) {
-    display: ${({ showMobile }) => showMobile === true ? "none" : "flex"};
+    display: ${({ showMobile }) => (showMobile === true ? "none" : "flex")};
 
     .display-btn-container {
       display: grid;

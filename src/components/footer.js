@@ -65,7 +65,7 @@ const Footer = () => {
               <path d="M17.55,2.49A5.19,5.19,0,0,0,13.74,1H6.26A5,5,0,0,0,1,6.26V13.7a5.24,5.24,0,0,0,1.52,3.88A5.28,5.28,0,0,0,6.3,19h7.4a5.34,5.34,0,0,0,3.81-1.42A5.18,5.18,0,0,0,19,13.74V6.26A5.21,5.21,0,0,0,17.55,2.49Zm-.22,11.25a3.53,3.53,0,0,1-1,2.65,3.77,3.77,0,0,1-2.65.94H6.3a3.77,3.77,0,0,1-2.65-.94,3.67,3.67,0,0,1-1-2.69V6.26a3.64,3.64,0,0,1,1-2.65A3.72,3.72,0,0,1,6.3,2.67h7.47a3.63,3.63,0,0,1,2.65,1,3.72,3.72,0,0,1,1,2.61v7.48Z" />
             </svg>
           </a>
-          |
+
           <a
             href="https://saemin.saedesign.com"
             className="saemin-link"
@@ -109,6 +109,10 @@ export default Footer
 const FooterContent = styled.footer`
   padding: 20px;
 
+  a:hover {
+    color: ${pink};
+  }
+
   img {
     margin-bottom: 33px;
     width: 220px;
@@ -118,6 +122,7 @@ const FooterContent = styled.footer`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    flex-wrap: wrap;
 
     img {
       margin-bottom: 0;
@@ -150,8 +155,8 @@ const ContactInfo = styled.div`
   }
 
   svg {
-    height: 100%;
-    width: 100%;
+    height: auto;
+    width: 82%;
     fill: ${black};
 
     &:hover {
@@ -163,11 +168,11 @@ const ContactInfo = styled.div`
     height: 126px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
 
     span {
       display: grid;
-      grid-template-columns: 40px 1fr 40px;
+      grid-template-columns: 40px 40px;
       grid-gap: 10px;
       place-items: center;
       align-items: center;
@@ -180,12 +185,13 @@ const ContactInfo = styled.div`
   }
 
   @media (min-width: ${breakpointSmall}) {
-    width: 236px;
+    width: 150px;
     font-size: 14px;
     margin-bottom: 0;
   }
 
   @media (min-width: ${breakpointMedium}) {
     font-size: 20px;
+    width: 240px;
   }
 `

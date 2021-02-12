@@ -35,5 +35,6 @@ export default HomeHero
 const Video = styled.video`
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  filter: brightness(0.9);
 `

@@ -16,6 +16,21 @@ const ProjectsContainer = ({
 }) => {
   if (showLogos) return null
 
+  // Patch to put aqua aston and kahala on the bottom
+  const filteredHotels = projects.filter(
+    ({ node }) =>
+      (node.uid === "kahala-hotel--resort") |
+      (node.uid === "aqua-aston-hospitality")
+  )
+
+  const newProjects = projects.filter(
+    ({ node }) =>
+      node.uid !== "kahala-hotel--resort" &&
+      node.uid !== "aqua-aston-hospitality"
+  )
+
+  const filteredProjects = [...newProjects, ...filteredHotels]
+
   return (
     <AllProjects
       display={displayProjectsGrid ? "grid" : "block"}
@@ -25,7 +40,7 @@ const ProjectsContainer = ({
       ref={measuredRef}
       displayProjectsGrid={displayProjectsGrid}
     >
-      {projects.map(project => (
+      {filteredProjects.map(project => (
         <ProjectTile
           displayProjectsGrid={displayProjectsGrid}
           key={project.node.uid}

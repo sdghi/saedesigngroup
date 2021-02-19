@@ -41,13 +41,13 @@ const ContactPage = () => {
         </div>
 
         <motion.a
-          href="mailto: info@saedesign.com"
+          href="mailto:info@saedesigngroup.com"
           className="contact-us-at"
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1, transition: { delay: 0.8 } }}
           {...bind}
         >
-          info@saedesign.com
+          info@saedesigngroup.com
         </motion.a>
       </MapContainer>
     </>

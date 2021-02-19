@@ -43,8 +43,8 @@ const Footer = () => {
         </a>
       </ContactInfo>
       <ContactInfo className="center">
-        <a href="mailto: info@saedesign.com" {...bind}>
-          info@saedesign.com
+        <a href="mailto:info@saedesigngroup.com" {...bind}>
+          info@saedesigngroup.com
         </a>
         <span>
           <a

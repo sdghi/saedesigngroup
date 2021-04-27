@@ -69,6 +69,8 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve("./src/templates/project.js"),
       context: {
         uid: edge.node.uid,
+        allProjects: pages.data.allPrismicProjectTemplate.edges,
+        currentIndex: i,
         previous: edge.previous
           ? edge.previous
           : pages.data.allPrismicProjectTemplate.edges[

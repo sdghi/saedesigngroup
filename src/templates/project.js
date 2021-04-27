@@ -58,10 +58,16 @@ const Project = ({ project, theme, location }) => {
   )
 }
 
-export default props => {
+export default (props) => {
   const doc = props.data.allPrismicProjectTemplate.edges.slice(0, 1).pop()
   const title = doc.node.data.project_name.text
-  const { next, previous, doubleNext } = props.pageContext
+  const {
+    next,
+    previous,
+    doubleNext,
+    currentIndex,
+    allProjects,
+  } = props.pageContext
 
   if (!doc) return null
 
@@ -73,6 +79,8 @@ export default props => {
         next={next}
         previous={previous}
         doubleNext={doubleNext}
+        currentIndex={currentIndex}
+        allProjects={allProjects}
       />
     </>
   )

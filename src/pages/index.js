@@ -103,7 +103,7 @@ const IndexPage = ({ data }) => {
     <>
       <SEO title="Home" />
       <HomeHero />
-      <ProjectsSection>
+      <ProjectsSection id="work">
         {/* Desktop project filter  */}
         <ProjectsFilter
           projectCategoryFilter={projectCategoryFilter}

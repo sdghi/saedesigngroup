@@ -1,27 +1,43 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { HeadingTwo } from "../../elements"
 import { breakpointSmall, black } from "../../variables"
-import { useCursorChange } from '../../hooks'
+import { useAppContext } from "../../provider"
 
-const RelatedProjects = ({ next, previous, doubleNext }) => {
-  const { project_name: nextName } = next.data
-  const { project_name: prevName } = previous.data
-  const { project_name: doubleNextName } = doubleNext.data
+const RelatedProjects = ({ allProjects, currentIndex }) => {
+  const filteredProjects = allProjects.filter((_, i) => i !== index - 1)
+  const [index, setIndex] = useState(currentIndex)
+  const [related, setRelated] = useState([])
 
-  // const { setCursorElement } = useAppContext()
-  const [bindPrev] = useCursorChange({ related: prevName.text })
-  const [bindNext] = useCursorChange({ related: nextName.text })
-  const [bindDoubleNext] = useCursorChange({ related: doubleNextName.text })
+  const { setCursorElement } = useAppContext()
 
-  const prevImage = previous.data.featured_image.url;
-  const nextImage = next.data.featured_image.url;
-  const doubleNextImage = doubleNext.data.featured_image.url;
+  function next() {
+    if (index === filteredProjects.length - 1) {
+      return setIndex(0)
+    }
 
-  const { featured_image_video: nextVideo } = next.data;
-  const { featured_image_video: prevVideo } = previous.data;
-  const { featured_image_video: doubleNextVideo } = doubleNext.data;
+    setIndex(index + 1)
+  }
+
+  function previous() {
+    if (index === 0) {
+      return setIndex(filteredProjects.length - 1)
+    }
+    setIndex(index - 1)
+  }
+
+  useEffect(() => {
+    setRelated([
+      filteredProjects[index - 1]
+        ? filteredProjects[index - 1]
+        : filteredProjects[filteredProjects.length - 1],
+      filteredProjects[index],
+      filteredProjects[index + 1]
+        ? filteredProjects[index + 1]
+        : filteredProjects[0],
+    ])
+  }, [index])
 
   return (
     <div>
@@ -33,38 +49,39 @@ const RelatedProjects = ({ next, previous, doubleNext }) => {
       >
         More Stuff
       </HeadingTwo>
+      {/* TODO: Animation between the related projects */}
       <RelatedWrapper>
-        <Link
-          to={`/${previous.uid}`}
-          {...bindPrev}
-        >
-          {prevVideo.url ?
-            <video src={prevVideo.url} autoPlay loop muted playsInline /> :
-            <img src={prevImage} alt={prevName.text} />
-          }
-          <p>{prevName.text}</p>
-        </Link>
-        <Link
-          to={`/${next.uid}`}
-          {...bindNext}
-        >
-          {nextVideo.url ?
-            <video src={nextVideo.url} autoPlay loop muted playsInline /> :
-            <img src={nextImage} alt={nextName.text} />
-          }
-          <p>{nextName.text}</p>
-        </Link>
-        <Link
-          to={`/${doubleNext.uid}`}
-          {...bindDoubleNext}
-        >
-          {doubleNextVideo.url ?
-            <video src={doubleNextVideo.url} autoPlay loop muted playsInline /> :
-            <img src={doubleNextImage} alt={doubleNextName.text} />
-          }
-          <p>{doubleNextName.text}</p>
-        </Link>
+        {related.map(({ node }, i) => (
+          <Link
+            to={`/${node.uid}`}
+            key={i}
+            onMouseEnter={() =>
+              setCursorElement({ related: node.data.project_name.text })
+            }
+            onMouseLeave={() => setCursorElement({ initial: "initial" })}
+          >
+            {node.data.featured_image_video.url ? (
+              <video
+                src={node.data.featured_image_video.url}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            ) : (
+              <img
+                src={node.data.featured_image.url}
+                alt={node.data.project_name.text}
+              />
+            )}
+            <p>{node.data.project_name.text}</p>
+          </Link>
+        ))}
       </RelatedWrapper>
+      <div>
+        <button onClick={previous}>prev</button>
+        <button onClick={next}>next</button>
+      </div>
     </div>
   )
 }
@@ -80,15 +97,15 @@ const RelatedWrapper = styled.div`
     margin-right: 30px;
   }
 
-  img ,
-  video{
+  img,
+  video {
     height: 280px;
     object-fit: cover;
     width: 280px;
     filter: brightness(0.95);
   }
 
-  p{
+  p {
     text-transform: uppercase;
     color: ${black};
     font-weight: 700;

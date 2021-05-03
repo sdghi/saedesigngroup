@@ -6,9 +6,9 @@ import { breakpointSmall, black } from "../../variables"
 import { useAppContext } from "../../provider"
 
 const RelatedProjects = ({ allProjects, currentIndex }) => {
-  const filteredProjects = allProjects.filter((_, i) => i !== index - 1)
   const [index, setIndex] = useState(currentIndex)
   const [related, setRelated] = useState([])
+  const filteredProjects = allProjects.filter((_, i) => i !== index - 1)
 
   const { setCursorElement } = useAppContext()
 

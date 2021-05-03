@@ -1,5 +1,5 @@
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `.env`,
 })
 
 module.exports = {
@@ -58,6 +58,7 @@ module.exports = {
           menu_of_services: require("./schemas/menu_of_services.json"),
           project_template: require("./schemas/project_template.json"),
           team: require("./schemas/team.json"),
+          homepage: require("./schemas/homepage.json"),
         },
       },
     },
